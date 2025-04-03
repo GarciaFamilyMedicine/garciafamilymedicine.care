@@ -19,21 +19,7 @@ jobs:
         with:
           submodules: true
           lfs: false
-          fetch-depth: 0  # Added for better commit history resolution
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.20.7  # Matches your local version
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci --audit=false  # Skip audit to prevent security warnings from blocking build
-
-      - name: Build project
-        run: npm run build  # Explicit build step before deployment
-
-      - name: Deploy to Azure
+      - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -41,11 +27,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"
+          api_location: ""
           output_location: "out"
-          app_build_command: "npm run build"
-          skip_app_build: false  # Force build execution
-          verbose: true  # Enable detailed logging
-          deployment_environment: "production"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
