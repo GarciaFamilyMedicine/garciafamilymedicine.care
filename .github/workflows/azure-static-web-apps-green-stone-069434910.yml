@@ -14,36 +14,30 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    environment: production
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
+          submodules: true
+          lfs: false
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.20.7
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci --no-audit
-
-      - name: Build project
-        run: |
-          npm run build
-          ls -la out  # Verify out directory exists
-
-      - name: Deploy to Azure
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Next.js App
+        run: npm run build
+      - name: Deploy to Azure Static Web Apps
+        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_STONE_069434910 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "out"  # Directly point to built output
-          output_location: ""  # Empty since we're using pre-built files
-          skip_app_build: true  # Critical fix: bypass Oryx build
-          verbose: true
+          app_location: "/" # Root of your Next.js app
+          api_location: "api" # Optional: only if you have API routes
+          output_location: ".next" # Use .next folder for serverless deployment
+          skip_app_build: true # Skip Oryx’s build since we’ve done it manually
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -51,6 +45,7 @@ jobs:
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
+        id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_STONE_069434910 }}
