@@ -1,0 +1,5 @@
+<!-- public/placeholder-logo.svg -->
+<svg width="120" height="40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="40" fill="#e2e8f0" />
+  <text x="10" y="25" font-family="Arial" font-size="14" fill="#1d539f">Logo Placeholder</text>
+</svg>

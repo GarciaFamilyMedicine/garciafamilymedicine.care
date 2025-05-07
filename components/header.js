@@ -5,7 +5,7 @@ export default function header() {
   return (
     <header className="flex items-center justify-between p-4 sm:p-6 bg-white shadow">
       <Image
-        src="/placeholder-logo.svg" // Placeholder image
+        src="/placeholder-logo.svg"
         alt="Garcia Family Medicine Logo"
         width={120}
         height={40}
