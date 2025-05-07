@@ -1,26 +1,122 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sumana:wght@400;700&family=Argentum+Sans:wght@300;600&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7fafc;
+  --foreground: #1a202c;
+  --font-sumana: 'Sumana', serif;
+  --font-argentum: 'Argentum Sans', sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-argentum);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a202c;
+    --foreground: #e2e8f0;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-argentum);
+}
+
+/* Custom styles for components */
+.main-welcome-card {
+  padding: 2rem;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.main-welcome-h1 {
+  color: #1d539f;
+  font-family: var(--font-sumana);
+  font-weight: 700;
+}
+
+.main-welcome-h2 {
+  color: #1d539f;
+  font-family: var(--font-sumana);
+  font-weight: 600;
+}
+
+.main-welcome-p {
+  font-family: var(--font-argentum);
+  font-weight: 300;
+}
+
+.main-welcome-strong {
+  font-weight: 700;
+}
+
+.care-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.care-section ul li {
+  margin-bottom: 10px;
+}
+
+.comments-section {
+  margin-top: 1.5rem;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .main-welcome-card {
+    padding: 1rem;
+    width: calc(100% - 20px);
+  }
+
+  .main-welcome-h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .main-welcome-h2 {
+    font-size: 1.4rem;
+  }
+
+  .main-welcome-p {
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .care-section {
+    padding: 1.25rem;
+  }
+
+  .care-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .care-section p,
+  .care-section ul {
+    font-size: 0.875rem;
+    text-align: left;
+  }
+
+  .comments-section {
+    padding: 1.25rem;
+    width: calc(100% - 20px);
+  }
+
+  .popup-content {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    padding: 0.625rem;
+    border-radius: 0;
+  }
+
+  .popup-content iframe {
+    height: calc(100vh - 50px);
+  }
 }

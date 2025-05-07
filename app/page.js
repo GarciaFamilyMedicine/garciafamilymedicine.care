@@ -1,100 +1,173 @@
-import Image from "next/image";
+'use client'; // Enable client-side interactivity
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.id === 'popup') {
+        setIsPopupOpen(false);
+      }
+    };
+
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="min-h-screen bg-background text-foreground font-sans">
+      {/* Header */}
+      <header className="flex items-center justify-between p-4 sm:p-6 bg-white shadow">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/clinic-logo.svg" // Replace with Garcia Family Medicine logo
+          alt="Garcia Family Medicine Logo"
+          width={120}
+          height={40}
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <nav className="flex gap-4 sm:gap-6">
+          <Link href="/services" className="hover:text-blue-600">Services</Link>
+          <Link href="/about" className="hover:text-blue-600">About</Link>
+          <Link href="/contact" className="hover:text-blue-600">Contact</Link>
+          <Link href="/appointment" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Book Appointment
+          </Link>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Main Welcome Section */}
+      <main className="flex flex-col items-center py-12 sm:py-20 px-4">
+        <div className="main-welcome-card bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center">
+          <h1 className="main-welcome-h1 text-[#1d539f] text-3xl sm:text-4xl font-bold mb-4 font-sumana">
+            Welcome to Garcia Family Medicine
+          </h1>
+          <h2 className="main-welcome-h2 text-[#1d539f] text-xl sm:text-2xl font-semibold mb-4 font-sumana">
+            Compassionate Healthcare Overflowing with Love in Blue Springs, MO!
+          </h2>
+          <p className="main-welcome-p text-gray-600 text-lg text-justify font-argentum leading-relaxed mb-4 indent-5">
+            Step into a healthcare experience rooted in trust, integrity, and the boundless love of God! At{' '}
+            <strong>Garcia Family Medicine</strong>, we’re passionately committed to making healthcare in Blue Springs, MO,{' '}
+            <strong>simple, affordable, and deeply personal—</strong>because you’re more than a patient, you’re family. We’ve
+            stepped away from the traditional insurance system to deliver <strong>high-quality primary care</strong> and mental
+            health support that’s cost-effective, compassionate, and free of long waits or hidden fees. Serving Blue Springs,
+            Independence, Lee’s Summit, and the greater Kansas City metro area, we’re here to wrap you in care that reflects
+            God’s grace and goodness.
+          </p>
+          <button
+            id="readMoreButton"
+            className="text-gray-600 font-argentum text-sm hover:underline"
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-expanded={isExpanded}
+            aria-controls="moreContent"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {isExpanded ? 'Read Less' : 'Read More'}
+          </button>
+          <div
+            id="moreContent"
+            className={`care-section transition-all duration-300 ${isExpanded ? 'max-h-[2000px] pt-2' : 'max-h-0 overflow-hidden'}`}
           >
-            Read our docs
-          </a>
+            <h3 className="text-[#1d539f] text-xl font-bold mb-4 font-sumana">
+              Garcia Family Medicine: Where Love Meets Exceptional Care!
+            </h3>
+            <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
+              At <strong>Garcia Family Medicine</strong>, we’re different—and that difference shines with purpose. Guided by
+              faith and a heart for healing, we prioritize your mental and physical well-being above all else. By leaving behind
+              the complexities of insurance, we offer:
+            </p>
+            <ul className="text-gray-600 text-base font-argentum mb-4 text-justify list-disc pl-6">
+              <li className="mb-2">
+                <strong>Loving Care:</strong> From preventive checkups to managing chronic conditions like diabetes or
+                hypertension, plus mental health support filled with empathy.
+              </li>
+              <li className="mb-2">
+                <strong>Heavenly Convenience:</strong> Quick, easy appointments that honor your time and needs.
+              </li>
+              <li className="mb-2">
+                <strong>Affordable Blessings:</strong> Transparent pricing that brings peace to your wallet and soul.
+              </li>
+            </ul>
+            <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
+              Located in Blue Springs, MO, we extend our warm, trustworthy embrace to Independence, Lee’s Summit, and the entire
+              Kansas City metro area. With integrity at our core, we’re here to provide family medicine that feels like a hug
+              from above—because your health is a sacred gift, and we cherish it!
+            </p>
+            <h3 className="text-[#1d539f] text-xl font-bold mb-4 font-sumana">Trust in Us – Call Today!</h3>
+            <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
+              Ready to experience healthcare infused with compassion and the love of God? At Garcia Family Medicine, we’re more
+              than a practice—we’re a ministry of wellness, serving Blue Springs, MO, and beyond with unwavering dedication.
+              Whether you need a routine visit, ongoing care, or a kind ear for your mental health journey, our team is here to
+              lift you up with trust and tenderness.
+            </p>
+            <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
+              Pick up the phone and call <a href="tel:816-427-5320" className="text-[#275cab] font-semibold hover:underline">
+                816-427-5320
+              </a> now—let us welcome you into our family! Join the countless patients in Blue Springs, Independence, Lee’s
+              Summit, and the Kansas City metro area who’ve found healing and hope with us. Dial{' '}
+              <a href="tel:816-427-5320" className="text-[#275cab] font-semibold hover:underline">816-427-5320</a> today and
+              discover the joy of <strong>compassionate, faith-filled healthcare</strong> that’s as reliable as it is
+              remarkable. Your well-being is our calling—let’s start this journey together!
+            </p>
+            <a
+              href="tel:816-427-5320"
+              className="inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-argentum font-semibold hover:from-[#1d539f] hover:to-[#275cab]"
+            >
+              Call Now: 816-427-5320
+            </a>
+          </div>
+        </div>
+
+        {/* Comments Section */}
+        <div className="comments-section bg-white/60 backdrop-blur-lg p-6 rounded-lg shadow-md max-w-5xl w-full text-center mt-6">
+          <h3 className="text-[#1d539f] text-xl font-bold mb-4 font-sumana">
+            Got burning questions too tricky, awkward, or unknown to voice?
+          </h3>
+          <p className="text-gray-600 text-base font-argentum leading-relaxed mb-4 indent-5">
+            Dr. Tess is here for you! Submit your questions through our secure form for a judgment-free response, or call{' '}
+            <a href="tel:816-427-5320" className="text-[#275cab] font-semibold hover:underline">816-427-5320</a> for a personal
+            chat. Click below to break the silence on any topic!
+          </p>
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-argentum font-semibold hover:from-[#1d539f] hover:to-[#275cab]"
+          >
+            Ask Dr. Tess
+          </button>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+      {/* Popup */}
+      <div
+        id="popup"
+        className={`fixed inset-0 bg-black/70 flex justify-center items-center z-[2147483647] transition-opacity duration-300 ${isPopupOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
+        <div className="popup-content bg-white/90 backdrop-blur-lg p-4 rounded-lg shadow-lg w-[90%] max-w-3xl max-h-[90vh] overflow-hidden">
+          <span
+            className="close absolute top-2 right-4 text-[#1d539f] text-2xl font-argentum font-semibold cursor-pointer hover:text-[#275cab]"
+            onClick={() => setIsPopupOpen(false)}
+          >
+            ×
+          </span>
+          <iframe
+            id="drTessForm"
+            src="https://forms.office.com/r/R5vkttmxpe"
+            className="w-full h-[500px] sm:h-[600px] border-0 rounded-md"
+            title="Ask Dr. Tess Form"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-100 py-6 text-center">
+        <p>© 2025 Garcia Family Medicine. All rights reserved.</p>
+        <div className="flex justify-center gap-4 mt-2">
+          <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
+          <Link href="/terms" className="hover:underline">Terms of Service</Link>
+        </div>
       </footer>
     </div>
   );
