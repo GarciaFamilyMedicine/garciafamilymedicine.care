@@ -1,8 +1,8 @@
-'use client'; // Enable client-side interactivity
+'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -20,28 +20,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 sm:p-6 bg-white shadow">
-        <Image
-          src="/clinic-logo.svg" // Replace with Garcia Family Medicine logo
-          alt="Garcia Family Medicine Logo"
-          width={120}
-          height={40}
-          priority
-        />
-        <nav className="flex gap-4 sm:gap-6">
-          <Link href="/services" className="hover:text-blue-600">Services</Link>
-          <Link href="/about" className="hover:text-blue-600">About</Link>
-          <Link href="/contact" className="hover:text-blue-600">Contact</Link>
-          <Link href="/appointment" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Book Appointment
-          </Link>
-        </nav>
-      </header>
-
-      {/* Main Welcome Section */}
-      <main className="flex flex-col items-center py-12 sm:py-20 px-4">
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
+      <Header />
+      <main className="flex flex-col items-center py-12 sm:py-20 px-4 flex-grow">
         <div className="main-welcome-card bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center">
           <h1 className="main-welcome-h1 text-[#1d539f] text-3xl sm:text-4xl font-bold mb-4 font-sumana">
             Welcome to Garcia Family Medicine
@@ -121,7 +102,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Comments Section */}
         <div className="comments-section bg-white/60 backdrop-blur-lg p-6 rounded-lg shadow-md max-w-5xl w-full text-center mt-6">
           <h3 className="text-[#1d539f] text-xl font-bold mb-4 font-sumana">
             Got burning questions too tricky, awkward, or unknown to voice?
@@ -138,37 +118,28 @@ export default function Home() {
             Ask Dr. Tess
           </button>
         </div>
+
+        <div
+          id="popup"
+          className={`fixed inset-0 bg-black/70 flex justify-center items-center z-[2147483647] transition-opacity duration-300 ${isPopupOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        >
+          <div className="popup-content bg-white/90 backdrop-blur-lg p-4 rounded-lg shadow-lg w-[90%] max-w-3xl max-h-[90vh] overflow-hidden">
+            <span
+              className="close absolute top-2 right-4 text-[#1d539f] text-2xl font-argentum font-semibold cursor-pointer hover:text-[#275cab]"
+              onClick={() => setIsPopupOpen(false)}
+            >
+              ×
+            </span>
+            <iframe
+              id="drTessForm"
+              src="https://forms.office.com/r/R5vkttmxpe"
+              className="w-full h-[500px] sm:h-[600px] border-0 rounded-md"
+              title="Ask Dr. Tess Form"
+            />
+          </div>
+        </div>
       </main>
-
-      {/* Popup */}
-      <div
-        id="popup"
-        className={`fixed inset-0 bg-black/70 flex justify-center items-center z-[2147483647] transition-opacity duration-300 ${isPopupOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-      >
-        <div className="popup-content bg-white/90 backdrop-blur-lg p-4 rounded-lg shadow-lg w-[90%] max-w-3xl max-h-[90vh] overflow-hidden">
-          <span
-            className="close absolute top-2 right-4 text-[#1d539f] text-2xl font-argentum font-semibold cursor-pointer hover:text-[#275cab]"
-            onClick={() => setIsPopupOpen(false)}
-          >
-            ×
-          </span>
-          <iframe
-            id="drTessForm"
-            src="https://forms.office.com/r/R5vkttmxpe"
-            className="w-full h-[500px] sm:h-[600px] border-0 rounded-md"
-            title="Ask Dr. Tess Form"
-          />
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-100 py-6 text-center">
-        <p>© 2025 Garcia Family Medicine. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-2">
-          <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
-          <Link href="/terms" className="hover:underline">Terms of Service</Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
