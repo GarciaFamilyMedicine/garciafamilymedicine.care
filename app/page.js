@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import header from '../components/header'; // Changed to ../components/
-import footer from '../components/footer'; // Changed to ../components/
+import header from '../components/header';
+import footer from '../components/footer';
 
 export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -19,9 +19,13 @@ export default function Home() {
     return () => window.removeEventListener('click', handleClickOutside);
   }, []);
 
+  // Create component instances
+  const Header = header();
+  const Footer = footer();
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
-      <header />
+      {Header}
       <main className="flex flex-col items-center py-12 sm:py-20 px-4 flex-grow">
         <div className="main-welcome-card bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center">
           <h1 className="main-welcome-h1 text-[#1d539f] text-3xl sm:text-4xl font-bold mb-4 font-sumana">
@@ -32,12 +36,12 @@ export default function Home() {
           </h2>
           <p className="main-welcome-p text-gray-600 text-lg text-justify font-argentum leading-relaxed mb-4 indent-5">
             Step into a healthcare experience rooted in trust, integrity, and the boundless love of God! At{' '}
-            <strong>Garcia Family Medicine</strong>, we’re passionately committed to making healthcare in Blue Springs, MO,{' '}
-            <strong>simple, affordable, and deeply personal—</strong>because you’re more than a patient, you’re family. We’ve
+            <strong>Garcia Family Medicine</strong>, we&apos;re passionately committed to making healthcare in Blue Springs, MO,{' '}
+            <strong>simple, affordable, and deeply personal—</strong>because you&apos;re more than a patient, you&apos;re family. We&apos;ve
             stepped away from the traditional insurance system to deliver <strong>high-quality primary care</strong> and mental
-            health support that’s cost-effective, compassionate, and free of long waits or hidden fees. Serving Blue Springs,
-            Independence, Lee’s Summit, and the greater Kansas City metro area, we’re here to wrap you in care that reflects
-            God’s grace and goodness.
+            health support that&apos;s cost-effective, compassionate, and free of long waits or hidden fees. Serving Blue Springs,
+            Independence, Lee&apos;s Summit, and the greater Kansas City metro area, we&apos;re here to wrap you in care that reflects
+            God&apos;s grace and goodness.
           </p>
           <button
             id="readMoreButton"
@@ -56,7 +60,7 @@ export default function Home() {
               Garcia Family Medicine: Where Love Meets Exceptional Care!
             </h3>
             <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
-              At <strong>Garcia Family Medicine</strong>, we’re different—and that difference shines with purpose. Guided by
+              At <strong>Garcia Family Medicine</strong>, we&apos;re different—and that difference shines with purpose. Guided by
               faith and a heart for healing, we prioritize your mental and physical well-being above all else. By leaving behind
               the complexities of insurance, we offer:
             </p>
@@ -73,25 +77,25 @@ export default function Home() {
               </li>
             </ul>
             <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
-              Located in Blue Springs, MO, we extend our warm, trustworthy embrace to Independence, Lee’s Summit, and the entire
-              Kansas City metro area. With integrity at our core, we’re here to provide family medicine that feels like a hug
+              Located in Blue Springs, MO, we extend our warm, trustworthy embrace to Independence, Lee&apos;s Summit, and the entire
+              Kansas City metro area. With integrity at our core, we&apos;re here to provide family medicine that feels like a hug
               from above—because your health is a sacred gift, and we cherish it!
             </p>
             <h3 className="text-[#1d539f] text-xl font-bold mb-4 font-sumana">Trust in Us – Call Today!</h3>
             <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
-              Ready to experience healthcare infused with compassion and the love of God? At Garcia Family Medicine, we’re more
-              than a practice—we’re a ministry of wellness, serving Blue Springs, MO, and beyond with unwavering dedication.
+              Ready to experience healthcare infused with compassion and the love of God? At Garcia Family Medicine, we&apos;re more
+              than a practice—we&apos;re a ministry of wellness, serving Blue Springs, MO, and beyond with unwavering dedication.
               Whether you need a routine visit, ongoing care, or a kind ear for your mental health journey, our team is here to
               lift you up with trust and tenderness.
             </p>
             <p className="text-gray-600 text-base text-justify font-argentum leading-relaxed mb-4 indent-5">
               Pick up the phone and call <a href="tel:816-427-5320" className="text-[#275cab] font-semibold hover:underline">
                 816-427-5320
-              </a> now—let us welcome you into our family! Join the countless patients in Blue Springs, Independence, Lee’s
-              Summit, and the Kansas City metro area who’ve found healing and hope with us. Dial{' '}
+              </a> now—let us welcome you into our family! Join the countless patients in Blue Springs, Independence, Lee&apos;s
+              Summit, and the Kansas City metro area who&apos;ve found healing and hope with us. Dial{' '}
               <a href="tel:816-427-5320" className="text-[#275cab] font-semibold hover:underline">816-427-5320</a> today and
-              discover the joy of <strong>compassionate, faith-filled healthcare</strong> that’s as reliable as it is
-              remarkable. Your well-being is our calling—let’s start this journey together!
+              discover the joy of <strong>compassionate, faith-filled healthcare</strong> that&apos;s as reliable as it is
+              remarkable. Your well-being is our calling—let&apos;s start this journey together!
             </p>
             <a
               href="tel:816-427-5320"
@@ -139,7 +143,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <footer />
+      {Footer}
     </div>
   );
 }
