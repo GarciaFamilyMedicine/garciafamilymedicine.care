@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Header from './components/header';
-import Footer from './components/footer';
+import header from './components/header';
+import footer from './components/footer';
 
 export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
-      <Header />
+      <header />
       <main className="flex flex-col items-center py-12 sm:py-20 px-4 flex-grow">
         <div className="main-welcome-card bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center">
           <h1 className="main-welcome-h1 text-[#1d539f] text-3xl sm:text-4xl font-bold mb-4 font-sumana">
@@ -139,7 +139,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
+      <footer />
     </div>
   );
 }
