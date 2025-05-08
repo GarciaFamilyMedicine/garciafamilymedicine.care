@@ -26,7 +26,7 @@ export default function Home() {
       <main className="flex flex-col items-center py-12 sm:py-20 px-4 flex-grow">
         <div className="main-welcome-card bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center">
           <h1 className="main-welcome-h1 text-[#1d539f] text-3xl sm:text-4xl font-bold mb-4 font-sumana">
-            Welcome Gigi to Garcia Family Medicine
+            Welcome to Garcia Family Medicine
           </h1>
           <h2 className="main-welcome-h2 text-[#1d539f] text-xl sm:text-2xl font-semibold mb-4 font-sumana">
             Compassionate Healthcare Overflowing with Love in Blue Springs, MO!

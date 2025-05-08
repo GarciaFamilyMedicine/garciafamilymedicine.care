@@ -1,7 +1,7 @@
 // components/Header.jsx
 import { useState } from 'react';
 import Image from 'next/image';
-import './header.css';
+import './Header.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
