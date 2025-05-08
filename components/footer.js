@@ -1,3 +1,4 @@
+// components/Footer.jsx
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,35 +10,30 @@ export default function Footer() {
       {/* Partner Logos - PLACEHOLDER IMAGES */}
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
         <div className="flex items-center justify-center bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/dpc-alliance-white.png */}
           <div className="text-center text-sm">
             DPC Alliance Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/aafp-logo-white.png */}
           <div className="text-center text-sm">
             AAFP Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/independence-chamber-white.png */}
           <div className="text-center text-sm">
             Independence Chamber Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/mo-academy-white.png */}
           <div className="text-center text-sm">
             MO Academy Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/obesity-medicine-white.png */}
           <div className="text-center text-sm">
             Obesity Medicine Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
@@ -82,7 +78,6 @@ export default function Footer() {
 
       {/* Map */}
       <div className="max-w-3xl mx-auto mb-12 h-24 bg-gray-800 flex items-center justify-center rounded">
-        {/* PLACEHOLDER: Replace with Google Maps iframe */}
         <div className="text-center">
           Google Map will go here
           <div className="text-xs text-gray-400 mt-1">(Interactive map will be embedded)</div>
@@ -91,10 +86,9 @@ export default function Footer() {
 
       <hr className="border-gray-700 my-8" />
 
-      {/* Gigi&apos;s Safe House Logo - PLACEHOLDER */}
+      {/* Gigi's Safe House Logo - PLACEHOLDER */}
       <div className="flex justify-center mb-12">
         <div className="bg-gray-800 p-4 rounded">
-          {/* PLACEHOLDER: Replace with /images/gigis-safehouse-logo.png */}
           <div className="text-center">
             Gigi&apos;s Safe House Logo
             <div className="text-xs text-gray-400 mt-1">(Image will go here)</div>
