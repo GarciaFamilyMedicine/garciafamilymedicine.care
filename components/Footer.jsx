@@ -35,25 +35,20 @@ export default function Footer() {
 
         <hr className="footer-divider" />
 
-        {/* Contact Information - Left Aligned */}
+        {/* Contact Information - Single Line */}
         <div className="contact-info-section">
           <div className="contact-info-grid">
             <div className="contact-info-item">
               <h4 className="contact-info-title">Contact</h4>
               <p className="contact-info-content">
-                Call <a href="tel:+18164275320">(816) 427-5320</a><br />
-                Text <a href="sms:8167082719">(816) 708-2719</a><br />
-                Fax <a href="tel:8888072718">(888) 807-2718</a>
+                Call <a href="tel:+18164275320">(816) 427-5320</a> | Text <a href="sms:8167082719">(816) 708-2719</a> | Fax <a href="tel:8888072718">(888) 807-2718</a>
               </p>
             </div>
 
             <div className="contact-info-item">
               <h4 className="contact-info-title">Hours</h4>
               <p className="contact-info-content">
-                Mon: CLOSED<br />
-                Tue-Fri: 11-7 PM<br />
-                Sat: 12-4PM<br />
-                Sun: CLOSED
+                Mon: CLOSED | Tue-Fri: 11-7 PM | Sat: 12-4PM | Sun: CLOSED
               </p>
             </div>
 
@@ -65,9 +60,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  801 NW St. Mary Drive<br />
-                  Suite 209<br />
-                  Blue Springs, MO 64014
+                  801 NW St. Mary Drive, Suite 209, Blue Springs, MO 64014
                 </a>
               </p>
             </div>
@@ -81,11 +74,11 @@ export default function Footer() {
           {/* Compact Newsletter */}
           <div className="newsletter-container">
             <h2 className="newsletter-title">Subscribe</h2>
-            <p className="newsletter-subtitle">Sign up with your email address to receive news and updates.</p>
+            <p className="newsletter-subtitle">Sign up for news and updates</p>
             <form className="newsletter-form">
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email"
                 className="newsletter-input"
                 required
               />
@@ -95,20 +88,20 @@ export default function Footer() {
             </form>
           </div>
 
-          {/* Compact Gigi's Logo */}
+          {/* Smaller Gigi's Logo */}
           <div className="gigi-logo-wrapper">
             <div className="gigi-logo-container">
               <Image
                 src="/gigisafehouse.png"
                 alt="Gigi's Safe House Logo"
-                width={150}
-                height={60}
+                width={100}
+                height={50}
                 className="object-contain"
               />
             </div>
           </div>
 
-          {/* Compact Map */}
+          {/* Smaller Map */}
           <div className="map-wrapper">
             <iframe
               className="map-iframe"
