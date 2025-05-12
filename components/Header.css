@@ -1,5 +1,5 @@
 :root {
-  --top-bar-bg: #70a9df; /* Top bar background, matches page-bg in globals.css */
+  --top-bar-bg: #032c7c; /* Top bar background, matches page-bg in globals.css */
   --primary-blue: #5e8fbc; /* Updated to match top-bar-bg and page-bg */
   --hover-blue: #1e539f;
   --button-blue: #3182d3;
@@ -60,7 +60,7 @@ body {
 .top-button {
   background: none;
   border: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 12px;
   cursor: pointer;
   height: var(--top-bar-height);
@@ -242,5 +242,103 @@ body {
   .top-button {
     min-width: 40px;
     font-size: 10px;
+  }
+}
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  color: var(--text-white);
+  background: none;
+  border: none;
+  font-weight: 500;
+  height: var(--nav-button-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: background var(--transition-speed) ease;
+  font-size: 14px;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle.active {
+  background: var(--hover-blue);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--primary-blue);
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1002;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-speed) ease;
+  border-radius: 0 0 4px 4px;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-menu li a {
+  color: var(--text-white);
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  transition: background var(--transition-speed) ease;
+}
+
+.dropdown-menu li a:hover {
+  background: var(--hover-blue);
+}
+
+/* Mobile Dropdown Styles */
+@media (max-width: 1200px) {
+  .dropdown-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .dropdown-toggle {
+    justify-content: flex-start;
+    padding-left: 20px;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height var(--transition-speed) ease;
+  }
+
+  .dropdown-menu.show {
+    max-height: 500px;
+    padding: 10px 0;
+  }
+
+  .dropdown-menu li a {
+    padding-left: 40px;
   }
 }

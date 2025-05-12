@@ -3,7 +3,7 @@
 
 /* Root Variables */
 :root {
-  --page-bg: #70a9df; /* Page background color, matches top bar */
+  --page-bg: #3772c565; /* Page background color, matches top bar */
   --text-color: #ffffff; /* Default text color for page */
   --font-sumana: 'Sumana', serif;
   --font-argentum: 'Argentum Sans', sans-serif;
