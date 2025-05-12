@@ -1,37 +1,31 @@
-/* app/globals.css */
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Sumana:wght@400;700&family=Argentum+Sans:wght@300;600&display=swap');
 
+/* Root Variables */
 :root {
-  --background: #f7fafc;
-  --foreground: #1a202c;
+  --page-bg: #70a9df; /* Page background color, matches top bar */
+  --text-color: #ffffff; /* Default text color for page */
   --font-sumana: 'Sumana', serif;
   --font-argentum: 'Argentum Sans', sans-serif;
+  --color-background: var(--page-bg); /* For Tailwind compatibility */
+  --color-foreground: var(--text-color); /* For Tailwind compatibility */
+  --font-sans: var(--font-argentum); /* Default font */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-argentum);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a202c;
-    --foreground: #e2e8f0;
-  }
-}
-
+/* Base Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page-bg); /* Solid background for entire page */
+  color: var(--text-color); /* Default text color */
   font-family: var(--font-argentum);
 }
 
-/* Custom styles for components */
+/* Component Styles */
 .main-welcome-card {
   padding: 2rem;
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent card background */
+  backdrop-filter: blur(10px); /* Frosted glass effect over page-bg */
+  border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -67,9 +61,14 @@ body {
 
 .comments-section {
   margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent card background */
+  backdrop-filter: blur(10px); /* Frosted glass effect over page-bg */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Responsive styles */
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
   .main-welcome-card {
     padding: 1rem;
