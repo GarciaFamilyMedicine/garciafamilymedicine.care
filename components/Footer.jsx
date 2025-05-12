@@ -35,77 +35,80 @@ export default function Footer() {
 
         <hr className="footer-divider" />
 
-        {/* Contact Information */}
-        <div className="info-grid">
-          <div>
-            <h4 className="section-title">Contact</h4>
-            <p className="section-content">
-              Call <a href="tel:+18164275320">(816) 427-5320</a><br />
-              Text <a href="sms:8167082719">(816) 708-2719</a><br />
-              Fax <a href="tel:8888072718">(888) 807-2718</a>
-            </p>
-          </div>
+        {/* Contact Information - Left Aligned */}
+        <div className="contact-info-section">
+          <div className="contact-info-grid">
+            <div className="contact-info-item">
+              <h4 className="contact-info-title">Contact</h4>
+              <p className="contact-info-content">
+                Call <a href="tel:+18164275320">(816) 427-5320</a><br />
+                Text <a href="sms:8167082719">(816) 708-2719</a><br />
+                Fax <a href="tel:8888072718">(888) 807-2718</a>
+              </p>
+            </div>
 
-          <div>
-            <h4 className="section-title">Hours</h4>
-            <p className="section-content">
-              Mon: CLOSED<br />
-              Tue-Fri: 11-7 PM<br />
-              Sat: 12-4PM<br />
-              Sun: CLOSED
-            </p>
-          </div>
+            <div className="contact-info-item">
+              <h4 className="contact-info-title">Hours</h4>
+              <p className="contact-info-content">
+                Mon: CLOSED<br />
+                Tue-Fri: 11-7 PM<br />
+                Sat: 12-4PM<br />
+                Sun: CLOSED
+              </p>
+            </div>
 
-          <div>
-            <h4 className="section-title">Location</h4>
-            <p className="section-content">
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                801 NW St. Mary Drive,<br />
-                Suite 209,<br />
-                Blue Springs, MO 64014
-              </a>
-            </p>
+            <div className="contact-info-item">
+              <h4 className="contact-info-title">Location</h4>
+              <p className="contact-info-content">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  801 NW St. Mary Drive<br />
+                  Suite 209<br />
+                  Blue Springs, MO 64014
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 
         <hr className="footer-divider" />
 
-        {/* Combined Section */}
+        {/* Compact Combined Section */}
         <div className="content-section">
-          {/* Newsletter */}
+          {/* Compact Newsletter */}
           <div className="newsletter-container">
-            <h2 className="newsletter-title">Subscribe to Newsletter</h2>
+            <h2 className="newsletter-title">Subscribe</h2>
+            <p className="newsletter-subtitle">Sign up with your email address to receive news and updates.</p>
             <form className="newsletter-form">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Email Address"
                 className="newsletter-input"
                 required
               />
               <button type="submit" className="newsletter-button">
-                Subscribe
+                Sign Up
               </button>
             </form>
           </div>
 
-          {/* Gigi's Logo */}
+          {/* Compact Gigi's Logo */}
           <div className="gigi-logo-wrapper">
             <div className="gigi-logo-container">
               <Image
                 src="/gigisafehouse.png"
                 alt="Gigi's Safe House Logo"
-                width={200}
-                height={100}
+                width={150}
+                height={60}
                 className="object-contain"
               />
             </div>
           </div>
 
-          {/* Map */}
+          {/* Compact Map */}
           <div className="map-wrapper">
             <iframe
               className="map-iframe"
@@ -141,10 +144,14 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="copyright-section">
-          <Link href="/privacy-policy" className="legal-link">Privacy Policy</Link>
-          <Link href="/terms-of-use" className="legal-link">Terms of Use</Link>
-          <Link href="/terms-of-service" className="legal-link">Terms of Service</Link>
-          <span>Copyright © {currentYear} Garcia Family Medicine. All Rights Reserved.</span>
+          <div className="legal-links">
+            <Link href="/privacy-policy" className="legal-link">Privacy Policy</Link>
+            <span className="legal-separator">|</span>
+            <Link href="/terms-of-use" className="legal-link">Terms of Use</Link>
+            <span className="legal-separator">|</span>
+            <Link href="/terms-of-service" className="legal-link">Terms of Service</Link>
+          </div>
+          <p className="copyright-text">Copyright © {currentYear} Garcia Family Medicine. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
