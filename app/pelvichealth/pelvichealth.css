@@ -1,0 +1,209 @@
+/* pelvichealth.css - Specific styles for pelvic health page */
+.pelvic-page-container {
+  min-height: 100vh;
+  background-color: rgba(55, 114, 197, 0.4);
+  color: #1a1a1a;
+  font-family: 'Argentum Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.pelvic-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.pelvic-welcome-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.pelvic-heading {
+  color: #1d539f;
+  font-family: 'Sumana', serif;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.pelvic-heading-xl {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.pelvic-heading-lg {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.pelvic-text {
+  color: #4a5568;
+  font-family: 'Argentum Sans', sans-serif;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.pelvic-text-justify {
+  text-align: justify;
+  text-indent: 1.25rem;
+}
+
+.pelvic-read-more-btn {
+  color: #4a5568;
+  font-family: 'Argentum Sans', sans-serif;
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.pelvic-read-more-btn:hover {
+  color: #1d539f;
+}
+
+.pelvic-expanded-content {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.pelvic-expanded-content.collapsed {
+  max-height: 0;
+}
+
+.pelvic-expanded-content.expanded {
+  max-height: 6000px;
+  padding-top: 0.5rem;
+}
+
+.pelvic-cta-section {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80rem;
+  width: 100%;
+  text-align: center;
+}
+
+.pelvic-cta-button {
+  background: linear-gradient(90deg, #275cab, #1d539f);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+  font-family: 'Argentum Sans', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.pelvic-cta-button:hover {
+  background: linear-gradient(90deg, #1d539f, #275cab);
+}
+
+.pelvic-chart-container {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+}
+
+.pelvic-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pelvic-bar {
+  height: 2rem;
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.pelvic-bar-label {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 0.875rem;
+}
+
+.pelvic-pie-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pelvic-pie-segment {
+  height: 2rem;
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.pelvic-pie-label {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 0.875rem;
+}
+
+.pelvic-line-chart {
+  position: relative;
+  height: 4rem;
+  border-radius: 0.25rem;
+}
+
+.pelvic-line-point {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.pelvic-line-label {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1d539f;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .pelvic-main-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pelvic-heading-xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .pelvic-welcome-card,
+  .pelvic-cta-section {
+    padding: 1.25rem;
+  }
+  
+  .pelvic-bar,
+  .pelvic-pie-segment {
+    height: 1.5rem;
+  }
+}

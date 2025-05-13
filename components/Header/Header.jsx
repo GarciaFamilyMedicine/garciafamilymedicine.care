@@ -13,24 +13,24 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
-    { href: "/#meet", label: "Meet the Doctor" }, // Absolute URL
-    { href: "/#memberships", label: "Memberships" }, // Absolute URL
+    { href: "/#meet", label: "Meet the Doctor" },
+    { href: "/#memberships", label: "Memberships" },
     {
       label: "Services",
       dropdown: [
         {
           title: "Core Medical Services",
           items: [
-            { label: "Direct Primary Care", href: "/#direct-primary-care" }, // Absolute URL
-            { label: "Chronic Disease Management", href: "/#chronic-disease" }, // Absolute URL
-            { label: "Preventive Care", href: "/#preventive-care" }, // Absolute URL
+            { label: "Direct Primary Care", href: "/#direct-primary-care" },
+            { label: "Chronic Disease Management", href: "/#chronic-disease" },
+            { label: "Preventive Care", href: "/#preventive-care" },
           ],
         },
         {
           title: "Specialized Care",
           items: [
-            { label: "Pelvic Health", href: "/pelvichealth/" }, // Already correct
-            { label: "Weight Management", href: "/#weight-management" }, // Absolute URL
+            { label: "Pelvic Health", href: "/pelvichealth" }, // Fixed link
+            { label: "Weight Management", href: "/#weight-management" },
           ],
         },
       ],
@@ -41,17 +41,17 @@ export default function Header() {
         {
           title: "Our Partners",
           items: [
-            { label: "Gigi's Safehouse", href: "/#gigi-safehouse" }, // Absolute URL
-            { label: "DPC Alliance", href: "/#dpc-alliance" }, // Absolute URL
-            { label: "AAFP", href: "/#aafp" }, // Absolute URL
-            { label: "Obesity Medicine Association", href: "/#obesity-med" }, // Absolute URL
+            { label: "Gigi's Safehouse", href: "/#gigi-safehouse" },
+            { label: "DPC Alliance", href: "/#dpc-alliance" },
+            { label: "AAFP", href: "/#aafp" },
+            { label: "Obesity Medicine Association", href: "/#obesity-med" },
           ],
         },
       ],
     },
-    { href: "/#faqs", label: "FAQs" }, // Absolute URL
-    { href: "/#contact", label: "Contact" }, // Absolute URL
-    { href: "/#spin", label: "Win $100", highlight: true }, // Absolute URL
+    { href: "/#faqs", label: "FAQs" },
+    { href: "/#contact", label: "Contact" },
+    { href: "/#spin", label: "Win $100", highlight: true },
   ];
 
   const topButtons = [
@@ -76,17 +76,21 @@ export default function Header() {
       <div className="top-bar">
         <div className="top-buttons">
           {topButtons.map((button, index) => (
-            <button key={index} className="top-button">
+            <button 
+              key={index} 
+              className="top-button"
+              aria-label={button.label}
+            >
               {button.label}
             </button>
           ))}
         </div>
       </div>
 
-      <nav className="navbar">
+      <nav className="navbar" aria-label="Main navigation">
         <div className="logo">
           <Image
-            src="/logo.png"
+            src="/images/logo.png"
             alt="Garcia Family Medicine Logo"
             width={85}
             height={85}
@@ -98,12 +102,16 @@ export default function Header() {
           className="mobile-nav-toggle"
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
-          aria-label="Toggle navigation"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-controls="main-navigation"
         >
           {isMenuOpen ? '✖' : '☰'}
         </button>
 
-        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <ul 
+          id="main-navigation"
+          className={`nav-links ${isMenuOpen ? 'active' : ''}`}
+        >
           {navLinks.map((link, index) => (
             <li
               key={index}
@@ -112,13 +120,17 @@ export default function Header() {
             >
               {link.dropdown ? (
                 <div className="dropdown-container">
-                  <a
-                    href="#"
+                  <button
+                    type="button"
                     className={`dropdown-toggle ${activeDropdown === link.label ? 'active' : ''}`}
+                    aria-haspopup="true"
+                    aria-expanded={activeDropdown === link.label}
                   >
                     {link.label}
-                  </a>
+                  </button>
                   <div
+                    role="menu"
+                    aria-hidden={activeDropdown !== link.label}
                     className={`dropdown-menu ${activeDropdown === link.label ? 'show' : ''}`}
                     onMouseEnter={() => handleMouseEnter(link.label)}
                     onMouseLeave={handleMouseLeave}
@@ -133,7 +145,11 @@ export default function Header() {
                                 <Link
                                   href={item.href}
                                   className="dropdown-link"
-                                  onClick={() => setIsMenuOpen(false)}
+                                  onClick={() => {
+                                    setIsMenuOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                  aria-label={item.label}
                                 >
                                   {item.label}
                                 </Link>
@@ -150,6 +166,7 @@ export default function Header() {
                   href={link.href}
                   className={link.highlight ? 'highlighted-link' : ''}
                   onClick={() => setIsMenuOpen(false)}
+                  aria-label={link.label}
                 >
                   {link.label}
                 </Link>
