@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sumana:wght@400;700&family=Argentum+Sans:wght@300;600&display=swap');
+
+/* Inherit root variables from globals.css */
+:root {
+  --page-bg: #3772c565;
+  --text-color: #ffffff;
+  --font-sumana: 'Sumana', serif;
+  --font-argentum: 'Argentum Sans', sans-serif;
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text-color);
+  --font-sans: var(--font-argentum);
+}
+
+/* Highlight for July 7th launch event */
+.pelvic-launch-highlight {
+  background: linear-gradient(90deg, #275cab, #1d539f);
+  color: #ffffff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline;
+  font-family: var(--font-sumana);
+  font-weight: 600;
+}
+
+/* Call-to-action button */
+.pelvic-cta-button {
+  background: linear-gradient(90deg, #275cab, #1d539f);
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-argentum);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.pelvic-cta-button:hover {
+  background: linear-gradient(90deg, #1d539f, #275cab);
+}
+
+/* CTA section styling */
+.cta-section {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .pelvic-launch-highlight {
+    font-size: 0.875rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .pelvic-cta-button {
+    padding: 0.375rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .cta-section {
+    padding: 1rem;
+  }
+}

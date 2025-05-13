@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+'use client';
+
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import './Header.css';
 
@@ -12,53 +14,49 @@ export default function Header() {
   const navLinks = [
     { href: "#meet", label: "Meet the Doctor" },
     { href: "#memberships", label: "Memberships" },
-    { 
-      label: "Services", 
+    {
+      label: "Services",
       dropdown: [
-        { 
-          title: "Programs by Age",
+        {
+          title: "Core Medical Services",
           items: [
-            "Infant Daycare (8 weeks to 1 year)",
-            "Toddler Daycare (1 to 2)",
-            "Discovery Preschool (2 to 3)",
-            "Preschool Program (3 to 4)",
-            "Prekindergarten Program (4 to 5)"
-          ]
+            { label: "Direct Primary Care", href: "#" },
+            { label: "Chronic Disease Management", href: "#" },
+            { label: "Preventive Care", href: "#" },
+          ],
         },
         {
-          title: "Additional Programs",
+          title: "Specialized Care",
           items: [
-            "Learning Adventures® Enrichment Programs",
-            "School Break Solutions",
-            "Summer Break Program",
-            "Before- and After-School Care"
-          ]
-        }
-      ]
+            { label: "Pelvic Health", href: "/pelvichealth" },
+            { label: "Weight Management", href: "#" },
+          ],
+        },
+      ],
     },
-    { 
-      label: "Affiliates", 
+    {
+      label: "Affiliates",
       dropdown: [
-        { 
+        {
           title: "Our Partners",
           items: [
             "Gigi's Safehouse",
             "DPC Alliance",
             "AAFP",
-            "Obesity Medicine Association"
-          ]
-        }
-      ]
+            "Obesity Medicine Association",
+          ],
+        },
+      ],
     },
     { href: "#faqs", label: "FAQs" },
     { href: "#contact", label: "Contact" },
-    { href: "#spin", label: "Win $100", highlight: true }
+    { href: "#spin", label: "Win $100", highlight: true },
   ];
 
   const topButtons = [
     { label: "Emergency Line" },
     { label: "Patient Portal" },
-    { label: "EN" }
+    { label: "EN" },
   ];
 
   const handleMouseEnter = (label) => {
@@ -106,20 +104,20 @@ export default function Header() {
 
         <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           {navLinks.map((link, index) => (
-            <li 
+            <li
               key={index}
               onMouseEnter={() => link.dropdown && handleMouseEnter(link.label)}
               onMouseLeave={handleMouseLeave}
             >
               {link.dropdown ? (
                 <div className="dropdown-container">
-                  <a 
+                  <a
                     href="#"
                     className={`dropdown-toggle ${activeDropdown === link.label ? 'active' : ''}`}
                   >
                     {link.label}
                   </a>
-                  <div 
+                  <div
                     className={`dropdown-menu ${activeDropdown === link.label ? 'show' : ''}`}
                     onMouseEnter={() => handleMouseEnter(link.label)}
                     onMouseLeave={handleMouseLeave}
@@ -131,7 +129,9 @@ export default function Header() {
                           <ul>
                             {section.items.map((item, itemIdx) => (
                               <li key={itemIdx}>
-                                <a href="#">{item}</a>
+                                <a href={typeof item === 'string' ? '#' : item.href}>
+                                  {typeof item === 'string' ? item : item.label}
+                                </a>
                               </li>
                             ))}
                           </ul>
@@ -141,8 +141,8 @@ export default function Header() {
                   </div>
                 </div>
               ) : (
-                <a 
-                  href={link.href} 
+                <a
+                  href={link.href}
                   className={link.highlight ? 'highlighted-link' : ''}
                   onClick={() => setIsMenuOpen(false)}
                 >
