@@ -12,7 +12,7 @@
   --font-sans: var(--font-argentum);
 }
 
-/* Highlight for July 7th launch event */
+/* Highlight for key text */
 .pelvic-launch-highlight {
   background: linear-gradient(90deg, #275cab, #1d539f);
   color: #ffffff;
@@ -48,6 +48,91 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Chart container */
+.chart-container {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+}
+
+/* Bar chart */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bar {
+  position: relative;
+  height: 2rem;
+  border-radius: 0.25rem;
+  transition: width 0.5s ease;
+}
+
+.bar-label {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-family: var(--font-argentum);
+  font-size: 0.875rem;
+}
+
+/* Pie chart */
+.pie-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pie-segment {
+  height: 2rem;
+  border-radius: 0.25rem;
+  background: var(--color);
+  width: calc(var(--percentage) * 1%);
+  position: relative;
+}
+
+.pie-label {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-family: var(--font-argentum);
+  font-size: 0.875rem;
+}
+
+/* Line chart */
+.line-chart {
+  position: relative;
+  height: 4rem;
+  background: linear-gradient(to right, #275cab 0%, #275cab 50%, #1d539f 100%);
+  border-radius: 0.25rem;
+}
+
+.line-point {
+  position: absolute;
+  top: calc(100% - var(--value) * 2px);
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.line-label {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1d539f;
+  font-family: var(--font-argentum);
+  font-size: 0.875rem;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .pelvic-launch-highlight {
@@ -62,5 +147,26 @@
 
   .cta-section {
     padding: 1rem;
+  }
+
+  .bar, .pie-segment {
+    height: 1.5rem;
+  }
+
+  .bar-label, .pie-label {
+    font-size: 0.75rem;
+  }
+
+  .line-chart {
+    height: 3rem;
+  }
+
+  .line-point {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .line-label {
+    font-size: 0.75rem;
   }
 }

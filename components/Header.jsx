@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import './Header.css';
 
 export default function Header() {
@@ -12,24 +13,24 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
-    { href: "#meet", label: "Meet the Doctor" },
-    { href: "#memberships", label: "Memberships" },
+    { href: "/#meet", label: "Meet the Doctor" }, // Absolute URL
+    { href: "/#memberships", label: "Memberships" }, // Absolute URL
     {
       label: "Services",
       dropdown: [
         {
           title: "Core Medical Services",
           items: [
-            { label: "Direct Primary Care", href: "#" },
-            { label: "Chronic Disease Management", href: "#" },
-            { label: "Preventive Care", href: "#" },
+            { label: "Direct Primary Care", href: "/#direct-primary-care" }, // Absolute URL
+            { label: "Chronic Disease Management", href: "/#chronic-disease" }, // Absolute URL
+            { label: "Preventive Care", href: "/#preventive-care" }, // Absolute URL
           ],
         },
         {
           title: "Specialized Care",
           items: [
-            { label: "Pelvic Health", href: "/pelvichealth" },
-            { label: "Weight Management", href: "#" },
+            { label: "Pelvic Health", href: "/pelvichealth/" }, // Already correct
+            { label: "Weight Management", href: "/#weight-management" }, // Absolute URL
           ],
         },
       ],
@@ -40,17 +41,17 @@ export default function Header() {
         {
           title: "Our Partners",
           items: [
-            "Gigi's Safehouse",
-            "DPC Alliance",
-            "AAFP",
-            "Obesity Medicine Association",
+            { label: "Gigi's Safehouse", href: "/#gigi-safehouse" }, // Absolute URL
+            { label: "DPC Alliance", href: "/#dpc-alliance" }, // Absolute URL
+            { label: "AAFP", href: "/#aafp" }, // Absolute URL
+            { label: "Obesity Medicine Association", href: "/#obesity-med" }, // Absolute URL
           ],
         },
       ],
     },
-    { href: "#faqs", label: "FAQs" },
-    { href: "#contact", label: "Contact" },
-    { href: "#spin", label: "Win $100", highlight: true },
+    { href: "/#faqs", label: "FAQs" }, // Absolute URL
+    { href: "/#contact", label: "Contact" }, // Absolute URL
+    { href: "/#spin", label: "Win $100", highlight: true }, // Absolute URL
   ];
 
   const topButtons = [
@@ -125,13 +126,17 @@ export default function Header() {
                     <div className="dropdown-content">
                       {link.dropdown.map((section, sectionIdx) => (
                         <div key={sectionIdx} className="dropdown-section">
-                          <h4 className="dropdown-section-title">{section.title}</h4>
+                          <h3 className="dropdown-section-title">{section.title}</h3>
                           <ul>
                             {section.items.map((item, itemIdx) => (
                               <li key={itemIdx}>
-                                <a href={typeof item === 'string' ? '#' : item.href}>
-                                  {typeof item === 'string' ? item : item.label}
-                                </a>
+                                <Link
+                                  href={item.href}
+                                  className="dropdown-link"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  {item.label}
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -141,13 +146,13 @@ export default function Header() {
                   </div>
                 </div>
               ) : (
-                <a
+                <Link
                   href={link.href}
                   className={link.highlight ? 'highlighted-link' : ''}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               )}
             </li>
           ))}
