@@ -4,33 +4,45 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-/* Header stack: 25 px topBar + 60 px navbar = 85 px */
-const HEADER_HEIGHT = 85;
+/* fixed header = 25 px topBar + 60 px navbar */
+const HEADER = 85;
 
 const slides = [
-  { src: '/images/affordable-family-healthcare-clinic-91.png',          alt: 'Affordable family healthcare clinic – smiling physician with patient' },
-  { src: '/images/dot-medical-certification-garcia-family-medicine-04.png', alt: 'DOT medical certification services – professional exam room'       },
-  { src: '/images/Home+Page+Banners-02.png',                                alt: 'Direct primary care membership banner – no insurance hassles'       },
-  { src: '/images/Home+Page+Banners-03.png',                                alt: 'Mental‑health support banner – compassionate counseling'            },
-  { src: '/images/Home+Page+Banners-04.png',                                alt: 'Weight‑management program banner – healthy lifestyle'               },
-  { src: '/images/Home+Page+Banners-05.png',                                alt: 'Pelvic‑health treatment banner – Emsella chair'                     },
-  { src: '/images/Home+Page+Banners-06.png',                                alt: 'Veteran services banner – caring for those who served'              },
+  { src: '/images/affordable-family-healthcare-clinic-91.png',             alt: 'Affordable family healthcare clinic – smiling physician with patient' },
+  { src: '/images/dot-medical-certification-garcia-family-medicine-04.png', alt: 'DOT medical certification services – professional exam room'         },
+  { src: '/images/Home+Page+Banners-02.png',                                alt: 'Direct primary care membership banner – no insurance hassles'         },
+  { src: '/images/Home+Page+Banners-03.png',                                alt: 'Mental‑health support banner – compassionate counseling'              },
+  { src: '/images/Home+Page+Banners-04.png',                                alt: 'Weight‑management program banner – healthy lifestyle'                 },
+  { src: '/images/Home+Page+Banners-05.png',                                alt: 'Pelvic‑health treatment banner – Emsella chair'                       },
+  { src: '/images/Home+Page+Banners-06.png',                                alt: 'Veteran services banner – caring for those who served'                },
 ];
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  /* auto‑advance every 8 s */
+  /* switch slides every 8 s */
   useEffect(() => {
     const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 8000);
     return () => clearInterval(id);
   }, []);
 
+  /* detect mobile width < 640 px for responsive height */
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();                        // initial
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  /* dynamic height calculation */
+  const height = isMobile ? 240 : `calc(100vh - ${HEADER}px)`;
+
   return (
     <section
       aria-label="Hero image carousel"
       className="relative w-screen overflow-hidden"
-      style={{ height: `calc(100vh - ${HEADER_HEIGHT}px)` }}   /* full viewport minus header */
+      style={{ height }}
     >
       {slides.map((slide, i) => (
         <Image
@@ -40,7 +52,7 @@ export default function Carousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover object-center transition-opacity duration-1000 ease-in-out ${
             i === current ? 'opacity-100' : 'opacity-0'
           }`}
         />
