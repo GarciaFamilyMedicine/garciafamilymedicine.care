@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import './Header.css';
+import styles from './header.module.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function Header() {
         {
           title: "Specialized Care",
           items: [
-            { label: "Pelvic Health", href: "/pelvichealth" }, // Fixed link
+            { label: "Pelvic Health", href: "/pelvichealth" },
             { label: "Weight Management", href: "/#weight-management" },
           ],
         },
@@ -72,13 +72,13 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
-      <div className="top-bar">
-        <div className="top-buttons">
+    <div className={styles.container}>
+      <div className={styles.topBar}>
+        <div className={styles.topButtons}>
           {topButtons.map((button, index) => (
             <button 
               key={index} 
-              className="top-button"
+              className={styles.topButton}
               aria-label={button.label}
             >
               {button.label}
@@ -87,8 +87,8 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="navbar" aria-label="Main navigation">
-        <div className="logo">
+      <nav className={styles.navbar} aria-label="Main navigation">
+        <div className={styles.logo}>
           <Image
             src="/images/logo.png"
             alt="Garcia Family Medicine Logo"
@@ -99,7 +99,7 @@ export default function Header() {
         </div>
 
         <button
-          className="mobile-nav-toggle"
+          className={styles.mobileNavToggle}
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -110,7 +110,7 @@ export default function Header() {
 
         <ul 
           id="main-navigation"
-          className={`nav-links ${isMenuOpen ? 'active' : ''}`}
+          className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
         >
           {navLinks.map((link, index) => (
             <li
@@ -119,10 +119,10 @@ export default function Header() {
               onMouseLeave={handleMouseLeave}
             >
               {link.dropdown ? (
-                <div className="dropdown-container">
+                <div className={styles.dropdownContainer}>
                   <button
                     type="button"
-                    className={`dropdown-toggle ${activeDropdown === link.label ? 'active' : ''}`}
+                    className={`${styles.dropdownToggle} ${activeDropdown === link.label ? styles.active : ''}`}
                     aria-haspopup="true"
                     aria-expanded={activeDropdown === link.label}
                   >
@@ -131,20 +131,20 @@ export default function Header() {
                   <div
                     role="menu"
                     aria-hidden={activeDropdown !== link.label}
-                    className={`dropdown-menu ${activeDropdown === link.label ? 'show' : ''}`}
+                    className={`${styles.dropdownMenu} ${activeDropdown === link.label ? styles.show : ''}`}
                     onMouseEnter={() => handleMouseEnter(link.label)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="dropdown-content">
+                    <div className={styles.dropdownContent}>
                       {link.dropdown.map((section, sectionIdx) => (
-                        <div key={sectionIdx} className="dropdown-section">
-                          <h3 className="dropdown-section-title">{section.title}</h3>
+                        <div key={sectionIdx} className={styles.dropdownSection}>
+                          <h3 className={styles.dropdownSectionTitle}>{section.title}</h3>
                           <ul>
                             {section.items.map((item, itemIdx) => (
                               <li key={itemIdx}>
                                 <Link
                                   href={item.href}
-                                  className="dropdown-link"
+                                  className={styles.dropdownLink}
                                   onClick={() => {
                                     setIsMenuOpen(false);
                                     setActiveDropdown(null);
@@ -164,7 +164,7 @@ export default function Header() {
               ) : (
                 <Link
                   href={link.href}
-                  className={link.highlight ? 'highlighted-link' : ''}
+                  className={link.highlight ? styles.highlightedLink : ''}
                   onClick={() => setIsMenuOpen(false)}
                   aria-label={link.label}
                 >
@@ -175,6 +175,6 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-    </header>
+    </div>
   );
 }

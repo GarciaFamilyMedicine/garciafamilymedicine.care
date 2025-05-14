@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 import './pelvichealth.css';
 
 export default function PelvicHealth() {

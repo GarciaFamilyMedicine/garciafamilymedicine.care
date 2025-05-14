@@ -1,6 +1,8 @@
-:root {
-  --top-bar-bg: #032c7c; /* Top bar background, matches page-bg in globals.css */
-  --primary-blue: #5e8fbc; /* Updated to match top-bar-bg and page-bg */
+/* Header-specific variables and styles */
+.container {
+  /* Local CSS variables */
+  --top-bar-bg: #032c7c;
+  --primary-blue: #5e8fbc;
   --hover-blue: #1e539f;
   --button-blue: #3182d3;
   --dropdown-bg: #efeeec;
@@ -11,12 +13,11 @@
   --logo-size: 85px;
   --top-button-height: 25px;
   --nav-button-height: 60px;
-}
+  --transition-speed: 0.3s;
 
-body {
-  padding-top: calc(var(--top-bar-height) + var(--navbar-height));
-  margin: 0;
-  font-family: Arial, sans-serif;
+  /* Container styles */
+  position: relative;
+  z-index: 1000;
 }
 
 .logo {
@@ -36,13 +37,13 @@ body {
   object-fit: cover;
 }
 
-.top-bar {
+.topBar {
   position: fixed;
   top: 0;
   left: var(--logo-size);
   right: 0;
   height: var(--top-bar-height);
-  background: var(--top-bar-bg); /* Use variable for top bar color */
+  background: var(--top-bar-bg);
   z-index: 1002;
   display: flex;
   justify-content: flex-end;
@@ -51,16 +52,16 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.top-buttons {
+.topButtons {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
-.top-button {
+.topButton {
   background: none;
   border: none;
-  color: rgb(255, 255, 255);
+  color: var(--text-white);
   font-size: 12px;
   cursor: pointer;
   height: var(--top-bar-height);
@@ -71,10 +72,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-.top-button:hover {
+.topButton:hover {
   background: var(--hover-blue);
   color: var(--text-white);
 }
@@ -93,7 +94,7 @@ body {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 }
 
-.nav-links {
+.navLinks {
   display: flex;
   height: 100%;
   width: 100%;
@@ -103,12 +104,12 @@ body {
   padding: 0;
 }
 
-.nav-links li {
+.navLinks li {
   flex: 1;
   text-align: center;
 }
 
-.nav-links a {
+.navLinks a {
   color: var(--text-white);
   text-decoration: none;
   font-weight: 500;
@@ -119,14 +120,14 @@ body {
   justify-content: center;
   padding: 0 15px;
   box-sizing: border-box;
-  transition: background 0.3s ease;
+  transition: background var(--transition-speed) ease;
 }
 
-.nav-links a:hover {
+.navLinks a:hover {
   background: var(--hover-blue);
 }
 
-.highlighted-link {
+.highlightedLink {
   background: var(--hover-blue);
   font-weight: 600;
   height: var(--nav-button-height);
@@ -136,12 +137,12 @@ body {
   justify-content: center;
 }
 
-.highlighted-link:hover {
+.highlightedLink:hover {
   background: var(--hover-blue);
   opacity: 0.9;
 }
 
-.mobile-nav-toggle {
+.mobileNavToggle {
   display: none;
   background: none;
   border: none;
@@ -155,104 +156,15 @@ body {
   font-size: 24px;
 }
 
-@media (max-width: 1200px) {
-  .nav-links {
-    display: none;
-  }
-  .mobile-nav-toggle {
-    display: block;
-  }
-  .nav-links.active {
-    display: flex;
-    position: fixed;
-    top: calc(var(--top-bar-height) + var(--navbar-height));
-    left: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    background: var(--primary-blue);
-    z-index: 1000;
-    padding: 10px 0;
-  }
-  .nav-links.active li {
-    flex: none;
-  }
-  .nav-links.active a {
-    padding: 15px 0;
-    font-size: 16px;
-  }
-  .highlighted-link {
-    margin: 5px 10%;
-    border-radius: 5px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --logo-size: 80px;
-    --navbar-height: 55px;
-    --top-bar-height: 25px;
-    --nav-button-height: 55px;
-  }
-
-  .logo {
-    height: 80px;
-    width: 80px;
-  }
-
-  body {
-    padding-top: 80px;
-  }
-
-  .navbar {
-    padding-left: 80px;
-    height: 55px;
-  }
-
-  .top-bar {
-    left: 80px;
-  }
-
-  .top-buttons {
-    gap: 5px;
-  }
-
-  .top-button {
-    min-width: 50px;
-    padding: 0 4px;
-    font-size: 12px;
-  }
-
-  .mobile-nav-toggle {
-    right: 10px;
-    font-size: 20px;
-  }
-
-  .nav-links.active {
-    top: 80px;
-  }
-
-  .nav-links.active a {
-    font-size: 14px;
-    padding: 12px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .top-button {
-    min-width: 40px;
-    font-size: 10px;
-  }
-}
 /* Dropdown Styles */
-.dropdown-container {
+.dropdownContainer {
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.dropdown-toggle {
+.dropdownToggle {
   color: var(--text-white);
   background: none;
   border: none;
@@ -268,12 +180,12 @@ body {
   font-size: 14px;
 }
 
-.dropdown-toggle:hover,
-.dropdown-toggle.active {
+.dropdownToggle:hover,
+.dropdownToggle.active {
   background: var(--hover-blue);
 }
 
-.dropdown-menu {
+.dropdownMenu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -290,12 +202,27 @@ body {
   border-radius: 0 0 4px 4px;
 }
 
-.dropdown-menu.show {
+.dropdownMenu.show {
   opacity: 1;
   visibility: visible;
 }
 
-.dropdown-menu li a {
+.dropdownContent {
+  padding: 10px 0;
+}
+
+.dropdownSection {
+  margin-bottom: 10px;
+}
+
+.dropdownSectionTitle {
+  color: var(--text-white);
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dropdownLink {
   color: var(--text-white);
   padding: 10px 20px;
   text-decoration: none;
@@ -303,25 +230,55 @@ body {
   transition: background var(--transition-speed) ease;
 }
 
-.dropdown-menu li a:hover {
+.dropdownLink:hover {
   background: var(--hover-blue);
 }
 
-/* Mobile Dropdown Styles */
+/* Responsive Styles */
 @media (max-width: 1200px) {
-  .dropdown-container {
+  .navLinks {
+    display: none;
+  }
+  .mobileNavToggle {
+    display: block;
+  }
+  .navLinks.active {
+    display: flex;
+    position: fixed;
+    top: calc(var(--top-bar-height) + var(--navbar-height));
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    background: var(--primary-blue);
+    z-index: 1000;
+    padding: 10px 0;
+  }
+  .navLinks.active li {
+    flex: none;
+  }
+  .navLinks.active a {
+    padding: 15px 0;
+    font-size: 16px;
+  }
+  .highlightedLink {
+    margin: 5px 10%;
+    border-radius: 5px;
+  }
+
+  .dropdownContainer {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
   }
 
-  .dropdown-toggle {
+  .dropdownToggle {
     justify-content: flex-start;
     padding-left: 20px;
     width: 100%;
   }
 
-  .dropdown-menu {
+  .dropdownMenu {
     position: static;
     width: 100%;
     box-shadow: none;
@@ -333,12 +290,66 @@ body {
     transition: max-height var(--transition-speed) ease;
   }
 
-  .dropdown-menu.show {
+  .dropdownMenu.show {
     max-height: 500px;
     padding: 10px 0;
   }
 
-  .dropdown-menu li a {
+  .dropdownLink {
     padding-left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    --logo-size: 80px;
+    --navbar-height: 55px;
+    --top-bar-height: 25px;
+    --nav-button-height: 55px;
+  }
+
+  .logo {
+    height: 80px;
+    width: 80px;
+  }
+
+  .navbar {
+    padding-left: 80px;
+    height: 55px;
+  }
+
+  .topBar {
+    left: 80px;
+  }
+
+  .topButtons {
+    gap: 5px;
+  }
+
+  .topButton {
+    min-width: 50px;
+    padding: 0 4px;
+    font-size: 12px;
+  }
+
+  .mobileNavToggle {
+    right: 10px;
+    font-size: 20px;
+  }
+
+  .navLinks.active {
+    top: 80px;
+  }
+
+  .navLinks.active a {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .topButton {
+    min-width: 40px;
+    font-size: 10px;
   }
 }

@@ -2,8 +2,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);

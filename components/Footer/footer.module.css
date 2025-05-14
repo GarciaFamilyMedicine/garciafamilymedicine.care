@@ -1,0 +1,249 @@
+/* Footer Component Styles */
+.container {
+  /* Local CSS Variables */
+  --footer-bg: #111827;
+  --footer-text: #ffffff;
+  --section-bg: #1f2937;
+  --divider-color: #374151;
+  --button-blue: #2563eb;
+  --button-hover: #1d4ed8;
+  --legal-separator: #ffffff;
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem 1rem;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partnerLogosGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.partnerLogoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--section-bg);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.partnerLogo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.partnerText {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.footerDivider {
+  border: 0;
+  border-top: 1px solid var(--divider-color);
+  margin: 2rem 0;
+}
+
+.contactInfoSection {
+  margin-bottom: 2rem;
+}
+
+.contactInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.contactInfoItem {
+  padding: 0.5rem;
+}
+
+.contactInfoTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--footer-text);
+}
+
+.contactInfoContent {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.contactInfoContent a {
+  color: var(--footer-text);
+  text-decoration: underline;
+}
+
+.contentSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.newsletterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletterTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.newsletterSubtitle {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletterInput {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.newsletterButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--button-blue);
+  color: var(--footer-text);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newsletterButton:hover {
+  background-color: var(--button-hover);
+}
+
+.gigiLogoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gigiLogoContainer {
+  background-color: var(--section-bg);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.gigiLogo {
+  max-width: 100%;
+  height: auto;
+}
+
+.mapWrapper {
+  width: 100%;
+  height: 200px;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.navLinksGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.navLink {
+  font-size: 0.75rem;
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.copyrightSection {
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.legalLinks {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legalLink {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.legalLink:hover {
+  text-decoration: underline;
+}
+
+.legalSeparator {
+  color: var(--legal-separator);
+}
+
+.copyrightText {
+  color: var(--footer-text);
+  font-size: 0.75rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .partnerLogosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contactInfoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contentSection {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .navLinksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .partnerLogosGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .navLinksGrid {
+    grid-template-columns: 1fr;
+  }
+}
