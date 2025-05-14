@@ -1,10 +1,10 @@
 /* Footer Component Styles */
 .container {
     /* Local CSS Variables */
-    --footer-bg: #111827;
+    --footer-bg: #032c7c;
     --footer-text: #ffffff;
-    --section-bg: #1f2937;
-    --divider-color: #374151;
+    --section-bg: #1e539f;
+    --divider-color: #ffffff;
     --button-blue: #2563eb;
     --button-hover: #1d4ed8;
     --legal-separator: #ffffff;

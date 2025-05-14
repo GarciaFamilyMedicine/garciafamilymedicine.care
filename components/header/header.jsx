@@ -21,7 +21,6 @@ export default function Header() {
         {
           title: "Core Medical Services",
           items: [
-            { label: "Direct Primary Care", href: "/#direct-primary-care" },
             { label: "Chronic Disease Management", href: "/#chronic-disease" },
             { label: "Preventive Care", href: "/#preventive-care" },
           ],
@@ -42,9 +41,6 @@ export default function Header() {
           title: "Our Partners",
           items: [
             { label: "Gigi's Safehouse", href: "/#gigi-safehouse" },
-            { label: "DPC Alliance", href: "/#dpc-alliance" },
-            { label: "AAFP", href: "/#aafp" },
-            { label: "Obesity Medicine Association", href: "/#obesity-med" },
           ],
         },
       ],
