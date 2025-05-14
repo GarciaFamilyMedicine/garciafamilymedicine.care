@@ -13,7 +13,7 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
-    { href: "/#meet", label: "Meet the Doctor" },
+    { href: "/#meet",        label: "Meet the Doctor" },
     { href: "/#memberships", label: "Memberships" },
     {
       label: "Services",
@@ -22,13 +22,13 @@ export default function Header() {
           title: "Core Medical Services",
           items: [
             { label: "Chronic Disease Management", href: "/#chronic-disease" },
-            { label: "Preventive Care", href: "/#preventive-care" },
+            { label: "Preventive Care",            href: "/#preventive-care"  },
           ],
         },
         {
           title: "Specialized Care",
           items: [
-            { label: "Pelvic Health", href: "/pelvichealth" },
+            { label: "Pelvic Health",     href: "/pelvichealth"     },
             { label: "Weight Management", href: "/#weight-management" },
           ],
         },
@@ -39,15 +39,13 @@ export default function Header() {
       dropdown: [
         {
           title: "Our Partners",
-          items: [
-            { label: "Gigi's Safehouse", href: "/#gigi-safehouse" },
-          ],
+          items: [{ label: "Gigi's Safehouse", href: "/#gigi-safehouse" }],
         },
       ],
     },
-    { href: "/#faqs", label: "FAQs" },
+    { href: "/#faqs",    label: "FAQs"    },
     { href: "/#contact", label: "Contact" },
-    { href: "/#spin", label: "Win $100", highlight: true },
+    { href: "/#spin",    label: "Win $100", highlight: true },
   ];
 
   const topButtons = [
@@ -60,29 +58,22 @@ export default function Header() {
     clearTimeout(dropdownTimeout.current);
     setActiveDropdown(label);
   };
-
   const handleMouseLeave = () => {
-    dropdownTimeout.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 300);
+    dropdownTimeout.current = setTimeout(() => setActiveDropdown(null), 300);
   };
 
   return (
     <div className={styles.container}>
+      {/* Top bar */}
       <div className={styles.topBar}>
         <div className={styles.topButtons}>
-          {topButtons.map((button, index) => (
-            <button 
-              key={index} 
-              className={styles.topButton}
-              aria-label={button.label}
-            >
-              {button.label}
-            </button>
+          {topButtons.map((btn) => (
+            <button key={btn.label} className={styles.topButton}>{btn.label}</button>
           ))}
         </div>
       </div>
 
+      {/* Navbar */}
       <nav className={styles.navbar} aria-label="Main navigation">
         <div className={styles.logo}>
           <Image
@@ -98,19 +89,19 @@ export default function Header() {
           className={styles.mobileNavToggle}
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-controls="main-navigation"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {isMenuOpen ? '✖' : '☰'}
         </button>
 
-        <ul 
+        <ul
           id="main-navigation"
           className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
         >
-          {navLinks.map((link, index) => (
+          {navLinks.map((link) => (
             <li
-              key={index}
+              key={link.label}
               onMouseEnter={() => link.dropdown && handleMouseEnter(link.label)}
               onMouseLeave={handleMouseLeave}
             >
@@ -132,20 +123,16 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <div className={styles.dropdownContent}>
-                      {link.dropdown.map((section, sectionIdx) => (
-                        <div key={sectionIdx} className={styles.dropdownSection}>
+                      {link.dropdown.map((section) => (
+                        <div key={section.title} className={styles.dropdownSection}>
                           <h3 className={styles.dropdownSectionTitle}>{section.title}</h3>
                           <ul>
-                            {section.items.map((item, itemIdx) => (
-                              <li key={itemIdx}>
+                            {section.items.map((item) => (
+                              <li key={item.label}>
                                 <Link
                                   href={item.href}
                                   className={styles.dropdownLink}
-                                  onClick={() => {
-                                    setIsMenuOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  aria-label={item.label}
+                                  onClick={() => { setIsMenuOpen(false); setActiveDropdown(null); }}
                                 >
                                   {item.label}
                                 </Link>
@@ -162,7 +149,6 @@ export default function Header() {
                   href={link.href}
                   className={link.highlight ? styles.highlightedLink : ''}
                   onClick={() => setIsMenuOpen(false)}
-                  aria-label={link.label}
                 >
                   {link.label}
                 </Link>
