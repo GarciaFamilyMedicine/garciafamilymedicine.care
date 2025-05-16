@@ -1,162 +1,180 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ReclaimConfidenceButton from '../reclaimconfidence/reclaimconfidencebutton.jsx';
 import styles from './header.module.css';
 
 export default function Header() {
+  /* ------------- state ------------- */
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const dropdownTimeout = useRef(null);
+  const [activeDrop, setActiveDrop] = useState(null);
+  const [arrowLeft,  setArrowLeft]  = useState(220);
+  const timer = useRef(null);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  /* ------------- helpers ------------- */
+  const toggleMenu = () => setIsMenuOpen(p => !p);
 
+  const caretLeft = (rect) => {
+    const logo = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--logo-size')
+    ) || 85;
+    return rect.left + rect.width / 2 - logo;      // px from dropdown left
+  };
+
+  /* ------------- nav data ------------- */
   const navLinks = [
-    { href: "/#meet",        label: "Meet the Doctor" },
-    { href: "/#memberships", label: "Memberships" },
+    { href: '/#meet',        label: 'meet the doctor' },
+    { href: '/#memberships', label: 'memberships'     },
     {
-      label: "Services",
+      label: 'services',
       dropdown: [
         {
-          title: "Core Medical Services",
+          title: 'core medical services',
           items: [
-            { label: "Chronic Disease Management", href: "/#chronic-disease" },
-            { label: "Preventive Care",            href: "/#preventive-care"  },
+            { label: 'chronic disease management', href: '/#chronic-disease' },
+            { label: 'preventive care',            href: '/#preventive-care'  },
           ],
         },
         {
-          title: "Specialized Care",
+          title: 'specialized care',
           items: [
-            { label: "Pelvic Health",     href: "/pelvichealth"     },
-            { label: "Weight Management", href: "/#weight-management" },
+            { label: 'pelvic health',     href: '/pelvichealth'       },
+            { label: 'weight management', href: '/#weight-management' },
           ],
         },
       ],
     },
     {
-      label: "Affiliates",
+      label: 'affiliates',
       dropdown: [
         {
-          title: "Our Partners",
-          items: [{ label: "Gigi's Safehouse", href: "/#gigi-safehouse" }],
+          title: 'our partners',
+          items: [{ label: "gigi's safehouse", href: '/#gigi-safehouse' }],
         },
       ],
     },
-    { href: "/#faqs",    label: "FAQs"    },
-    { href: "/#contact", label: "Contact" },
-    { href: "/#spin",    label: "Win $100", highlight: true },
+    { href: '/#faqs',    label: 'faqs' },
+    { href: '/#contact', label: 'contact' },
   ];
 
   const topButtons = [
-    { label: "Emergency Line" },
-    { label: "Patient Portal" },
-    { label: "EN" },
+    { label: 'emergency line' },
+    { label: 'patient portal' },
+    { label: 'en' },
   ];
 
-  const handleMouseEnter = (label) => {
-    clearTimeout(dropdownTimeout.current);
-    setActiveDropdown(label);
+  /* ------------- dropdown handlers ------------- */
+  const open = (lbl, tgt) => {
+    clearTimeout(timer.current);
+    setArrowLeft(caretLeft(tgt.getBoundingClientRect()));
+    setActiveDrop(lbl);
   };
-  const handleMouseLeave = () => {
-    dropdownTimeout.current = setTimeout(() => setActiveDropdown(null), 300);
-  };
+  const close = () => { timer.current = setTimeout(() => setActiveDrop(null), 300); };
 
+  /* close mobile nav on resize */
+  useEffect(() => {
+    const onResize = () => setIsMenuOpen(false);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  /* ------------- render ------------- */
   return (
-    <div className={styles.container}>
-      {/* Top bar */}
-      <div className={styles.topBar}>
-        <div className={styles.topButtons}>
-          {topButtons.map((btn) => (
-            <button key={btn.label} className={styles.topButton}>{btn.label}</button>
-          ))}
-        </div>
-      </div>
-
-      {/* Navbar */}
-      <nav className={styles.navbar} aria-label="Main navigation">
-        <div className={styles.logo}>
-          <Image
-            src="/images/logo.png"
-            alt="Garcia Family Medicine Logo"
-            width={85}
-            height={85}
-            priority
-          />
+    <>
+      <div className={styles.container}>
+        {/* top bar */}
+        <div className={styles.topbar}>
+          <div className={styles.topbuttons}>
+            {topButtons.map(btn => (
+              <button key={btn.label} className={styles.topbutton}>{btn.label}</button>
+            ))}
+          </div>
         </div>
 
-        <button
-          className={styles.mobileNavToggle}
-          onClick={toggleMenu}
-          aria-expanded={isMenuOpen}
-          aria-controls="main-navigation"
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isMenuOpen ? '✖' : '☰'}
-        </button>
+        {/* navbar */}
+        <nav className={styles.navbar} aria-label="main navigation">
+          <div className={styles.logo}>
+            <Image src="/images/logo.png" alt="garcia family medicine logo" width={85} height={85} priority />
+          </div>
 
-        <ul
-          id="main-navigation"
-          className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
-        >
-          {navLinks.map((link) => (
-            <li
-              key={link.label}
-              onMouseEnter={() => link.dropdown && handleMouseEnter(link.label)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {link.dropdown ? (
-                <div className={styles.dropdownContainer}>
-                  <button
-                    type="button"
-                    className={`${styles.dropdownToggle} ${activeDropdown === link.label ? styles.active : ''}`}
-                    aria-haspopup="true"
-                    aria-expanded={activeDropdown === link.label}
-                  >
-                    {link.label}
-                  </button>
-                  <div
-                    role="menu"
-                    aria-hidden={activeDropdown !== link.label}
-                    className={`${styles.dropdownMenu} ${activeDropdown === link.label ? styles.show : ''}`}
-                    onMouseEnter={() => handleMouseEnter(link.label)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div className={styles.dropdownContent}>
-                      {link.dropdown.map((section) => (
-                        <div key={section.title} className={styles.dropdownSection}>
-                          <h3 className={styles.dropdownSectionTitle}>{section.title}</h3>
-                          <ul>
-                            {section.items.map((item) => (
-                              <li key={item.label}>
-                                <Link
-                                  href={item.href}
-                                  className={styles.dropdownLink}
-                                  onClick={() => { setIsMenuOpen(false); setActiveDropdown(null); }}
-                                >
-                                  {item.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+          <button
+            className={styles.mobilenavtoggle}
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-controls="main-navigation"
+            aria-label={isMenuOpen ? 'close menu' : 'open menu'}
+          >
+            {isMenuOpen ? '✖' : '☰'}
+          </button>
+
+          <ul id="main-navigation" className={`${styles.navlinks} ${isMenuOpen ? styles.active : ''}`}>
+            {navLinks.map(link =>
+              link.dropdown ? (
+                <li key={link.label}>
+                  <div className={styles.dropdowncontainer}>
+                    <button
+                      type="button"
+                      className={`${styles.dropdowntoggle} ${activeDrop === link.label ? styles.active : ''}`}
+                      aria-haspopup="true"
+                      aria-expanded={activeDrop === link.label}
+                      onMouseEnter={e => open(link.label, e.currentTarget)}
+                      onFocus={e     => open(link.label, e.currentTarget)}
+                    >
+                      {link.label}
+                    </button>
+
+                    <div
+                      role="menu"
+                      aria-hidden={activeDrop !== link.label}
+                      className={`${styles.dropdownmenu} ${activeDrop === link.label ? styles.show : ''}`}
+                      style={{ '--arrow-left': `${arrowLeft}px` }}
+                      onMouseEnter={() => clearTimeout(timer.current)}
+                      onMouseLeave={close}
+                    >
+                      <div className={styles.dropdowncontent}>
+                        {link.dropdown.map(section => (
+                          <div key={section.title} className={styles.dropdownsection}>
+                            <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
+                            <ul>
+                              {section.items.map(item => (
+                                <li key={item.label}>
+                                  <Link
+                                    href={item.href}
+                                    className={styles.dropdownlink}
+                                    onClick={() => { setIsMenuOpen(false); setActiveDrop(null); }}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </li>
               ) : (
-                <Link
-                  href={link.href}
-                  className={link.highlight ? styles.highlightedLink : ''}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              )}
+                <li key={link.label}>
+                  <Link href={link.href} className={styles.navlink} onClick={() => setIsMenuOpen(false)}>
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            )}
+
+            {/* orange pill button */}
+            <li className={styles.navextra}>
+              <ReclaimConfidenceButton/>
             </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+          </ul>
+        </nav>
+      </div>
+
+      {/* spacer below fixed header */}
+      <div className={styles.offset} aria-hidden="true" />
+    </>
   );
 }

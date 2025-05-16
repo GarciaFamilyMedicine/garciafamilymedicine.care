@@ -1,0 +1,52 @@
+/* ---------- layout & wrapper ---------- */
+.page{padding-top:60px}
+.main{max-width:1200px;margin:0 auto;padding:0 1rem}
+
+/* ---------- card ---------- */
+.card{background:rgba(255,255,255,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);
+  border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);padding:2rem;margin-bottom:2rem}
+
+/* scoped typography (pure selectors) */
+.page h1,.page h2,.page h3{margin:0;font-family:'Helvetica Neue',Arial,sans-serif}
+.page h1{font-size:2rem;margin-bottom:.5rem}
+.page h2{font-size:1.5rem;text-align:center;margin:0 0 1rem}
+.page h3{font-size:1.25rem;margin-bottom:.5rem}
+.page p{font-size:1rem;line-height:1.6;margin-bottom:1rem}
+.introSection p{font-size:1.1rem}
+
+/* ---------- info blocks ---------- */
+.infoSection{margin-bottom:2rem}
+.infoCards{display:flex;flex-wrap:wrap;gap:1.5rem}
+.infoCard{flex:1 1 calc(50% - 1.5rem);min-width:280px}
+
+/* ---------- stats section ---------- */
+.statsSection{text-align:center}
+.chartsContainer{display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem}
+.chart{flex:1 1 300px}
+
+/* bar chart */
+.barChart{max-width:400px;margin:0 auto}
+.bar{position:relative;background:#eceff1;border-radius:8px;overflow:hidden;margin-bottom:.75rem;height:1.5rem}
+.barFill{background:linear-gradient(90deg,#4db6ac,#80cbc4);height:100%;transition:width .6s}
+.barLabel{position:absolute;left:.5rem;top:50%;transform:translateY(-50%);font-size:.9rem;color:#000;font-weight:500}
+.bar:hover .barFill{filter:brightness(1.1)}
+
+/* pie chart */
+.pieChart{text-align:center}
+.pie{width:180px;height:180px;margin:0 auto 1rem;border-radius:50%;
+  background:conic-gradient(#4db6ac 0% 50%,#ffcc80 50% 83%,#ce93d8 83% 100%)}
+.pieLegend{list-style:none;padding:0;margin:0 auto;max-width:200px;text-align:left;font-size:.9rem}
+.legendColor{display:inline-block;width:1em;height:1em;border-radius:.2em;margin-right:.5em}
+.colorA{background:#4db6ac}.colorB{background:#ffcc80}.colorC{background:#ce93d8}
+
+/* ---------- CTA ---------- */
+.ctaSection{background:rgba(100,181,246,.15);text-align:center}
+.ctaButton{background:#1976d2;color:#fff;padding:.75rem 1.5rem;border-radius:4px;display:inline-block;margin-top:1rem;text-decoration:none}
+.ctaButton:hover{background:#1565c0}
+
+/* ---------- responsive ---------- */
+@media(max-width:768px){
+  .infoCard{flex:1 1 100%}
+  .chartsContainer{flex-direction:column;align-items:center}
+  .chart{max-width:500px;width:100%}
+}

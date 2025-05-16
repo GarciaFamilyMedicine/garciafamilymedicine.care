@@ -1,111 +1,104 @@
 'use client';
 
-import { useState } from 'react';
+import styles from './pelvichealth.module.css';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import './pelvichealth.css';
 
-export default function PelvicHealth() {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+export default function PelvicHealthPage() {
   return (
-    <div className="pelvic-page-container">
+    <div className={styles.page}>
       <Header />
-      <main className="pelvic-main-content">
-        <div className="pelvic-welcome-card">
-          <h1 className="pelvic-heading pelvic-heading-xl">
-            Emsella and Pelvic Health Recovery at Garcia Family Medicine: MAGNETIC RESONANCE Imaging
-          </h1>
-          <p className="pelvic-text pelvic-text-justify">
-            Pelvic health issues, such as urinary incontinence and erectile dysfunction (ED), affect millions worldwide, significantly impacting quality of life. At Garcia Family Medicine, we are committed to addressing these conditions with innovative, non-invasive treatments like Emsella, while considering cultural norms, social determinants, and barriers to healthcare access. This blog explores the effectiveness of Emsella for pelvic health recovery, supported by statistics and charts, and highlights how we address disparities at our Kansas City practice. For questions or to schedule a consultation, call us at <a href="tel:816-426-5320" className="text-[#275cab] font-semibold hover:underline">816-426-5320</a>.
+
+      <main className={styles.main}>
+        {/* ---------- Intro ---------- */}
+        <section className={`${styles.card} ${styles.introSection}`}>
+          <h1>Pelvic Health</h1>
+          <p>
+            Pelvic health is about achieving and maintaining the best possible functioning
+            of the bladder, bowel, reproductive organs, muscles, nerves and other tissues
+            in the pelvic region, to allow for optimal quality of life.
           </p>
-          <button
-            className="pelvic-read-more-btn"
-            onClick={() => setIsExpanded(!isExpanded)}
-            aria-expanded={isExpanded}
-            aria-controls="moreContent"
-          >
-            {isExpanded ? 'Read Less' : 'Read More'}
-          </button>
-          <div
-            id="moreContent"
-            className={`pelvic-expanded-content ${isExpanded ? 'expanded' : 'collapsed'}`}
-          >
-            <h3 className="pelvic-heading pelvic-heading-lg">Understanding Pelvic Health Issues</h3>
-            <p className="pelvic-text pelvic-text-justify">
-              Pelvic floor dysfunction, often caused by weakened pelvic floor muscles, contributes to conditions like urinary incontinence and ED. Urinary incontinence affects approximately 25% of women and 10-15% of men in the U.S., with higher prevalence among older adults and post-partum women. Erectile dysfunction impacts about 30% of men over 40, with rates increasing with age and underlying health conditions like diabetes or prostate issues. These conditions can lead to embarrassment, reduced confidence, and social isolation, making effective treatment essential.
-            </p>
-            <h4 className="pelvic-heading pelvic-heading-lg">Prevalence of Pelvic Health Issues</h4>
-            <ul className="pelvic-text list-disc pl-6">
-              <li className="mb-2">Women: 50% experience urinary incontinence at some point, with stress incontinence being the most common type among younger women (45-49 years).</li>
-              <li className="mb-2">Men: 21% of men aged 45-64 report urinary incontinence, with 6-8% experiencing it post-prostatectomy.</li>
-              <li className="mb-2">ED: Affects 52% of men aged 40-70, with pelvic floor weakness contributing to reduced blood flow and nerve responsiveness.</li>
-            </ul>
+          <p>
+            Nearly <strong>1 in 3 women</strong> will experience some form of pelvic floor
+            dysfunction in her lifetime, yet many remain undiagnosed or untreated.
+            Our mission is to change that by providing information and support.
+          </p>
+        </section>
 
-            <h3 className="pelvic-heading pelvic-heading-lg">Emsella: A Breakthrough Treatment</h3>
-            <p className="pelvic-text pelvic-text-justify">
-              Emsella is an FDA-approved, non-invasive treatment that uses High-Intensity Focused Electromagnetic (HIFEM) technology to stimulate and strengthen pelvic floor muscles. Patients sit fully clothed on the Emsella chair for 28-minute sessions, experiencing thousands of supramaximal contractions—equivalent to 11,000-12,000 Kegel exercises per session. This strengthens the pelvic floor, improves bladder control, and enhances sexual function.
-            </p>
-            <h4 className="pelvic-heading pelvic-heading-lg">How Emsella Works</h4>
-            <p className="pelvic-text pelvic-text-justify">
-              Mechanism: HIFEM induces deep muscle contractions, re-educating muscles and restoring neuromuscular control.<br />
-              Treatment Plan: Typically, 6 sessions over 3 weeks (2 sessions weekly), with maintenance sessions every 6-12 months.<br />
-              Benefits:<br />
-              Reduces urinary incontinence (stress, urge, and mixed).<br />
-              Improves ED by enhancing blood flow and erectile tissue regeneration.<br />
-              Enhances sexual wellness, including sensation and orgasm quality.
-            </p>
-
-            <h3 className="pelvic-heading pelvic-heading-lg">Clinical Evidence and Statistics</h3>
-            <p className="pelvic-text pelvic-text-justify">
-              Clinical studies demonstrate Emsella's effectiveness:<br />
-              Quality of Life: 95% of patients report significant improvement in quality of life after 6 sessions.<br />
-              Incontinence: 75% of patients reduce pad usage, with 50-69% improvement in symptoms for stress, urge, and mixed incontinence.<br />
-              ED: A 37% improvement in maintaining erections and 46% reduction in nighttime urination for men.<br />
-              Long-Term Outcomes: Benefits peak at 3 months but may decline by year 3 without maintenance.
-            </p>
-            <div className="pelvic-chart-container">
-              <h4 className="pelvic-heading pelvic-heading-lg">Improvement in Incontinence Symptoms Post-Emsella</h4>
-              <div className="pelvic-bar-chart">
-                <div className="pelvic-bar" style={{ width: '69%', background: '#275cab' }}>
-                  <span className="pelvic-bar-label">Stress Incontinence: 69%</span>
-                </div>
-                <div className="pelvic-bar" style={{ width: '50%', background: '#1d539f' }}>
-                  <span className="pelvic-bar-label">Urge Incontinence: 50%</span>
-                </div>
-                <div className="pelvic-bar" style={{ width: '60%', background: '#3772c5' }}>
-                  <span className="pelvic-bar-label">Mixed Incontinence: 60%</span>
-                </div>
+        {/* ---------- Info Blocks ---------- */}
+        <section className={styles.infoSection}>
+          <h2>Common Pelvic Floor Issues</h2>
+          <div className={styles.infoCards}>
+            {[
+              ['Urinary & Bowel Problems',
+               'Urinary issues (painful urination, leakage, urgency) and bowel issues (constipation, straining, loss of control) are frequent pelvic floor problems.'],
+              ['Pelvic Pain',
+               'Chronic pain in the pelvic region can include tailbone pain, lower abdominal pain, and pain in the pelvic joints or muscles.'],
+              ['Pain during Sex',
+               'Many experience pain during or after sexual intercourse due to pelvic floor dysfunction, which can significantly impact intimacy and quality of life.'],
+              ['Organ Prolapse',
+               'Pelvic organ prolapse occurs when organs like the bladder or uterus descend from their normal position, causing pressure, bulging, or discomfort.'],
+            ].map(([title, text]) => (
+              <div key={title} className={`${styles.infoCard} ${styles.card}`}>
+                <h3>{title}</h3><p>{text}</p>
               </div>
-            </div>
-            <div className="pelvic-chart-container">
-              <h4 className="pelvic-heading pelvic-heading-lg">Quality of Life Improvement After Emsella</h4>
-              <div className="pelvic-pie-chart">
-                <div className="pelvic-pie-segment" style={{ width: '95%', background: '#275cab' }}>
-                  <span className="pelvic-pie-label">Significant Improvement: 95%</span>
-                </div>
-                <div className="pelvic-pie-segment" style={{ width: '5%', background: '#1d539f' }}>
-                  <span className="pelvic-pie-label">No Significant Change: 5%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Rest of your content with updated class names */}
-            {/* Make sure to replace all class names with pelvic- prefixed versions */}
-            
+            ))}
           </div>
-        </div>
+        </section>
 
-        <div className="pelvic-cta-section">
-          <h3 className="pelvic-heading pelvic-heading-lg">Call to Action</h3>
-          <p className="pelvic-text">
-            If you or a loved one struggles with urinary incontinence or erectile dysfunction, Emsella at Garcia Family Medicine offers a life-changing solution. Contact us at <a href="tel:816-426-5320" className="text-[#275cab] font-semibold hover:underline">816-426-5320</a> to schedule a consultation and learn how we can help you regain control and confidence. Don't let stigma or barriers hold you back—our team is here to support you every step of the way.
+        {/* ---------- Statistics ---------- */}
+        <section className={`${styles.statsSection} ${styles.card}`}>
+          <h2>Pelvic Health by the Numbers</h2>
+          <p>
+            Recent studies show pelvic floor symptoms are very common. The charts below
+            illustrate the prevalence and types of pelvic health issues:
           </p>
-          <a href="tel:816-426-5320" className="pelvic-cta-button">
-            Contact Us: 816-426-5320
-          </a>
-        </div>
+
+          <div className={styles.chartsContainer}>
+            {/* bar chart */}
+            <div className={`${styles.chart} ${styles.card}`}>
+              <h3>Prevalence of Symptoms (Women&nbsp;18‑59)</h3>
+              <div className={styles.barChart}>
+                {[
+                  ['83% – Experienced ≥1 symptom last year', 83],
+                  ['75% – Experienced ≥2 symptoms last year', 75],
+                  ['66% – Experienced ≥3 symptoms last year', 66],
+                ].map(([label, val]) => (
+                  <div key={label} className={styles.bar}>
+                    <div className={styles.barFill} style={{ width: `${val}%` }} />
+                    <span className={styles.barLabel}>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* pie chart */}
+            <div className={`${styles.chart} ${styles.card}`}>
+              <h3>Common Symptom Types</h3>
+              <div className={styles.pieChart}>
+                <div className={styles.pie} />
+                <ul className={styles.pieLegend}>
+                  <li><span className={`${styles.legendColor} ${styles.colorA}`} /> Bladder&nbsp;&amp;&nbsp;Bowel (50%)</li>
+                  <li><span className={`${styles.legendColor} ${styles.colorB}`} /> Sexual (33%)</li>
+                  <li><span className={`${styles.legendColor} ${styles.colorC}`} /> Other (17%)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- CTA ---------- */}
+        <section className={`${styles.ctaSection} ${styles.card}`}>
+          <h2>Take Control of Your Pelvic Health</h2>
+          <p>
+            You don’t have to live with pelvic floor issues in silence. Our team of specialists
+            is here to help with personalized care and proven therapies. Early intervention can
+            dramatically improve outcomes and quality of life.
+          </p>
+          <a href="tel:816-426-5320" className={styles.ctaButton}>Get Started</a>
+        </section>
       </main>
+
       <Footer />
     </div>
   );
