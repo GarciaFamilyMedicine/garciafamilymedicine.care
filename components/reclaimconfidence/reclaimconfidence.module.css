@@ -1,33 +1,91 @@
-/* pill button */
-.wrapper{
-    background:var(--hover-blue);
-    border:none;border-radius:6px;padding:0;cursor:pointer;height:100%;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .innerpill{
-    background:rgba(255,255,255,.15);
-    padding:6px 18px;border-radius:9999px;
-    color:var(--text-white);font-weight:700;font-size:14px;white-space:nowrap;
-    transition:background .2s;
-  }
-  .wrapper:hover .innerpill,
-  .wrapper:focus-visible .innerpill{background:rgba(255,255,255,.25)}
-  
-  /* fly‑out */
-  .flyout{
-    position:fixed;top:0;right:0;width:340px;max-width:90%;height:100%;
-    background:#fff;box-shadow:-4px 0 14px rgba(0,0,0,.25);
-    padding:28px 22px 40px;overflow:auto;z-index:1100;
-    animation:slidein .28s ease forwards;
-  }
-  @keyframes slidein{from{transform:translateX(100%)}to{transform:translateX(0)}}
-  .closebtn{position:absolute;top:10px;right:14px;background:none;border:none;cursor:pointer;font-size:20px;color:#666}
-  
-  .flyout h2{font-size:18px;margin:0 0 14px;color:#1d539f;text-transform:capitalize}
-  .flyout p{font-size:14px;line-height:1.55;margin:0 0 14px}
-  .flyout a{color:#1d539f;text-decoration:underline;font-weight:600}
-  .hashes{font-size:12px;color:#666}
-  
-  /* backdrop */
-  .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1099}
-  
+/* reclaimconfidence.module.css */
+/* Flyout Container */
+.flyoutPanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 340px;
+    max-width: 90%;
+    height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 14px rgba(0, 0, 0, 0.25);
+    padding: 32px 24px 40px;
+    overflow: auto;
+    z-index: 1100;
+    animation: slideIn 0.28s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Close Button */
+.flyoutCloseButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #444;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.flyoutCloseButton:hover,
+.flyoutCloseButton:focus-visible {
+    color: #1d539f;
+    outline: 2px solid #1d539f;
+    outline-offset: 2px;
+}
+
+/* Typography */
+.flyoutHeading {
+    font-size: 20px;
+    margin: 0 0 20px;
+    color: #1d539f;
+    padding-right: 30px;
+    line-height: 1.3;
+}
+
+.flyoutText {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    color: #333;
+}
+
+/* Links */
+.flyoutLink {
+    color: #1d539f;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.flyoutLink:hover,
+.flyoutLink:focus-visible {
+    color: #163d73;
+    text-decoration: none;
+}
+
+/* Hashtags */
+.hashtagList {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin: 24px 0 0;
+}
+
+/* Backdrop */
+.overlayBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1099;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}

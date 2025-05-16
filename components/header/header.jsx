@@ -1,29 +1,34 @@
+// header.jsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ReclaimConfidenceButton from '../reclaimconfidence/reclaimconfidencebutton.jsx';
+import ReclaimConfidenceFlyout from '../reclaimconfidence/reclaimconfidencebutton.jsx';
 import styles from './header.module.css';
 
 export default function Header() {
-  /* ------------- state ------------- */
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
   const [activeDrop, setActiveDrop] = useState(null);
-  const [arrowLeft,  setArrowLeft]  = useState(220);
+  const [arrowLeft, setArrowLeft] = useState(220);
   const timer = useRef(null);
 
-  /* ------------- helpers ------------- */
   const toggleMenu = () => setIsMenuOpen(p => !p);
 
   const caretLeft = (rect) => {
     const logo = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--logo-size')
     ) || 85;
-    return rect.left + rect.width / 2 - logo;      // px from dropdown left
+    return rect.left + rect.width / 2 - logo;
   };
 
-  /* ------------- nav data ------------- */
+  const handlePillHover = (open) => {
+    if (window.innerWidth > 768) {
+      setIsFlyoutOpen(open);
+    }
+  };
+
   const navLinks = [
     { href: '/#meet',        label: 'meet the doctor' },
     { href: '/#memberships', label: 'memberships'     },
@@ -65,26 +70,26 @@ export default function Header() {
     { label: 'en' },
   ];
 
-  /* ------------- dropdown handlers ------------- */
   const open = (lbl, tgt) => {
     clearTimeout(timer.current);
     setArrowLeft(caretLeft(tgt.getBoundingClientRect()));
     setActiveDrop(lbl);
   };
+
   const close = () => { timer.current = setTimeout(() => setActiveDrop(null), 300); };
 
-  /* close mobile nav on resize */
   useEffect(() => {
-    const onResize = () => setIsMenuOpen(false);
+    const onResize = () => {
+      setIsMenuOpen(false);
+      if (window.innerWidth <= 768) setIsFlyoutOpen(false);
+    };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  /* ------------- render ------------- */
   return (
     <>
       <div className={styles.container}>
-        {/* top bar */}
         <div className={styles.topbar}>
           <div className={styles.topbuttons}>
             {topButtons.map(btn => (
@@ -93,7 +98,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* navbar */}
         <nav className={styles.navbar} aria-label="main navigation">
           <div className={styles.logo}>
             <Image src="/images/logo.png" alt="garcia family medicine logo" width={85} height={85} priority />
@@ -120,7 +124,7 @@ export default function Header() {
                       aria-haspopup="true"
                       aria-expanded={activeDrop === link.label}
                       onMouseEnter={e => open(link.label, e.currentTarget)}
-                      onFocus={e     => open(link.label, e.currentTarget)}
+                      onFocus={e => open(link.label, e.currentTarget)}
                     >
                       {link.label}
                     </button>
@@ -165,15 +169,33 @@ export default function Header() {
               )
             )}
 
-            {/* orange pill button */}
             <li className={styles.navextra}>
-              <ReclaimConfidenceButton/>
+              <button
+                className={styles.pillButton}
+                onClick={() => setIsFlyoutOpen(!isFlyoutOpen)}
+                onMouseEnter={() => handlePillHover(true)}
+                onMouseLeave={() => handlePillHover(false)}
+                aria-haspopup="dialog"
+                aria-expanded={isFlyoutOpen}
+                aria-controls="confidence-flyout"
+              >
+                Reclaim Your Confidence!
+              </button>
             </li>
           </ul>
         </nav>
       </div>
 
-      {/* spacer below fixed header */}
+      {isFlyoutOpen && (
+        <div 
+          className={styles.flyoutWrapper}
+          onMouseEnter={() => handlePillHover(true)}
+          onMouseLeave={() => handlePillHover(false)}
+        >
+          <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
+        </div>
+      )}
+
       <div className={styles.offset} aria-hidden="true" />
     </>
   );
