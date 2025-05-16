@@ -1,4 +1,3 @@
-// header.jsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -11,20 +10,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
   const [activeDrop, setActiveDrop] = useState(null);
-  const [arrowLeft, setArrowLeft] = useState(220);
   const timer = useRef(null);
+  const dropdownRefs = useRef({});
 
   const toggleMenu = () => setIsMenuOpen(p => !p);
 
-  const caretLeft = (rect) => {
-    const logo = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue('--logo-size')
-    ) || 85;
-    return rect.left + rect.width / 2 - logo;
-  };
-
   const handlePillHover = (open) => {
     if (window.innerWidth > 768) {
+      clearTimeout(timer.current);
       setIsFlyoutOpen(open);
     }
   };
@@ -70,13 +63,16 @@ export default function Header() {
     { label: 'en' },
   ];
 
-  const open = (lbl, tgt) => {
+  const handleDropdownEnter = (label) => {
     clearTimeout(timer.current);
-    setArrowLeft(caretLeft(tgt.getBoundingClientRect()));
-    setActiveDrop(lbl);
+    setActiveDrop(label);
   };
 
-  const close = () => { timer.current = setTimeout(() => setActiveDrop(null), 300); };
+  const handleDropdownLeave = () => {
+    timer.current = setTimeout(() => {
+      setActiveDrop(null);
+    }, 300); // Slightly longer delay to prevent flickering
+  };
 
   useEffect(() => {
     const onResize = () => {
@@ -117,14 +113,16 @@ export default function Header() {
             {navLinks.map(link =>
               link.dropdown ? (
                 <li key={link.label}>
-                  <div className={styles.dropdowncontainer}>
+                  <div 
+                    className={styles.dropdowncontainer}
+                    onMouseEnter={() => handleDropdownEnter(link.label)}
+                    onMouseLeave={handleDropdownLeave}
+                  >
                     <button
                       type="button"
                       className={`${styles.dropdowntoggle} ${activeDrop === link.label ? styles.active : ''}`}
                       aria-haspopup="true"
                       aria-expanded={activeDrop === link.label}
-                      onMouseEnter={e => open(link.label, e.currentTarget)}
-                      onFocus={e => open(link.label, e.currentTarget)}
                     >
                       {link.label}
                     </button>
@@ -133,9 +131,8 @@ export default function Header() {
                       role="menu"
                       aria-hidden={activeDrop !== link.label}
                       className={`${styles.dropdownmenu} ${activeDrop === link.label ? styles.show : ''}`}
-                      style={{ '--arrow-left': `${arrowLeft}px` }}
                       onMouseEnter={() => clearTimeout(timer.current)}
-                      onMouseLeave={close}
+                      onMouseLeave={handleDropdownLeave}
                     >
                       <div className={styles.dropdowncontent}>
                         {link.dropdown.map(section => (
@@ -170,17 +167,19 @@ export default function Header() {
             )}
 
             <li className={styles.navextra}>
-              <button
-                className={styles.pillButton}
-                onClick={() => setIsFlyoutOpen(!isFlyoutOpen)}
-                onMouseEnter={() => handlePillHover(true)}
-                onMouseLeave={() => handlePillHover(false)}
-                aria-haspopup="dialog"
-                aria-expanded={isFlyoutOpen}
-                aria-controls="confidence-flyout"
-              >
-                Reclaim Your Confidence!
-              </button>
+              <div className={styles.pillContainer}>
+                <button
+                  className={styles.pillButton}
+                  onClick={() => setIsFlyoutOpen(!isFlyoutOpen)}
+                  onMouseEnter={() => handlePillHover(true)}
+                  onMouseLeave={() => handlePillHover(false)}
+                  aria-haspopup="dialog"
+                  aria-expanded={isFlyoutOpen}
+                  aria-controls="confidence-flyout"
+                >
+                  Reclaim Your Confidence!
+                </button>
+              </div>
             </li>
           </ul>
         </nav>
@@ -190,7 +189,10 @@ export default function Header() {
         <div 
           className={styles.flyoutWrapper}
           onMouseEnter={() => handlePillHover(true)}
-          onMouseLeave={() => handlePillHover(false)}
+          onMouseLeave={() => {
+            handlePillHover(false);
+            setTimeout(() => setIsFlyoutOpen(false), 200);
+          }}
         >
           <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
         </div>

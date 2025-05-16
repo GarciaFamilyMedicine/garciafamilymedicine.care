@@ -167,35 +167,36 @@
 }
 
 .dropdownmenu {
-  position: fixed;
-  top: calc(var(--top-bar-height) + var(--navbar-height) + 6px);
-  left: var(--logo-size);
-  right: 260px;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  width: 800px;
   background: var(--dropdown-bg);
   border: 1px solid rgba(0,0,0,0.12);
   border-radius: 8px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-  padding: 16px 28px;
+  padding: 24px 32px;
   display: flex;
-  gap: 48px;
+  gap: 64px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4px);
   transition: opacity var(--transition), transform var(--transition);
   z-index: 1500;
+  min-height: 300px;
 }
 
 .dropdownmenu.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .dropdownmenu::before {
   content: '';
   position: absolute;
   top: -7px;
-  left: var(--arrow-left, 220px);
+  left: calc(50% - 7px);
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 7px solid var(--dropdown-bg);
@@ -203,30 +204,35 @@
 }
 
 .dropdowncontent {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 48px;
+  width: 100%;
 }
 
 .dropdownsection {
   display: flex;
   flex-direction: column;
-  min-width: 170px;
+  min-width: 200px;
 }
 
 .dropdownsectiontitle {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin: 0 0 6px;
+  margin: 0 0 12px;
   text-transform: uppercase;
   color: var(--hover-blue);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--hover-blue);
 }
 
 .dropdownlink {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 0;
-  font-size: 15px;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 16px;
   font-weight: 500;
   color: var(--dropdown-link);
   border-radius: 6px;
@@ -248,21 +254,22 @@
 .navextra {
   margin-left: auto;
   padding-right: 20px;
+  height: 100%;
   display: flex;
   align-items: center;
+  background: var(--hover-blue);
   justify-content: center;
-  height: 100%;
-  position: relative;
+  width: auto;
 }
 
 .pillButton {
   background: #ff9100;
   border: none;
   border-radius: 9999px;
-  padding: 8px 24px;
+  padding: 6px 24px;
   color: #fff;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
@@ -270,7 +277,6 @@
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 0 10px;
 }
 
@@ -278,16 +284,6 @@
 .pillButton:focus-visible {
   background-color: #ff6d00;
   outline: 2px solid rgba(255,255,255,0.5);
-  outline-offset: 2px;
-}
-
-.flyoutWrapper {
-  position: relative;
-  z-index: 1100;
-}
-
-.offset {
-  height: calc(var(--top-bar-height) + var(--navbar-height));
 }
 
 @media (max-width: 1200px) {
@@ -352,16 +348,13 @@
   
   .navextra {
     padding-right: 0;
-    margin-left: 0;
+    background: none;
     width: 100%;
     justify-content: center;
-    padding: 10px 0;
   }
   
   .pillButton {
-    width: 90%;
-    max-width: 280px;
-    margin: 0 auto;
+    margin: 0;
   }
 }
 
@@ -392,4 +385,8 @@
     min-width: 40px;
     font-size: 10px;
   }
+}
+
+.offset {
+  height: calc(var(--top-bar-height) + var(--navbar-height));
 }
