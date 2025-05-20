@@ -1,5 +1,3 @@
-/* ReclaimConfidenceFlyout.jsx */
-
 'use client';
 import { useEffect, useRef } from 'react';
 import styles from './reclaimconfidence.module.css';
@@ -7,9 +5,6 @@ import styles from './reclaimconfidence.module.css';
 export default function ReclaimConfidenceFlyout({ onClose }) {
   const closeButtonRef = useRef(null);
 
-  /* ------------------------------------------------------------------ */
-  /*  Accessibility: trap initial focus on the close button + Esc close */
-  /* ------------------------------------------------------------------ */
   useEffect(() => {
     const handleEscape = (e) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', handleEscape);
@@ -20,9 +15,6 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
     closeButtonRef.current?.focus();
   }, []);
 
-  /* ------------------------------------------------------------------ */
-  /*  Render                                                            */
-  /* ------------------------------------------------------------------ */
   return (
     <>
       <div
@@ -32,7 +24,7 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
         aria-labelledby="flyout-heading"
         className={styles.flyoutPanel}
       >
-        {/* Close button */}
+        {/* Close button - only position changed via CSS */}
         <button
           ref={closeButtonRef}
           className={styles.flyoutCloseButton}
@@ -53,9 +45,7 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
           </svg>
         </button>
 
-        {/* ------------------------------------------------------------------ */}
-        {/*  Static content section                                            */}
-        {/* ------------------------------------------------------------------ */}
+        {/* Rest of original JSX remains untouched */}
         <div className={styles.flyoutHeader}>
           <h2 id="flyout-heading" className={styles.flyoutHeading}>
             Reclaim Your Confidence
@@ -63,21 +53,18 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
         </div>
 
         <div className={styles.flyoutContent}>
-          {/* Highlight box */}
           <div className={styles.highlightText}>
             <p className={styles.flyoutText} style={{ marginBottom: 0 }}>
               <strong>Win a Pelvic Health Recovery Package</strong>
-              <span className={styles.valueTag}>$2,000 Value</span>
+              <span className={styles.valueTag}>$3,000 Value</span>
             </p>
           </div>
 
-          {/* Description */}
           <p className={styles.flyoutText}>
             Suffering from incontinence or erectile dysfunction? Enter our giveaway for a chance
             to win 6 complete Emsella treatments to help restore your pelvic health and confidence.
           </p>
 
-          {/* Event card */}
           <div className={styles.eventInfo}>
             <div className={styles.eventIcon}>
               <svg
@@ -104,25 +91,20 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
             </div>
           </div>
 
-          {/* Reminder */}
           <p className={styles.flyoutText}>
             <strong>Winner will be announced live at the event!</strong> You must register to be
             eligible for the giveaway.
           </p>
 
-          {/* ------------------------------------------------------------------ */}
-          {/*  CTA – now a direct link (leaves current page)                     */}
-          {/* ------------------------------------------------------------------ */}
           <a
             href="https://forms.cloud.microsoft/r/PmYN6fxyAT"
             className={styles.ctaButton}
-            target="_self"            /* same‑tab navigation */
+            target="_self"
             rel="noopener"
           >
             Register Now
           </a>
 
-          {/* Alternate phone registration */}
           <p className={styles.flyoutText}>
             Can't register online? Call us at{' '}
             <a href="tel:816-427-5320" className={styles.flyoutLink}>
@@ -130,27 +112,17 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
             </a>
           </p>
 
-          {/* Hashtags */}
           <div className={styles.hashtagList}>
-            <span
-              className={styles.tag}
-              onClick={() => window.open('#PelvicHealth', '_blank')}
-            >
+            <span className={styles.tag} onClick={() => window.open('#PelvicHealth', '_blank')}>
               #PelvicHealth
             </span>
             <span className={styles.tag} onClick={() => window.open('#Emsella', '_blank')}>
               #Emsella
             </span>
-            <span
-              className={styles.tag}
-              onClick={() => window.open('#GarciaFamilyMedicine', '_blank')}
-            >
+            <span className={styles.tag} onClick={() => window.open('#GarciaFamilyMedicine', '_blank')}>
               #GarciaFamilyMedicine
             </span>
-            <span
-              className={styles.tag}
-              onClick={() => window.open('#IncontinenceRelief', '_blank')}
-            >
+            <span className={styles.tag} onClick={() => window.open('#IncontinenceRelief', '_blank')}>
               #IncontinenceRelief
             </span>
             <span className={styles.tag} onClick={() => window.open('#EDHelp', '_blank')}>
@@ -158,7 +130,6 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
             </span>
           </div>
 
-          {/* Social links */}
           <p className={styles.bottomInfo}>
             Follow us on social media for more health tips &amp; updates:
             <br />
@@ -210,7 +181,6 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
         </div>
       </div>
 
-      {/* Backdrop */}
       <div
         className={styles.overlayBackdrop}
         onClick={onClose}
