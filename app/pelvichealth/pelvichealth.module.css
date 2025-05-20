@@ -1,52 +1,237 @@
-/* ---------- layout & wrapper ---------- */
-.page{padding-top:60px}
-.main{max-width:1200px;margin:0 auto;padding:0 1rem}
+/* =========================================================
+   LOCAL CSS VARIABLES
+   ======================================================= */
+.vars{
+  --primary:        #2c6fb0;   /* Professional blue */
+  --primary-light:  #eef5fc;
+  --primary-dark:   #1d4c78;
 
-/* ---------- card ---------- */
-.card{background:rgba(255,255,255,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);
-  border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);padding:2rem;margin-bottom:2rem}
+  --accent:         #4caf93;   /* Health‑teal accent */
+  --accent-light:   #e0f2ee;
 
-/* scoped typography (pure selectors) */
-.page h1,.page h2,.page h3{margin:0;font-family:'Helvetica Neue',Arial,sans-serif}
-.page h1{font-size:2rem;margin-bottom:.5rem}
-.page h2{font-size:1.5rem;text-align:center;margin:0 0 1rem}
-.page h3{font-size:1.25rem;margin-bottom:.5rem}
-.page p{font-size:1rem;line-height:1.6;margin-bottom:1rem}
-.introSection p{font-size:1.1rem}
+  --text:           #233142;
+  --text-light:     #5a6a7e;
 
-/* ---------- info blocks ---------- */
-.infoSection{margin-bottom:2rem}
-.infoCards{display:flex;flex-wrap:wrap;gap:1.5rem}
-.infoCard{flex:1 1 calc(50% - 1.5rem);min-width:280px}
+  --gray-100:       #f0f2f5;
+  --gray-200:       #e4e7eb;
 
-/* ---------- stats section ---------- */
-.statsSection{text-align:center}
-.chartsContainer{display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem}
-.chart{flex:1 1 300px}
+  --page-bg:        #d0e3f0;
 
-/* bar chart */
-.barChart{max-width:400px;margin:0 auto}
-.bar{position:relative;background:#eceff1;border-radius:8px;overflow:hidden;margin-bottom:.75rem;height:1.5rem}
-.barFill{background:linear-gradient(90deg,#4db6ac,#80cbc4);height:100%;transition:width .6s}
-.barLabel{position:absolute;left:.5rem;top:50%;transform:translateY(-50%);font-size:.9rem;color:#000;font-weight:500}
-.bar:hover .barFill{filter:brightness(1.1)}
+  --border-radius:  0px;       /* square corners by request */
+  --shadow-sm:      0 2px  8px rgba(0,0,0,.06);
+  --shadow-md:      0 4px 16px rgba(0,0,0,.10);
 
-/* pie chart */
-.pieChart{text-align:center}
-.pie{width:180px;height:180px;margin:0 auto 1rem;border-radius:50%;
-  background:conic-gradient(#4db6ac 0% 50%,#ffcc80 50% 83%,#ce93d8 83% 100%)}
-.pieLegend{list-style:none;padding:0;margin:0 auto;max-width:200px;text-align:left;font-size:.9rem}
-.legendColor{display:inline-block;width:1em;height:1em;border-radius:.2em;margin-right:.5em}
-.colorA{background:#4db6ac}.colorB{background:#ffcc80}.colorC{background:#ce93d8}
-
-/* ---------- CTA ---------- */
-.ctaSection{background:rgba(100,181,246,.15);text-align:center}
-.ctaButton{background:#1976d2;color:#fff;padding:.75rem 1.5rem;border-radius:4px;display:inline-block;margin-top:1rem;text-decoration:none}
-.ctaButton:hover{background:#1565c0}
-
-/* ---------- responsive ---------- */
-@media(max-width:768px){
-  .infoCard{flex:1 1 100%}
-  .chartsContainer{flex-direction:column;align-items:center}
-  .chart{max-width:500px;width:100%}
+  --font-primary:   'Montserrat','Helvetica Neue',Arial,sans-serif;
+  --font-secondary: 'Source Sans Pro',Arial,sans-serif;
 }
+
+/* =========================================================
+   BASE LAYOUT
+   ======================================================= */
+.page{
+  padding-top:78px;
+  font-family:var(--font-secondary);
+  background:var(--page-bg);
+  color:var(--text);
+  line-height:1.6;
+  font-size:16px;
+}
+.main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;}
+
+/* =========================================================
+   HERO & SOFT SECTIONS
+   ======================================================= */
+.hero,
+.softSection{
+  background:linear-gradient(135deg,#fff 0%,rgba(208,227,240,.45) 100%);
+  border-radius:var(--border-radius);
+  text-align:center;
+  margin-bottom:4rem;
+}
+.hero{       padding:4rem 1.25rem;}
+.softSection{padding:3.5rem 1.25rem;}
+
+/* coloured divider used in treatment section */
+.timeline{
+  height:6px;border-radius:4px;
+  background:linear-gradient(
+    90deg,
+    var(--accent)   0% 33%,
+    var(--primary) 33% 66%,
+    #f28c28        66% 100%
+  );
+  max-width:620px;margin:0 auto 2.25rem;
+}
+
+/* =========================================================
+   CARD + INFO CARDS
+   ======================================================= */
+.card{
+  background:#fff;border:1px solid var(--gray-200);
+  border-radius:var(--border-radius);
+  box-shadow:var(--shadow-sm);
+  padding:2.5rem;margin-bottom:2.5rem;
+  transition:box-shadow .3s,transform .3s;
+}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+
+.infoSection{margin-bottom:3rem;}
+.infoCards{display:flex;flex-wrap:wrap;gap:1.75rem;margin-top:1.25rem;}
+.infoCard{
+  flex:1 1 calc(50% - 1.75rem);
+  min-width:280px;
+  border-top:4px solid var(--accent);
+}
+
+/* =========================================================
+   TYPOGRAPHY HELPERS
+   ======================================================= */
+.h2{
+  font-family:var(--font-primary);font-weight:600;
+  color:var(--primary);font-size:1.875rem;
+  margin:0 0 1.5rem;text-align:center;position:relative;
+  padding-bottom:.75rem;
+}
+.h2::after{
+  content:"";position:absolute;bottom:0;left:50%;
+  transform:translateX(-50%);
+  width:3.5rem;height:2px;background:var(--accent);
+}
+
+.lead{
+  font-family:var(--font-secondary);
+  font-size:1.25rem;line-height:1.6;margin-bottom:1.5rem;
+  color:var(--text);font-weight:400;
+}
+.chip{
+  background:var(--accent);color:#fff;padding:0 .5rem;
+  border-radius:6px;font-weight:500;
+}
+
+/* =========================================================
+   TREATMENT  — GRID, ICONS, BADGE, LISTS
+   ======================================================= */
+.treatGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.75rem;max-width:1040px;margin:0 auto 1.25rem;text-align:left;
+}
+.treatCard{padding:1.8rem 1.4rem;}
+.treatIcon{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.4rem;margin-bottom:.8rem;
+}
+.iconList{list-style:none;padding-left:0;}
+.iconList li{
+  display:flex;gap:.6rem;margin-bottom:.8rem;line-height:1.55;
+}
+.iconList li svg{color:var(--primary);flex-shrink:0;margin-top:.15rem;}
+
+.statBadge{
+  width:96px;height:96px;border-radius:50%;
+  background:var(--accent-light);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-primary);font-weight:700;font-size:1.65rem;
+  color:var(--accent);box-shadow:var(--shadow-sm);
+}
+
+/* === protocol calendar (6 × 28‑min blocks over 3 weeks) === */
+.weekGrid{
+  max-width:620px;margin:1.75rem auto 0;
+  display:grid;grid-template-columns:64px 1fr;
+  row-gap:.85rem;column-gap:1rem;align-items:center;
+  font-family:var(--font-secondary);font-size:.9rem;color:var(--text-light);
+}
+.sessionRow{display:flex;gap:.55rem;flex-wrap:wrap;}
+.block{
+  width:70px;height:24px;border-radius:4px;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.7rem;font-weight:600;
+  box-shadow:0 2px 4px rgba(0,0,0,.1);
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ======================================================= */
+@media(max-width:992px){ .lead{font-size:1.15rem;} }
+@media(max-width:768px){
+  .infoCard{flex:1 1 100%;}
+  .weekGrid{font-size:.85rem;}
+}
+@media(max-width:480px){ .h2{font-size:1.5rem;} }
+/* === square card grid (forces 3‑col ≥768 px) ===================== */
+.squareGrid{
+  display:grid;
+  gap:1.75rem;
+  max-width:1000px;
+  margin:0 auto;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); /* mobile */
+}
+@media (min-width:768px){
+  .squareGrid{grid-template-columns:repeat(3,1fr);}         /* three columns */
+}
+
+/* square card body */
+.squareCard{
+  aspect-ratio:1 / 1;            /* perfect square */
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  padding:2rem 1.4rem;
+}
+
+/* icon circle */
+.squareIcon{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+
+/* headings & text inside the card */
+.squareTitle{
+  font-size:1rem;font-weight:700;text-align:center;
+  margin-bottom:.6rem;text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.bigNumber{
+  font-family:var(--font-primary);
+  font-size:2.6rem;font-weight:700;line-height:1;
+  text-align:center;color:var(--primary-dark);
+  margin:.25rem 0 .7rem;
+}
+.squareText{font-size:.95rem;text-align:center}
+/* …existing file above… */
+
+/* square card body */
+.squareCard{
+  aspect-ratio:1 / 1;
+  display:flex;flex-direction:column;
+  align-items:center;                /* keeps everything centred horiz‑axis */
+  justify-content:flex-start;
+  padding:2rem 1.4rem;
+  text-align:center;                 /* ◆ centre‑align all paragraph text */
+}
+
+/* pelvichealth.module.css  ─ already in file, just tweak the value */
+.squareTitle{
+  font-size:1rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  margin-bottom:1.2rem;   /* ⬅️ bump this up (was .9‑1rem) */
+}
+
+
+.bigNumber{
+  font-family:var(--font-primary);
+  font-size:2.6rem;font-weight:700;line-height:1;
+  color:var(--primary-dark);
+  margin:.15rem 0 .8rem;             /* ◆ slightly tighter above, looser below */
+}
+
+.squareText{font-size:.95rem; line-height:1.6;} /* ◆ clearer body copy */
+
+/* …rest of file unchanged… */

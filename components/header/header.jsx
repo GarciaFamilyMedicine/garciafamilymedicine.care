@@ -23,37 +23,65 @@ export default function Header() {
   };
 
   const navLinks = [
-    { href: '/#meet',        label: 'meet the doctor' },
-    { href: '/#memberships', label: 'memberships'     },
+    { href: '/#meet', label: 'meet the doctor' },
+    { href: '/#memberships', label: 'memberships' },
     {
       label: 'services',
-      dropdown: [
-        {
-          title: 'core medical services',
-          items: [
-            { label: 'chronic disease management', href: '/#chronic-disease' },
-            { label: 'preventive care',            href: '/#preventive-care'  },
-          ],
-        },
-        {
-          title: 'specialized care',
-          items: [
-            { label: 'pelvic health',     href: '/pelvichealth'       },
-            { label: 'weight management', href: '/#weight-management' },
-          ],
-        },
-      ],
+      dropdown: {
+        links: [
+          {
+            title: 'core medical services',
+            items: [
+              { label: 'chronic disease management', href: '/#chronic-disease' },
+              { label: 'preventive care', href: '/#preventive-care' },
+            ],
+          },
+          {
+            title: 'specialized care',
+            items: [
+              { label: 'pelvic health', href: '/pelvichealth' },
+              { label: 'weight management', href: '/#weight-management' },
+            ],
+          },
+        ],
+        info: {
+          askDr: {
+            title: "Have questions for Dr. Garcia?",
+            description: "Submit your confidential questions through our secure portal and get expert advice.",
+            buttonText: "Ask Dr. Garcia"
+          },
+          contact: {
+            phone: "816-427-5320",
+            hours: "Mon-Fri: 8am-7pm",
+            location: "801 NW St. Mary Drive"
+          }
+        }
+      }
     },
     {
       label: 'affiliates',
-      dropdown: [
-        {
-          title: 'our partners',
-          items: [{ label: "gigi's safehouse", href: '/#gigi-safehouse' }],
-        },
-      ],
+      dropdown: {
+        links: [
+          {
+            title: 'our partners',
+            items: [{ label: "gigi's safehouse", href: '/#gigi-safehouse' }],
+          },
+        ],
+        info: {
+          askDr: {
+            title: "Partner with us",
+            description: "Learn how your organization can collaborate with our practice.",
+            buttonText: "Partner Inquiry"
+          },
+          contact: {
+            phone: "816-427-5320",
+            hours: "Mon-Fri: 9am-5pm",
+            location: "801 NW St. Mary Drive"
+          }
+        }
+      }
     },
-    { href: '/#faqs',    label: 'faqs' },
+    { href: '/#faqs', label: 'faqs' },
     { href: '/#contact', label: 'contact' },
   ];
 
@@ -71,7 +99,7 @@ export default function Header() {
   const handleDropdownLeave = () => {
     timer.current = setTimeout(() => {
       setActiveDrop(null);
-    }, 300); // Slightly longer delay to prevent flickering
+    }, 300);
   };
 
   useEffect(() => {
@@ -135,7 +163,7 @@ export default function Header() {
                       onMouseLeave={handleDropdownLeave}
                     >
                       <div className={styles.dropdowncontent}>
-                        {link.dropdown.map(section => (
+                        {link.dropdown.links.map(section => (
                           <div key={section.title} className={styles.dropdownsection}>
                             <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
                             <ul>
@@ -153,6 +181,23 @@ export default function Header() {
                             </ul>
                           </div>
                         ))}
+                      </div>
+                      
+                      <div className={styles.dropdowninfo}>
+                        <div className={styles.dropdowninfocard}>
+                          <div className={styles.askdr}>
+                            <h4>{link.dropdown.info.askDr.title}</h4>
+                            <p>{link.dropdown.info.askDr.description}</p>
+                            <button className={styles.askbutton}>
+                              {link.dropdown.info.askDr.buttonText}
+                            </button>
+                          </div>
+                          <div className={styles.contactinfo}>
+                            <p><strong>Phone:</strong> {link.dropdown.info.contact.phone}</p>
+                            <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
+                            <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
