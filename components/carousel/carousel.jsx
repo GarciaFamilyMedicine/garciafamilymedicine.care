@@ -8,6 +8,7 @@ import Image from 'next/image';
 const HEADER = 85;
 
 const slides = [
+  { src: '/images/reclaim.png',                                            alt: 'Reclaim your confidence, pelvic health recovery revent' },
   { src: '/images/affordable-family-healthcare-clinic-91.png',             alt: 'Affordable family healthcare clinic – smiling physician with patient' },
   { src: '/images/dot-medical-certification-garcia-family-medicine-04.png', alt: 'DOT medical certification services – professional exam room'         },
   { src: '/images/Home+Page+Banners-02.png',                                alt: 'Direct primary care membership banner – no insurance hassles'         },
