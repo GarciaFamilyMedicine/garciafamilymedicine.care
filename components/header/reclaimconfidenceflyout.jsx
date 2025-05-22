@@ -6,7 +6,9 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
   const closeButtonRef = useRef(null);
 
   useEffect(() => {
-    const handleEscape = (e) => e.key === 'Escape' && onClose();
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
   }, [onClose]);
@@ -24,7 +26,7 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
         aria-labelledby="flyout-heading"
         className={styles.flyoutPanel}
       >
-        {/* Close button - only position changed via CSS */}
+        {/* Close Button */}
         <button
           ref={closeButtonRef}
           className={styles.flyoutCloseButton}
@@ -45,7 +47,6 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
           </svg>
         </button>
 
-        {/* Rest of original JSX remains untouched */}
         <div className={styles.flyoutHeader}>
           <h2 id="flyout-heading" className={styles.flyoutHeading}>
             Reclaim Your Confidence
@@ -180,7 +181,6 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
           </p>
         </div>
       </div>
-
       <div
         className={styles.overlayBackdrop}
         onClick={onClose}

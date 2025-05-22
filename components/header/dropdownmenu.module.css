@@ -1,0 +1,221 @@
+/* dropdownmenu.module.css */
+/* === Desktop Dropdown Styles === */
+.dropdowncontainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdowntoggle {
+  color: var(--text-white);
+  background: none;
+  border: none;
+  font-weight: 500;
+  height: var(--navbar-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.dropdowntoggle:hover,
+.dropdowntoggle.active,
+.dropdowntoggle:focus-visible {
+  background: var(--hover-blue);
+}
+
+.dropdownmenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  width: 900px;
+  background: var(--dropdown-bg);
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), transform var(--transition);
+  z-index: 1500;
+  min-height: 300px;
+}
+
+.dropdownmenu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) translateX(-50%);
+}
+
+.dropdownmenu::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: calc(50% - 7px);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid var(--dropdown-bg);
+  filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.06));
+}
+
+.dropdowncontent {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.dropdownsection {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.dropdownsectiontitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  color: var(--hover-blue);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--hover-blue);
+}
+
+.dropdownlink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dropdown-link);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.dropdownlink:hover,
+.dropdownlink:focus-visible {
+  background: var(--dropdown-hover-bg);
+  color: var(--dropdown-hover-text);
+  transform: translateX(2px);
+}
+
+.dropdownlink:focus-visible {
+  box-shadow: 0 0 0 2px var(--hover-blue) inset;
+}
+
+.dropdowninfo {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dropdowninfocard {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+}
+
+.askdr {
+  margin-bottom: 24px;
+}
+
+.askdr h4 {
+  color: var(--hover-blue);
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.askdr p {
+  color: var(--dropdown-link);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.askbutton {
+  background: var(--hover-blue);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background var(--transition);
+}
+
+.askbutton:hover {
+  background: var(--primary-blue);
+}
+
+.contactinfo p {
+  margin: 8px 0;
+  color: var(--dropdown-link);
+  font-size: 14px;
+}
+
+.contactinfo strong {
+  display: inline-block;
+  width: 80px;
+  color: var(--hover-blue);
+}
+
+/* === Responsive for Mobile Dropdown === */
+@media (max-width: 1200px) {
+  .dropdownmenu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+    grid-template-columns: 1fr;
+  }
+  .dropdownmenu.show {
+    max-height: 500px;
+    padding: 8px 0;
+  }
+  .dropdowncontent {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+  .dropdowninfo {
+    grid-column: auto;
+  }
+  .dropdowninfocard {
+    background: rgba(255,255,255,.1);
+    margin-top: 16px;
+  }
+  .dropdownlink {
+    padding-left: 40px;
+  }
+  .askdr h4, .askdr p, .contactinfo p {
+    color: #fff;
+  }
+  .askbutton {
+    background: #fff;
+    color: var(--hover-blue);
+  }
+  .contactinfo strong {
+    color: #fff;
+  }
+}

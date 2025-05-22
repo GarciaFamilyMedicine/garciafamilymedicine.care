@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Calendar from '../calendar/calendar';
-import styles from './header.module.css';
+import Calendar from '../calendar/calendar'; // If you have a calendar component
+import styles from './dropdownmenu.module.css';
 
 export default function DropdownMenu({
   link,
@@ -12,6 +12,9 @@ export default function DropdownMenu({
   setIsMenuOpen,
   timerRef,
 }) {
+  // Mobile: Allow collapse/expand with click
+  // If you want to support mobile expand/collapse, pass more props here as needed
+
   return (
     <div
       className={styles.dropdowncontainer}
@@ -23,6 +26,7 @@ export default function DropdownMenu({
         className={`${styles.dropdowntoggle} ${isActive ? styles.active : ''}`}
         aria-haspopup="true"
         aria-expanded={isActive}
+        tabIndex={0}
       >
         {link.label}
       </button>

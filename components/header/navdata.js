@@ -1,3 +1,4 @@
+// navdata.js
 /* purely data – no React runtime */
 
 export const top_buttons = [
@@ -6,14 +7,14 @@ export const top_buttons = [
   { label: 'en' },
 ];
 
-/* July 2025 one‑off calendar; adjust anytime */
+/* July 2025 one-off calendar; adjust anytime */
 const july_2025 = {
-  monthLabel: 'July 2025',
-  firstWeekday: 2,          // 0 = Sun, 1 = Mon, 2 = Tue …
+  monthLabel: 'July 2025',
+  firstWeekday: 2, // 0 = Sun, 1 = Mon, 2 = Tue …
   daysInMonth: 31,
   events: {
-    7:  'Pelvic Health Recovery',
-    21: 'Flu‑Shot Clinic',
+    7: 'Pelvic Health Recovery',
+    21: 'Flu-Shot Clinic',
   },
 };
 
@@ -28,14 +29,14 @@ export const nav_links = [
           title: 'upcoming events',
           items: [
             { label: 'Pelvic Health Recovery', href: '/events/pelvic-health-recovery', date: 7 },
-            { label: 'Community Flu‑Shot Clinic', href: '/events/flu-clinic', date: 21 },
+            { label: 'Community Flu-Shot Clinic', href: '/events/flu-clinic', date: 21 },
           ],
         },
         {
           title: 'past highlights',
           items: [
             { label: 'Healthy Living Webinar', href: '/events/healthy-living-webinar' },
-            { label: 'Open House 2024',        href: '/events/open-house-2024' },
+            { label: 'Open House 2024', href: '/events/open-house-2024' },
           ],
         },
       ],
@@ -51,26 +52,26 @@ export const nav_links = [
           title: 'core medical services',
           items: [
             { label: 'chronic disease management', href: '/#chronic-disease' },
-            { label: 'preventive care',            href: '/#preventive-care' },
+            { label: 'preventive care', href: '/#preventive-care' },
           ],
         },
         {
           title: 'specialized care',
           items: [
-            { label: 'pelvic health',      href: '/pelvichealth' },
+            { label: 'pelvic health', href: '/pelvichealth' },
             { label: 'weight management', href: '/#weight-management' },
           ],
         },
       ],
       info: {
         askDr: {
-          title:       'Have questions for Dr. Garcia?',
+          title: 'Have questions for Dr. Garcia?',
           description: 'Submit your confidential questions through our secure portal and get expert advice.',
-          buttonText:  'Ask Dr. Garcia',
+          buttonText: 'Ask Dr. Garcia',
         },
         contact: {
-          phone:    '816-427-5320',
-          hours:    'Mon‑Fri: 8 a.m.–7 p.m.',
+          phone: '816-427-5320',
+          hours: 'Mon–Fri: 8 a.m.–7 p.m.',
           location: '801 NW St. Mary Drive',
         },
       },
@@ -88,19 +89,19 @@ export const nav_links = [
       ],
       info: {
         askDr: {
-          title:       'Partner with us',
+          title: 'Partner with us',
           description: 'Learn how your organization can collaborate with our practice.',
-          buttonText:  'Partner Inquiry',
+          buttonText: 'Partner Inquiry',
         },
         contact: {
-          phone:    '816-427-5320',
-          hours:    'Mon‑Fri: 9 a.m.–5 p.m.',
+          phone: '816-427-5320',
+          hours: 'Mon–Fri: 9 a.m.–5 p.m.',
           location: '801 NW St. Mary Drive',
         },
       },
     },
   },
 
-  { href: '/#faqs',    label: 'faqs' },
+  { href: '/#faqs', label: 'faqs' },
   { href: '/#contact', label: 'contact' },
 ];
