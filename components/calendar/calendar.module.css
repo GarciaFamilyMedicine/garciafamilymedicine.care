@@ -1,0 +1,73 @@
+/* mini‑calendar styles */
+
+.calendarWrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:8px 0;
+}
+
+.calendarHeader{
+  font-weight:700;
+  color:var(--hover-blue);
+  margin-bottom:10px;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  font-size:14px;
+}
+
+.calendarGrid{
+  display:grid;
+  grid-template-columns:repeat(7,32px);
+  grid-auto-rows:32px;
+  gap:4px;
+}
+
+.weekday{
+  font-size:10px;
+  font-weight:600;
+  text-align:center;
+  color:var(--dropdown-link);
+  line-height:32px;
+}
+
+.calendarDay{
+  background:#fafafa;
+  border:1px solid rgba(0,0,0,.08);
+  font-size:12px;
+  color:var(--dropdown-link);
+  text-align:center;
+  line-height:32px;
+  position:relative;
+}
+
+.eventDay{
+  background:#e0f2ee;
+  color:var(--hover-blue);
+  cursor:pointer;
+}
+
+.eventDay:hover{
+  background:#4caf93;
+  color:#fff;
+}
+
+/* tooltip */
+.tooltip{
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+  position:absolute;
+  bottom:110%;
+  left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  background:#333;
+  color:#fff;
+  padding:4px 8px;
+  border-radius:4px;
+  font-size:11px;
+  transition:opacity .15s ease;
+  z-index:1600;
+}
+.eventDay:hover .tooltip{visibility:visible;opacity:1;}

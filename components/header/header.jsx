@@ -3,105 +3,34 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { nav_links, top_buttons } from './navdata';
+import DropdownMenu from './dropdownmenu';
 import ReclaimConfidenceFlyout from '../reclaimconfidence/reclaimconfidencebutton.jsx';
+
 import styles from './header.module.css';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  /* ─── state ─── */
+  const [isMenuOpen,   setIsMenuOpen]   = useState(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
-  const [activeDrop, setActiveDrop] = useState(null);
-  const timer = useRef(null);
-  const dropdownRefs = useRef({});
+  const [activeDrop,   setActiveDrop]   = useState(null);
+  const timerRef = useRef(null);
 
+  /* ─── helpers ─── */
   const toggleMenu = () => setIsMenuOpen(p => !p);
 
+  const onDropEnter = (label) => { clearTimeout(timerRef.current); setActiveDrop(label); };
+  const onDropLeave = () => { timerRef.current = setTimeout(() => setActiveDrop(null), 300); };
+
   const handlePillHover = (open) => {
-    if (window.innerWidth > 768) {
-      clearTimeout(timer.current);
+    if (typeof window !== 'undefined' && window.innerWidth > 768) {
+      clearTimeout(timerRef.current);
       setIsFlyoutOpen(open);
     }
   };
 
-  const navLinks = [
-    { href: '/meetthedoctor', label: 'meet the doctor' },
-    { href: '/#memberships', label: 'memberships' },
-    {
-      label: 'services',
-      dropdown: {
-        links: [
-          {
-            title: 'core medical services',
-            items: [
-              { label: 'chronic disease management', href: '/#chronic-disease' },
-              { label: 'preventive care', href: '/#preventive-care' },
-            ],
-          },
-          {
-            title: 'specialized care',
-            items: [
-              { label: 'pelvic health', href: '/pelvichealth' },
-              { label: 'weight management', href: '/#weight-management' },
-            ],
-          },
-        ],
-        info: {
-          askDr: {
-            title: "Have questions for Dr. Garcia?",
-            description: "Submit your confidential questions through our secure portal and get expert advice.",
-            buttonText: "Ask Dr. Garcia"
-          },
-          contact: {
-            phone: "816-427-5320",
-            hours: "Mon-Fri: 8am-7pm",
-            location: "801 NW St. Mary Drive"
-          }
-        }
-      }
-    },
-    {
-      label: 'affiliates',
-      dropdown: {
-        links: [
-          {
-            title: 'our partners',
-            items: [{ label: "gigi's safehouse", href: '/#gigi-safehouse' }],
-          },
-        ],
-        info: {
-          askDr: {
-            title: "Partner with us",
-            description: "Learn how your organization can collaborate with our practice.",
-            buttonText: "Partner Inquiry"
-          },
-          contact: {
-            phone: "816-427-5320",
-            hours: "Mon-Fri: 9am-5pm",
-            location: "801 NW St. Mary Drive"
-          }
-        }
-      }
-    },
-    { href: '/#faqs', label: 'faqs' },
-    { href: '/#contact', label: 'contact' },
-  ];
-
-  const topButtons = [
-    { label: 'emergency line' },
-    { label: 'patient portal' },
-    { label: 'en' },
-  ];
-
-  const handleDropdownEnter = (label) => {
-    clearTimeout(timer.current);
-    setActiveDrop(label);
-  };
-
-  const handleDropdownLeave = () => {
-    timer.current = setTimeout(() => {
-      setActiveDrop(null);
-    }, 300);
-  };
-
+  /* collapse menus on resize */
   useEffect(() => {
     const onResize = () => {
       setIsMenuOpen(false);
@@ -111,106 +40,72 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  /* ─── render ─── */
   return (
     <>
       <div className={styles.container}>
+        {/* top bar */}
         <div className={styles.topbar}>
           <div className={styles.topbuttons}>
-            {topButtons.map(btn => (
+            {top_buttons.map(btn => (
               <button key={btn.label} className={styles.topbutton}>{btn.label}</button>
             ))}
           </div>
         </div>
 
+        {/* navbar */}
         <nav className={styles.navbar} aria-label="main navigation">
-          <div className={styles.logo}>
+          {/* logo */}
+          <Link
+            href="/"
+            className={styles.logo}
+            onClick={() => {
+              setIsMenuOpen(false);
+              setActiveDrop(null);
+              setIsFlyoutOpen(false);
+            }}
+          >
             <Image src="/images/logo.png" alt="garcia family medicine logo" width={85} height={85} priority />
-          </div>
+          </Link>
 
+          {/* burger */}
           <button
             className={styles.mobilenavtoggle}
-            onClick={toggleMenu}
             aria-expanded={isMenuOpen}
-            aria-controls="main-navigation"
             aria-label={isMenuOpen ? 'close menu' : 'open menu'}
+            onClick={toggleMenu}
           >
             {isMenuOpen ? '✖' : '☰'}
           </button>
 
-          <ul id="main-navigation" className={`${styles.navlinks} ${isMenuOpen ? styles.active : ''}`}>
-            {navLinks.map(link =>
+          {/* links */}
+          <ul className={`${styles.navlinks} ${isMenuOpen ? styles.active : ''}`}>
+            {nav_links.map(link =>
               link.dropdown ? (
                 <li key={link.label}>
-                  <div 
-                    className={styles.dropdowncontainer}
-                    onMouseEnter={() => handleDropdownEnter(link.label)}
-                    onMouseLeave={handleDropdownLeave}
-                  >
-                    <button
-                      type="button"
-                      className={`${styles.dropdowntoggle} ${activeDrop === link.label ? styles.active : ''}`}
-                      aria-haspopup="true"
-                      aria-expanded={activeDrop === link.label}
-                    >
-                      {link.label}
-                    </button>
-
-                    <div
-                      role="menu"
-                      aria-hidden={activeDrop !== link.label}
-                      className={`${styles.dropdownmenu} ${activeDrop === link.label ? styles.show : ''}`}
-                      onMouseEnter={() => clearTimeout(timer.current)}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className={styles.dropdowncontent}>
-                        {link.dropdown.links.map(section => (
-                          <div key={section.title} className={styles.dropdownsection}>
-                            <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
-                            <ul>
-                              {section.items.map(item => (
-                                <li key={item.label}>
-                                  <Link
-                                    href={item.href}
-                                    className={styles.dropdownlink}
-                                    onClick={() => { setIsMenuOpen(false); setActiveDrop(null); }}
-                                  >
-                                    {item.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className={styles.dropdowninfo}>
-                        <div className={styles.dropdowninfocard}>
-                          <div className={styles.askdr}>
-                            <h4>{link.dropdown.info.askDr.title}</h4>
-                            <p>{link.dropdown.info.askDr.description}</p>
-                            <button className={styles.askbutton}>
-                              {link.dropdown.info.askDr.buttonText}
-                            </button>
-                          </div>
-                          <div className={styles.contactinfo}>
-                            <p><strong>Phone:</strong> {link.dropdown.info.contact.phone}</p>
-                            <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
-                            <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <DropdownMenu
+                    link={link}
+                    isActive={activeDrop === link.label}
+                    onEnter={onDropEnter}
+                    onLeave={onDropLeave}
+                    setIsMenuOpen={setIsMenuOpen}
+                    timerRef={timerRef}
+                  />
                 </li>
               ) : (
                 <li key={link.label}>
-                  <Link href={link.href} className={styles.navlink} onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    href={link.href}
+                    className={styles.navlink}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {link.label}
                   </Link>
                 </li>
               )
             )}
 
+            {/* orange pill – identical wrapper to original */}
             <li className={styles.navextra}>
               <div className={styles.pillContainer}>
                 <button
@@ -230,8 +125,9 @@ export default function Header() {
         </nav>
       </div>
 
+      {/* fly‑out */}
       {isFlyoutOpen && (
-        <div 
+        <div
           className={styles.flyoutWrapper}
           onMouseEnter={() => handlePillHover(true)}
           onMouseLeave={() => {
@@ -243,6 +139,7 @@ export default function Header() {
         </div>
       )}
 
+      {/* spacer */}
       <div className={styles.offset} aria-hidden="true" />
     </>
   );
