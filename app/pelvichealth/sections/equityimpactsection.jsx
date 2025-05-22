@@ -1,7 +1,7 @@
 'use client';
 import { Line } from 'react-chartjs-2';
 import { H2, H3, P, UL } from './typography';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 
 export default function EquityImpactSection() {
   return (

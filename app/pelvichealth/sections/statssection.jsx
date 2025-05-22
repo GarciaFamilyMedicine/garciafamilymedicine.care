@@ -1,5 +1,5 @@
 'use client';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import { H2, H3, P } from './typography';
 

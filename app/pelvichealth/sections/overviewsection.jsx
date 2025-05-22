@@ -1,6 +1,6 @@
 'use client';
 import { P } from './typography';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 
 export default function OverviewSection() {
   return (

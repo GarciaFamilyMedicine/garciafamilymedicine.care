@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { H2, P } from './typography';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 
 /* small week bar with two 28‑min blocks */
 const WeekBar = ({ label }) => {

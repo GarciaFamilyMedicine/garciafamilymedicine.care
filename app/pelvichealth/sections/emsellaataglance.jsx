@@ -2,7 +2,7 @@
 
 import { Activity, Droplet, HeartPulse, Check } from 'lucide-react';
 import { H2, H3, P } from './typography';
-import styles        from './pelvichealth.module.css';
+import styles        from '../pelvichealth.module.css';
 
 export default function EmsellaAtAGlance() {
   return (

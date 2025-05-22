@@ -1,5 +1,5 @@
 'use client';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 import { H2, H3, P } from './typography';
 
 const CARDS = [

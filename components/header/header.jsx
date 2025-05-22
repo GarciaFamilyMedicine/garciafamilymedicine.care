@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   const navLinks = [
-    { href: '/#meet', label: 'meet the doctor' },
+    { href: '/meetthedoctor', label: 'meet the doctor' },
     { href: '/#memberships', label: 'memberships' },
     {
       label: 'services',

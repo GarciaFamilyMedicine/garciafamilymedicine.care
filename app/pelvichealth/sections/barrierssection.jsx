@@ -1,6 +1,6 @@
 'use client';
 import { H2, H3, P, UL } from './typography';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 
 export default function BarriersSection() {
   return (

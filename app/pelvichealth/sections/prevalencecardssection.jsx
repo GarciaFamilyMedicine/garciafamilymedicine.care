@@ -1,7 +1,7 @@
 'use client';
 import { Doughnut } from 'react-chartjs-2';
 import { H2 } from './typography';
-import styles from './pelvichealth.module.css';
+import styles from '../pelvichealth.module.css';
 
 /* ---------- colours ---------- */
 const COLORS = {
