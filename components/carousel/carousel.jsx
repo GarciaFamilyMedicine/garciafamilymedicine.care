@@ -6,38 +6,78 @@ import Image from 'next/image';
 
 /* fixed header = 25 px topBar + 60 px navbar */
 const HEADER = 85;
+const ASPECT_RATIO = 9 / 16; // 16 ∶ 9 → height / width
 
+// • add `fit` property: 'contain' for reclaim.png, 'cover' for normal banners
 const slides = [
-  { src: '/images/reclaim.png',                                            alt: 'Reclaim your confidence, pelvic health recovery revent' },
-  { src: '/images/affordable-family-healthcare-clinic-91.png',             alt: 'Affordable family healthcare clinic – smiling physician with patient' },
-  { src: '/images/dot-medical-certification-garcia-family-medicine-04.png', alt: 'DOT medical certification services – professional exam room'         },
-  { src: '/images/Home+Page+Banners-02.png',                                alt: 'Direct primary care membership banner – no insurance hassles'         },
-  { src: '/images/Home+Page+Banners-03.png',                                alt: 'Mental‑health support banner – compassionate counseling'              },
-  { src: '/images/Home+Page+Banners-04.png',                                alt: 'Weight‑management program banner – healthy lifestyle'                 },
-  { src: '/images/Home+Page+Banners-05.png',                                alt: 'Pelvic‑health treatment banner – Emsella chair'                       },
-  { src: '/images/Home+Page+Banners-06.png',                                alt: 'Veteran services banner – caring for those who served'                },
+  {
+    src: '/images/reclaim.png',
+    alt: 'Reclaim your confidence, pelvic health recovery event',
+    fit: 'contain',               // special handling
+  },
+  {
+    src: '/images/affordable-family-healthcare-clinic-91.png',
+    alt: 'Affordable family healthcare clinic – smiling physician with patient',
+    fit: 'cover',
+  },
+  {
+    src: '/images/dot-medical-certification-garcia-family-medicine-04.png',
+    alt: 'DOT medical certification services – professional exam room',
+    fit: 'cover',
+  },
+  {
+    src: '/images/Home+Page+Banners-02.png',
+    alt: 'Direct primary care membership banner – no insurance hassles',
+    fit: 'cover',
+  },
+  {
+    src: '/images/Home+Page+Banners-03.png',
+    alt: 'Mental‑health support banner – compassionate counseling',
+    fit: 'cover',
+  },
+  {
+    src: '/images/Home+Page+Banners-04.png',
+    alt: 'Weight‑management program banner – healthy lifestyle',
+    fit: 'cover',
+  },
+  {
+    src: '/images/Home+Page+Banners-05.png',
+    alt: 'Pelvic‑health treatment banner – Emsella chair',
+    fit: 'cover',
+  },
+  {
+    src: '/images/Home+Page+Banners-06.png',
+    alt: 'Veteran services banner – caring for those who served',
+    fit: 'cover',
+  },
 ];
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [viewport, setViewport] = useState({ w: 0, h: 0 });
 
-  /* switch slides every 8 s */
+  /* auto‑advance every 8 s */
   useEffect(() => {
-    const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 8000);
+    const id = setInterval(() => {
+      setCurrent((c) => (c + 1) % slides.length);
+    }, 8000);
     return () => clearInterval(id);
   }, []);
 
-  /* detect mobile width < 640 px for responsive height */
+  /* track viewport size for responsive height */
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
-    check();                        // initial
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    const handle = () =>
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
+    handle();                                // initial
+    window.addEventListener('resize', handle);
+    return () => window.removeEventListener('resize', handle);
   }, []);
 
-  /* dynamic height calculation */
-  const height = isMobile ? 240 : `calc(100vh - ${HEADER}px)`;
+  /* height: desktop → full viewport minus header; else 16 ∶ 9 ratio */
+  const height =
+    viewport.w >= 1024
+      ? viewport.h - HEADER
+      : Math.round(viewport.w * ASPECT_RATIO);
 
   return (
     <section
@@ -53,7 +93,10 @@ export default function Carousel() {
           fill
           priority={i === 0}
           sizes="100vw"
-          className={`object-cover object-center transition-opacity duration-1000 ease-in-out ${
+          // dynamic object‑fit per slide
+          className={`${
+            slide.fit === 'contain' ? 'object-contain' : 'object-cover'
+          } object-center transition-opacity duration-1000 ease-in-out ${
             i === current ? 'opacity-100' : 'opacity-0'
           }`}
         />
@@ -66,7 +109,9 @@ export default function Carousel() {
             key={i}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setCurrent(i)}
-            className={`h-3 w-3 rounded-full ${i === current ? 'bg-white' : 'bg-white/50'}`}
+            className={`h-3 w-3 rounded-full transition-colors ${
+              i === current ? 'bg-white' : 'bg-white/50 hover:bg-white/80'
+            }`}
           />
         ))}
       </div>
