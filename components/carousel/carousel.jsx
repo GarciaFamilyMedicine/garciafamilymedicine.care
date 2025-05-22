@@ -6,29 +6,37 @@ import Image from 'next/image';
 
 /* fixed header = 25 px topBar + 60 px navbar */
 const HEADER = 85;
-const ASPECT_RATIO = 9 / 16; // 16 ∶ 9 → height / width
+const ASPECT_RATIO = 9 / 16;       // 16 ∶ 9 ratio  (height = w * 9/16)
+const DEFAULT_URL = 'https://forms.cloud.microsoft/r/PmYN6fxyAT';
 
-// • add `fit` property: 'contain' for reclaim.png, 'cover' for normal banners
+/*--------------------------------------------------------------------------
+  Each slide can now set its own `href`.  If omitted, we fall back to
+  DEFAULT_URL, so you never break the link logic while you’re staging URLs.
+----------------------------------------------------------------------------*/
 const slides = [
   {
     src: '/images/reclaim.png',
     alt: 'Reclaim your confidence, pelvic health recovery event',
-    fit: 'contain',               // special handling
+    fit: 'contain',
+    href: DEFAULT_URL,             // ← change later
   },
   {
     src: '/images/affordable-family-healthcare-clinic-91.png',
     alt: 'Affordable family healthcare clinic – smiling physician with patient',
     fit: 'cover',
+    href: DEFAULT_URL,             // ← change later
   },
   {
     src: '/images/dot-medical-certification-garcia-family-medicine-04.png',
     alt: 'DOT medical certification services – professional exam room',
     fit: 'cover',
+    href: DEFAULT_URL,             // ← change later
   },
   {
     src: '/images/Home+Page+Banners-02.png',
     alt: 'Direct primary care membership banner – no insurance hassles',
     fit: 'cover',
+    // href omitted → will use DEFAULT_URL automatically
   },
   {
     src: '/images/Home+Page+Banners-03.png',
@@ -85,22 +93,35 @@ export default function Carousel() {
       className="relative w-screen overflow-hidden"
       style={{ height }}
     >
-      {slides.map((slide, i) => (
-        <Image
-          key={slide.src}
-          src={slide.src}
-          alt={slide.alt}
-          fill
-          priority={i === 0}
-          sizes="100vw"
-          // dynamic object‑fit per slide
-          className={`${
-            slide.fit === 'contain' ? 'object-contain' : 'object-cover'
-          } object-center transition-opacity duration-1000 ease-in-out ${
-            i === current ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
-      ))}
+      {slides.map((slide, i) => {
+        const link = slide.href || DEFAULT_URL;  // fallback logic
+        return (
+          <a
+            key={slide.src}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`absolute inset-0 block transition-opacity duration-1000 ease-in-out ${
+              i === current ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+            aria-label={slide.alt}
+          >
+            {/* anchor is relative so Image fill works */}
+            <div className="relative h-full w-full">
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                sizes="100vw"
+                priority={i === 0}
+                className={`${
+                  slide.fit === 'contain' ? 'object-contain' : 'object-cover'
+                } object-center`}
+              />
+            </div>
+          </a>
+        );
+      })}
 
       {/* slide indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
