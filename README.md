@@ -1,3 +1,30 @@
+# Garcia Family Medicine Web Project – To‑Do List
+
+## 🔲 Navigation & Layout
+- [ ] **Flyout menu:** Add links to hashtag buttons (so they open relevant sections or external resources).
+- [ ] **Flyout menu:** Improve mobile formatting (center content more vertically and horizontally).
+- [ ] **Pill button (mobile):** Fix alignment for true flex centering between logo and sandwich/hamburger menu.
+- [ ] **Header nav:** Add “News” button.
+- [ ] **Header nav:** Combine News and Events buttons (with dropdown or column layout for both news and event links).
+- [ ] **Header polish:** Finish layout, ensure buttons and links are consistent and functional.
+
+## 🔲 Content & Features
+- [ ] **Blog system:** Install and integrate a simple blogging/news system (consider options like MDX, Notion CMS, or Netlify CMS).
+- [ ] **Patient docs:** Add section for New Patient & Established Patient documents (printable/downloadable before appointments).
+- [ ] **Newsletter signup:** Connect input box to actual newsletter system (preferably Microsoft Forms/List or another integrated solution).
+- [ ] **Input linking:** Wire up all relevant input boxes to backend or email notification as appropriate.
+
+## 🔲 Internationalization & Accessibility
+- [ ] **i18n:** Install and configure for Spanish (with language switcher).
+- [ ] **Images with text:** Implement logic to swap images containing text based on selected translation.
+- [ ] **SEO/Best practices:** Audit headers, meta tags, semantic HTML, and ARIA attributes.
+- [ ] **Accessibility polish:** Keyboard navigation, color contrast, skip links, focus outlines, etc.
+
+## 🔲 General Polish & Fixes
+- [ ] **Button linking:** Ensure all buttons in header, flyout, and nav link to correct pages or perform correct actions.
+- [ ] **General layout:** Continue polish, responsive improvements, and bug fixes as needed.
+
+
 # Garcia Family Medicine Next.js Frontend Development Guide
 
 Welcome to the `garciafamilymedicine.care` repository! This is a Next.js-based frontend application for [garciafamilymedicine.care](https://garciafamilymedicine.care), delivering a compassionate, faith-driven healthcare experience for patients in Blue Springs, MO, and the Kansas City metro area. Built with modern web technologies, it’s designed for deployment to Azure Static Web Apps.
