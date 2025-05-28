@@ -23,8 +23,10 @@
 ## 🔲 General Polish & Fixes
 - [ ] **Button linking:** Ensure all buttons in header, flyout, and nav link to correct pages or perform correct actions.
 - [ ] **General layout:** Continue polish, responsive improvements, and bug fixes as needed.
-
-
+---
+---
+---
+---
 # Garcia Family Medicine Next.js Frontend Development Guide
 
 Welcome to the `garciafamilymedicine.care` repository! This is a Next.js-based frontend application for [garciafamilymedicine.care](https://garciafamilymedicine.care), delivering a compassionate, faith-driven healthcare experience for patients in Blue Springs, MO, and the Kansas City metro area. Built with modern web technologies, it’s designed for deployment to Azure Static Web Apps.
