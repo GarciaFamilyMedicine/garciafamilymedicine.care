@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 import { nav_links, top_buttons } from './navdata';
 import DropdownMenu from './dropdownmenu';
-import ReclaimConfidenceFlyout from './reclaimconfidenceflyout';
+import ReclaimConfidenceFlyout from './reclaimconfidenceflyout'; // FIX: path is local, not ../
 import styles from './header.module.css';
 
-// The pill button, extracted for reusability (can be in its own file if needed)
+// Pill Button as a reusable component
 function ReclaimConfidenceButton({ onClick, ariaExpanded }) {
   return (
     <button
