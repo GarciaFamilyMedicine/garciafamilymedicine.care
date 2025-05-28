@@ -17,7 +17,7 @@ const slides = [
   {
     src: '/images/reclaim.png',
     alt: 'Reclaim your confidence, pelvic health recovery event',
-    fit: 'contain',
+    fit: 'cover',
     href: DEFAULT_URL,             // ← change later
   },
   {
