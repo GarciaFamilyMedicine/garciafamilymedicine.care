@@ -1,11 +1,14 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './reclaimconfidence.module.css';
 
 export default function ReclaimConfidenceFlyout({ onClose }) {
   const closeButtonRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
@@ -17,7 +20,7 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
     closeButtonRef.current?.focus();
   }, []);
 
-  return (
+  const flyout = (
     <>
       <div
         id="confidence-flyout"
@@ -189,4 +192,9 @@ export default function ReclaimConfidenceFlyout({ onClose }) {
       />
     </>
   );
+
+  if (mounted) {
+    return createPortal(flyout, document.body);
+  }
+  return null;
 }

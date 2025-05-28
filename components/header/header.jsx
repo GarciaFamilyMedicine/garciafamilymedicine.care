@@ -6,31 +6,16 @@ import Link from 'next/link';
 
 import { nav_links, top_buttons } from './navdata';
 import DropdownMenu from './dropdownmenu';
-import ReclaimConfidenceFlyout from './reclaimconfidenceflyout'; // FIX: path is local, not ../
+import ReclaimConfidenceFlyout from './reclaimconfidenceflyout';
+import PillButton from './pillbutton';
 import styles from './header.module.css';
-
-// Pill Button as a reusable component
-function ReclaimConfidenceButton({ onClick, ariaExpanded }) {
-  return (
-    <button
-      className={styles.pillButton}
-      onClick={onClick}
-      aria-haspopup="dialog"
-      aria-expanded={ariaExpanded}
-      aria-controls="confidence-flyout"
-      type="button"
-    >
-      Reclaim Your Confidence!
-    </button>
-  );
-}
+import pillStyles from './pillbutton.module.css'; // <-- Use pill styles for alignment
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
   const [activeDrop, setActiveDrop] = useState(null);
   const timerRef = useRef(null);
-  const hoverTimeout = useRef();
   const [isMobile, setIsMobile] = useState(false);
 
   // Responsive check
@@ -72,18 +57,6 @@ export default function Header() {
   const onDropEnter = (label) => { clearTimeout(timerRef.current); setActiveDrop(label); };
   const onDropLeave = () => { timerRef.current = setTimeout(() => setActiveDrop(null), 300); };
 
-  // Flyout hover/focus logic (desktop only)
-  const handlePillHover = (open) => {
-    if (typeof window !== 'undefined' && window.innerWidth > 768) {
-      clearTimeout(hoverTimeout.current);
-      if (open) {
-        setIsFlyoutOpen(true);
-      } else {
-        hoverTimeout.current = setTimeout(() => setIsFlyoutOpen(false), 180);
-      }
-    }
-  };
-
   // Hamburger pill (mobile) click
   const handleMobilePillClick = () => setIsFlyoutOpen((v) => !v);
 
@@ -119,10 +92,13 @@ export default function Header() {
           {/* pill (mobile) - centered */}
           {isMobile && (
             <div className={styles.mobilePillWrapper}>
-              <ReclaimConfidenceButton
+              <PillButton
                 onClick={handleMobilePillClick}
                 ariaExpanded={isFlyoutOpen}
-              />
+                ariaControls="confidence-flyout"
+              >
+                Reclaim Your Confidence!
+              </PillButton>
             </div>
           )}
 
@@ -174,22 +150,19 @@ export default function Header() {
               )
             )}
 
-            {/* orange pill (desktop) */}
+            {/* orange pill (desktop, always right aligned) */}
             {!isMobile && (
-              <li className={styles.navextra}>
-                <div
-                  className={styles.pillFlyoutWrapper}
-                  onMouseEnter={() => handlePillHover(true)}
-                  onMouseLeave={() => handlePillHover(false)}
-                >
-                  <ReclaimConfidenceButton
-                    onClick={() => setIsFlyoutOpen(!isFlyoutOpen)}
+              <li className={pillStyles.navextra}>
+                <div className={pillStyles.pillFlyoutWrapper}>
+                  <PillButton
+                    onClick={() => setIsFlyoutOpen((v) => !v)}
                     ariaExpanded={isFlyoutOpen}
-                  />
+                    ariaControls="confidence-flyout"
+                  >
+                    Reclaim Your Confidence!
+                  </PillButton>
                   {isFlyoutOpen && (
-                    <div className={styles.flyoutWrapper}>
-                      <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
-                    </div>
+                    <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
                   )}
                 </div>
               </li>
@@ -198,11 +171,9 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Fly-out (mobile) */}
+      {/* SINGLE FLYOUT: Mobile only, no wrapper */}
       {isFlyoutOpen && isMobile && (
-        <div className={styles.flyoutWrapperMobile}>
-          <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
-        </div>
+        <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
       )}
 
       <div className={styles.offset} aria-hidden="true" />

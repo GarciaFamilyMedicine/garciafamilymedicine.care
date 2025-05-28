@@ -1,0 +1,77 @@
+.pillButton {
+  background: #ff9100;
+  border: 2px solid #fffbe7;
+  box-shadow: 0 2px 8px rgba(255,145,0,0.10), 0 0 0 2.5px #ffb74d99;
+  border-radius: 9999px;
+  padding: 6px 24px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px; /* <<--- Make sure THIS is 12px */
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, font-size 0.2s, width 0.2s, box-shadow 0.14s, border 0.14s;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; /* This helps it center in flex parent */
+  min-width: 110px;
+  max-width: 230px;
+  width: auto;
+  outline: none;
+}
+
+.pillButton:hover,
+.pillButton:focus-visible {
+  background: #ff6d00;
+  outline: 2px solid #ffe4b5;
+  border: 2px solid #fff3e0;
+  box-shadow: 0 4px 18px rgba(255,145,0,0.18), 0 0 0 2.5px #ffd180cc;
+}
+
+/* Navbar alignment helpers */
+.navextra {
+  margin-left: auto;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* Center in available space */
+  background: var(--hover-blue, #1d539f);
+  flex: 0 0 auto;
+  text-align: initial;
+}
+
+.pillFlyoutWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center pill button horizontally */
+  height: 100%;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1200px) {
+  .pillButton {
+    font-size: 1.07rem !important;
+    padding: 12px 18px !important;
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .navextra { padding-right: 0; width: 100%; justify-content: center; }
+}
+@media (max-width: 768px) {
+  .pillButton {
+    font-size: 1.13rem !important;
+    padding: 12px 0 !important;
+    width: 90vw;
+    max-width: 320px;
+    min-width: 120px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .navextra { padding-right: 0; width: 100%; justify-content: center; }
+}
