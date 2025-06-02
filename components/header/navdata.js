@@ -29,7 +29,6 @@ export const nav_links = [
           ],
         },
       ],
-      // ⛔ Remove hardcoded calendar reference here
     },
   },
 
@@ -47,7 +46,16 @@ export const nav_links = [
         {
           title: 'specialized care',
           items: [
-            { label: 'pelvic health', href: '/pelvichealth' },
+            {
+              label: 'pelvic health',
+              href: '/pelvichealth',
+              submenu: [
+                {
+                  label: 'The Royal Tingle',
+                  href: '/pelvichealth#royal-tingle',
+                },
+              ],
+            },
             { label: 'weight management', href: '/#weight-management' },
           ],
         },

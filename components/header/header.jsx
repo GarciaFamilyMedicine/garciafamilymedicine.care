@@ -54,8 +54,13 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen((p) => !p);
 
   // Dropdown menu hover logic (desktop only)
-  const onDropEnter = (label) => { clearTimeout(timerRef.current); setActiveDrop(label); };
-  const onDropLeave = () => { timerRef.current = setTimeout(() => setActiveDrop(null), 300); };
+  const onDropEnter = (label) => {
+    clearTimeout(timerRef.current);
+    setActiveDrop(label);
+  };
+  const onDropLeave = () => {
+    timerRef.current = setTimeout(() => setActiveDrop(null), 300);
+  };
 
   // Hamburger pill (mobile) click
   const handleMobilePillClick = () => setIsFlyoutOpen((v) => !v);
@@ -86,7 +91,13 @@ export default function Header() {
               setIsFlyoutOpen(false);
             }}
           >
-            <Image src="/images/logo.png" alt="garcia family medicine logo" width={85} height={85} priority />
+            <Image
+              src="/images/logo.png"
+              alt="garcia family medicine logo"
+              width={85}
+              height={85}
+              priority
+            />
           </Link>
 
           {/* pill (mobile) - centered */}
@@ -125,9 +136,9 @@ export default function Header() {
 
           {/* links */}
           <ul className={`${styles.navlinks} ${isMenuOpen ? styles.active : ''}`}>
-            {nav_links.map((link) =>
+            {nav_links.map((link, index) =>
               link.dropdown ? (
-                <li key={link.label}>
+                <li key={link.label || `dropdown-${index}`}>
                   <DropdownMenu
                     link={link}
                     isActive={activeDrop === link.label}

@@ -13,6 +13,11 @@ export default function DropdownMenu({
   setIsMenuOpen,
   timerRef,
 }) {
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+    onLeave();
+  };
+
   return (
     <div
       className={styles.dropdowncontainer}
@@ -36,34 +41,63 @@ export default function DropdownMenu({
         onMouseEnter={() => clearTimeout(timerRef.current)}
         onMouseLeave={onLeave}
       >
-        {/* columns 1–2: links */}
+        {/* columns 1–2: links (or 1–3 if Events) */}
         <div className={styles.dropdowncontent}>
-          {link.dropdown.links.map((section) => (
-            <div key={section.title} className={styles.dropdownsection}>
-              <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
+          {link.label === 'Events' && (
+            <div className={styles.dropdownsection}>
+              <h3 className={styles.dropdownsectiontitle}>News</h3>
               <ul>
-                {section.items.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className={styles.dropdownlink}
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        onLeave();
-                      }}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/news"
+                    className={styles.dropdownlink}
+                    onClick={handleLinkClick}
+                  >
+                    View All News
+                  </Link>
+                </li>
               </ul>
             </div>
-          ))}
+          )}
+
+          {link.dropdown.links.map((section) =>
+            section.title === 'past highlights' && link.label === 'Events'
+              ? null
+              : (
+                <div key={section.title} className={styles.dropdownsection}>
+                  <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
+                  <ul>
+                    {section.items.map((item) => (
+                      <li key={item.label}>
+                        <Link
+                          href={item.href}
+                          className={styles.dropdownlink}
+                          onClick={handleLinkClick}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+          )}
         </div>
 
-        {/* column 3: calendar (for Events) or info card (for all others) */}
+        {/* column 3: calendar or info card */}
         {link.label === 'Events' ? (
-          <Calendar {...getcalendar(0)} />
+          <div className={styles.dropdowninfo}>
+            <Calendar {...getcalendar(0)} />
+            <div>
+              <Link
+                href="/events/past"
+                onClick={handleLinkClick}
+                className={styles.pasthighlightslink}
+              >
+                View past highlights
+              </Link>
+            </div>
+          </div>
         ) : (
           <div className={styles.dropdowninfo}>
             <div className={styles.dropdowninfocard}>
