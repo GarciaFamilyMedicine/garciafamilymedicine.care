@@ -2,8 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import styles  from './pelvichealth.module.css';
-import Header  from '../../components/header/header.jsx';
-import Footer  from '../../components/footer/footer.jsx';
+import Header  from '../../../components/header/header.jsx';
+import Footer  from '../../../components/footer/footer.jsx';
 
 /* hero */
 const IntroSection = dynamic(() => import('./sections/introsection'), { ssr: false });

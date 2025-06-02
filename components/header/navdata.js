@@ -1,69 +1,57 @@
 // navdata.js
 /* purely data – no React runtime */
 
+// Top bar quick links/buttons
 export const top_buttons = [
   { label: 'emergency line' },
   { label: 'patient portal' },
   { label: 'en' },
 ];
 
+// Main navigation links structure
 export const nav_links = [
   { href: '/meetthedoctor', label: 'Meet the Doctor' },
 
   {
     label: 'News & Events',
     dropdown: {
-      links: [
-        {
-          title: 'upcoming events',
-          items: [
-            { label: 'Pelvic Health Recovery', href: '/events/pelvic-health-recovery', date: 7 },
-            { label: 'Community Flu-Shot Clinic', href: '/events/flu-clinic', date: 21 },
-          ],
-        },
-        {
-          title: 'past highlights',
-          items: [
-            { label: 'Healthy Living Webinar', href: '/events/healthy-living-webinar' },
-            { label: 'Open House 2024', href: '/events/open-house-2024' },
-          ],
-        },
-      ],
+      // Will be dynamically populated
+      isDynamic: true
     },
   },
 
   {
-    label: 'Services',
+    label: 'Patient Care Essentials',
     dropdown: {
       links: [
         {
-          title: 'core medical services',
+          title: 'Specialized Care',
           items: [
-            { label: 'chronic disease management', href: '/#chronic-disease' },
-            { label: 'preventive care', href: '/#preventive-care' },
+            { label: 'Pelvic Health', href: '/services/pelvichealth' },
+            { label: 'Department of Transportation Certifications', href: '/services/dot-certifications' },
+            { label: 'Independent Medical Examinations', href: '/services/independent-medical-examinations' },
+            { label: 'Medicare Services', href: '/services/medicare' },
+            { label: 'Mental Health Services', href: '/services/mental-health' },
+            { label: 'Pain Management Services', href: '/services/pain-management' },
+            { label: 'Telehealth Service', href: '/services/telehealth' },
+            { label: 'Veteran Services', href: '/services/veteran-services' },
+            { label: 'Weight Management Services', href: '/services/weight-management' }
           ],
         },
         {
-          title: 'specialized care',
+          title: 'Core Medical Services',
           items: [
             {
-              label: 'pelvic health',
-              href: '/pelvichealth',
-              submenu: [
-                {
-                  label: 'The Royal Tingle',
-                  href: '/pelvichealth#royal-tingle',
-                },
-              ],
-            },
-            { label: 'weight management', href: '/#weight-management' },
+              label: 'CoreLift™ Pelvic Health Program',
+              href: '/services/pelvichealth/corelift'
+            }
           ],
         },
       ],
       info: {
         askDr: {
           title: 'Have questions for Dr. Garcia?',
-          description: 'Submit your confidential questions through our secure portal and get expert advice.',
+          description: 'Submit your confidential questions through our secure portal. Get expert advice directly from Dr. Garcia.',
           buttonText: 'Ask Dr. Garcia',
         },
         contact: {
@@ -81,7 +69,9 @@ export const nav_links = [
       links: [
         {
           title: 'our partners',
-          items: [{ label: "gigi's safehouse", href: '/#gigi-safehouse' }],
+          items: [
+            { label: "gigi's safehouse", href: '/#gigi-safehouse' },
+          ],
         },
       ],
       info: {

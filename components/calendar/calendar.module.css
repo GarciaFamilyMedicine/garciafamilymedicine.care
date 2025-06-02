@@ -149,3 +149,11 @@
   visibility: visible;
   opacity: 1;
 }
+/* Update your dropdownmenu.module.css */
+.eventDate {
+  margin-left: 12px;
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  font-weight: 400;
+  white-space: nowrap; /* Prevent date from wrapping */
+}
