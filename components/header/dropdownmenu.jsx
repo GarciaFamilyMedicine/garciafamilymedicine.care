@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Calendar from '../calendar/calendar';
-import { getcalendar } from '../calendar/calendar-events';
+import { getcalendar } from '../calendar/calendar';
 import styles from './dropdownmenu.module.css';
 
 export default function DropdownMenu({
