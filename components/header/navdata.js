@@ -7,17 +7,6 @@ export const top_buttons = [
   { label: 'en' },
 ];
 
-/* July 2025 one-off calendar; adjust anytime */
-const july_2025 = {
-  monthLabel: 'July 2025',
-  firstWeekday: 2, // 0 = Sun, 1 = Mon, 2 = Tue …
-  daysInMonth: 31,
-  events: {
-    7: 'Pelvic Health Recovery',
-    21: 'Flu-Shot Clinic',
-  },
-};
-
 export const nav_links = [
   { href: '/meetthedoctor', label: 'Meet the Doctor' },
 
@@ -40,7 +29,7 @@ export const nav_links = [
           ],
         },
       ],
-      calendar: july_2025,
+      // ⛔ Remove hardcoded calendar reference here
     },
   },
 

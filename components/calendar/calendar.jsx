@@ -1,26 +1,61 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import styles from './calendar.module.css';
+import { getcalendar, geteventlink } from './calendar-events';
 
-/**
- * Reusable mini‑calendar.
- *
- * Props:
- *  - monthLabel     String   e.g. "July 2025"
- *  - firstWeekday   Number   0 = Sun, 1 = Mon, …
- *  - daysInMonth    Number
- *  - events         Object   { 7: "Event title", 21: "Another" }
- */
-export default function Calendar({ monthLabel, firstWeekday, daysInMonth, events = {} }) {
+export default function Calendar() {
+  const [offset, setOffset] = useState(0); // 0 = current month, 1 = next month only
+
+  const calendar = getcalendar(offset);
+  const {
+    monthLabel,
+    firstWeekday,
+    daysInMonth,
+    events,
+    year,
+    monthIndex,
+  } = calendar;
+
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+
+  function isToday(day) {
+    const today = new Date();
+    return (
+      today.getFullYear() === year &&
+      today.getMonth() === monthIndex &&
+      today.getDate() === day
+    );
+  }
 
   return (
     <div className={styles.calendarWrapper}>
-      <div className={styles.calendarHeader}>{monthLabel}</div>
+      <div className={styles.calendarHeader}>
+        {/* ← Left arrow (disabled if offset = 0) */}
+        <button
+          className={styles.navButton}
+          onClick={() => setOffset((o) => Math.max(0, o - 1))}
+          disabled={offset === 0}
+        >
+          ←
+        </button>
+
+        <span>{monthLabel}</span>
+
+        {/* → Right arrow (only allow up to offset 1) */}
+        <button
+          className={styles.navButton}
+          onClick={() => setOffset((o) => Math.min(1, o + 1))}
+          disabled={offset === 1}
+        >
+          →
+        </button>
+      </div>
 
       <div className={styles.calendarGrid}>
-        {['S','M','T','W','T','F','S'].map((d, i) => (
-          <div key={`${d}-${i}`} className={styles.weekday}>{d}</div>
+        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
+          <div key={`weekday-${i}`} className={styles.weekday}>{d}</div>
         ))}
 
         {Array.from({ length: firstWeekday }).map((_, i) => (
@@ -29,13 +64,29 @@ export default function Calendar({ monthLabel, firstWeekday, daysInMonth, events
 
         {days.map((day) => {
           const isEvent = day in events;
-          return (
-            <div
-              key={`day-${day}`}
-              className={`${styles.calendarDay} ${isEvent ? styles.eventDay : ''}`}
-            >
-              {day}
+          const href = geteventlink(day, year, monthIndex);
+          const today = isToday(day);
+
+          const classNames = [
+            styles.calendarDay,
+            isEvent ? styles.eventDay : '',
+            today ? styles.today : ''
+          ].join(' ').trim();
+
+          const content = (
+            <div className={classNames}>
+              <span className={today ? styles.todayCircle : ''}>{day}</span>
               {isEvent && <span className={styles.tooltip}>{events[day]}</span>}
+            </div>
+          );
+
+          return (
+            <div key={`day-${day}`}>
+              {isEvent && href ? (
+                <Link href={href}>{content}</Link>
+              ) : (
+                content
+              )}
             </div>
           );
         })}

@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Calendar from '../calendar/calendar'; // If you have a calendar component
+import Calendar from '../calendar/calendar';
+import { getcalendar } from '../calendar/calendar-events';
 import styles from './dropdownmenu.module.css';
 
 export default function DropdownMenu({
@@ -12,9 +13,6 @@ export default function DropdownMenu({
   setIsMenuOpen,
   timerRef,
 }) {
-  // Mobile: Allow collapse/expand with click
-  // If you want to support mobile expand/collapse, pass more props here as needed
-
   return (
     <div
       className={styles.dropdowncontainer}
@@ -63,9 +61,9 @@ export default function DropdownMenu({
           ))}
         </div>
 
-        {/* column 3: calendar or info card */}
-        {link.dropdown.calendar ? (
-          <Calendar {...link.dropdown.calendar} />
+        {/* column 3: calendar (for Events) or info card (for all others) */}
+        {link.label === 'Events' ? (
+          <Calendar {...getcalendar(0)} />
         ) : (
           <div className={styles.dropdowninfo}>
             <div className={styles.dropdowninfocard}>
