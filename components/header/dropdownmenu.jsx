@@ -18,6 +18,19 @@ export default function DropdownMenu({
     onLeave();
   };
 
+  // Handle simple links (without dropdowns)
+  if (!link.dropdown) {
+    return (
+      <Link 
+        href={link.href} 
+        className={styles.navLink}
+        onClick={handleLinkClick}
+      >
+        {link.label}
+      </Link>
+    );
+  }
+
   return (
     <div
       className={styles.dropdowncontainer}
@@ -41,9 +54,9 @@ export default function DropdownMenu({
         onMouseEnter={() => clearTimeout(timerRef.current)}
         onMouseLeave={onLeave}
       >
-        {/* columns 1–2: links (or 1–3 if Events) */}
+        {/* Columns 1-2: Links (or 1-3 if Events) */}
         <div className={styles.dropdowncontent}>
-          {link.label === 'Events' && (
+          {link.label === 'News & Events' && (
             <div className={styles.dropdownsection}>
               <h3 className={styles.dropdownsectiontitle}>News</h3>
               <ul>
@@ -60,14 +73,14 @@ export default function DropdownMenu({
             </div>
           )}
 
-          {link.dropdown.links.map((section) =>
-            section.title === 'past highlights' && link.label === 'Events'
+          {link.dropdown.links?.map((section) =>
+            section.title === 'past highlights' && link.label === 'News & Events'
               ? null
               : (
                 <div key={section.title} className={styles.dropdownsection}>
                   <h3 className={styles.dropdownsectiontitle}>{section.title}</h3>
                   <ul>
-                    {section.items.map((item) => (
+                    {section.items?.map((item) => (
                       <li key={item.label}>
                         <Link
                           href={item.href}
@@ -84,8 +97,8 @@ export default function DropdownMenu({
           )}
         </div>
 
-        {/* column 3: calendar or info card */}
-        {link.label === 'Events' ? (
+        {/* Column 3: Calendar or Info Card */}
+        {link.label === 'News & Events' ? (
           <div className={styles.dropdowninfo}>
             <Calendar {...getcalendar(0)} />
             <div>
@@ -99,28 +112,28 @@ export default function DropdownMenu({
             </div>
           </div>
         ) : (
-          <div className={styles.dropdowninfo}>
-            <div className={styles.dropdowninfocard}>
-              <div className={styles.askdr}>
-                <h4>{link.dropdown.info.askDr.title}</h4>
-                <p>{link.dropdown.info.askDr.description}</p>
-                <button className={styles.askbutton}>
-                  {link.dropdown.info.askDr.buttonText}
-                </button>
-              </div>
-              <div className={styles.contactinfo}>
-                <p>
-                  <strong>Phone:</strong> {link.dropdown.info.contact.phone}
-                </p>
-                <p>
-                  <strong>Hours:</strong> {link.dropdown.info.contact.hours}
-                </p>
-                <p>
-                  <strong>Location:</strong> {link.dropdown.info.contact.location}
-                </p>
+          link.dropdown.info && (
+            <div className={styles.dropdowninfo}>
+              <div className={styles.dropdowninfocard}>
+                {link.dropdown.info.askDr && (
+                  <div className={styles.askdr}>
+                    <h4>{link.dropdown.info.askDr.title}</h4>
+                    <p>{link.dropdown.info.askDr.description}</p>
+                    <button className={styles.askbutton}>
+                      {link.dropdown.info.askDr.buttonText}
+                    </button>
+                  </div>
+                )}
+                {link.dropdown.info.contact && (
+                  <div className={styles.contactinfo}>
+                    <p><strong>Phone:</strong> {link.dropdown.info.contact.phone}</p>
+                    <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
+                    <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          )
         )}
       </div>
     </div>

@@ -11,7 +11,7 @@ export const nav_links = [
   { href: '/meetthedoctor', label: 'Meet the Doctor' },
 
   {
-    label: 'Events',
+    label: 'News & Events',
     dropdown: {
       links: [
         {
