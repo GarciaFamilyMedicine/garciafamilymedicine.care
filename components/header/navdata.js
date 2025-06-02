@@ -19,10 +19,10 @@ const july_2025 = {
 };
 
 export const nav_links = [
-  { href: '/meetthedoctor', label: 'meet the doctor' },
+  { href: '/meetthedoctor', label: 'Meet the Doctor' },
 
   {
-    label: 'events',
+    label: 'Events',
     dropdown: {
       links: [
         {
@@ -45,7 +45,7 @@ export const nav_links = [
   },
 
   {
-    label: 'services',
+    label: 'Services',
     dropdown: {
       links: [
         {
@@ -79,7 +79,7 @@ export const nav_links = [
   },
 
   {
-    label: 'affiliates',
+    label: 'Affiliates',
     dropdown: {
       links: [
         {
@@ -102,6 +102,6 @@ export const nav_links = [
     },
   },
 
-  { href: '/#faqs', label: 'faqs' },
-  { href: '/#contact', label: 'contact' },
+  { href: '/#faqs', label: 'FAQs' },
+  { href: '/#contact', label: 'Contact' },
 ];
