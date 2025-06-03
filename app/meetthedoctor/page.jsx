@@ -19,7 +19,7 @@ export default function Page() {
               {/* left column – portrait + pull quotes */}
               <div className={styles.leftCol}>
                 <Image
-                  src="/images/dr-garcia-with-baby.jpg"   /* replace with real path */
+                  src="/images/doctor-tess-garcia-blue-springs.jpg"   /* replace with real path */
                   alt="Dr. Tess Garcia caring for an infant"
                   width={400}
                   height={400}
