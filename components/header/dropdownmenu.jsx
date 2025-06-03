@@ -34,6 +34,7 @@ export default function DropdownMenu({
   // Special case: News & Events - use dynamic layout
   const isEvents = link.label === 'News & Events';
   const eventsData = isEvents ? getEventsData() : null;
+  const currentYear = new Date().getFullYear();
 
   return (
     <div
@@ -60,7 +61,7 @@ export default function DropdownMenu({
       >
         {/* Three columns, each with its own scrollable section */}
         <div className={styles.dropdowncontent}>
-          {/* LEFT COLUMN */}
+          {/* LEFT COLUMN - NEWS */}
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
             {isEvents ? (
               <>
@@ -119,27 +120,47 @@ export default function DropdownMenu({
             )}
           </div>
 
-          {/* MIDDLE COLUMN */}
+          {/* MIDDLE COLUMN - UPCOMING EVENTS */}
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
             {isEvents ? (
               <>
                 <h3 className={styles.dropdownsectiontitle}>Upcoming Events</h3>
                 <ul>
                   {eventsData?.upcomingEvents?.length ? (
-                    eventsData.upcomingEvents.map((event, eventIndex) => (
-                      <li key={event.label + '-' + eventIndex}>
-                        <Link
-                          href={event.href}
-                          className={styles.dropdownlink}
-                          onClick={handleLinkClick}
-                        >
-                          <span className={styles.eventLabel}>{event.label}</span>
-                          {event.date && (
-                            <span className={styles.eventDate}>{event.date}</span>
-                          )}
-                        </Link>
-                      </li>
-                    ))
+                    <>
+                      {eventsData.upcomingEvents.slice(0, 3).map((event) => {
+                        // Format date without year for current-year events
+                        const displayDate = event.date.endsWith(`, ${currentYear}`)
+                          ? event.date.replace(`, ${currentYear}`, '')
+                          : event.date;
+                        
+                        return (
+                          <li key={event.href}>
+                            <Link
+                              href={event.href}
+                              className={styles.dropdownlink}
+                              onClick={handleLinkClick}
+                            >
+                              <span className={styles.eventLabel}>{event.label}</span>
+                              <span className={styles.eventDate}>{displayDate}</span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                      
+                      {/* Show "View All" if more than 3 events */}
+                      {eventsData.upcomingEvents.length > 3 && (
+                        <li>
+                          <Link
+                            href="/events"
+                            className={styles.dropdownlink}
+                            onClick={handleLinkClick}
+                          >
+                            View All Events
+                          </Link>
+                        </li>
+                      )}
+                    </>
                   ) : (
                     <li>
                       <span className={styles.dropdownlink}>No upcoming events</span>
@@ -188,7 +209,7 @@ export default function DropdownMenu({
             )}
           </div>
 
-          {/* RIGHT COLUMN */}
+          {/* RIGHT COLUMN - CALENDAR & FEATURED */}
           <div className={`${styles.dropdowninfo} ${styles.scrollable}`}>
             {isEvents ? (
               <>
