@@ -5,42 +5,39 @@ import Link from 'next/link';
 import styles from './calendar.module.css';
 import { rawEvents } from './calendar-events';
 
-// ===============================
-// 🧠 Convert Table into Calendars
-// ===============================
-
+// ## Event Processing
+// Process rawEvents (1-based months) into calendar-friendly objects with 0-based months
 const eventsByMonth = {};
 const linksByMonth = {};
 
 for (const [month, day, year, name, href] of rawEvents) {
+  const adjustedMonth = month - 1; // Convert 1-based to 0-based month
   if (!eventsByMonth[year]) eventsByMonth[year] = {};
-  if (!eventsByMonth[year][month]) eventsByMonth[year][month] = {};
-  eventsByMonth[year][month][day] = name;
+  if (!eventsByMonth[year][adjustedMonth]) eventsByMonth[year][adjustedMonth] = {};
+  eventsByMonth[year][adjustedMonth][day] = name;
 
   if (href) {
     if (!linksByMonth[year]) linksByMonth[year] = {};
-    if (!linksByMonth[year][month]) linksByMonth[year][month] = {};
-    linksByMonth[year][month][day] = { label: name, href };
+    if (!linksByMonth[year][adjustedMonth]) linksByMonth[year][adjustedMonth] = {};
+    linksByMonth[year][adjustedMonth][day] = { label: name, href };
   }
 }
 
+// ## Constants
 const monthNames = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
 const currentDate = new Date();
-const currentMonthIndex = currentDate.getMonth();
+const currentMonthIndex = currentDate.getMonth(); // 0-based
 const currentYear = currentDate.getFullYear();
 
-// =========================
-// 📆 Calendar API (Exports)
-// =========================
-
+// ## Calendar API Functions
 function getcalendar(offset = 0) {
   const target = new Date(currentYear, currentMonthIndex + offset, 1);
   const year = target.getFullYear();
-  const monthIndex = target.getMonth();
+  const monthIndex = target.getMonth(); // 0-based
   const monthLabel = `${monthNames[monthIndex]} ${year}`;
   const firstWeekday = new Date(year, monthIndex, 1).getDay();
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
@@ -61,12 +58,9 @@ function geteventlink(day, year, monthIndex) {
   return link ? link.href : null;
 }
 
-// ==============================
-// 📅 Main Calendar Component
-// ==============================
-
+// ## Main Calendar Component
 export default function Calendar() {
-  const [offset, setOffset] = useState(0); // 0 = current month, 1 = next month only
+  const [offset, setOffset] = useState(0); // 0 = current month, 1 = next month
 
   const calendar = getcalendar(offset);
   const {
@@ -80,6 +74,7 @@ export default function Calendar() {
 
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
+  // Check if a day is today
   function isToday(day) {
     const today = new Date();
     return (
@@ -91,6 +86,7 @@ export default function Calendar() {
 
   return (
     <div className={styles.calendarWrapper}>
+      {/* Header with Navigation */}
       <div className={styles.calendarHeader}>
         <button
           className={styles.navButton}
@@ -99,9 +95,7 @@ export default function Calendar() {
         >
           ←
         </button>
-
         <span>{monthLabel}</span>
-
         <button
           className={styles.navButton}
           onClick={() => setOffset((o) => Math.min(1, o + 1))}
@@ -111,15 +105,19 @@ export default function Calendar() {
         </button>
       </div>
 
+      {/* Calendar Grid */}
       <div className={styles.calendarGrid}>
+        {/* Weekday Headers */}
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
           <div key={`weekday-${i}`} className={styles.weekday}>{d}</div>
         ))}
 
+        {/* Padding for Days Before the First */}
         {Array.from({ length: firstWeekday }).map((_, i) => (
           <div key={`pad-${i}`} />
         ))}
 
+        {/* Day Cells */}
         {days.map((day) => {
           const isEvent = day in events;
           const href = geteventlink(day, year, monthIndex);
@@ -153,5 +151,5 @@ export default function Calendar() {
   );
 }
 
-// 🔁 Export API for external components
+// Export API for external use
 export { getcalendar, geteventlink };
