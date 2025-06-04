@@ -50,9 +50,9 @@ export const nav_links = [
       ],
       info: {
         askDr: {
-          title: 'Have questions for Dr. Garcia?',
-          description: 'Submit your confidential questions through our secure portal. Get expert advice directly from Dr. Garcia.',
-          buttonText: 'Ask Dr. Garcia',
+          title: 'Have questions for Dr. Tess?',
+          description: 'Submit your confidential questions through our secure portal. Get expert advice directly from Dr. Tess.',
+          buttonText: 'Ask Dr. Tess',
         },
         contact: {
           phone: '816-427-5320',
