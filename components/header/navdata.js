@@ -70,7 +70,7 @@ export const nav_links = [
         {
           title: 'our partners',
           items: [
-            { label: "gigi's safehouse", href: '/#gigi-safehouse' },
+            { label: "gigiSafeHOUSE", href: '/#gigisafehouse' },
           ],
         },
       ],
