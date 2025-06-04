@@ -3,7 +3,7 @@
 
 // Top bar quick links/buttons
 export const top_buttons = [
-  { label: 'emergency line' },
+  { label: 'urgency line' },
   { label: 'patient portal' },
   { label: 'en' },
 ];
