@@ -55,7 +55,10 @@ export const nav_links = [
           buttonText: 'Ask Dr. Tess',
         },
         contact: {
-          phone: '816-427-5320',
+          phone: {
+            display: '816-427-5320',
+            href: 'tel:8164275320'
+          },
           hours: 'Mon–Fri: 8 a.m.–7 p.m.',
           location: '801 NW St. Mary Drive',
         },
@@ -81,7 +84,10 @@ export const nav_links = [
           buttonText: 'Partner Inquiry',
         },
         contact: {
-          phone: '816-427-5320',
+          phone: {
+            display: '816-427-5320',
+            href: 'tel:8164275320'
+          },
           hours: 'Mon–Fri: 9 a.m.–5 p.m.',
           location: '801 NW St. Mary Drive',
         },

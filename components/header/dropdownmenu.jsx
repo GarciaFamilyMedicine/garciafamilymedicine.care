@@ -238,7 +238,13 @@ export default function DropdownMenu({
                   )}
                   {link.dropdown.info.contact && (
                     <div className={styles.contactinfo}>
-                      <p><strong>Phone:</strong> {link.dropdown.info.contact.phone}</p>
+                      {/* Fixed phone number rendering */}
+                      <p>
+                        <strong>Phone:</strong>{' '}
+                        <a href={link.dropdown.info.contact.phone.href}>
+                          {link.dropdown.info.contact.phone.display}
+                        </a>
+                      </p>
                       <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
                       <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
                     </div>
