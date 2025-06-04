@@ -3,9 +3,12 @@
 
 // Top bar quick links/buttons
 export const top_buttons = [
-  { label: 'urgency line' },
-  { label: 'patient portal' },
-  { label: 'en' },
+  { 
+    label: 'Priority Care Line',
+    href: 'tel:8164275320,2'  // Added tel link with extension
+  },
+  { label: 'Patient Portal' },
+  { label: 'EN' },
 ];
 
 // Main navigation links structure
