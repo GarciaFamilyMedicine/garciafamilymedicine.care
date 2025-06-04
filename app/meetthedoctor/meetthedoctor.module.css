@@ -1,7 +1,7 @@
 /* =========================================================
    LOCAL CSS VARIABLES
    ======================================================= */
-.vars{
+.vars {
   --primary:        #2c6fb0;   /* Professional blue */
   --primary-light:  #eef5fc;
   --primary-dark:   #1d4c78;
@@ -28,97 +28,175 @@
 /* =========================================================
    BASE LAYOUT
    ======================================================= */
-.page{
-  padding-top:78px;
-  font-family:var(--font-secondary);
-  background:var(--page-bg);
-  color:var(--text);
-  line-height:1.6;
-  font-size:16px;
+.page {
+  padding-top: 78px;
+  font-family: var(--font-secondary);
+  background: var(--page-bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
 }
-.main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
 
 /* =========================================================
    HERO & SOFT SECTIONS
    ======================================================= */
 .hero,
-.softSection{
-  background:linear-gradient(135deg,#fff 0%,rgba(208,227,240,.45) 100%);
-  border-radius:var(--border-radius);
-  text-align:center;
-  margin-bottom:4rem;
+.softSection {
+  background: linear-gradient(135deg, #fff 0%, rgba(208, 227, 240, 0.45) 100%);
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-bottom: 4rem;
 }
-.hero{       padding:5rem 1.5rem 4rem;}
-.softSection{padding:3.5rem 1.5rem;}
+
+.hero {
+  padding: 5rem 1.5rem 4rem;
+}
+
+.softSection {
+  padding: 3.5rem 1.5rem;
+}
 
 /* =========================================================
    TYPOGRAPHY HELPERS
    ======================================================= */
-.h2{
-  font-family:var(--font-primary);font-weight:600;
-  color:var(--primary);font-size:1.875rem;
-  margin:0 0 1.5rem;text-align:left;position:relative;
-  padding-bottom:.75rem;
+.h2 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 2.25rem;
+  margin: 0 0 1.5rem;
+  text-align: left;
+  position: relative;
+  padding-bottom: 0.75rem;
 }
-.h2::after{
-  content:"";position:absolute;bottom:0;left:0;
-  width:3.5rem;height:2px;background:var(--accent);
+
+.h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--accent);
 }
-.lead{
-  font-family:var(--font-secondary);
-  font-size:1.25rem;line-height:1.6;margin-bottom:1.5rem;
-  color:var(--text);font-weight:400;
+
+.lead {
+  font-family: var(--font-secondary);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  font-weight: 400;
 }
-.card{
-  background:#fff;border:1px solid var(--gray-200);
-  border-radius:var(--border-radius);
-  box-shadow:var(--shadow-sm);
-  padding:2.5rem;margin-bottom:2.5rem;
-  transition:box-shadow .3s,transform .3s;
+
+/* =========================================================
+   CARD
+   ======================================================= */
+.card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
-.card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
 
 /* =========================================================
    TWO‑COLUMN STORY LAYOUT
    ======================================================= */
-.storyGrid{
-  display:grid;
-  grid-template-columns:360px 1fr;      /* portrait | bio */
-  gap:2.5rem;
-  align-items:start;
+.storyGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2.5rem;
+  align-items: start;
 }
-.portrait{
-  border-radius:50%;
-  width:100%;
-  height:auto;
-  object-fit:cover;
-  margin-bottom:2rem;
+
+.portrait {
+  border-radius: 50%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 2rem;
 }
-.quote{
-  font-style:italic;
-  font-size:1rem;
-  line-height:1.55;
-  color:var(--text-light);
-  margin:0 0 1.6rem;
+
+/* ✨ Amplified body text styling ✨ */
+.rightCol p {
+  font-size: 18px;
+  line-height: 1.75;
+  margin-bottom: 1.6rem;
+  color: var(--text);
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  font-family: var(--font-secondary);
+  text-wrap: pretty;
 }
-.quote cite{
-  display:block;
-  margin-top:.5rem;
-  font-style:normal;
-  font-size:.9rem;
-  color:var(--text);
+
+/* =========================================================
+   QUOTE BLOCKS (Restored Original)
+   ======================================================= */
+.quote {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-light);
+  margin: 0 0 1.6rem;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--text);
 }
 
 /* =========================================================
    RESPONSIVE TWEAKS
    ======================================================= */
-@media(max-width:992px){ .lead{font-size:1.15rem;} }
-
-@media(max-width:768px){
-  .storyGrid{grid-template-columns:1fr;}
-  .portrait{max-width:260px;margin:0 auto 2rem;}
-  .leftCol{text-align:center;}
-  .h2{text-align:center;}
+@media (max-width: 992px) {
+  .lead {
+    font-size: 1.15rem;
+  }
 }
 
-@media(max-width:480px){ .h2{font-size:1.5rem;} }
+@media (max-width: 768px) {
+  .storyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    max-width: 260px;
+    margin: 0 auto 2rem;
+  }
+
+  .leftCol,
+  .h2 {
+    text-align: center;
+  }
+
+  .rightCol p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .h2 {
+    font-size: 1.5rem;
+  }
+
+  .rightCol p {
+    font-size: 15px;
+  }
+}
