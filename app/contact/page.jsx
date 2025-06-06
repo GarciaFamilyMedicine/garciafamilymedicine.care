@@ -72,7 +72,7 @@ const ContactDetails = () => (
       <div className={styles.contactItem}>
         <span className={styles.label}>Email</span>
         <a href="mailto:hello@garciafamilymedicine.care" className={styles.value}>
-          info@garciafamilymedicine.care
+          hello@garciafamilymedicine.care
         </a>
       </div>
     </div>
