@@ -11,6 +11,8 @@
   --color-background: var(--page-bg);
   --color-foreground: var(--text-color);
   --font-sans: var(--font-argentum);
+  --primary-light: #d1e7ff; /* Add this */
+  --accent: #ff6b6b; /* Add this */
 }
 
 body {

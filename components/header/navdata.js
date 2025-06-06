@@ -99,5 +99,5 @@ export const nav_links = [
   },
 
   { href: '/#faqs', label: 'FAQs' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];

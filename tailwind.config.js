@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         background: 'var(--page-bg)',
         foreground: 'var(--text-color)',
+        'primary-light': 'var(--primary-light)',
+        accent: 'var(--accent)', 
       },
       fontFamily: {
         sans: ['var(--font-argentum)'],
