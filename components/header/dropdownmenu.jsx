@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import Calendar from '../calendar/calendar';
 import { getEventsData } from '../calendar/calendar-events';
 import styles from './dropdownmenu.module.css';
@@ -11,11 +12,24 @@ export default function DropdownMenu({
   onEnter,
   onLeave,
   setIsMenuOpen,
+  setActiveDrop,
   timerRef,
+  isMobile = false,
 }) {
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
   const handleLinkClick = () => {
     setIsMenuOpen(false);
+    setActiveDrop(null);
     onLeave();
+  };
+
+  // Mobile dropdown toggle
+  const handleMobileToggle = (e) => {
+    e.preventDefault();
+    if (isMobile) {
+      setMobileDropdownOpen(!mobileDropdownOpen);
+    }
   };
 
   // Handle simple links (without dropdowns)
@@ -39,25 +53,35 @@ export default function DropdownMenu({
   return (
     <div
       className={styles.dropdowncontainer}
-      onMouseEnter={() => onEnter(link.label)}
-      onMouseLeave={onLeave}
+      onMouseEnter={() => !isMobile && onEnter(link.label)}
+      onMouseLeave={() => !isMobile && onLeave()}
     >
       <button
         type="button"
-        className={`${styles.dropdowntoggle} ${isActive ? styles.active : ''}`}
+        className={`${styles.dropdowntoggle} ${
+          (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.active : ''
+        }`}
         aria-haspopup="true"
-        aria-expanded={isActive}
+        aria-expanded={isMobile ? mobileDropdownOpen : isActive}
+        onClick={isMobile ? handleMobileToggle : undefined}
         tabIndex={0}
       >
         {link.label}
+        {isMobile && (
+          <span className={`${styles.mobileArrow} ${mobileDropdownOpen ? styles.rotated : ''}`}>
+            ▼
+          </span>
+        )}
       </button>
 
       <div
         role="menu"
-        aria-hidden={!isActive}
-        className={`${styles.dropdownmenu} ${isActive ? styles.show : ''}`}
-        onMouseEnter={() => clearTimeout(timerRef.current)}
-        onMouseLeave={onLeave}
+        aria-hidden={isMobile ? !mobileDropdownOpen : !isActive}
+        className={`${styles.dropdownmenu} ${
+          (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.show : ''
+        }`}
+        onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
+        onMouseLeave={() => !isMobile && onLeave()}
       >
         {/* Three columns, each with its own scrollable section */}
         <div className={styles.dropdowncontent}>
@@ -238,7 +262,6 @@ export default function DropdownMenu({
                   )}
                   {link.dropdown.info.contact && (
                     <div className={styles.contactinfo}>
-                      {/* Fixed phone number rendering */}
                       <p>
                         <strong>Phone:</strong>{' '}
                         <a href={link.dropdown.info.contact.phone.href}>

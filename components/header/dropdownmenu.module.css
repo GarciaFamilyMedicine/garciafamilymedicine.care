@@ -1,5 +1,5 @@
 /* =======================================
-   🔵 Dropdown Menu Styles – Desktop First
+   🔵 Dropdown Menu Styles – Mobile Enhanced
    ======================================= */
 
 .dropdowncontainer {
@@ -23,12 +23,26 @@
   padding: 0 10px;
   cursor: pointer;
   transition: background var(--transition);
+  position: relative;
 }
 
 .dropdowntoggle:hover,
 .dropdowntoggle.active,
 .dropdowntoggle:focus-visible {
   background: var(--hover-blue);
+  outline: none;
+}
+
+/* Mobile arrow indicator */
+.mobileArrow {
+  margin-left: 8px;
+  font-size: 10px;
+  transition: transform 0.2s ease;
+  display: none;
+}
+
+.mobileArrow.rotated {
+  transform: rotate(180deg);
 }
 
 .dropdownmenu {
@@ -70,7 +84,7 @@
 }
 
 .dropdowncontent {
-  display: contents; /* Let direct children (the 2 left columns) fill the grid columns directly */
+  display: contents;
 }
 
 .dropdownsection {
@@ -164,6 +178,7 @@
   text-decoration: none;
   display: block;
   padding: 2px 0;
+  transition: color 0.15s ease;
 }
 
 .submenulink:hover {
@@ -230,6 +245,15 @@
   color: var(--hover-blue);
 }
 
+.contactinfo a {
+  color: var(--hover-blue);
+  text-decoration: none;
+}
+
+.contactinfo a:hover {
+  text-decoration: underline;
+}
+
 .pasthighlightslink {
   font-size: 13px;
   font-weight: 400;
@@ -246,7 +270,17 @@
   text-decoration: underline;
 }
 
+/* MOBILE STYLES ----------------------------------------- */
 @media (max-width: 1200px) {
+  .mobileArrow {
+    display: inline-block;
+  }
+
+  .dropdowntoggle {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
   .dropdownmenu {
     position: static;
     width: 100%;
@@ -259,25 +293,80 @@
     background: transparent;
     padding: 0;
     transform: none;
-    transition: max-height var(--transition);
+    transition: max-height 0.3s ease;
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .dropdownmenu::before {
+    display: none;
   }
 
   .dropdownmenu.show {
-    max-height: 500px;
-    padding: 8px 0;
+    max-height: 800px;
+    padding: 15px 0;
+    background: rgba(29, 83, 159, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .dropdowncontent {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dropdownsection {
+    padding: 0 20px;
+  }
+
+  .dropdownsectiontitle {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
   }
 
   .dropdownlink {
-    padding-left: 40px;
+    padding: 12px 0;
+    color: #fff;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdownlink:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+    color: #fff;
+  }
+
+  .eventLabel {
+    color: #fff;
+  }
+
+  .eventDate {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .submenu {
+    padding-left: 20px;
+  }
+
+  .submenulink {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 0;
+  }
+
+  .submenulink:hover {
+    color: #fff;
+  }
+
+  .dropdowninfo {
+    padding: 0 20px;
   }
 
   .dropdowninfocard {
     background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 16px;
   }
 
@@ -293,6 +382,14 @@
   }
 
   .contactinfo strong {
+    color: #fff;
+  }
+
+  .pasthighlightslink {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pasthighlightslink:hover {
     color: #fff;
   }
 }

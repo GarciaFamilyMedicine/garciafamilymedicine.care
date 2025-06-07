@@ -34,7 +34,12 @@
   padding: 0 5%;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-.topbuttons { display: flex; gap: 15px; }
+
+.topbuttons { 
+  display: flex; 
+  gap: 15px; 
+}
+
 .topbutton {
   background: none;
   border: none;
@@ -49,12 +54,18 @@
   justify-content: center;
   transition: background var(--transition);
 }
-.topbutton:hover, .topbutton:focus-visible { background: var(--hover-blue); outline: none; }
+
+.topbutton:hover, 
+.topbutton:focus-visible { 
+  background: var(--hover-blue); 
+  outline: none; 
+}
 
 /* LOGO --------------------------------------------------- */
 .logo {
   position: fixed;
-  left: 0; top: 0;
+  left: 0; 
+  top: 0;
   width: var(--logo-size);
   height: var(--logo-size);
   background: var(--logo-red);
@@ -62,14 +73,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease;
 }
-.logo img { width: 100%; height: 100%; object-fit: cover; }
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
 
 /* NAVBAR ------------------------------------------------- */
 .navbar {
   position: fixed;
   top: var(--top-bar-height);
-  left: 0; right: 0;
+  left: 0; 
+  right: 0;
   height: var(--navbar-height);
   background: var(--primary-blue);
   z-index: 1001;
@@ -79,6 +101,19 @@
   box-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
+/* MOBILE PILL WRAPPER ----------------------------------- */
+.mobilePillWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1002;
+  display: none;
+  width: calc(100% - 140px); /* Account for logo and hamburger */
+  max-width: 280px;
+}
+
+/* HAMBURGER MENU ---------------------------------------- */
 .mobilenavtoggle {
   display: none;
   background: none;
@@ -86,14 +121,41 @@
   cursor: pointer;
   position: absolute;
   right: 5%;
-  width: 40px;
-  height: 40px;
-  color: var(--text-white);
-  font-size: 24px;
+  width: 44px;
+  height: 44px;
   z-index: 1003;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.3s ease;
 }
 
-/* NAV LINKS --------------------------------------------- */
+.hamburgerLine {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-white);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobilenavtoggle:hover {
+  transform: scale(1.1);
+}
+
+/* NAV LINKS - MOBILE GRID STYLE ------------------------- */
 .navlinks {
   display: flex;
   height: 100%;
@@ -103,7 +165,12 @@
   list-style: none;
   justify-content: space-between;
 }
-.navlinks li { flex: 1; text-align: center; }
+
+.navlinks li { 
+  flex: 1; 
+  text-align: center; 
+}
+
 .navlink,
 .navlinks > li > a {
   color: var(--text-white);
@@ -115,68 +182,321 @@
   justify-content: center;
   padding: 0 15px;
   transition: background var(--transition);
+  position: relative;
 }
+
 .navlink:hover,
 .navlink:focus-visible,
 .navlinks > li > a:hover,
-.navlinks > li > a:focus-visible { background: var(--hover-blue); }
+.navlinks > li > a:focus-visible { 
+  background: var(--hover-blue);
+  outline: none;
+}
 
-/* DROPDOWN (leave as is for your dropdown structure) ----- */
-/* ... (all your dropdown code, unchanged) ... */
+/* MOBILE GRID MENU -------------------------------------- */
+.mobileGridMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1d539f 0%, #275cab 50%, #5e8fbc 100%);
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  padding: 100px 20px 40px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-/* EXCLUDE pillButton and navextra styles from here! */
+.mobileGridMenu.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileMenuHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.mobileMenuTitle {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.mobileMenuSubtitle {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  margin: 0;
+}
+
+.mobileMenuGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.mobileMenuItem {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileMenuItem:hover,
+.mobileMenuItem:focus {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.mobileMenuItem:active {
+  transform: translateY(0);
+}
+
+.mobileMenuIcon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.mobileMenuLabel {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.mobileMenuSubLabel {
+  font-size: 11px;
+  opacity: 0.8;
+  margin: 4px 0 0;
+  line-height: 1.2;
+}
+
+/* Special styling for dropdown items */
+.mobileMenuItem.hasDropdown {
+  position: relative;
+}
+
+.mobileMenuItem.hasDropdown::after {
+  content: "▼";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Close button in mobile menu */
+.mobileMenuClose {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mobileMenuClose:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* MOBILE MENU OVERLAY ----------------------------------- */
+/* Remove this since we're using the full-screen grid menu */
 
 /* MOBILE OVERRIDES -------------------------------------- */
 @media (max-width: 1200px) {
-  .navlinks { display: none; }
-  .mobilenavtoggle { display: block; }
+  .navlinks { 
+    display: none; 
+  }
+  
+  .mobilenavtoggle { 
+    display: flex; 
+  }
+  
+  /* Hide the old mobile menu styles since we're using grid menu */
   .navlinks.active {
-    display: flex;
-    position: fixed;
-    top: calc(var(--top-bar-height) + var(--navbar-height));
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: var(--primary-blue);
-    padding: 10px 0;
+    display: none;
   }
-  .navlinks.active a { padding: 15px 0; font-size: 16px; }
-  .dropdowncontainer { flex-direction: column; align-items: flex-start; }
-  .dropdowntoggle { justify-content: flex-start; padding-left: 20px; width: 100%; }
-  .dropdownmenu {
-    position: static;
-    width: 100%;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 0;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition);
-    grid-template-columns: 1fr;
-  }
-  .dropdownmenu.show { max-height: 500px; padding: 8px 0; }
-  .dropdowncontent { grid-column: auto; grid-template-columns: 1fr; }
-  .dropdowninfo { grid-column: auto; }
-  .dropdowninfocard { background: rgba(255,255,255,0.1); margin-top: 16px; }
-  .dropdownlink { padding-left: 40px; }
-  .askdr h4, .askdr p, .contactinfo p { color: #fff; }
-  .askbutton { background: #fff; color: var(--hover-blue); }
-  .contactinfo strong { color: #fff; }
-  .navextra { background: none; padding-right: 0; width: 100%; justify-content: center; }
-}
-@media (max-width: 768px) {
-  .container { --logo-size: 80px; --navbar-height: 55px; --top-bar-height: 25px; }
-  .logo { width: 80px; height: 80px; }
-  .navbar { padding-left: 80px; height: 55px; }
-  .topbar { left: 80px; }
-}
-@media (max-width: 480px) {
-  .topbutton { min-width: 40px; font-size: 10px; }
 }
 
-/* spacer */
-.offset { height: calc(var(--top-bar-height) + var(--navbar-height)); }
+@media (max-width: 768px) {
+  .container { 
+    --logo-size: 80px; 
+    --navbar-height: 55px; 
+    --top-bar-height: 25px; 
+  }
+  
+  .logo { 
+    width: 80px; 
+    height: 80px; 
+  }
+  
+  .navbar { 
+    padding-left: 80px; 
+    height: 55px; 
+  }
+  
+  .topbar { 
+    left: 80px; 
+  }
+  
+  .mobilePillWrapper {
+    display: block;
+  }
+  
+  .mobilenavtoggle {
+    right: 3%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hamburgerLine {
+    width: 20px;
+    height: 2px;
+  }
+  
+  .topbuttons {
+    gap: 8px;
+  }
+  
+  .topbutton { 
+    min-width: 50px; 
+    font-size: 10px;
+    padding: 0 6px;
+  }
+  
+  .navlinks.active {
+    padding: 15px 0;
+  }
+  
+  .navlinks.active a {
+    padding: 15px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    --logo-size: 70px;
+    --navbar-height: 50px;
+  }
+  
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .navbar {
+    padding-left: 70px;
+    height: 50px;
+  }
+  
+  .topbar {
+    left: 70px;
+  }
+  
+  .mobilePillWrapper {
+    width: calc(100% - 120px);
+  }
+  
+  .topbutton { 
+    min-width: 40px; 
+    font-size: 9px;
+    padding: 0 4px;
+  }
+  
+  .topbuttons {
+    gap: 4px;
+  }
+  
+  .mobilenavtoggle {
+    right: 4%;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .hamburgerLine {
+    width: 18px;
+  }
+
+  .mobileMenuGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .mobileMenuItem {
+    min-height: 100px;
+    padding: 15px;
+  }
+
+  .mobileMenuIcon {
+    font-size: 28px;
+  }
+
+  .mobileMenuLabel {
+    font-size: 13px;
+  }
+
+  .mobileMenuTitle {
+    font-size: 24px;
+  }
+}
+
+/* ACCESSIBILITY IMPROVEMENTS ---------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hamburgerLine,
+  .mobilenavtoggle,
+  .logo,
+  .navlink {
+    transition: none;
+  }
+}
+
+/* Focus states for better accessibility */
+.mobilenavtoggle:focus-visible {
+  outline: 2px solid var(--text-white);
+  outline-offset: 2px;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--hover-blue);
+  outline-offset: 2px;
+}
+
+/* Spacer */
+.offset { 
+  height: calc(var(--top-bar-height) + var(--navbar-height)); 
+}

@@ -6,21 +6,23 @@
   padding: 6px 24px;
   color: #fff;
   font-weight: 700;
-  font-size: 12px; /* <<--- Make sure THIS is 12px */
+  font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.2s, font-size 0.2s, width 0.2s, box-shadow 0.14s, border 0.14s;
+  transition: all 0.2s ease;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; /* This helps it center in flex parent */
+  margin: 0 auto;
   min-width: 110px;
   max-width: 230px;
   width: auto;
   outline: none;
+  position: relative;
+  z-index: 1;
 }
 
 .pillButton:hover,
@@ -29,49 +31,119 @@
   outline: 2px solid #ffe4b5;
   border: 2px solid #fff3e0;
   box-shadow: 0 4px 18px rgba(255,145,0,0.18), 0 0 0 2.5px #ffd180cc;
+  transform: translateY(-1px);
 }
 
-/* Navbar alignment helpers */
+.pillButton:active {
+  transform: translateY(0);
+}
+
+/* Desktop navbar alignment helpers */
 .navextra {
   margin-left: auto;
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;  /* Center in available space */
+  justify-content: center;
   background: var(--hover-blue, #1d539f);
   flex: 0 0 auto;
   text-align: initial;
+  height: 100%;
 }
 
 .pillFlyoutWrapper {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center pill button horizontally */
+  justify-content: center;
   height: 100%;
+  position: relative;
 }
 
-/* Responsive tweaks */
+/* Mobile responsive styles */
 @media (max-width: 1200px) {
   .pillButton {
-    font-size: 1.07rem !important;
-    padding: 12px 18px !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    height: 44px;
     width: 100%;
-    max-width: 320px;
+    max-width: 280px;
     min-width: 0;
     margin: 0 auto;
     justify-content: center;
   }
-  .navextra { padding-right: 0; width: 100%; justify-content: center; }
+  
+  .navextra { 
+    padding-right: 0; 
+    width: 100%; 
+    justify-content: center;
+    background: none;
+    margin: 10px 0;
+  }
 }
+
 @media (max-width: 768px) {
   .pillButton {
-    font-size: 1.13rem !important;
-    padding: 12px 0 !important;
-    width: 90vw;
-    max-width: 320px;
-    min-width: 120px;
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    height: 36px;
+    width: auto;
+    max-width: 240px;
+    min-width: 180px;
     margin: 0 auto;
     justify-content: center;
+    box-shadow: 0 3px 12px rgba(255,145,0,0.15), 0 0 0 2px #ffb74d80;
   }
-  .navextra { padding-right: 0; width: 100%; justify-content: center; }
+  
+  .pillButton:hover,
+  .pillButton:focus-visible {
+    box-shadow: 0 5px 20px rgba(255,145,0,0.25), 0 0 0 2px #ffd180;
+  }
+  
+  .navextra { 
+    padding-right: 0; 
+    width: 100%; 
+    justify-content: center;
+    background: none;
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .pillButton {
+    font-size: 12px !important;
+    padding: 8px 16px !important;
+    height: 38px;
+    min-width: 180px;
+    max-width: 260px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .pillButton {
+    border: 3px solid #fff;
+    box-shadow: none;
+  }
+  
+  .pillButton:hover,
+  .pillButton:focus-visible {
+    border: 3px solid #000;
+    outline: 3px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .pillButton {
+    transition: none;
+  }
+  
+  .pillButton:hover,
+  .pillButton:focus-visible {
+    transform: none;
+  }
+  
+  .pillButton:active {
+    transform: none;
+  }
 }
