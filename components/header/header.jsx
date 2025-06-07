@@ -18,14 +18,15 @@ export default function Header() {
   const timerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Responsive check
+  // Responsive check - FIXED VERSION
   useEffect(() => {
     function handleResize() {
       const mobile = window.innerWidth <= 768;
+      const wasMobile = isMobile;
       setIsMobile(mobile);
       
-      // Close flyout when switching to desktop
-      if (!mobile && isFlyoutOpen) {
+      // Only close flyout when actually switching FROM mobile TO desktop
+      if (wasMobile && !mobile) {
         setIsFlyoutOpen(false);
       }
     }
@@ -33,7 +34,7 @@ export default function Header() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isFlyoutOpen]);
+  }, []);
 
   // Collapse menus on resize
   useEffect(() => {
@@ -182,6 +183,26 @@ export default function Header() {
     setIsFlyoutOpen(false);
   };
 
+  // Desktop pill button click handler
+  const handleDesktopPillClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsFlyoutOpen((prev) => !prev);
+    
+    // Close other menus to avoid conflicts
+    setIsMenuOpen(false);
+    setActiveDrop(null);
+  };
+
+  // Debug: Log ALL state changes with stack trace
+  useEffect(() => {
+    console.log('=== FLYOUT STATE CHANGE ===');
+    console.log('isFlyoutOpen:', isFlyoutOpen);
+    console.log('isMobile:', isMobile);
+    console.log('Stack trace:', new Error().stack);
+    console.log('============================');
+  }, [isFlyoutOpen]);
+
   return (
     <>
       <div className={styles.container}>
@@ -276,20 +297,22 @@ export default function Header() {
               <li className={pillStyles.navextra}>
                 <div className={pillStyles.pillFlyoutWrapper}>
                   <PillButton
-                    onClick={() => setIsFlyoutOpen((prev) => !prev)}
+                    onClick={handleDesktopPillClick}
                     ariaExpanded={isFlyoutOpen}
                     ariaControls="confidence-flyout"
                   >
                     Reclaim Your Confidence!
                   </PillButton>
-                  {isFlyoutOpen && (
-                    <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
-                  )}
                 </div>
               </li>
             )}
           </ul>
         </nav>
+
+        {/* Desktop flyout - working properly now */}
+        {!isMobile && isFlyoutOpen && (
+          <ReclaimConfidenceFlyout onClose={() => setIsFlyoutOpen(false)} />
+        )}
 
         {/* Mobile menu overlay */}
         {isMobile && isMenuOpen && (

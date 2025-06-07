@@ -8,11 +8,18 @@ export default function PillButton({
   ariaControls,
   ...props
 }) {
+  const handleClick = (e) => {
+    console.log('PillButton clicked!', { onClick, ariaExpanded });
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
     <button
       type="button"
       className={styles.pillButton}
-      onClick={onClick}
+      onClick={handleClick}
       aria-haspopup="dialog"
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}
