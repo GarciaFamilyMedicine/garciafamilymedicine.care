@@ -1,5 +1,5 @@
 /* =========================================================
-   ROOT VARS & BASE LAYOUT
+   ROOT VARS & BASE LAYOUT (DESKTOP-FIRST)
    ======================================================== */
 .container {
   --top-bar-bg: #032c7c;
@@ -101,7 +101,7 @@
   box-shadow: 0 2px 15px rgba(0,0,0,0.08);
 }
 
-/* MOBILE PILL WRAPPER ----------------------------------- */
+/* MOBILE PILL WRAPPER (HIDDEN BY DEFAULT) -------------- */
 .mobilePillWrapper {
   position: absolute;
   left: 50%;
@@ -109,11 +109,11 @@
   transform: translate(-50%, -50%);
   z-index: 1002;
   display: none;
-  width: calc(100% - 140px); /* Account for logo and hamburger */
+  width: calc(100% - 140px);
   max-width: 280px;
 }
 
-/* HAMBURGER MENU ---------------------------------------- */
+/* HAMBURGER MENU (HIDDEN BY DEFAULT) ------------------- */
 .mobilenavtoggle {
   display: none;
   background: none;
@@ -155,7 +155,7 @@
   transform: scale(1.1);
 }
 
-/* NAV LINKS - MOBILE GRID STYLE ------------------------- */
+/* NAV LINKS (DESKTOP) ----------------------------------- */
 .navlinks {
   display: flex;
   height: 100%;
@@ -193,7 +193,7 @@
   outline: none;
 }
 
-/* MOBILE GRID MENU -------------------------------------- */
+/* MOBILE GRID MENU (HIDDEN BY DEFAULT) ----------------- */
 .mobileGridMenu {
   position: fixed;
   top: 0;
@@ -295,7 +295,6 @@
   line-height: 1.2;
 }
 
-/* Special styling for dropdown items */
 .mobileMenuItem.hasDropdown {
   position: relative;
 }
@@ -309,7 +308,6 @@
   opacity: 0.6;
 }
 
-/* Close button in mobile menu */
 .mobileMenuClose {
   position: absolute;
   top: 40px;
@@ -332,10 +330,7 @@
   background: rgba(255,255,255,0.3);
 }
 
-/* MOBILE MENU OVERLAY ----------------------------------- */
-/* Remove this since we're using the full-screen grid menu */
-
-/* MOBILE OVERRIDES -------------------------------------- */
+/* RESPONSIVE BREAKPOINTS -------------------------------- */
 @media (max-width: 1200px) {
   .navlinks { 
     display: none; 
@@ -345,9 +340,8 @@
     display: flex; 
   }
   
-  /* Hide the old mobile menu styles since we're using grid menu */
-  .navlinks.active {
-    display: none;
+  .mobilePillWrapper {
+    display: block;
   }
 }
 
@@ -374,6 +368,7 @@
   
   .mobilePillWrapper {
     display: block;
+    width: calc(100% - 140px);
   }
   
   .mobilenavtoggle {
@@ -395,15 +390,6 @@
     min-width: 50px; 
     font-size: 10px;
     padding: 0 6px;
-  }
-  
-  .navlinks.active {
-    padding: 15px 0;
-  }
-  
-  .navlinks.active a {
-    padding: 15px 20px;
-    font-size: 15px;
   }
 }
 
@@ -475,17 +461,7 @@
   }
 }
 
-/* ACCESSIBILITY IMPROVEMENTS ---------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  .hamburgerLine,
-  .mobilenavtoggle,
-  .logo,
-  .navlink {
-    transition: none;
-  }
-}
-
-/* Focus states for better accessibility */
+/* Focus states for accessibility */
 .mobilenavtoggle:focus-visible {
   outline: 2px solid var(--text-white);
   outline-offset: 2px;

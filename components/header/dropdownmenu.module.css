@@ -1,5 +1,5 @@
 /* =======================================
-   🔵 Dropdown Menu Styles – Mobile Enhanced
+   🔵 Dropdown Menu Styles – Desktop Base
    ======================================= */
 
 .dropdowncontainer {
@@ -33,7 +33,7 @@
   outline: none;
 }
 
-/* Mobile arrow indicator */
+/* Mobile arrow indicator (hidden by default) */
 .mobileArrow {
   margin-left: 8px;
   font-size: 10px;
@@ -45,6 +45,7 @@
   transform: rotate(180deg);
 }
 
+/* DESKTOP DROPDOWN MENU --------------------------------- */
 .dropdownmenu {
   position: absolute;
   top: calc(100% + 6px);
@@ -270,8 +271,9 @@
   text-decoration: underline;
 }
 
-/* MOBILE STYLES ----------------------------------------- */
+/* MOBILE DROPDOWN STYLES -------------------------------- */
 @media (max-width: 1200px) {
+  /* Mobile arrow indicator */
   .mobileArrow {
     display: inline-block;
   }

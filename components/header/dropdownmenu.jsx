@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Calendar from '../calendar/calendar';
 import { getEventsData } from '../calendar/calendar-events';
 import styles from './dropdownmenu.module.css';
+import mobileStyles from './mobile.module.css';
 
 export default function DropdownMenu({
   link,

@@ -1,3 +1,6 @@
+/* =========================================================
+   PILL BUTTON - DESKTOP STYLES (BASE)
+   ======================================================== */
 .pillButton {
   background: #ff9100;
   border: 2px solid #fffbe7;
@@ -50,7 +53,7 @@
   text-align: initial;
   height: 100%;
   position: relative;
-  z-index: 1500; /* Higher z-index for flyout */
+  z-index: 1500;
 }
 
 .pillFlyoutWrapper {
@@ -62,91 +65,9 @@
   z-index: 1500;
 }
 
-/* Mobile responsive styles */
+/* Mobile responsive styles - Import these via mobile.module.css */
 @media (max-width: 1200px) {
-  .pillButton {
-    font-size: 14px !important;
-    padding: 10px 16px !important;
-    height: 44px;
-    width: 100%;
-    max-width: 280px;
-    min-width: 0;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  
   .navextra { 
-    padding-right: 0; 
-    width: 100%; 
-    justify-content: center;
-    background: none;
-    margin: 10px 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .pillButton {
-    font-size: 13px !important;
-    padding: 8px 16px !important;
-    height: 36px;
-    width: auto;
-    max-width: 240px;
-    min-width: 180px;
-    margin: 0 auto;
-    justify-content: center;
-    box-shadow: 0 3px 12px rgba(255,145,0,0.15), 0 0 0 2px #ffb74d80;
-  }
-  
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    box-shadow: 0 5px 20px rgba(255,145,0,0.25), 0 0 0 2px #ffd180;
-  }
-  
-  .navextra { 
-    padding-right: 0; 
-    width: 100%; 
-    justify-content: center;
-    background: none;
-    margin: 8px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .pillButton {
-    font-size: 12px !important;
-    padding: 8px 16px !important;
-    height: 38px;
-    min-width: 180px;
-    max-width: 260px;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .pillButton {
-    border: 3px solid #fff;
-    box-shadow: none;
-  }
-  
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    border: 3px solid #000;
-    outline: 3px solid #fff;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .pillButton {
-    transition: none;
-  }
-  
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    transform: none;
-  }
-  
-  .pillButton:active {
-    transform: none;
+    display: none; /* Hide desktop pill button wrapper in mobile */
   }
 }

@@ -9,6 +9,7 @@ import DropdownMenu from './dropdownmenu';
 import ReclaimConfidenceFlyout from './reclaimconfidenceflyout';
 import PillButton from './pillbutton';
 import styles from './header.module.css';
+import mobileStyles from './mobile.module.css';
 import pillStyles from './pillbutton.module.css';
 
 export default function Header() {
