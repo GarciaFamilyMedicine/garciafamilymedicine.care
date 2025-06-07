@@ -1,0 +1,156 @@
+/* Desktop/Default Styles */
+
+.minHScreen {
+  min-height: 100vh;
+}
+
+.main {
+  @apply flex flex-col items-center flex-grow px-4 py-12;
+}
+
+@media (min-width: 640px) {
+  .main {
+    @apply py-20;
+  }
+}
+
+/* Welcome Card */
+.mainWelcomeCard {
+  @apply bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center;
+}
+
+.mainWelcomeH1 {
+  @apply text-[#1d539f] text-3xl font-bold mb-4;
+  font-family: 'Sumana', serif;
+}
+
+@media (min-width: 640px) {
+  .mainWelcomeH1 {
+    @apply text-4xl;
+  }
+}
+
+.mainWelcomeH2 {
+  @apply text-[#1d539f] text-xl font-semibold mb-4;
+  font-family: 'Sumana', serif;
+}
+
+@media (min-width: 640px) {
+  .mainWelcomeH2 {
+    @apply text-2xl;
+  }
+}
+
+.mainWelcomeP {
+  @apply text-gray-600 text-lg text-justify leading-relaxed mb-4 indent-5;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.mainWelcomeStrong {
+  @apply font-bold;
+}
+
+.readMoreButton {
+  @apply text-gray-600 text-sm bg-transparent border-none cursor-pointer transition-all duration-200;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.readMoreButton:hover {
+  @apply underline;
+}
+
+/* Care Section */
+.careSection {
+  @apply transition-all duration-300;
+}
+
+.careSectionH3 {
+  @apply text-[#1d539f] text-xl font-bold mb-4;
+  font-family: 'Sumana', serif;
+}
+
+.careSectionP {
+  @apply text-gray-600 text-base text-justify leading-relaxed mb-4 indent-5;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.careSectionUl {
+  @apply list-disc pl-6 text-gray-600 text-base mb-4 text-justify;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.careSectionLi {
+  @apply mb-2;
+}
+
+/* Comments Section */
+.commentsSection {
+  @apply bg-white/60 backdrop-blur-lg p-6 rounded-lg shadow-md max-w-5xl w-full text-center mt-6;
+}
+
+.commentsSectionH3 {
+  @apply text-[#1d539f] text-xl font-bold mb-4;
+  font-family: 'Sumana', serif;
+}
+
+.commentsSectionP {
+  @apply text-gray-600 text-base leading-relaxed mb-4 indent-5;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+/* Buttons */
+.callButton {
+  @apply inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-semibold no-underline transition-all duration-300;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.callButton:hover {
+  @apply from-[#1d539f] to-[#275cab];
+}
+
+.askButton {
+  @apply inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-semibold border-none cursor-pointer transition-all duration-300;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.askButton:hover {
+  @apply from-[#1d539f] to-[#275cab];
+}
+
+/* Links */
+.textLink {
+  @apply text-[#275cab] font-semibold no-underline transition-all duration-200;
+}
+
+.textLink:hover {
+  @apply underline;
+}
+
+/* Popup */
+.popup {
+  @apply fixed inset-0 bg-black/70 flex justify-center items-center transition-opacity duration-300;
+  z-index: 2147483647;
+}
+
+.popupContent {
+  @apply bg-white/90 backdrop-blur-lg p-4 rounded-lg shadow-lg w-[90%] max-w-3xl max-h-[90vh] overflow-hidden relative;
+}
+
+.close {
+  @apply absolute top-2 right-4 text-[#1d539f] text-2xl font-semibold cursor-pointer transition-colors duration-200;
+  font-family: 'Argentum Sans', sans-serif;
+}
+
+.close:hover {
+  @apply text-[#275cab];
+}
+
+.iframe {
+  @apply w-full border-0 rounded-md h-[500px];
+}
+
+@media (min-width: 640px) {
+  .iframe {
+    @apply h-[600px];
+  }
+}

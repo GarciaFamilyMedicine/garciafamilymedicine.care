@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'mobile': {'max': '768px'}, // Add custom mobile breakpoint
+      },
       colors: {
         background: 'var(--page-bg)',
         foreground: 'var(--text-color)',

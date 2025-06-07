@@ -1,0 +1,110 @@
+/* Mobile Styles */
+
+@media screen and (max-width: 768px) {
+  .minHScreen {
+    background: var(--page-bg) !important;
+    color: #1f2937 !important;
+  }
+  
+  .main {
+    @apply px-4 py-10;
+  }
+  
+  /* Welcome Card Mobile */
+  .mainWelcomeCard {
+    @apply p-6 w-[calc(100%-12px)] mx-auto bg-white/90 shadow-xl rounded-2xl border border-[#d1e7ff];
+  }
+  
+  .mainWelcomeH1 {
+    @apply text-2xl font-bold text-[#1d539f] text-center leading-tight tracking-tight;
+  }
+  
+  .mainWelcomeH2 {
+    @apply text-xl font-semibold text-[#275cab] text-center leading-snug mt-2;
+  }
+  
+  .mainWelcomeP {
+    @apply text-base text-gray-800 text-justify leading-relaxed mt-3;
+  }
+  
+  .mainWelcomeStrong {
+    @apply font-bold text-[#1d539f];
+  }
+  
+  .readMoreButton {
+    @apply text-base font-semibold text-[#275cab] text-center block mx-auto mt-4 px-4 py-2 rounded-md transition-colors duration-200;
+  }
+  
+  .readMoreButton:hover {
+    @apply bg-[#d1e7ff];
+  }
+  
+  /* Care Section Mobile */
+  .careSection {
+    @apply rounded-lg mt-4;
+  }
+  
+  .careSection.expanded {
+    @apply px-4 py-6 bg-[#f8fafc];
+  }
+  
+  .careSectionH3 {
+    @apply text-xl font-bold text-[#1d539f] text-center leading-snug;
+  }
+  
+  .careSectionP {
+    @apply text-base text-gray-800 text-justify leading-relaxed mt-2;
+  }
+  
+  .careSectionUl {
+    @apply pl-6 text-base text-gray-800 text-justify leading-relaxed mt-2;
+  }
+  
+  .careSectionLi {
+    @apply mb-2;
+  }
+  
+  /* Comments Section Mobile */
+  .commentsSection {
+    @apply p-6 w-[calc(100%-12px)] mx-auto bg-white/90 shadow-xl rounded-2xl border border-[#d1e7ff] mt-6;
+  }
+  
+  .commentsSectionH3 {
+    @apply text-xl font-bold text-[#1d539f] text-center leading-snug mb-4;
+  }
+  
+  .commentsSectionP {
+    @apply text-base text-gray-800 leading-relaxed mb-4;
+  }
+  
+  /* Buttons Mobile */
+  .callButton {
+    @apply w-full py-3 text-base font-bold text-white bg-gradient-to-r from-[#275cab] to-[#1d539f] rounded-lg mt-4 shadow-md text-center block;
+  }
+  
+  .askButton {
+    @apply w-full py-3 text-base font-bold text-white bg-gradient-to-r from-[#275cab] to-[#1d539f] rounded-lg mt-4 shadow-md;
+  }
+  
+  /* Popup Mobile */
+  .popup {
+    @apply fixed inset-0 bg-black/70 flex justify-center items-center transition-opacity duration-300;
+    z-index: 2147483647;
+  }
+  
+  .popupContent {
+    @apply w-[90%] max-h-[80vh] p-6 bg-white rounded-2xl shadow-2xl border border-[#d1e7ff] relative;
+  }
+  
+  .close {
+    @apply absolute text-4xl font-bold text-[#1d539f] top-3 right-3 cursor-pointer transition-colors duration-200;
+  }
+  
+  .close:hover {
+    @apply text-[#275cab];
+  }
+  
+  .iframe {
+    @apply h-[calc(70vh-80px)] w-full rounded-md border-0;
+  }
+}

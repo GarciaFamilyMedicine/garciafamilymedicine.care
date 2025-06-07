@@ -11,85 +11,70 @@
   --color-background: var(--page-bg);
   --color-foreground: var(--text-color);
   --font-sans: var(--font-argentum);
-  --primary-light: #d1e7ff; /* Add this */
-  --accent: #ff6b6b; /* Add this */
+  --primary-light: #d1e7ff;
+  --accent: #ff6b6b;
 }
 
 body {
-  @apply bg-[var(--page-bg)] text-[var(--text-color)] font-[var(--font-argentum)];
+  @apply bg-[var(--page-bg)] text-[var(--text-color)];
+  font-family: var(--font-argentum);
 }
 
-.main-welcome-card {
-  @apply p-8 m-auto bg-white/60 backdrop-blur-lg rounded-lg shadow-md;
+/* Ensure proper font loading */
+.font-sumana {
+  font-family: 'Sumana', serif;
 }
 
-.main-welcome-h1 {
-  @apply text-[#1d539f] font-[var(--font-sumana)] font-bold;
+.font-argentum {
+  font-family: 'Argentum Sans', sans-serif;
 }
 
-.main-welcome-h2 {
-  @apply text-[#1d539f] font-[var(--font-sumana)] font-semibold;
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.main-welcome-p {
-  @apply font-[var(--font-argentum)] font-light;
+/* Smooth transitions for all interactive elements */
+button, a {
+  transition: all 0.2s ease-in-out;
 }
 
-.main-welcome-strong {
-  @apply font-bold;
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid #275cab;
+  outline-offset: 2px;
 }
 
-.care-section ul {
-  @apply list-disc pl-5;
+/* Ensure proper text rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.care-section ul li {
-  @apply mb-2.5;
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.comments-section {
-  @apply mt-6 p-6 bg-white/60 backdrop-blur-lg rounded-lg shadow-md;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
 }
 
-@media screen and (max-width: 768px) {
-  .main-welcome-card {
-    @apply p-4 w-[calc(100%-20px)];
-  }
+::-webkit-scrollbar-thumb {
+  background: #275cab;
+  border-radius: 4px;
+}
 
-  .main-welcome-h1 {
-    @apply text-[1.8rem] leading-tight;
-  }
-
-  .main-welcome-h2 {
-    @apply text-[1.4rem];
-  }
-
-  .main-welcome-p {
-    @apply text-sm text-left;
-  }
-
-  .care-section {
-    @apply p-5;
-  }
-
-  .care-section h3 {
-    @apply text-[1.3rem];
-  }
-
-  .care-section p,
-  .care-section ul {
-    @apply text-sm text-left;
-  }
-
-  .comments-section {
-    @apply p-5 w-[calc(100%-20px)];
-  }
-
-  .popup-content {
-    @apply w-full h-full max-h-[100vh] p-[0.625rem] rounded-none;
-  }
-
-  .popup-content iframe {
-    @apply h-[calc(100vh-50px)];
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #1d539f;
 }
