@@ -64,10 +64,3 @@
   position: relative;
   z-index: 1500;
 }
-
-/* Mobile responsive styles - Import these via mobile.module.css */
-@media (max-width: 1200px) {
-  .navextra { 
-    display: none; /* Hide desktop pill button wrapper in mobile */
-  }
-}

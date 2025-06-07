@@ -1,91 +1,273 @@
 /* =========================================================
-   MOBILE-SPECIFIC STYLES FOR HEADER COMPONENT
+   HEADER MOBILE STYLES - UNIFORM GRID
    ======================================================== */
 
-/* MOBILE PILL BUTTON OVERRIDES -------------------------- */
+/* MOBILE PILL WRAPPER ----------------------------------- */
+.mobilePillWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1002;
+  display: none;
+  width: calc(100% - 140px);
+  max-width: 280px;
+}
+
+/* HAMBURGER MENU ---------------------------------------- */
+.mobilenavtoggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  width: 44px;
+  height: 44px;
+  z-index: 1003;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.3s ease;
+}
+
+.mobilenavtoggle:focus-visible {
+  outline: 2px solid var(--text-white);
+  outline-offset: 2px;
+}
+
+.mobilenavtoggle:hover {
+  transform: scale(1.1);
+}
+
+.hamburgerLine {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-white);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.mobilenavtoggle.menuOpen .hamburgerLine:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* MOBILE GRID MENU - UNIFORM DESIGN -------------------- */
+.mobileGridMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1d539f 0%, #275cab 50%, #5e8fbc 100%);
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  padding: 100px 20px 40px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobileGridMenu.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileMenuHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.mobileMenuTitle {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.mobileMenuSubtitle {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  margin: 0;
+}
+
+.mobileMenuGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.mobileMenuItem {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* Fixed height for uniformity */
+  width: 100%; /* Ensure full width */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding in height calculation */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Ensure button and link have same styling */
+.mobileMenuItem:where(button) {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.mobileMenuItem:hover,
+.mobileMenuItem:focus {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.mobileMenuItem:active {
+  transform: translateY(0);
+}
+
+.mobileMenuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  width: 40px;
+  height: 40px;
+}
+
+.mobileMenuIcon svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.mobileMenuLabel {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.mobileMenuSubLabel {
+  font-size: 11px;
+  opacity: 0.8;
+  margin: 4px 0 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.mobileMenuItem.hasDropdown {
+  position: relative;
+}
+
+.mobileMenuItem.hasDropdown::after {
+  content: "▼";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.mobileMenuClose {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mobileMenuClose:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* RESPONSIVE BREAKPOINTS -------------------------------- */
 @media (max-width: 1200px) {
-  .pillButton {
-    font-size: 14px !important;
-    padding: 10px 16px !important;
-    height: 44px;
-    width: 100%;
-    max-width: 280px;
-    min-width: 0;
-    margin: 0 auto;
-    justify-content: center;
+  .navlinks { 
+    display: none; 
   }
   
-  .navextra { 
-    padding-right: 0; 
-    width: 100%; 
-    justify-content: center;
-    background: none;
-    margin: 10px 0;
+  .mobilenavtoggle { 
+    display: flex; 
+  }
+  
+  .mobilePillWrapper {
+    display: block;
   }
 }
 
 @media (max-width: 768px) {
-  .pillButton {
-    font-size: 13px !important;
-    padding: 8px 16px !important;
-    height: 36px;
-    width: auto;
-    max-width: 240px;
-    min-width: 180px;
-    margin: 0 auto;
-    justify-content: center;
-    box-shadow: 0 3px 12px rgba(255,145,0,0.15), 0 0 0 2px #ffb74d80;
+  .container { 
+    --logo-size: 80px; 
+    --navbar-height: 55px; 
+    --top-bar-height: 25px; 
   }
   
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    box-shadow: 0 5px 20px rgba(255,145,0,0.25), 0 0 0 2px #ffd180;
-  }
-  
-  .navextra { 
-    padding-right: 0; 
-    width: 100%; 
-    justify-content: center;
-    background: none;
-    margin: 8px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .pillButton {
-    font-size: 12px !important;
-    padding: 8px 16px !important;
-    height: 38px;
-    min-width: 180px;
-    max-width: 260px;
-  }
-}
-
-/* MOBILE HEADER LAYOUT ---------------------------------- */
-@media (max-width: 768px) {
-  /* Logo adjustments */
   .logo { 
     width: 80px; 
     height: 80px; 
   }
   
-  /* Navbar adjustments */
   .navbar { 
     padding-left: 80px; 
     height: 55px; 
   }
   
-  /* Top bar adjustments */
   .topbar { 
     left: 80px; 
   }
   
-  /* Mobile pill wrapper visibility */
   .mobilePillWrapper {
     display: block;
+    width: calc(100% - 140px);
   }
   
-  /* Hamburger menu adjustments */
   .mobilenavtoggle {
     right: 3%;
     width: 40px;
@@ -97,7 +279,6 @@
     height: 2px;
   }
   
-  /* Top buttons adjustments */
   .topbuttons {
     gap: 8px;
   }
@@ -107,10 +288,38 @@
     font-size: 10px;
     padding: 0 6px;
   }
+
+  .mobileMenuGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .mobileMenuItem {
+    height: 100px;
+    padding: 15px;
+  }
+
+  .mobileMenuIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mobileMenuLabel {
+    font-size: 13px;
+  }
+
+  .mobileMenuTitle {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 480px) {
-  /* Smaller logo for very small screens */
+  .container {
+    --logo-size: 70px;
+    --navbar-height: 50px;
+  }
+  
   .logo {
     width: 70px;
     height: 70px;
@@ -125,12 +334,10 @@
     left: 70px;
   }
   
-  /* Adjust pill wrapper width */
   .mobilePillWrapper {
     width: calc(100% - 120px);
   }
   
-  /* Smaller top buttons */
   .topbutton { 
     min-width: 40px; 
     font-size: 9px;
@@ -141,7 +348,6 @@
     gap: 4px;
   }
   
-  /* Smaller hamburger menu */
   .mobilenavtoggle {
     right: 4%;
     width: 36px;
@@ -151,162 +357,309 @@
   .hamburgerLine {
     width: 18px;
   }
-}
 
-/* MOBILE GRID MENU ADJUSTMENTS -------------------------- */
-@media (max-width: 480px) {
   .mobileMenuGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 0 10px;
+    gap: 12px;
+    padding: 0 8px;
   }
 
   .mobileMenuItem {
-    min-height: 100px;
-    padding: 15px;
+    height: 90px;
+    padding: 12px;
   }
 
-  .mobileMenuIcon {
-    font-size: 28px;
-  }
-
-  .mobileMenuLabel {
-    font-size: 13px;
-  }
-
-  .mobileMenuTitle {
-    font-size: 24px;
-  }
-}
-
-/* MOBILE FLYOUT ADJUSTMENTS ----------------------------- */
-@media (max-width: 768px) {
-  .flyoutPanel {
-    width: 100vw;
-    max-width: 100vw;
-    left: 0;
-    right: 0;
-    top: 0;
-    border-radius: 0;
-    padding: 80px 24px 32px 24px;
-    min-height: 100vh;
-    justify-content: flex-start;
-  }
-
-  .overlayBackdrop {
-    display: none; /* No overlay on mobile since it's full screen */
-  }
-
-  .flyoutCloseButton {
-    top: 24px;
-    left: 24px;
-    width: 40px;
-    height: 40px;
-    background: rgba(29,83,159,0.1);
-    color: #1d539f;
-  }
-
-  .flyoutHeader {
-    padding-left: 0;
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .flyoutHeading {
-    font-size: 26px;
-    padding-right: 0;
-    margin-bottom: 8px;
-  }
-
-  .highlightText {
-    padding: 16px 20px;
-    border-radius: 8px;
-    margin-bottom: 32px;
-    text-align: center;
-  }
-
-  .valueTag {
-    display: block;
-    margin: 8px auto 0;
-    width: fit-content;
-    padding: 6px 12px;
-    font-size: 16px;
-  }
-
-  .flyoutText {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  .eventInfo {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 32px;
-    border-radius: 12px;
-  }
-
-  .eventIcon {
-    margin-top: 0;
-    margin-bottom: 12px;
-  }
-  
-  .eventIcon svg {
+  .mobileMenuIcon svg {
     width: 24px;
     height: 24px;
   }
 
-  .eventTitle {
-    font-size: 18px;
-    margin-bottom: 8px;
+  .mobileMenuLabel {
+    font-size: 12px;
   }
 
-  .eventDate {
-    font-size: 20px;
-    margin-bottom: 4px;
+  .mobileMenuTitle {
+    font-size: 22px;
   }
+}
 
-  .eventLocation {
-    font-size: 16px;
+/* MOBILE SUBMENU STYLES - UPDATED ------------------------ */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.backButton:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateX(-2px);
+}
+
+.mobileSubmenuGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.mobileSubmenuItem {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: left;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+  min-height: 60px;
+}
+
+.mobileSubmenuItem:hover,
+.mobileSubmenuItem:focus {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(4px);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.mobileSubmenuItem .mobileMenuIcon {
+  margin-bottom: 0;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.mobileSubmenuItem .mobileMenuIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobileSubmenuItem .mobileMenuLabel {
+  font-size: 15px;
+  text-align: left;
+  margin: 0;
+  flex: 1;
+}
+
+.mobileSubmenuItem .mobileMenuSubLabel {
+  font-size: 12px;
+  opacity: 0.8;
+  margin: 4px 0 0;
+  text-align: left;
+}
+
+.eventItem {
+  border-left: 3px solid #ff9100;
+}
+
+.eventItem .mobileMenuIcon svg {
+  color: #ff9100;
+}
+
+.dropdownIndicator {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.calendarSection {
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,0.25); /* Lightened from 0.1 to 0.25 */
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.3); /* Lightened border too */
+  backdrop-filter: blur(10px);
+}
+
+/* Override any calendar component dark backgrounds */
+.calendarSection :global(.calendar-container),
+.calendarSection :global(.calendar-wrapper),
+.calendarSection :global(.calendar-grid) {
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 8px;
+}
+
+/* Ensure calendar text remains readable */
+.calendarSection :global(.calendar-day),
+.calendarSection :global(.calendar-header),
+.calendarSection :global(.calendar-title) {
+  color: #333 !important;
+  background: rgba(255,255,255,0.8) !important;
+}
+
+.calendarSection :global(.calendar-event) {
+  background: rgba(255,145,0,0.8) !important;
+  color: white !important;
+}
+
+.submenuSection {
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  padding: 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  padding-bottom: 8px;
+}
+
+.submenuSection .mobileSubmenuItem {
+  margin-bottom: 8px;
+}
+
+.submenuSection .mobileSubmenuItem:last-child {
+  margin-bottom: 0;
+}
+
+.eventContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.newsEventButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 20px;
+  grid-column: 1 / -1;
+}
+
+.newsEventButton {
+  background: rgba(255,145,0,0.9);
+  color: white;
+  text-decoration: none;
+  padding: 12px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,145,0,0.3);
+  box-shadow: 0 2px 8px rgba(255,145,0,0.2);
+}
+
+.newsEventButton:hover,
+.newsEventButton:focus {
+  background: rgba(255,145,0,1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255,145,0,0.3);
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 768px) {
+  .newsEventButtons {
+    padding: 0 16px;
+    gap: 10px;
   }
-
-  .ctaButton {
-    padding: 16px 20px;
-    font-size: 18px;
-    border-radius: 8px;
-    margin: 32px 0;
-    font-weight: 700;
+  
+  .newsEventButton {
+    padding: 10px 6px;
+    font-size: 12px;
   }
+}
 
-  .hashtagList {
-    text-align: center;
-    margin-top: 32px;
-    padding-top: 24px;
+@media (max-width: 480px) {
+  .newsEventButtons {
+    padding: 0 12px;
+    gap: 8px;
   }
-
-  .tag {
-    padding: 6px 12px;
-    font-size: 13px;
-    margin: 4px;
+  
+  .newsEventButton {
+    padding: 8px 4px;
+    font-size: 11px;
   }
+}
 
-  .bottomInfo {
+/* Update main menu items to show dropdown indicator */
+.mobileMenuItem.hasDropdown {
+  position: relative;
+}
+
+.mobileMenuItem.hasDropdown::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+/* Remove old submenu styles */
+.mobileMenuItemWrapper,
+.expandIcon,
+.mobileSubmenu {
+  display: none;
+}
+
+/* RESPONSIVE ADJUSTMENTS -------------------------------- */
+@media (max-width: 768px) {
+  .mobileSubmenuGrid {
+    padding: 0 16px;
+    gap: 10px;
+  }
+  
+  .mobileSubmenuItem {
+    padding: 14px 16px;
+    min-height: 56px;
+  }
+  
+  .calendarSection {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileSubmenuGrid {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  
+  .mobileSubmenuItem {
+    padding: 12px 14px;
+    min-height: 52px;
+  }
+  
+  .mobileSubmenuItem .mobileMenuLabel {
     font-size: 14px;
-    margin-top: 32px;
   }
-
-  .socialLink {
-    margin: 12px 6px 0;
-    padding: 10px 16px;
-    border-radius: 8px;
-  }
-
-  .flyoutContent {
-    align-items: center;
-    gap: 0;
+  
+  .calendarSection {
+    padding: 14px;
+    margin-bottom: 14px;
   }
 }
 
@@ -316,30 +669,8 @@
   .mobilenavtoggle,
   .logo,
   .navlink,
-  .pillButton {
+  .backButton,
+  .mobileSubmenuItem {
     transition: none;
-  }
-  
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    transform: none;
-  }
-  
-  .pillButton:active {
-    transform: none;
-  }
-}
-
-/* HIGH CONTRAST MODE SUPPORT ---------------------------- */
-@media (prefers-contrast: high) {
-  .pillButton {
-    border: 3px solid #fff;
-    box-shadow: none;
-  }
-  
-  .pillButton:hover,
-  .pillButton:focus-visible {
-    border: 3px solid #000;
-    outline: 3px solid #fff;
   }
 }

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Calendar from '../calendar/calendar';
 import { getEventsData } from '../calendar/calendar-events';
 import styles from './dropdownmenu.module.css';
-import mobileStyles from './mobile.module.css';
+import mobileStyles from './dropdownmenu.mobile.module.css';
 
 export default function DropdownMenu({
   link,
@@ -38,7 +38,7 @@ export default function DropdownMenu({
     return (
       <Link
         href={link.href}
-        className={styles.navLink}
+        className={styles.navlink}
         onClick={handleLinkClick}
       >
         {link.label}
