@@ -7,6 +7,10 @@ export const rawEvents = [
   [7, 7, 2025, 'Pelvic Health Recovery Workshop', '/events/pelvic-health-recovery', true, true],
 ];
 
+// Memoization cache to prevent re-processing
+let cachedEventsData = null;
+let cachedTimestamp = null;
+
 // Helper function to format dates correctly by adjusting the month index
 const formatEventDate = (month, day, year) => {
   const eventDate = new Date(year, month - 1, day); // Convert 1-based month to 0-based
@@ -17,8 +21,22 @@ const formatEventDate = (month, day, year) => {
   });
 };
 
+// Optimized function that caches results and only logs once
 export const getEventsData = () => {
   const now = new Date();
+  const currentHour = now.getHours();
+  const cacheKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${currentHour}`;
+  
+  // Return cached data if it exists and is from the same hour
+  if (cachedEventsData && cachedTimestamp === cacheKey) {
+    return cachedEventsData;
+  }
+
+  // Only log in development mode and only once per hour
+  if (process.env.NODE_ENV === 'development' && cachedTimestamp !== cacheKey) {
+    console.log('🗓️ Processing calendar events...', rawEvents.length, 'total events');
+  }
+
   const currentMonth = now.getMonth(); // 0-based (e.g., May = 4)
   const currentYear = now.getFullYear();
   const currentDay = now.getDate();
@@ -53,11 +71,12 @@ export const getEventsData = () => {
   // Cap at 4 events
   const cappedEvents = sortedEvents.slice(0, 4);
 
-  return {
+  // Cache the results
+  cachedEventsData = {
     upcomingEvents: cappedEvents.map(([month, day, year, label, href]) => ({
       label,
       href,
-      date: formatEventDate(month, day, year) // Use the correctly formatted date
+      date: formatEventDate(month, day, year)
     })),
 
     pastEvents: [],
@@ -67,7 +86,15 @@ export const getEventsData = () => {
       .map(([month, day, year, label, href]) => ({
         label,
         href,
-        date: formatEventDate(month, day, year) // Use the correctly formatted date
+        date: formatEventDate(month, day, year)
       }))
   };
+
+  cachedTimestamp = cacheKey;
+  
+  if (process.env.NODE_ENV === 'development' && cachedEventsData.upcomingEvents.length > 0) {
+    console.log('📅 Processed events:', cachedEventsData.upcomingEvents.map(e => e.label).join(', '));
+  }
+
+  return cachedEventsData;
 };

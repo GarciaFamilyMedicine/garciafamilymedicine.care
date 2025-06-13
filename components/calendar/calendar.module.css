@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 0;
+  padding: 0; /* Remove all padding that might offset the header */
+  margin: 0; /* Remove all margins */
 }
 
 .calendarGrid {
@@ -16,6 +17,65 @@
   gap: 4px;
 }
 
+/* =====================
+   Monthly Theme Header
+   ===================== */
+
+.monthlyThemeHeader {
+  width: 100%;
+  max-width: 240px;
+  min-height: 36px; /* Fixed height to prevent layout shift */
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Include border in height calculation */
+}
+
+.monthlyThemeHeader:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.themeIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px; /* Fixed width for icon */
+}
+
+.themeContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.themeTitle {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.1;
+  margin-bottom: 1px;
+  white-space: nowrap; /* Prevent title wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.themeSubtitle {
+  font-size: 0.65rem;
+  color: #6b7280;
+  line-height: 1.1;
+  white-space: nowrap; /* Prevent subtitle wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* =====================
    Header and Controls
@@ -24,14 +84,24 @@
 .calendarHeader {
   font-weight: 700;
   color: var(--hover-blue);
-  margin-bottom: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  margin: 0 0 12px 0; /* Only bottom margin to match other sections */
+  padding: 0; /* Remove all padding */
+  line-height: 1; /* Tight line height */
+}
+
+.calendarHeader span {
+  line-height: 1;
+  font-weight: 700;
+  color: var(--hover-blue);
+  margin: 0; /* No margins on the text */
+  padding: 0; /* No padding on the text */
 }
 
 .navButton {
@@ -42,6 +112,8 @@
   color: var(--hover-blue);
   padding: 0 8px;
   cursor: pointer;
+  line-height: 1;
+  margin: 0; /* No margins on buttons */
 }
 
 .navButton:disabled {
@@ -49,6 +121,10 @@
   cursor: not-allowed;
 }
 
+.navButton:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
 
 /* =====================
    Weekday Labels
@@ -61,7 +137,6 @@
   color: var(--dropdown-link);
   line-height: 32px;
 }
-
 
 /* =====================
    Day Grid Styling
@@ -86,7 +161,6 @@
   font-weight: 700;
 }
 
-
 /* =====================
    Event Days
    ===================== */
@@ -110,7 +184,6 @@
   color: inherit;
 }
 
-
 /* =====================
    Highlighted Today
    ===================== */
@@ -121,7 +194,6 @@
   font-weight: 700;
   box-shadow: inset 0 0 0 1px #d0e3ff;
 }
-
 
 /* =====================
    Tooltip for Events
@@ -149,6 +221,7 @@
   visibility: visible;
   opacity: 1;
 }
+
 /* Update your dropdownmenu.module.css */
 .eventDate {
   margin-left: 12px;
@@ -156,4 +229,85 @@
   font-size: 0.85em;
   font-weight: 400;
   white-space: nowrap; /* Prevent date from wrapping */
+}
+
+/* =====================
+   Responsive Design
+   ===================== */
+
+@media (max-width: 768px) {
+  .monthlyThemeHeader {
+    max-width: 100%;
+    min-height: 32px; /* Fixed height for mobile */
+    padding: 5px 8px;
+    margin-bottom: 6px;
+    gap: 6px;
+  }
+  
+  .themeIcon {
+    font-size: 0.9rem;
+    width: 14px; /* Fixed width for mobile */
+  }
+  
+  .themeTitle {
+    font-size: 0.7rem;
+  }
+  
+  .themeSubtitle {
+    font-size: 0.6rem;
+  }
+  
+  .calendarGrid {
+    grid-template-columns: repeat(7, 28px);
+    grid-auto-rows: 28px;
+    gap: 3px;
+  }
+  
+  .calendarDay {
+    font-size: 11px;
+    line-height: 28px;
+  }
+  
+  .weekday {
+    font-size: 9px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .monthlyThemeHeader {
+    min-height: 30px; /* Fixed height for small mobile */
+    padding: 4px 6px;
+    margin-bottom: 5px;
+    gap: 5px;
+  }
+  
+  .themeIcon {
+    font-size: 0.8rem;
+    width: 12px; /* Fixed width for small mobile */
+  }
+  
+  .themeTitle {
+    font-size: 0.65rem;
+  }
+  
+  .themeSubtitle {
+    font-size: 0.55rem;
+  }
+  
+  .calendarGrid {
+    grid-template-columns: repeat(7, 26px);
+    grid-auto-rows: 26px;
+    gap: 2px;
+  }
+  
+  .calendarDay {
+    font-size: 10px;
+    line-height: 26px;
+  }
+  
+  .weekday {
+    font-size: 8px;
+    line-height: 26px;
+  }
 }

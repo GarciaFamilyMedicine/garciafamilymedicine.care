@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
@@ -31,9 +31,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
   const [activeDrop, setActiveDrop] = useState(null);
-  const [activeSubmenu, setActiveSubmenu] = useState(null); // NEW: Track active submenu
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const timerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Memoize events data to prevent duplicate processing
+  const eventsData = useMemo(() => {
+    return getEventsData();
+  }, []); // Only calculate once when component mounts
 
   // Responsive check
   useEffect(() => {
@@ -57,7 +62,7 @@ export default function Header() {
     const onResize = () => {
       setIsMenuOpen(false);
       setActiveDrop(null);
-      setActiveSubmenu(null); // UPDATED: Clear active submenu
+      setActiveSubmenu(null);
     };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
@@ -68,7 +73,7 @@ export default function Header() {
     function handleKeyDown(e) {
       if (e.key === 'Escape') {
         if (activeSubmenu) {
-          setActiveSubmenu(null); // Back to main menu
+          setActiveSubmenu(null);
         } else {
           setIsMenuOpen(false);
           setActiveDrop(null);
@@ -96,11 +101,8 @@ export default function Header() {
     };
   }, [isMobile, isMenuOpen]);
 
-  // Get events data for News & Events
-  const eventsData = getEventsData();
-
-  // Function to convert nav_links to mobile menu format
-  const getMobileMenuItems = () => {
+  // Memoize mobile menu items to prevent recalculation
+  const mobileMenuItems = useMemo(() => {
     const iconMap = {
       'Meet the Doctor': <FaUserMd />,
       'News & Events': <FaNewspaper />,
@@ -112,7 +114,6 @@ export default function Header() {
 
     return nav_links.map(link => {
       if (link.dropdown) {
-        // Handle dropdown items
         let allItems = [];
         let sections = [];
         
@@ -123,10 +124,6 @@ export default function Header() {
           // Add upcoming events exactly like desktop dropdown does
           if (eventsData?.upcomingEvents?.length) {
             const eventItems = eventsData.upcomingEvents.slice(0, 3).map((event) => {
-              // Debug: log what we're getting
-              console.log('Event object:', event);
-              console.log('Event properties:', Object.keys(event));
-              
               // Format date the same way as desktop (remove current year)
               const currentYear = new Date().getFullYear();
               const displayDate = event.date?.endsWith(`, ${currentYear}`)
@@ -134,17 +131,17 @@ export default function Header() {
                 : event.date;
               
               return {
-                label: event.label || event.title || event.name || 'Untitled Event', // Try all possible name properties
+                label: event.label || event.title || event.name || 'Untitled Event',
                 href: event.href || '#',
                 isEvent: true,
-                date: displayDate // Use formatted date like desktop
+                date: displayDate
               };
             });
             
             allItems.push(...eventItems);
           }
           
-          // Add navigation buttons at the end (will be rendered separately)
+          // Add navigation buttons at the end
           allItems.push(
             { label: 'View All News', href: '/news', isButton: true },
             { label: 'Upcoming Events', href: '/events', isButton: true },
@@ -160,7 +157,7 @@ export default function Header() {
             
             // Special reordering for Patient Care Essentials - Core Medical first
             if (link.label === 'Patient Care Essentials') {
-              sections = sections.reverse(); // This puts "Core Medical Services" first
+              sections = sections.reverse();
             }
             
             // Also flatten for backward compatibility
@@ -177,10 +174,9 @@ export default function Header() {
           icon: iconMap[link.label] || <FaHospital />,
           hasDropdown: true,
           items: allItems,
-          sections: sections // NEW: Keep section structure
+          sections: sections
         };
       } else {
-        // Handle simple links
         return {
           label: link.label,
           href: link.href,
@@ -190,7 +186,6 @@ export default function Header() {
         };
       }
     }).concat([
-      // Add call now button
       {
         label: 'Call Now',
         href: 'tel:816-427-5320',
@@ -198,17 +193,14 @@ export default function Header() {
         subtitle: '816-427-5320'
       }
     ]);
-  };
-
-  const mobileMenuItems = getMobileMenuItems();
+  }, [eventsData]); // Only recalculate if eventsData changes
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
     setActiveDrop(null);
-    setActiveSubmenu(null); // UPDATED: Clear active submenu
+    setActiveSubmenu(null);
   };
 
-  // UPDATED: New submenu navigation logic
   const handleMobileMenuItemClick = (item, index) => {
     if (item.hasDropdown) {
       setActiveSubmenu({
@@ -221,7 +213,6 @@ export default function Header() {
     }
   };
 
-  // NEW: Back to main menu
   const handleBackToMainMenu = () => {
     setActiveSubmenu(null);
   };
@@ -343,6 +334,7 @@ export default function Header() {
                     setActiveDrop={setActiveDrop}
                     timerRef={timerRef}
                     isMobile={isMobile}
+                    eventsData={eventsData} // Pass events data to prevent duplicate processing
                   />
                 </li>
               ) : (
@@ -390,16 +382,16 @@ export default function Header() {
             className={`${styles.mobileMenuOverlay || ''} ${mobileStyles.mobileMenuOverlay || ''}`}
             onClick={() => {
               if (activeSubmenu) {
-                setActiveSubmenu(null); // Back to main menu
+                setActiveSubmenu(null);
               } else {
-                setIsMenuOpen(false); // Close menu
+                setIsMenuOpen(false);
               }
             }}
             aria-hidden="true"
           />
         )}
 
-        {/* Mobile Grid Menu - UPDATED: With submenu replacement logic */}
+        {/* Mobile Grid Menu */}
         {isMobile && (
           <div className={`${styles.mobileGridMenu || ''} ${mobileStyles.mobileGridMenu || ''} ${
             isMenuOpen ? (mobileStyles.active || '') : ''
@@ -412,10 +404,9 @@ export default function Header() {
               ✕
             </button>
             
-            {/* UPDATED: Conditional header based on submenu state */}
+            {/* Conditional header based on submenu state */}
             <div className={`${styles.mobileMenuHeader || ''} ${mobileStyles.mobileMenuHeader || ''}`}>
               {activeSubmenu ? (
-                // Submenu header with back button
                 <>
                   <button
                     className={`${mobileStyles.backButton || ''}`}
@@ -432,7 +423,6 @@ export default function Header() {
                   </p>
                 </>
               ) : (
-                // Main menu header
                 <>
                   <h2 className={`${styles.mobileMenuTitle || ''} ${mobileStyles.mobileMenuTitle || ''}`}>
                     Garcia Family Medicine
@@ -444,7 +434,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* UPDATED: Conditional content based on submenu state */}
+            {/* Conditional content based on submenu state */}
             {activeSubmenu ? (
               // Show submenu items
               <div className={`${styles.mobileMenuGrid || ''} ${mobileStyles.mobileSubmenuGrid || ''}`}>
@@ -502,7 +492,6 @@ export default function Header() {
                 ) : (
                   // Handle other submenus (Patient Care Essentials, Affiliates)
                   <>
-                    {/* Show sections if available (for Patient Care Essentials) */}
                     {activeSubmenu.sections && activeSubmenu.sections.length > 0 ? (
                       activeSubmenu.sections.map((section, sectionIndex) => (
                         <div key={sectionIndex} className={`${mobileStyles.submenuSection || ''}`}>
@@ -530,7 +519,6 @@ export default function Header() {
                         </div>
                       ))
                     ) : (
-                      // Fallback to flat list for other submenus
                       activeSubmenu.items.map((subItem, subIndex) => (
                         <Link
                           key={subIndex}
@@ -557,7 +545,6 @@ export default function Header() {
               // Show main menu items
               <div className={`${styles.mobileMenuGrid || ''} ${mobileStyles.mobileMenuGrid || ''}`}>
                 {mobileMenuItems.map((item, index) => {
-                  // Use button for dropdown items, Link for direct navigation
                   if (item.hasDropdown) {
                     return (
                       <button

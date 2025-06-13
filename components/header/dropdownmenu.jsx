@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Calendar from '../calendar/calendar';
-import { getEventsData } from '../calendar/calendar-events';
 import styles from './dropdownmenu.module.css';
 import mobileStyles from './dropdownmenu.mobile.module.css';
 
@@ -16,6 +15,7 @@ export default function DropdownMenu({
   setActiveDrop,
   timerRef,
   isMobile = false,
+  eventsData = null, // Accept events data as prop to prevent duplicate processing
 }) {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
@@ -46,10 +46,19 @@ export default function DropdownMenu({
     );
   }
 
-  // Special case: News & Events - use dynamic layout
+  // Memoize event data processing for News & Events
+  const processedEventsData = useMemo(() => {
+    const isEvents = link.label === 'News & Events';
+    if (!isEvents || !eventsData) return null;
+
+    const currentYear = new Date().getFullYear();
+    return {
+      ...eventsData,
+      currentYear
+    };
+  }, [link.label, eventsData]);
+
   const isEvents = link.label === 'News & Events';
-  const eventsData = isEvents ? getEventsData() : null;
-  const currentYear = new Date().getFullYear();
 
   return (
     <div
@@ -84,7 +93,6 @@ export default function DropdownMenu({
         onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
         onMouseLeave={() => !isMobile && onLeave()}
       >
-        {/* Three columns, each with its own scrollable section */}
         <div className={styles.dropdowncontent}>
           {/* LEFT COLUMN - NEWS */}
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
@@ -101,7 +109,6 @@ export default function DropdownMenu({
                       View All News
                     </Link>
                   </li>
-                  {/* Future: Add mapped news blog posts here */}
                 </ul>
               </>
             ) : (
@@ -151,12 +158,12 @@ export default function DropdownMenu({
               <>
                 <h3 className={styles.dropdownsectiontitle}>Upcoming Events</h3>
                 <ul>
-                  {eventsData?.upcomingEvents?.length ? (
+                  {processedEventsData?.upcomingEvents?.length ? (
                     <>
-                      {eventsData.upcomingEvents.slice(0, 3).map((event) => {
+                      {processedEventsData.upcomingEvents.slice(0, 3).map((event) => {
                         // Format date without year for current-year events
-                        const displayDate = event.date.endsWith(`, ${currentYear}`)
-                          ? event.date.replace(`, ${currentYear}`, '')
+                        const displayDate = event.date.endsWith(`, ${processedEventsData.currentYear}`)
+                          ? event.date.replace(`, ${processedEventsData.currentYear}`, '')
                           : event.date;
                         
                         return (
@@ -174,7 +181,7 @@ export default function DropdownMenu({
                       })}
                       
                       {/* Show "View All" if more than 3 events */}
-                      {eventsData.upcomingEvents.length > 3 && (
+                      {processedEventsData.upcomingEvents.length > 3 && (
                         <li>
                           <Link
                             href="/events"

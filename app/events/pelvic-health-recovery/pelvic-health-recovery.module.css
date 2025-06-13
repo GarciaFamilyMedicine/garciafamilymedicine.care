@@ -1,0 +1,514 @@
+/* ================ BASE LAYOUT ================ */
+.pageContainer {
+  @apply pt-[78px] min-h-screen;
+  font-family: var(--font-argentum);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.mainContent {
+  @apply max-w-[1200px] mx-auto py-8 px-6;
+}
+
+/* ================ PAGE HEADER ================ */
+.pageHeader {
+  @apply text-center mb-12 pb-6;
+  border-bottom: 3px solid #0ea5e9;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.pageHeader h1 {
+  font-family: var(--font-sumana);
+  @apply text-[2.5rem] font-bold mb-2;
+  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 50%, #ec4899 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  line-height: 1.2;
+}
+
+.subtitle {
+  @apply text-[1.25rem] max-w-[700px] mx-auto font-semibold;
+  color: #0369a1;
+}
+
+/* ================ HERO SECTION ================ */
+.heroSection {
+  @apply p-12 mb-12;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border-radius: var(--border-radius);
+  border: 2px solid #0ea5e9;
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1);
+}
+
+.heroContent {
+  @apply flex items-center gap-12;
+}
+
+.heroText {
+  @apply flex-1 text-left;
+}
+
+.heroText h2 {
+  font-family: var(--font-sumana);
+  @apply text-[2rem] font-bold mb-4;
+  color: #0369a1;
+}
+
+.valueTag {
+  display: inline-block;
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 8px 0 16px 0;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+.lead {
+  @apply text-[1.1rem] leading-relaxed mb-6;
+  color: #374151;
+}
+
+.winnerAnnouncement {
+  @apply p-4 rounded-lg font-semibold;
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+}
+
+.heroImage {
+  @apply flex-1 min-h-[300px] bg-blue-50 flex flex-col items-center justify-center rounded-lg;
+  border: 2px solid #0ea5e9;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+}
+
+.imagePlaceholder {
+  @apply w-full h-full border-2 border-dashed flex flex-col items-center justify-center text-center p-6 rounded-lg;
+  border-color: #0ea5e9;
+  color: #0369a1;
+}
+
+.imagePlaceholder span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.imagePlaceholder p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ================ EVENT DETAILS SECTION ================ */
+.eventDetailsSection {
+  @apply mb-12 text-center;
+}
+
+.eventCard {
+  @apply p-8 mb-8 rounded-xl;
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.eventIcon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.eventInfo {
+  text-align: left;
+}
+
+.eventInfo h3 {
+  font-family: var(--font-sumana);
+  @apply text-[1.8rem] font-bold mb-2;
+  margin: 0;
+}
+
+.eventDate {
+  @apply text-[1.4rem] font-bold mb-1;
+  color: #fef3c7;
+}
+
+.eventTime {
+  @apply text-[1.2rem] font-semibold mb-2;
+  color: #dbeafe;
+}
+
+.eventLocation {
+  @apply text-[1rem];
+  color: #e0f2fe;
+  line-height: 1.4;
+}
+
+.ctaButtons {
+  @apply flex justify-center gap-4 flex-wrap;
+}
+
+.primaryButton {
+  @apply px-8 py-4 text-lg font-bold cursor-pointer transition-all duration-300 rounded-lg;
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  color: white;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.primaryButton:hover {
+  @apply -translate-y-1;
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.secondaryButton {
+  @apply px-8 py-4 text-lg font-semibold cursor-pointer transition-all duration-300 border-2 rounded-lg;
+  background: transparent;
+  color: #0369a1;
+  border-color: #0ea5e9;
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background: #0ea5e9;
+  color: white;
+  @apply -translate-y-1;
+}
+
+/* ================ TWO COLUMN SECTION ================ */
+.twoColumnSection {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-10 mb-12;
+}
+
+.columnLeft, .columnRight {
+  @apply p-8;
+  background: white;
+  border: 1px solid #e0f2fe;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+.twoColumnSection h3 {
+  font-family: var(--font-sumana);
+  @apply text-[1.5rem] mb-4 pb-2 border-b-2;
+  color: #0369a1;
+  border-bottom-color: #bae6fd;
+}
+
+.featureList {
+  @apply list-none p-0 my-6;
+}
+
+.featureList li {
+  @apply py-2 pl-6 relative;
+  color: #374151;
+}
+
+.featureList li::before {
+  content: "✨";
+  @apply absolute left-0 text-[1.2rem] leading-none;
+}
+
+.benefitsCard {
+  @apply p-6 mt-6 rounded-lg;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+}
+
+.benefitsCard h4 {
+  @apply mt-0 mb-4;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.conditionsList {
+  @apply list-none p-0;
+}
+
+.conditionsList li {
+  @apply py-2 border-b border-gray-100 last:border-b-0;
+  color: #374151;
+}
+
+.conditionsList strong {
+  color: #0369a1;
+}
+
+/* ================ FULL WIDTH EVENT SCHEDULE ================ */
+.fullWidthSection {
+  @apply p-12 mb-12;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e0f2fe;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+.fullWidthSection h2 {
+  font-family: var(--font-sumana);
+  @apply text-[1.8rem] text-center mb-6;
+  color: #0369a1;
+}
+
+.scheduleGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8;
+}
+
+.timeSlot {
+  @apply p-6 rounded-lg text-center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #bae6fd;
+  transition: all 0.3s ease;
+}
+
+.timeSlot:hover {
+  @apply -translate-y-1;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+  border-color: #0ea5e9;
+}
+
+.timeLabel {
+  @apply text-sm font-bold mb-2 px-3 py-1 rounded-full;
+  background: #0ea5e9;
+  color: white;
+  display: inline-block;
+}
+
+.timeSlot h4 {
+  @apply mb-2;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.timeSlot p {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* ================ TESTIMONIALS SECTION ================ */
+.testimonialsSection {
+  @apply mb-12 p-8;
+  background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+  border-radius: var(--border-radius);
+}
+
+.testimonialsSection h2 {
+  font-family: var(--font-sumana);
+  @apply text-[1.8rem] text-center mb-8;
+  color: #92400e;
+}
+
+.testimonialGrid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.testimonial {
+  @apply p-6 rounded-lg;
+  background: white;
+  border: 1px solid #fbbf24;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.1);
+}
+
+.quote {
+  @apply text-gray-700 italic mb-4;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.quote::before {
+  content: '"';
+  font-size: 1.5rem;
+  color: #fbbf24;
+}
+
+.quote::after {
+  content: '"';
+  font-size: 1.5rem;
+  color: #fbbf24;
+}
+
+.author {
+  @apply text-sm font-semibold;
+  color: #92400e;
+}
+
+/* ================ FINAL CALL TO ACTION ================ */
+.finalCtaSection {
+  @apply p-12 text-center rounded-[var(--border-radius)];
+  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.finalCtaSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(255,255,255,0.03)' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  animation: shimmer 20s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-60px) translateY(-60px); }
+}
+
+.ctaContent {
+  @apply max-w-[800px] mx-auto relative z-10;
+}
+
+.ctaContent h2 {
+  @apply text-[2rem] mb-4;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.ctaContent p {
+  @apply text-[1.1rem] mb-6 opacity-90;
+}
+
+.urgencyMessage {
+  @apply p-4 rounded-lg mb-6 font-bold;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.finalButtons {
+  @apply flex justify-center gap-4 mb-8 flex-wrap;
+}
+
+.phoneButton {
+  @apply px-8 py-4 text-lg font-semibold cursor-pointer transition-all duration-300 border-2 rounded-lg;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
+
+.phoneButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  @apply -translate-y-1;
+}
+
+.socialSection {
+  @apply mt-8 pt-6 border-t border-white border-opacity-20;
+}
+
+.socialSection p {
+  @apply mb-4 opacity-90;
+}
+
+.socialLinks {
+  @apply flex justify-center gap-4 mb-6;
+}
+
+.socialLinks a {
+  @apply px-4 py-2 rounded-lg;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  @apply -translate-y-1;
+}
+
+.hashtags {
+  @apply flex flex-wrap justify-center gap-2;
+}
+
+.hashtags span {
+  @apply px-3 py-1 rounded-full text-sm;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+@media (max-width: 992px) {
+  .heroContent {
+    @apply flex-col;
+  }
+  
+  .heroImage {
+    @apply min-h-[250px] w-full;
+  }
+  
+  .eventCard {
+    @apply flex-col text-center;
+    gap: 1rem;
+  }
+  
+  .eventInfo {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader h1 {
+    @apply text-[2rem];
+  }
+  
+  .heroText h2 {
+    @apply text-[1.7rem];
+  }
+  
+  .ctaButtons,
+  .finalButtons {
+    @apply flex-col items-center;
+  }
+  
+  .scheduleGrid {
+    @apply grid-cols-1;
+  }
+  
+  .testimonialGrid {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    @apply py-6 px-4;
+  }
+  
+  .heroSection, 
+  .fullWidthSection, 
+  .finalCtaSection {
+    @apply p-8;
+  }
+  
+  .pageHeader h1 {
+    @apply text-[1.8rem];
+  }
+  
+  .subtitle {
+    @apply text-[1.1rem];
+  }
+  
+  .eventCard {
+    @apply p-6;
+  }
+  
+  .valueTag {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
