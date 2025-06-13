@@ -98,18 +98,29 @@ export default function DropdownMenu({
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
             {isEvents ? (
               <>
-                <h3 className={styles.dropdownsectiontitle}>News</h3>
+                <h3 className={styles.dropdownsectiontitle}>
+                  <Link 
+                    href="/news" 
+                    className={styles.sectionTitleLink}
+                    onClick={handleLinkClick}
+                  >
+                    News
+                  </Link>
+                </h3>
                 <ul>
-                  <li>
-                    <Link
-                      href="/news"
-                      className={styles.dropdownlink}
-                      onClick={handleLinkClick}
-                    >
-                      View All News
-                    </Link>
-                  </li>
+                  {/* Future: Add mapped news blog posts here */}
                 </ul>
+                
+                {/* News footer link aligned with other columns */}
+                <div className={styles.columnFooterLinks}>
+                  <Link
+                    href="/news"
+                    className={styles.columnFooterLink}
+                    onClick={handleLinkClick}
+                  >
+                    View All News
+                  </Link>
+                </div>
               </>
             ) : (
               link.dropdown.links?.[0] && (
@@ -156,7 +167,15 @@ export default function DropdownMenu({
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
             {isEvents ? (
               <>
-                <h3 className={styles.dropdownsectiontitle}>Upcoming Events</h3>
+                <h3 className={styles.dropdownsectiontitle}>
+                  <Link 
+                    href="/events/current" 
+                    className={styles.sectionTitleLink}
+                    onClick={handleLinkClick}
+                  >
+                    Upcoming Events
+                  </Link>
+                </h3>
                 <ul>
                   {processedEventsData?.upcomingEvents?.length ? (
                     <>
@@ -184,7 +203,7 @@ export default function DropdownMenu({
                       {processedEventsData.upcomingEvents.length > 3 && (
                         <li>
                           <Link
-                            href="/events"
+                            href="/events/current"
                             className={styles.dropdownlink}
                             onClick={handleLinkClick}
                           >
@@ -199,6 +218,17 @@ export default function DropdownMenu({
                     </li>
                   )}
                 </ul>
+                
+                {/* Always show View All Events link at bottom of column */}
+                <div className={styles.columnFooterLinks}>
+                  <Link
+                    href="/events/current"
+                    onClick={handleLinkClick}
+                    className={styles.columnFooterLink}
+                  >
+                    View All Upcoming Events
+                  </Link>
+                </div>
               </>
             ) : (
               link.dropdown.links?.[1] && (
@@ -246,13 +276,13 @@ export default function DropdownMenu({
             {isEvents ? (
               <>
                 <Calendar />
-                <div>
+                <div className={styles.calendarLinks}>
                   <Link
                     href="/events/past"
                     onClick={handleLinkClick}
                     className={styles.pasthighlightslink}
                   >
-                    View past highlights
+                    View Past Highlights
                   </Link>
                 </div>
               </>

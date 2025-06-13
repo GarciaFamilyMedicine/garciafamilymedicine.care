@@ -1,0 +1,393 @@
+/* ================ BASE LAYOUT ================ */
+.pageContainer {
+  @apply pt-[78px] min-h-screen;
+  font-family: var(--font-argentum);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.mainContent {
+  @apply max-w-[1200px] mx-auto py-8 px-6;
+}
+
+/* ================ PAGE HEADER ================ */
+.pageHeader {
+  @apply text-center mb-12 pb-6;
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+.pageHeader h1 {
+  font-family: var(--font-sumana);
+  @apply text-[2.5rem] font-bold mb-2;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  @apply text-[1.25rem] max-w-[700px] mx-auto;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.eventCount {
+  @apply px-3 py-1 rounded-full text-sm font-semibold;
+  background: var(--primary-blue);
+  color: white;
+}
+
+/* ================ NO EVENTS STATE ================ */
+.noEventsSection {
+  @apply py-16;
+}
+
+.noEventsContent {
+  @apply text-center max-w-[600px] mx-auto;
+}
+
+.noEventsIcon {
+  @apply text-[4rem] mb-6;
+  opacity: 0.6;
+}
+
+.noEventsContent h2 {
+  font-family: var(--font-sumana);
+  @apply text-[2rem] font-bold mb-4;
+  color: var(--primary-blue);
+}
+
+.noEventsContent p {
+  @apply text-[1.1rem] mb-8;
+  color: #64748b;
+}
+
+.noEventsActions {
+  @apply flex justify-center gap-4 flex-wrap;
+}
+
+/* ================ CALENDAR SECTION ================ */
+.calendarSection {
+  @apply mb-12;
+}
+
+.calendarContainer {
+  @apply p-8 rounded-xl text-center;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.calendarContainer h2 {
+  font-family: var(--font-sumana);
+  @apply text-[1.8rem] font-bold mb-6;
+  color: var(--primary-blue);
+}
+
+.calendarWrapper {
+  @apply flex justify-center mb-4;
+}
+
+.calendarNote {
+  @apply text-sm;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* ================ EVENTS SECTIONS ================ */
+.eventsSection {
+  @apply mb-12;
+}
+
+.sectionHeader {
+  @apply flex items-center justify-between mb-6 pb-3 border-b-2 border-gray-200;
+}
+
+.sectionHeader h2 {
+  font-family: var(--font-sumana);
+  @apply text-[1.8rem] font-bold;
+  color: var(--primary-blue);
+}
+
+.sectionCount {
+  @apply px-3 py-1 rounded-full text-sm font-semibold;
+  background: var(--primary-blue);
+  color: white;
+}
+
+/* ================ EVENTS GRID ================ */
+.eventsGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.eventCard {
+  @apply p-6 rounded-xl transition-all duration-300;
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eventCard:hover {
+  @apply -translate-y-1;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-blue);
+}
+
+/* Priority styling */
+.priorityHigh {
+  border-left: 4px solid #22c55e;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.priorityMedium {
+  border-left: 4px solid #f59e0b;
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+}
+
+.priorityNormal {
+  border-left: 4px solid var(--primary-blue);
+}
+
+/* ================ EVENT BADGE ================ */
+.eventBadge {
+  @apply px-3 py-2 rounded-lg border flex items-center gap-2;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badgeIcon {
+  font-size: 1rem;
+}
+
+.badgeText {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* ================ EVENT CONTENT ================ */
+.eventContent {
+  @apply flex-1;
+}
+
+.eventHeader {
+  @apply flex items-start justify-between mb-3;
+}
+
+.eventDate {
+  @apply flex-1;
+}
+
+.dateMain {
+  @apply text-lg font-bold;
+  color: var(--primary-blue);
+}
+
+.timeUntil {
+  @apply text-sm font-semibold px-2 py-1 rounded-full mt-1 inline-block;
+  background: var(--primary-blue);
+  color: white;
+}
+
+.featuredBadge {
+  @apply px-2 py-1 rounded text-xs font-semibold;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  flex-shrink: 0;
+}
+
+.eventInfo {
+  @apply space-y-2;
+}
+
+.eventTitle {
+  @apply text-lg font-bold leading-tight;
+  color: #1e293b;
+}
+
+.eventLink {
+  @apply text-inherit hover:text-blue-600 transition-colors duration-200;
+  text-decoration: none;
+}
+
+.eventLink:hover {
+  text-decoration: underline;
+}
+
+.fullDate {
+  @apply text-sm;
+  color: #64748b;
+}
+
+/* ================ EVENT ACTIONS ================ */
+.eventActions {
+  @apply flex gap-3 pt-4 border-t border-gray-100;
+}
+
+.viewButton {
+  @apply px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200;
+  background: var(--primary-blue);
+  color: white;
+  text-decoration: none;
+  flex: 1;
+  text-align: center;
+}
+
+.viewButton:hover {
+  background: var(--hover-blue);
+  @apply -translate-y-0.5;
+}
+
+.shareButton {
+  @apply px-4 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 cursor-pointer;
+  background: transparent;
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.shareButton:hover {
+  background: var(--primary-blue);
+  color: white;
+  @apply -translate-y-0.5;
+}
+
+.comingSoonText {
+  @apply text-sm italic text-center;
+  color: #94a3b8;
+  flex: 1;
+  padding: 8px;
+}
+
+/* ================ CALL TO ACTION ================ */
+.ctaSection {
+  @apply p-12 text-center rounded-xl mt-16;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
+  color: white;
+}
+
+.ctaContent {
+  @apply max-w-[700px] mx-auto;
+}
+
+.ctaContent h2 {
+  @apply text-[2rem] mb-4;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ctaContent p {
+  @apply text-[1.1rem] mb-8 opacity-90;
+}
+
+.ctaButtons {
+  @apply flex justify-center gap-4 flex-wrap;
+}
+
+.primaryButton {
+  @apply px-8 py-3 text-base font-semibold cursor-pointer transition-all duration-300 rounded-lg;
+  background: white;
+  color: var(--primary-blue);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.primaryButton:hover {
+  background: #f8fafc;
+  @apply -translate-y-0.5;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+}
+
+.secondaryButton {
+  @apply px-8 py-3 text-base font-semibold cursor-pointer transition-all duration-300 border-2 rounded-lg;
+  background: transparent;
+  color: white;
+  border-color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  @apply -translate-y-0.5;
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+@media (max-width: 992px) {
+  .eventsGrid {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+  
+  .sectionHeader {
+    @apply flex-col items-start gap-2;
+  }
+  
+  .eventHeader {
+    @apply flex-col gap-2;
+  }
+  
+  .featuredBadge {
+    @apply self-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader h1 {
+    @apply text-[2rem];
+  }
+  
+  .subtitle {
+    @apply text-[1.1rem] flex-col gap-2;
+  }
+  
+  .eventsGrid {
+    @apply grid-cols-1;
+  }
+  
+  .ctaButtons,
+  .noEventsActions {
+    @apply flex-col items-center;
+  }
+  
+  .eventActions {
+    @apply flex-col;
+  }
+  
+  .calendarContainer {
+    @apply p-6;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    @apply py-6 px-4;
+  }
+  
+  .calendarContainer, 
+  .ctaSection {
+    @apply p-8;
+  }
+  
+  .pageHeader h1 {
+    @apply text-[1.8rem];
+  }
+  
+  .eventCard {
+    @apply p-4;
+  }
+  
+  .sectionHeader h2 {
+    @apply text-[1.5rem];
+  }
+  
+  .calendarContainer h2 {
+    @apply text-[1.5rem];
+  }
+}

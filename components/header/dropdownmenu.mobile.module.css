@@ -51,6 +51,13 @@
 
   .dropdownsection {
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Reset height for mobile */
+  }
+
+  .dropdownsection ul {
+    flex: none; /* Reset flex for mobile */
   }
 
   .dropdownsectiontitle {
@@ -118,11 +125,89 @@
     color: #fff;
   }
 
-  .pasthighlightslink {
+  /* MOBILE SECTION TITLE LINKS --------------------------- */
+  .sectionTitleLink {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+
+  .sectionTitleLink:hover {
     color: rgba(255, 255, 255, 0.8);
+    transform: translateX(5px);
+  }
+
+  .sectionTitleLink:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* MOBILE CALENDAR NAVIGATION LINKS --------------------- */
+  .calendarLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .calendarNavLink {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 4px 0;
+    display: inline-block;
+    transition: all 0.15s ease;
+  }
+
+  .calendarNavLink:hover {
+    color: #fff;
+    text-decoration: underline;
+    transform: translateX(5px);
+  }
+
+  /* MOBILE COLUMN FOOTER LINKS ---------------------------- */
+  .columnFooterLinks {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .columnFooterLink {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 4px 0;
+    display: inline-block;
+    transition: all 0.15s ease;
+  }
+
+  .columnFooterLink:hover {
+    color: #fff;
+    text-decoration: underline;
+    transform: translateX(5px);
+  }
+
+  .pasthighlightslink {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 4px 0;
+    display: inline-block;
+    transition: all 0.15s ease;
   }
 
   .pasthighlightslink:hover {
     color: #fff;
+    text-decoration: underline;
+    transform: translateX(5px);
   }
 }
