@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Calendar from '../calendar/calendar';
 import styles from './dropdownmenu.module.css';
 import mobileStyles from './dropdownmenu.mobile.module.css';
@@ -25,6 +25,13 @@ export default function DropdownMenu({
     onLeave();
   };
 
+  // Add click handler for calendar month title
+  const handleCalendarClick = () => {
+    // Navigate to events page
+    window.location.href = '/events/current';
+    handleLinkClick(); // Close dropdown
+  };
+
   // Mobile dropdown toggle
   const handleMobileToggle = (e) => {
     e.preventDefault();
@@ -32,6 +39,62 @@ export default function DropdownMenu({
       setMobileDropdownOpen(!mobileDropdownOpen);
     }
   };
+
+  // Add click event listener to calendar title when component mounts
+  useEffect(() => {
+    if (isActive && link.label === 'News & Events') {
+      // Wait a bit for the calendar to render
+      const timer = setTimeout(() => {
+        // Try multiple possible selectors for the calendar title
+        const possibleSelectors = [
+          '.dropdowninfo h2',
+          '.dropdowninfo .calendar h2', 
+          '.dropdowninfo .calendar-header h2',
+          '.dropdowninfo .month-header',
+          '.dropdowninfo [class*="header"] h2',
+          '.dropdowninfo [class*="title"]',
+          '.dropdowninfo h2:first-child'
+        ];
+
+        let titleElement = null;
+        
+        for (const selector of possibleSelectors) {
+          titleElement = document.querySelector(selector);
+          if (titleElement) {
+            console.log('Found calendar title with selector:', selector);
+            break;
+          }
+        }
+
+        if (titleElement) {
+          titleElement.addEventListener('click', handleCalendarClick);
+          titleElement.style.cursor = 'pointer';
+          titleElement.style.transition = 'all 0.2s ease';
+          
+          // Add a visual indicator
+          titleElement.onmouseenter = () => {
+            titleElement.style.color = 'var(--primary-blue)';
+            titleElement.style.transform = 'translateX(2px)';
+          };
+          titleElement.onmouseleave = () => {
+            titleElement.style.color = '';
+            titleElement.style.transform = '';
+          };
+        } else {
+          console.log('Could not find calendar title element');
+        }
+      }, 100);
+
+      return () => {
+        clearTimeout(timer);
+        // Clean up all possible elements
+        const allElements = document.querySelectorAll('.dropdowninfo h2, .dropdowninfo .calendar h2');
+        allElements.forEach(el => {
+          el.removeEventListener('click', handleCalendarClick);
+        });
+      };
+    }
+  }, [isActive, link.label]);
 
   // Handle simple links (without dropdowns)
   if (!link.dropdown) {
@@ -275,7 +338,9 @@ export default function DropdownMenu({
           <div className={`${styles.dropdowninfo} ${styles.scrollable}`}>
             {isEvents ? (
               <>
-                <Calendar />
+                <div className="calendar-wrapper">
+                  <Calendar />
+                </div>
                 <div className={styles.calendarLinks}>
                   <Link
                     href="/events/past"
