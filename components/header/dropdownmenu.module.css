@@ -195,55 +195,94 @@
 }
 
 .dropdowninfocard {
-  background: #f8f8f8;
-  border-radius: 8px;
-  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 24px;
   height: 100%;
   box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .askdr {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .askdr h4 {
-  font-size: 16px;
-  margin: 0 0 12px;
+  font-size: 17px;
+  margin: 0 0 8px;
   color: var(--hover-blue);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .askdr p {
   font-size: 14px;
-  margin: 0 0 16px;
-  color: var(--dropdown-link);
+  margin: 0 0 18px;
+  color: #666;
+  line-height: 1.5;
 }
 
 .askbutton {
   width: 100%;
-  background: var(--hover-blue);
+  background: linear-gradient(135deg, var(--hover-blue) 0%, var(--primary-blue) 100%);
   color: #fff;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 12px 18px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: background var(--transition);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .askbutton:hover {
-  background: var(--primary-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
+}
+
+/* UPDATED CONTACT INFO STYLING - IMPROVED DESIGN */
+.contactinfo {
+  background: rgba(var(--hover-blue-rgb, 29, 83, 159), 0.02);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 4px;
 }
 
 .contactinfo p {
   font-size: 14px;
   color: var(--dropdown-link);
-  margin: 8px 0;
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+.contactinfo p:first-child {
+  margin-top: 0;
+}
+
+.contactinfo p:last-child {
+  margin-bottom: 0;
 }
 
 .contactinfo strong {
-  display: inline-block;
-  width: 80px;
   color: var(--hover-blue);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Style for the content after the label */
+.contactinfo p:not(:has(strong)) {
+  margin-top: 4px;
+  padding-left: 8px;
+  color: #666;
 }
 
 .contactinfo a {
