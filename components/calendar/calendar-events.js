@@ -4,7 +4,7 @@
 export const rawEvents = [
   [6, 19, 2025, 'Juneteenth', '/events/juneteenth', true, true], // June 19, 2025
   [7, 4, 2025, 'Independence Day Celebration', '/events/independence-day', true, false],
-  [7, 7, 2025, 'Pelvic Health Recovery Workshop', '/events/pelvic-health-recovery', true, true],
+  [7, 31, 2025, 'Pelvic Health Recovery Workshop', '/events/pelvic-health-recovery', true, true],
 ];
 
 // Memoization cache to prevent re-processing
