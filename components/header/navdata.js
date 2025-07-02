@@ -30,15 +30,15 @@ export const nav_links = [
         {
           title: 'Specialized Care',
           items: [
-            { label: 'Pelvic Health', href: '/services/pelvichealth' },
-            { label: 'Department of Transportation Certifications', href: '/services/dot-certifications' },
-            { label: 'Independent Medical Examinations', href: '/services/independent-medical-examinations' },
-            { label: 'Medicare Services', href: '/services/medicare' },
-            { label: 'Mental Health Services', href: '/services/mental-health' },
-            { label: 'Pain Management Services', href: '/services/pain-management' },
-            { label: 'Telehealth Service', href: '/services/telehealth' },
-            { label: 'Veteran Services', href: '/services/veteran-services' },
-            { label: 'Weight Management Services', href: '/services/weight-management' }
+            { label: 'Pelvic Health', href: '/care/pelvichealth' },
+            { label: 'Department of Transportation Certifications', href: '/care/dot-certifications' },
+            { label: 'Independent Medical Examinations', href: '/care/independent-medical-examinations' },
+            { label: 'Medicare Services', href: '/care/medicare' },
+            { label: 'Mental Health Services', href: '/care/mental-health' },
+            { label: 'Pain Management Services', href: '/care/pain-management' },
+            { label: 'Telehealth Service', href: '/care/telehealth' },
+            { label: 'Veteran Services', href: '/care/veteran-services' },
+            { label: 'Weight Management Services', href: '/care/weight-management' }
           ],
         },
         {
@@ -46,7 +46,7 @@ export const nav_links = [
           items: [
             {
               label: 'CoreLift™ Pelvic Health Program',
-              href: '/services/pelvichealth/corelift'
+              href: '/services/corelift'
             }
           ],
         },
@@ -76,7 +76,7 @@ export const nav_links = [
         {
           title: 'our partners',
           items: [
-            { label: "gigiSafeHOUSE", href: '/#gigisafehouse' },
+            { label: "gigiSafeHOUSE", href: 'https://gigisafehouse.com' },
           ],
         },
       ],

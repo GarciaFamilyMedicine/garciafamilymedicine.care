@@ -36,7 +36,7 @@
   }
 
   .flyoutHeading {
-    font-size: 26px;
+    font-size: 24px;
     padding-right: 0;
     margin-bottom: 8px;
   }
@@ -96,12 +96,23 @@
     font-size: 16px;
   }
 
+  .actionButtons {
+    gap: 16px;
+    margin: 32px 0;
+  }
+
   .ctaButton {
     padding: 16px 20px;
     font-size: 18px;
     border-radius: 8px;
-    margin: 32px 0;
     font-weight: 700;
+  }
+
+  .secondaryButton {
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: 600;
   }
 
   .hashtagList {
