@@ -11,8 +11,8 @@ const combineStyles = (...classNames) =>
 const timelineData = [
   {
     year: "1993",
-    title: "The Halloween Awakening",
-    description: "A mother's question changed everything. Within a week, she was enrolled in medical prerequisites.",
+    title: "The Moment Everything Changed",
+    description: "On Halloween 1993, a simple question from her mother - 'Why aren't you in medical school?' - sparked a complete life transformation. Within a week, she was enrolled in medical prerequisites.",
     icon: Mountain
   },
   {

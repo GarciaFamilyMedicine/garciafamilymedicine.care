@@ -1,6 +1,6 @@
 // app/meetthedoctor/herosection.jsx
 import Image from 'next/image';
-import { ChevronDown, Heart, Stethoscope, Music, Calendar } from 'lucide-react';
+import { ChevronDown, Heart, Stethoscope, Music, Phone } from 'lucide-react';
 import styles from './meetthedoctor.module.css';
 import mobileStyles from './mobile.module.css';
 
@@ -89,15 +89,26 @@ export default function HeroSection() {
           styles.heroTextSection,
           mobileStyles.heroTextSection
         )}>
-          <h1 className={combineStyles(
+          <div className={combineStyles(
             styles.heroTitle,
             mobileStyles.heroTitle
           )}>
-            Meet <span className={combineStyles(
-              styles.titleAccent,
-              mobileStyles.titleAccent
-            )}>Dr. Tess Garcia</span>
-          </h1>
+            <span className={combineStyles(
+              styles.heroTitleMeet,
+              mobileStyles.heroTitleMeet
+            )}>
+              Meet
+            </span>
+            <span className={combineStyles(
+              styles.heroTitleName,
+              mobileStyles.heroTitleName
+            )}>
+              <span className={combineStyles(
+                styles.titleAccent,
+                mobileStyles.titleAccent
+              )}>Dr. Tess Garcia</span>
+            </span>
+          </div>
           
           <p className={combineStyles(
             styles.heroSubtitle,
@@ -128,16 +139,19 @@ export default function HeroSection() {
             styles.heroActions,
             mobileStyles.heroActions
           )}>
-            <button className={combineStyles(
-              styles.primaryButton,
-              mobileStyles.primaryButton
-            )}>
-              <Calendar className={combineStyles(
+            <a 
+              href="tel:+18164275320"
+              className={combineStyles(
+                styles.consultationButton,
+                mobileStyles.consultationButton
+              )}
+            >
+              <Phone className={combineStyles(
                 styles.buttonIcon,
                 mobileStyles.buttonIcon
               )} />
               Schedule Consultation
-            </button>
+            </a>
           </div>
         </div>
 
@@ -145,10 +159,19 @@ export default function HeroSection() {
           styles.scrollIndicator,
           mobileStyles.scrollIndicator
         )}>
-          <ChevronDown className={combineStyles(
-            styles.scrollIcon,
-            mobileStyles.scrollIcon
-          )} />
+          <ChevronDown 
+            className={combineStyles(
+              styles.scrollIcon,
+              mobileStyles.scrollIcon
+            )}
+            onClick={() => {
+              const nextSection = document.querySelector('#story');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </div>
     </section>

@@ -1,58 +1,7 @@
-/* meetthedoctor.module.css */
+/* meetthedoctor.module.css - ALL GRADIENTS MATCH CAROUSEL */
 
 /* =========================================================
-   CSS VARIABLES - RESTORED ORIGINAL COLORS
-   ======================================================= */
-.vars {
-  /* Original color scheme from your globals.css */
-  --page-bg: #3772c565;
-  --text-color: #ffffff;
-  --font-sumana: 'Sumana', serif;
-  --font-argentum: 'Argentum Sans', sans-serif;
-  --primary-light: #d1e7ff;
-  --accent: #ff6b6b;
-  
-  /* Updated variables to work with original scheme */
-  --primary: #275cab;
-  --primary-dark: #1d539f;
-  --secondary: #10b981;
-  --secondary-light: #34d399;
-  --secondary-dark: #047857;
-  --accent-light: #ff8787;
-  --accent-dark: #e55555;
-  
-  /* Text colors for the blue background theme */
-  --text: var(--text-color);
-  --text-light: rgba(255, 255, 255, 0.8);
-  --text-muted: rgba(255, 255, 255, 0.6);
-  
-  /* Background variations for the blue theme */
-  --bg-primary: var(--page-bg);
-  --bg-secondary: rgba(55, 114, 197, 0.7);
-  --bg-accent: rgba(55, 114, 197, 0.4);
-  
-  /* Borders and shadows for blue theme */
-  --border: rgba(255, 255, 255, 0.2);
-  --border-light: rgba(255, 255, 255, 0.1);
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-  
-  --radius: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  
-  --font-primary: var(--font-argentum);
-  --font-secondary: var(--font-argentum);
-  
-  --timing: cubic-bezier(0.4, 0, 0.2, 1);
-  --timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* =========================================================
-   BASE STYLES
+   BASE STYLES - Use colors from globals.css
    ======================================================= */
 .page {
   font-family: var(--font-argentum);
@@ -76,13 +25,13 @@
    ======================================================= */
 .floatingNav {
   position: fixed;
-  top: 1.5rem;
+  top: 6rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
   border-radius: 9999px;
   padding: 0.75rem 1.5rem;
   box-shadow: var(--shadow-lg);
@@ -174,12 +123,12 @@
 
 .floatingDot {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.4);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
   animation: particleFloat 6s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 107, 107, 0.3);
 }
 
 .heroContent {
@@ -246,19 +195,31 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  font-family: var(--font-sumana);
   line-height: 1.1;
   margin-bottom: 1.5rem;
   color: white;
-  font-family: var(--font-sumana);
 }
 
+.heroTitleMeet {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.heroTitleName {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  display: block;
+}
+
+/* GRADIENT MATCH - Same as working carousel */
 .titleAccent {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .heroSubtitle {
@@ -304,11 +265,13 @@
   margin-top: 2rem;
 }
 
-.primaryButton {
+/* GRADIENT MATCH - Same as working carousel */
+.primaryButton,
+.consultationButton {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
   color: white;
   border: none;
   border-radius: 9999px;
@@ -316,32 +279,40 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.4s var(--timing-bounce);
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
+  margin-top: 2rem;
 }
 
-.primaryButton::before {
+.primaryButton::before,
+.consultationButton::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
   opacity: 0;
   transition: opacity 0.3s var(--timing);
   border-radius: 9999px;
 }
 
-.primaryButton:hover {
+.primaryButton:hover,
+.consultationButton:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+  color: white;
+  text-decoration: none;
 }
 
-.primaryButton:hover::before {
+.primaryButton:hover::before,
+.consultationButton:hover::before {
   opacity: 1;
 }
 
-.primaryButton:hover .buttonIcon {
+.primaryButton:hover .buttonIcon,
+.consultationButton:hover .buttonIcon {
   transform: rotate(15deg) scale(1.1);
 }
 
@@ -366,24 +337,165 @@
   width: 1.5rem;
   height: 1.5rem;
   color: white;
+  cursor: pointer;
 }
 
 /* =========================================================
-   SECTION STYLES (Updated for blue theme)
+   STORY SECTION - Left Text, Right Photo Layout
    ======================================================= */
-.storySection,
-.journeySection,
-.connectSection {
+.storySection {
   position: relative;
   padding: 6rem 0;
   background: var(--page-bg);
 }
 
-.missionSection {
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.storyContent {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s var(--timing);
+}
+
+.storyContentAnimated {
+  animation: slideInLeft 1s var(--timing) forwards;
+}
+
+.storyTitle {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-family: var(--font-sumana);
+}
+
+/* GRADIENT MATCH - Same as working carousel */
+.storyHighlight {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: block;
+  font-size: clamp(3rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+}
+
+.storySubtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.storyText {
+  margin-top: 2rem;
+}
+
+.storyText p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.storyImageSection {
+  position: relative;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1s var(--timing);
+}
+
+.storyImageAnimated {
+  animation: slideInRight 1s var(--timing) forwards;
+}
+
+.storyImageFrame {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-xl);
+  transition: all 0.5s var(--timing);
+}
+
+.storyImageFrame:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.15);
+}
+
+.storyImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  transition: all 0.5s var(--timing);
+}
+
+.storyImageFrame:hover .storyImage {
+  transform: scale(1.02);
+}
+
+/* Photo quotes styling */
+.photoQuote {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  transition: all 0.3s var(--timing);
+}
+
+.photoQuote:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.photoQuote p {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Phone link styling */
+.phoneLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s var(--timing);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phoneLink:hover {
+  color: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.phoneIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* =========================================================
+   QUOTES AND STATS SECTION
+   ======================================================= */
+.quotesSection {
   position: relative;
   padding: 6rem 0;
-  background: linear-gradient(135deg, rgba(55, 114, 197, 0.9) 0%, rgba(55, 114, 197, 0.7) 50%, rgba(55, 114, 197, 0.8) 100%);
-  overflow: hidden;
+  background: var(--page-bg);
 }
 
 .sectionHeader {
@@ -407,11 +519,12 @@
   font-family: var(--font-sumana);
 }
 
+/* GRADIENT MATCH - Same as working carousel */
 .titleGradient {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .sectionSubtitle {
@@ -422,9 +535,7 @@
   line-height: 1.6;
 }
 
-/* =========================================================
-   QUOTE SECTION (Updated for blue theme)
-   ======================================================= */
+/* Quote Section */
 .quoteSection {
   position: relative;
   margin-bottom: 4rem;
@@ -455,6 +566,7 @@
   overflow: hidden;
 }
 
+/* WORKING CAROUSEL GRADIENT - DON'T CHANGE */
 .quoteContainer::before {
   content: '';
   position: absolute;
@@ -462,11 +574,11 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--accent), var(--primary-light), var(--accent));
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
   border-radius: var(--radius-xl);
   z-index: -1;
   animation: borderRotate 8s linear infinite;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .quoteContainer:hover {
@@ -530,9 +642,7 @@
   transform: scale(1.2);
 }
 
-/* =========================================================
-   STATS GRID (Updated for blue theme)
-   ======================================================= */
+/* Stats Grid */
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -596,14 +706,21 @@
 }
 
 /* =========================================================
-   TIMELINE (Updated for blue theme)
+   TIMELINE SECTION
    ======================================================= */
+.journeySection {
+  position: relative;
+  padding: 6rem 0;
+  background: var(--page-bg);
+}
+
 .timeline {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
 }
 
+/* GRADIENT MATCH - Same as working carousel */
 .timeline::before {
   content: '';
   position: absolute;
@@ -611,7 +728,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--primary-light));
+  background: linear-gradient(to bottom, var(--accent), var(--primary)) !important;
   border-radius: 1px;
 }
 
@@ -631,12 +748,13 @@
   animation-delay: var(--delay);
 }
 
+/* GRADIENT MATCH - Same as working carousel */
 .timelineMarker {
   position: relative;
   z-index: 10;
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -691,108 +809,14 @@
 }
 
 /* =========================================================
-   MISSION SECTION (Updated for blue theme)
+   CONNECT SECTION
    ======================================================= */
-.missionBackground {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.missionOrb1,
-.missionOrb2 {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.3;
-}
-
-.missionOrb1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  top: -200px;
-  right: -200px;
-  animation: float 12s ease-in-out infinite;
-}
-
-.missionOrb2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-  bottom: -100px;
-  left: -100px;
-  animation: float 15s ease-in-out infinite reverse;
-}
-
-.missionGrid {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 4rem;
-  align-items: center;
-}
-
-.missionContent {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 1s var(--timing);
-}
-
-.missionContentAnimated {
-  animation: slideInLeft 1s var(--timing) forwards;
-}
-
-.missionTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  color: white;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  font-family: var(--font-sumana);
-}
-
-.missionText p {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.missionImageCol {
+.connectSection {
   position: relative;
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 1s var(--timing);
+  padding: 6rem 0;
+  background: var(--page-bg);
 }
 
-.missionImageAnimated {
-  animation: slideInRight 1s var(--timing) forwards;
-}
-
-.imageFrame {
-  position: relative;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-xl);
-}
-
-.frameImage {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  transition: all 0.5s var(--timing);
-}
-
-.imageFrame:hover .frameImage {
-  transform: scale(1.02);
-}
-
-/* =========================================================
-   CONNECT SECTION (Updated for blue theme)
-   ======================================================= */
 .connectContent {
   text-align: center;
   max-width: 800px;
@@ -834,7 +858,9 @@
   opacity: 1;
 }
 
-/* Keyframe animations remain the same */
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ======================================================= */
 @keyframes particleFloat {
   0%, 100% { 
     transform: translateY(0px) scale(1); 
@@ -897,21 +923,6 @@
   }
 }
 
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) translateX(0px); 
-  }
-  25% { 
-    transform: translateY(-20px) translateX(10px); 
-  }
-  50% { 
-    transform: translateY(-10px) translateX(-5px); 
-  }
-  75% { 
-    transform: translateY(-25px) translateX(5px); 
-  }
-}
-
 @keyframes bounce {
   0%, 20%, 53%, 80%, 100% { 
     transform: translateX(-50%) translateY(0); 
@@ -970,9 +981,18 @@
     text-align: center;
   }
   
-  .missionGrid {
+  .storyGrid {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 3rem;
+  }
+  
+  .storyImageSection {
+    order: -1;
+  }
+  
+  .storyContent {
+    order: 1;
   }
 
   .statsGrid {
@@ -1031,9 +1051,33 @@
   
   .storySection,
   .journeySection,
-  .missionSection,
+  .quotesSection,
   .connectSection {
     padding: 4rem 0;
+  }
+  
+  .storyGrid {
+    gap: 2rem;
+  }
+  
+  .storyTitle {
+    text-align: center;
+  }
+  
+  .storyHighlight {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .storySubtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+  }
+  
+  .storyText p {
+    font-size: 1rem;
+  }
+  
+  .storyImageFrame {
+    padding: 1rem;
   }
   
   .quoteContainer {
@@ -1053,6 +1097,22 @@
   .timelineContent {
     padding: 1.5rem;
   }
+  
+  .heroTitleMeet {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .heroTitleName {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+  
+  .storyHighlight {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+  
+  .storySubtitle {
+    font-size: clamp(0.875rem, 4vw, 1.125rem);
+  }
 }
 
 /* =========================================================
@@ -1066,16 +1126,14 @@
 }
 
 .hero,
-.missionSection {
+.storySection {
   will-change: transform;
 }
 
 .floatingDot,
 .gradientOverlay,
 .meshPattern,
-.imageGlow,
-.missionOrb1,
-.missionOrb2 {
+.imageGlow {
   will-change: transform;
 }
 
@@ -1083,8 +1141,10 @@
    ACCESSIBILITY
    ======================================================= */
 .primaryButton:focus,
+.consultationButton:focus,
 .navLink:focus,
-.indicator:focus {
+.indicator:focus,
+.phoneLink:focus {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

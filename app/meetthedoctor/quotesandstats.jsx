@@ -12,12 +12,12 @@ const combineStyles = (...classNames) =>
 const statsData = [
   {
     icon: Users,
-    number: "2000+",
+    number: "10000+",
     label: "Patients Served"
   },
   {
     icon: Clock,
-    number: "20+",
+    number: "26+",
     label: "Years Experience"
   },
   {
@@ -61,8 +61,8 @@ export default function QuotesAndStats({ animated }) {
       id="story" 
       data-section="story"
       className={combineStyles(
-        styles.storySection,
-        mobileStyles.storySection,
+        styles.quotesSection,
+        mobileStyles.quotesSection,
         animated ? styles.sectionAnimated : ''
       )}
     >
