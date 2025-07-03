@@ -1,43 +1,51 @@
 /* meetthedoctor.module.css */
 
 /* =========================================================
-   CSS VARIABLES
+   CSS VARIABLES - RESTORED ORIGINAL COLORS
    ======================================================= */
 .vars {
-  --primary: #1e40af;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e3a8a;
+  /* Original color scheme from your globals.css */
+  --page-bg: #3772c565;
+  --text-color: #ffffff;
+  --font-sumana: 'Sumana', serif;
+  --font-argentum: 'Argentum Sans', sans-serif;
+  --primary-light: #d1e7ff;
+  --accent: #ff6b6b;
   
-  --secondary: #059669;
-  --secondary-light: #10b981;
+  /* Updated variables to work with original scheme */
+  --primary: #275cab;
+  --primary-dark: #1d539f;
+  --secondary: #10b981;
+  --secondary-light: #34d399;
   --secondary-dark: #047857;
+  --accent-light: #ff8787;
+  --accent-dark: #e55555;
   
-  --accent: #0891b2;
-  --accent-light: #06b6d4;
-  --accent-dark: #0e7490;
+  /* Text colors for the blue background theme */
+  --text: var(--text-color);
+  --text-light: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
   
-  --text: #0f172a;
-  --text-light: #475569;
-  --text-muted: #64748b;
+  /* Background variations for the blue theme */
+  --bg-primary: var(--page-bg);
+  --bg-secondary: rgba(55, 114, 197, 0.7);
+  --bg-accent: rgba(55, 114, 197, 0.4);
   
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-accent: #f1f5f9;
+  /* Borders and shadows for blue theme */
+  --border: rgba(255, 255, 255, 0.2);
+  --border-light: rgba(255, 255, 255, 0.1);
   
-  --border: rgba(148, 163, 184, 0.2);
-  --border-light: rgba(148, 163, 184, 0.1);
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
   
   --radius: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-primary: var(--font-argentum);
+  --font-secondary: var(--font-argentum);
   
   --timing: cubic-bezier(0.4, 0, 0.2, 1);
   --timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -47,13 +55,14 @@
    BASE STYLES
    ======================================================= */
 .page {
-  font-family: var(--font-secondary);
-  background: var(--bg-primary);
-  color: var(--text);
+  font-family: var(--font-argentum);
+  background: var(--page-bg);
+  color: var(--text-color);
   line-height: 1.6;
   font-size: 16px;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 .container {
@@ -71,7 +80,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
@@ -102,7 +111,7 @@
 }
 
 .navLink {
-  color: var(--text);
+  color: white;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s var(--timing);
@@ -113,8 +122,8 @@
 }
 
 .navLink:hover {
-  color: var(--primary);
-  background: rgba(30, 64, 175, 0.1);
+  color: var(--accent);
+  background: rgba(255, 107, 107, 0.2);
 }
 
 /* =========================================================
@@ -127,7 +136,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, rgba(55, 114, 197, 0.8) 0%, rgba(55, 114, 197, 0.6) 50%, rgba(55, 114, 197, 0.4) 100%);
 }
 
 .heroBackground {
@@ -141,9 +150,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(30, 64, 175, 0.1) 0%,
-    rgba(8, 145, 178, 0.1) 50%,
-    rgba(5, 150, 105, 0.1) 100%
+    rgba(39, 92, 171, 0.3) 0%,
+    rgba(255, 107, 107, 0.2) 50%,
+    rgba(209, 231, 255, 0.2) 100%
   );
 }
 
@@ -151,8 +160,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.08) 0%, transparent 50%);
   animation: meshMove 20s ease-in-out infinite;
 }
 
@@ -167,10 +176,10 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   animation: particleFloat 6s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .heroContent {
@@ -202,7 +211,7 @@
 .imageGlow {
   position: absolute;
   inset: -30px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(6, 182, 212, 0.2) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.4) 0%, rgba(209, 231, 255, 0.2) 50%, transparent 70%);
   border-radius: 50%;
   animation: glowPulse 4s ease-in-out infinite;
   filter: blur(20px);
@@ -215,14 +224,14 @@
   height: 320px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.4);
   transition: all 0.6s var(--timing-bounce);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .imageContainer:hover .heroImage {
   transform: scale(1.08) rotate(2deg);
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
@@ -242,10 +251,11 @@
   line-height: 1.1;
   margin-bottom: 1.5rem;
   color: white;
+  font-family: var(--font-sumana);
 }
 
 .titleAccent {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -253,7 +263,7 @@
 
 .heroSubtitle {
   font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -269,9 +279,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 9999px;
   padding: 0.75rem 1.25rem;
   color: white;
@@ -281,7 +291,7 @@
 }
 
 .badge:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
 }
 
@@ -298,7 +308,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
   color: white;
   border: none;
   border-radius: 9999px;
@@ -316,7 +326,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   opacity: 0;
   transition: opacity 0.3s var(--timing);
   border-radius: 9999px;
@@ -324,7 +334,7 @@
 
 .primaryButton:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.4);
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
 }
 
 .primaryButton:hover::before {
@@ -349,7 +359,7 @@
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 2s infinite;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .scrollIcon {
@@ -359,20 +369,20 @@
 }
 
 /* =========================================================
-   SECTION STYLES
+   SECTION STYLES (Updated for blue theme)
    ======================================================= */
 .storySection,
 .journeySection,
 .connectSection {
   position: relative;
   padding: 6rem 0;
-  background: var(--bg-primary);
+  background: var(--page-bg);
 }
 
 .missionSection {
   position: relative;
   padding: 6rem 0;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, rgba(55, 114, 197, 0.9) 0%, rgba(55, 114, 197, 0.7) 50%, rgba(55, 114, 197, 0.8) 100%);
   overflow: hidden;
 }
 
@@ -384,24 +394,21 @@
   transition: all 0.8s var(--timing);
 }
 
-.sectionHeader[data-animate] {
+.sectionHeaderAnimated {
   animation: fadeInUp 0.8s var(--timing) forwards;
 }
 
 .sectionTitle {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  color: var(--text);
+  color: white;
   margin-bottom: 1rem;
   line-height: 1.2;
-}
-
-.missionSection .sectionTitle {
-  color: white;
+  font-family: var(--font-sumana);
 }
 
 .titleGradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -409,18 +416,14 @@
 
 .sectionSubtitle {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.8);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-.missionSection .sectionSubtitle {
-  color: rgba(255, 255, 255, 0.8);
-}
-
 /* =========================================================
-   QUOTE SECTION
+   QUOTE SECTION (Updated for blue theme)
    ======================================================= */
 .quoteSection {
   position: relative;
@@ -430,15 +433,15 @@
   transition: all 1s var(--timing);
 }
 
-.quoteSection[data-animate] {
+.quoteSectionVisible {
   animation: fadeInUp 1s var(--timing) forwards;
 }
 
 .quoteContainer {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-xl);
   padding: 3rem;
   text-align: center;
@@ -459,7 +462,7 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+  background: linear-gradient(45deg, var(--accent), var(--primary-light), var(--accent));
   border-radius: var(--radius-xl);
   z-index: -1;
   animation: borderRotate 8s linear infinite;
@@ -469,18 +472,15 @@
 .quoteContainer:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-xl);
-}
-
-.quoteContainer:hover::before {
-  opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .quoteIconLarge {
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--primary);
+  color: var(--accent);
   margin-bottom: 1.5rem;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .quoteContent {
@@ -490,7 +490,7 @@
 .quoteText {
   font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   font-style: italic;
-  color: var(--text);
+  color: white;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   transition: all 0.5s var(--timing);
@@ -498,7 +498,7 @@
 
 .quoteCite {
   font-size: 1rem;
-  color: var(--primary);
+  color: var(--accent);
   font-weight: 600;
   font-style: normal;
 }
@@ -515,23 +515,23 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: var(--border);
+  background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s var(--timing);
 }
 
 .indicator:hover {
-  background: var(--primary-light);
+  background: var(--accent);
   transform: scale(1.1);
 }
 
 .indicatorActive {
-  background: var(--primary);
+  background: var(--accent);
   transform: scale(1.2);
 }
 
 /* =========================================================
-   STATS GRID
+   STATS GRID (Updated for blue theme)
    ======================================================= */
 .statsGrid {
   display: grid;
@@ -543,9 +543,9 @@
 .statsCard {
   text-align: center;
   padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   transition: all 0.3s var(--timing);
@@ -553,7 +553,7 @@
   transform: translateY(30px);
 }
 
-.statsCard[data-animate] {
+.statsVisible {
   animation: fadeInUp 0.8s var(--timing) forwards;
   animation-delay: var(--delay);
 }
@@ -561,7 +561,7 @@
 .statsCard:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: var(--shadow-xl);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 0.95) 100%);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .statsCard:hover .statsIcon {
@@ -576,7 +576,7 @@
 .statsIcon {
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--primary);
+  color: white;
   margin-bottom: 1rem;
   transition: all 0.4s var(--timing-bounce);
 }
@@ -584,23 +584,19 @@
 .statsNumber {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--text);
+  color: white;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   transition: all 0.3s var(--timing);
 }
 
 .statsLabel {
   font-size: 0.875rem;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
 }
 
 /* =========================================================
-   TIMELINE
+   TIMELINE (Updated for blue theme)
    ======================================================= */
 .timeline {
   position: relative;
@@ -615,7 +611,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  background: linear-gradient(to bottom, var(--accent), var(--primary-light));
   border-radius: 1px;
 }
 
@@ -630,7 +626,7 @@
   transition: all 0.8s var(--timing);
 }
 
-.timelineItem[data-animate] {
+.timelineItemAnimated {
   animation: slideInLeft 0.8s var(--timing) forwards;
   animation-delay: var(--delay);
 }
@@ -640,7 +636,7 @@
   z-index: 10;
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -657,9 +653,9 @@
 
 .timelineContent {
   flex: 1;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-md);
@@ -667,7 +663,7 @@
 }
 
 .timelineContent:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
@@ -675,7 +671,7 @@
 .timelineYear {
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
@@ -684,18 +680,18 @@
 .timelineTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text);
+  color: white;
   margin-bottom: 1rem;
   line-height: 1.3;
 }
 
 .timelineDescription {
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
 }
 
 /* =========================================================
-   MISSION SECTION
+   MISSION SECTION (Updated for blue theme)
    ======================================================= */
 .missionBackground {
   position: absolute;
@@ -714,7 +710,7 @@
 .missionOrb1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
   top: -200px;
   right: -200px;
   animation: float 12s ease-in-out infinite;
@@ -723,7 +719,7 @@
 .missionOrb2 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
   bottom: -100px;
   left: -100px;
   animation: float 15s ease-in-out infinite reverse;
@@ -742,7 +738,7 @@
   transition: all 1s var(--timing);
 }
 
-.missionContent[data-animate] {
+.missionContentAnimated {
   animation: slideInLeft 1s var(--timing) forwards;
 }
 
@@ -752,6 +748,7 @@
   color: white;
   line-height: 1.1;
   margin-bottom: 2rem;
+  font-family: var(--font-sumana);
 }
 
 .missionText p {
@@ -761,14 +758,14 @@
   margin-bottom: 1.5rem;
 }
 
-.missionImage {
+.missionImageCol {
   position: relative;
   opacity: 0;
   transform: translateX(50px);
   transition: all 1s var(--timing);
 }
 
-.missionImage[data-animate] {
+.missionImageAnimated {
   animation: slideInRight 1s var(--timing) forwards;
 }
 
@@ -776,7 +773,7 @@
   position: relative;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-xl);
   padding: 1.5rem;
   box-shadow: var(--shadow-xl);
@@ -794,7 +791,7 @@
 }
 
 /* =========================================================
-   CONNECT SECTION
+   CONNECT SECTION (Updated for blue theme)
    ======================================================= */
 .connectContent {
   text-align: center;
@@ -805,21 +802,22 @@
   transition: all 1s var(--timing);
 }
 
-.connectContent[data-animate] {
+.connectContentAnimated {
   animation: fadeInUp 1s var(--timing) forwards;
 }
 
 .connectTitle {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  color: var(--text);
+  color: white;
   margin-bottom: 1rem;
   line-height: 1.1;
+  font-family: var(--font-sumana);
 }
 
 .connectSubtitle {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 3rem;
   line-height: 1.6;
 }
@@ -831,27 +829,12 @@
   gap: 2rem;
 }
 
-.contactInfo {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Animation trigger classes */
+.sectionAnimated {
+  opacity: 1;
 }
 
-.contactItem {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.contactIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--primary);
-}
-
+/* Keyframe animations remain the same */
 @keyframes particleFloat {
   0%, 100% { 
     transform: translateY(0px) scale(1); 
@@ -899,40 +882,6 @@
   }
 }
 
-@keyframes shimmer {
-  0% { 
-    transform: translateX(-100%); 
-  }
-  100% { 
-    transform: translateX(100%); 
-  }
-}
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) translateX(0px); 
-  }
-  25% { 
-    transform: translateY(-20px) translateX(10px); 
-  }
-  50% { 
-    transform: translateY(-10px) translateX(-5px); 
-  }
-  75% { 
-    transform: translateY(-25px) translateX(5px); 
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { 
-    opacity: 0.6; 
-    transform: scale(1); 
-  }
-  50% { 
-    opacity: 1; 
-    transform: scale(1.05); 
-  }
-}
-
 @keyframes meshMove {
   0%, 100% { 
     transform: translateX(0) translateY(0); 
@@ -945,6 +894,21 @@
   }
   75% { 
     transform: translateX(20px) translateY(20px); 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px); 
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px); 
+  }
+  50% { 
+    transform: translateY(-10px) translateX(-5px); 
+  }
+  75% { 
+    transform: translateY(-25px) translateX(5px); 
   }
 }
 
@@ -1010,6 +974,11 @@
     grid-template-columns: 1fr;
     text-align: center;
   }
+
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1060,11 +1029,6 @@
     align-self: center;
   }
   
-  .contactInfo {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
   .storySection,
   .journeySection,
   .missionSection,
@@ -1075,13 +1039,13 @@
   .quoteContainer {
     padding: 2rem;
   }
-}
 
-@media (max-width: 480px) {
   .statsGrid {
     grid-template-columns: 1fr;
   }
-  
+}
+
+@media (max-width: 480px) {
   .statsCard {
     padding: 1.5rem;
   }
@@ -1121,7 +1085,7 @@
 .primaryButton:focus,
 .navLink:focus,
 .indicator:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
