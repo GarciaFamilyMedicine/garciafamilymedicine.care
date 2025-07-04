@@ -1,5 +1,3 @@
-/* meetthedoctor.module.css - ALL GRADIENTS MATCH CAROUSEL */
-
 /* =========================================================
    BASE STYLES - Use colors from globals.css
    ======================================================= */
@@ -76,7 +74,7 @@
 }
 
 /* =========================================================
-   HERO SECTION
+   HERO SECTION - DON'T TOUCH
    ======================================================= */
 .hero {
   position: relative;
@@ -85,8 +83,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(55, 114, 197, 0.8) 0%, rgba(55, 114, 197, 0.6) 50%, rgba(55, 114, 197, 0.4) 100%);
-}
+background: linear-gradient(135deg, rgba(55, 114, 197, 0.8) 0%, rgba(55, 114, 197, 0.6) 50%, rgba(55, 114, 197, 0.4) 100%);}
 
 .heroBackground {
   position: absolute;
@@ -123,12 +120,16 @@
 
 .floatingDot {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.7);
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7); /* Fixed background color */
   border-radius: 50%;
-  animation: particleFloat 6s ease-in-out infinite;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 107, 107, 0.3);
+  animation: 
+    float var(--float-duration) ease-in-out infinite var(--float-delay),
+    orbit var(--orbit-duration) linear infinite,
+    pulse var(--pulse-duration) ease-in-out infinite var(--pulse-delay);
+  will-change: transform, opacity;
 }
 
 .heroContent {
@@ -341,156 +342,7 @@
 }
 
 /* =========================================================
-   STORY SECTION - Left Text, Right Photo Layout
-   ======================================================= */
-.storySection {
-  position: relative;
-  padding: 6rem 0;
-  background: var(--page-bg);
-}
-
-.storyGrid {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 4rem;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.storyContent {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 1s var(--timing);
-}
-
-.storyContentAnimated {
-  animation: slideInLeft 1s var(--timing) forwards;
-}
-
-.storyTitle {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 800;
-  color: white;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  font-family: var(--font-sumana);
-}
-
-/* GRADIENT MATCH - Same as working carousel */
-.storyHighlight {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  display: block;
-  font-size: clamp(3rem, 5vw, 4rem);
-  margin-bottom: 0.5rem;
-}
-
-.storySubtitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: white;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.storyText {
-  margin-top: 2rem;
-}
-
-.storyText p {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.storyImageSection {
-  position: relative;
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 1s var(--timing);
-}
-
-.storyImageAnimated {
-  animation: slideInRight 1s var(--timing) forwards;
-}
-
-.storyImageFrame {
-  position: relative;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-xl);
-  transition: all 0.5s var(--timing);
-}
-
-.storyImageFrame:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.15);
-}
-
-.storyImage {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  transition: all 0.5s var(--timing);
-}
-
-.storyImageFrame:hover .storyImage {
-  transform: scale(1.02);
-}
-
-/* Photo quotes styling */
-.photoQuote {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  margin: 1rem 0;
-  text-align: center;
-  transition: all 0.3s var(--timing);
-}
-
-.photoQuote:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-.photoQuote p {
-  font-size: 1rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Phone link styling */
-.phoneLink {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s var(--timing);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.phoneLink:hover {
-  color: var(--accent-light);
-  transform: translateY(-1px);
-}
-
-.phoneIcon {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-
-/* =========================================================
-   QUOTES AND STATS SECTION
+   QUOTES SECTION - Light background (second section)
    ======================================================= */
 .quotesSection {
   position: relative;
@@ -706,7 +558,7 @@
 }
 
 /* =========================================================
-   TIMELINE SECTION
+   TIMELINE/JOURNEY SECTION - Light background (third section)
    ======================================================= */
 .journeySection {
   position: relative;
@@ -809,12 +661,232 @@
 }
 
 /* =========================================================
-   CONNECT SECTION
+   STORY/BIOGRAPHY SECTION - Match Hero Section Style (fourth section)
+   ======================================================= */
+.storySection {
+  position: relative;
+  padding: 6rem 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(55, 114, 197, 0.8) 0%, rgba(55, 114, 197, 0.6) 50%, rgba(55, 114, 197, 0.4) 100%);
+}
+
+.storySection .heroBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.storySection .gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(39, 92, 171, 0.3) 0%,
+    rgba(255, 107, 107, 0.2) 50%,
+    rgba(209, 231, 255, 0.2) 100%
+  );
+}
+
+.storySection .meshPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.08) 0%, transparent 50%);
+  animation: meshMove 20s ease-in-out infinite;
+}
+
+.storySection .floatingElements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.storyContent {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s var(--timing);
+}
+
+.storyContentAnimated {
+  animation: slideInLeft 1s var(--timing) forwards;
+}
+
+.storyTitle {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  font-family: var(--font-sumana);
+}
+
+/* GRADIENT MATCH - Same as working carousel */
+.storyHighlight {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: block;
+  font-size: clamp(3rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+}
+
+.storySubtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.storyText {
+  margin-top: 2rem;
+}
+
+.storyText p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.storyImageSection {
+  position: relative;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1s var(--timing);
+}
+
+.storyImageAnimated {
+  animation: slideInRight 1s var(--timing) forwards;
+}
+
+.storyImageFrame {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s var(--timing);
+}
+
+.storyImageFrame:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(255, 107, 107, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.storyImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  transition: all 0.5s var(--timing);
+}
+
+.storyImageFrame:hover .storyImage {
+  transform: scale(1.02);
+}
+
+/* Enhanced photo quotes for hero-style background */
+.photoQuote {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  transition: all 0.3s var(--timing);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.photoQuote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 4rem;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.photoQuote:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.photoQuote p {
+  font-size: 1rem;
+  font-style: italic;
+  color: white;
+  margin: 0;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Phone link styling */
+.phoneLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s var(--timing);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phoneLink:hover {
+  color: white;
+  transform: translateY(-1px);
+}
+
+.phoneIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+/* =========================================================
+   CONNECT SECTION - Dark fancy background (fifth section)
    ======================================================= */
 .connectSection {
   position: relative;
   padding: 6rem 0;
-  background: var(--page-bg);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, rgba(55, 114, 197, 0.3) 100%);
+  overflow: hidden;
+}
+
+.connectSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 70%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(55, 114, 197, 0.1) 0%, transparent 50%);
+  animation: meshMove 30s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .connectContent {
@@ -824,6 +896,8 @@
   opacity: 0;
   transform: translateY(50px);
   transition: all 1s var(--timing);
+  position: relative;
+  z-index: 2;
 }
 
 .connectContentAnimated {
@@ -856,6 +930,48 @@
 /* Animation trigger classes */
 .sectionAnimated {
   opacity: 1;
+}
+
+/* =========================================================
+   ANIMATED TEXT REVEAL STYLES
+   ======================================================= */
+.textLine {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.textLineVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.keyPhrase {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  position: relative;
+}
+
+.keyPhrase::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.textLineVisible .keyPhrase::after {
+  transform: scaleX(1);
 }
 
 /* =========================================================
@@ -968,6 +1084,36 @@
   to { 
     opacity: 1; 
     transform: translateX(0); 
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Orbiting animation */
+@keyframes orbit {
+  from {
+    transform: translateX(var(--orbit-radius)) translateY(0) scale(var(--pulse-intensity));
+  }
+  to {
+    transform: translateX(var(--orbit-radius)) translateY(0) scale(var(--pulse-intensity)) rotate(calc(360deg * var(--orbit-direction)));
+  }
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: var(--pulse-intensity);
+  }
+  50% {
+    opacity: 1;
   }
 }
 

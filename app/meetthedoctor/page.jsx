@@ -1,3 +1,4 @@
+// app/meetthedoctor/page.jsx - Updated with merged components
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -5,9 +6,9 @@ import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import FloatingNav from './floatingnav.jsx';
 import HeroSection from './herosection.jsx';              // Hero section with Dr. Tess photo
-import QuotesAndStats from './quotesandstats.jsx';        // Quotes carousel and statistics
-import CareerTimeline from './careertimeline.jsx';        // Timeline of career journey
-import DoctorBiography from './doctorbiography.jsx';      // Detailed biography text
+import QuotesAndStats from './quotesandstats.jsx';        // Merged: Quotes carousel and statistics
+import CareerTimeline from './careertimeline.jsx';        // Merged: Timeline with TimelineItem component
+import DoctorBiography from './doctorbiography.jsx';      // Enhanced: Hero-style background with paragraph animation
 import ConnectSection from './connectsection.jsx';        // Call-to-action section
 import styles from './meetthedoctor.module.css';
 import mobileStyles from './mobile.module.css';
@@ -85,10 +86,20 @@ export default function Page() {
         mobileStyles.page
       )}>
         <FloatingNav visible={navVisible} />
+        
+        {/* Section 1: Hero - Blue gradient with floating dots */}
         <HeroSection />
+        
+        {/* Section 2: Quotes & Stats - Light background (merged component) */}
         <QuotesAndStats animated={animatedElements.story} />
+        
+        {/* Section 3: Career Timeline - Light background (merged component) */}
         <CareerTimeline animated={animatedElements.journey} />
+        
+        {/* Section 4: Biography - Hero-style blue gradient with enhanced text animation */}
         <DoctorBiography animated={animatedElements.mission} />
+        
+        {/* Section 5: Connect - Dark fancy background */}
         <ConnectSection animated={animatedElements.connect} />
       </div>
       <Footer />

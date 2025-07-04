@@ -1,5 +1,4 @@
-// app/meetthedoctor/careertimeline.jsx
-import TimelineItem from './timelineitem';
+// app/meetthedoctor/careertimeline.jsx - Merged with TimelineItem and Light Background
 import { Mountain, Award, Users, Heart } from 'lucide-react';
 import styles from './meetthedoctor.module.css';
 import mobileStyles from './mobile.module.css';
@@ -7,6 +6,48 @@ import mobileStyles from './mobile.module.css';
 // Helper function to combine CSS modules
 const combineStyles = (...classNames) => 
   classNames.filter(Boolean).join(' ');
+
+// Merged TimelineItem component
+function TimelineItem({ year, title, description, Icon, index, animated }) {
+  return (
+    <div
+      className={combineStyles(
+        styles.timelineItem,
+        mobileStyles.timelineItem,
+        animated ? styles.timelineItemAnimated : ''
+      )}
+      style={{ '--delay': `${index * 0.15}s` }}
+    >
+      <div className={combineStyles(
+        styles.timelineMarker,
+        mobileStyles.timelineMarker
+      )}>
+        <Icon className={combineStyles(
+          styles.timelineIcon,
+          mobileStyles.timelineIcon
+        )} />
+      </div>
+      
+      <div className={combineStyles(
+        styles.timelineContent,
+        mobileStyles.timelineContent
+      )}>
+        <div className={combineStyles(
+          styles.timelineYear,
+          mobileStyles.timelineYear
+        )}>{year}</div>
+        <h3 className={combineStyles(
+          styles.timelineTitle,
+          mobileStyles.timelineTitle
+        )}>{title}</h3>
+        <p className={combineStyles(
+          styles.timelineDescription,
+          mobileStyles.timelineDescription
+        )}>{description}</p>
+      </div>
+    </div>
+  );
+}
 
 const timelineData = [
   {
@@ -17,7 +58,7 @@ const timelineData = [
   },
   {
     year: "1995-2002",
-    title: "Medical School & Residency",
+    title: "Medical School & Residency", 
     description: "From Virginia to Missouri, dedicating herself to becoming a board-certified Family Physician.",
     icon: Award
   },

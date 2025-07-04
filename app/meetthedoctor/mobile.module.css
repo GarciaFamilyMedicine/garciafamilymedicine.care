@@ -14,7 +14,48 @@
   .container {
     padding: 0 1rem;
   }
-  
+
+  /* Floating Elements */
+  .floatingElements {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floatingDot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 107, 107, 0.4);
+    animation: 
+      float var(--float-duration, 5s) ease-in-out infinite var(--float-delay, 0s),
+      sway var(--sway-duration, 8s) ease-in-out infinite var(--float-delay, 0s),
+      pulse var(--pulse-duration, 2s) ease-in-out infinite var(--pulse-delay, 0s);
+    will-change: transform, opacity;
+    animation-play-state: running;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: var(--pulse-intensity, 0.7); }
+    50% { opacity: 1; }
+  }
+
   /* =========================================================
      HERO SECTION MOBILE
      ======================================================= */
@@ -376,6 +417,45 @@
     font-size: 13px;
   }
   
+  .floatingElements {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floatingDot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 107, 107, 0.4);
+    animation: 
+      float var(--float-duration, 5s) ease-in-out infinite var(--float-delay, 0s),
+      sway var(--sway-duration, 8s) ease-in-out infinite var(--float-delay, 0s),
+      pulse var(--pulse-duration, 2s) ease-in-out infinite var(--pulse-delay, 0s);
+    will-change: transform, opacity;
+    animation-play-state: running;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: var(--pulse-intensity, 0.7); }
+    50% { opacity: 1; }
+  }
+  
   .heroTitle {
     font-size: 1.75rem;
     color: white;
@@ -487,6 +567,45 @@
    LANDSCAPE MOBILE ADJUSTMENTS
    ======================================================= */
 @media screen and (max-width: 768px) and (orientation: landscape) {
+  .floatingElements {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floatingDot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 107, 107, 0.4);
+    animation: 
+      float var(--float-duration, 5s) ease-in-out infinite var(--float-delay, 0s),
+      sway var(--sway-duration, 8s) ease-in-out infinite var(--float-delay, 0s),
+      pulse var(--pulse-duration, 2s) ease-in-out infinite var(--pulse-delay, 0s);
+    will-change: transform, opacity;
+    animation-play-state: running;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: var(--pulse-intensity, 0.7); }
+    50% { opacity: 1; }
+  }
+
   .hero {
     min-height: 100vh;
     padding: 1rem 0;
