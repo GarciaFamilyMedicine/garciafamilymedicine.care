@@ -1,26 +1,77 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import styles from './pelvic-health-recovery.module.css';
 import Header from '../../../components/header/header.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 
 export default function Page() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array of images for the carousel
+  const carouselImages = [
+    {
+      src: "/images/events/pelvic-health-recovery/event-01.png",
+      alt: "CoreLift Pelvic Health Recovery Workshop at Garcia Family Medicine"
+    },
+    {
+      src: "/images/events/pelvic-health-recovery/event-02.png",
+      alt: "$2000 Treatment Giveaway for CoreLift Emsella Sessions"
+    },
+    {
+      src: "/images/events/pelvic-health-recovery/event-03.png",
+      alt: "Dr. Gigi Garcia presenting CoreLift technology demonstration"
+    },
+    {
+      src: "/images/events/pelvic-health-recovery/event-04.png",
+      alt: "Educational workshop on pelvic health and Emsella treatments"
+    },
+    {
+      src: "/images/events/pelvic-health-recovery/event-05.png",
+      alt: "CoreLift therapy consultation and treatment planning session"
+    }
+  ];
+
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % carouselImages.length
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+
+  const goToSlide = (index) => {
+    setCurrentImageIndex(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) => 
+      (prevIndex + 1) % carouselImages.length
+    );
+  };
+
   return (
     <>
       <Header />
       
       <div className={styles.pageContainer}>
         <main className={styles.mainContent}>
-          {/* ===== PAGE HEADER ===== */}
           <div className={styles.pageHeader}>
             <h1>CoreLift™ Pelvic Health Recovery Workshop</h1>
             <p className={styles.subtitle}>Educational Workshop & $2,000 Treatment Giveaway</p>
             <div className={styles.eventBadge}>July 31st, 2025 • Blue Springs, MO</div>
           </div>
           
-          {/* ===== MAIN CONTENT AREA ===== */}
           <div className={styles.contentArea}>
-            {/* ===== HERO SECTION ===== */}
             <section className={styles.heroSection}>
               <div className={styles.heroContent}>
                 <div className={styles.heroText}>
@@ -40,16 +91,60 @@ export default function Page() {
                   </div>
                 </div>
                 <div className={styles.heroImage}>
-                  <img 
-                    src="/images/treatmentgiveaway.png" 
-                    alt="CoreLift Emsella treatment chair for pelvic health recovery at Garcia Family Medicine"
-                    className={styles.heroImageActual}
-                  />
+                  <div className={styles.carousel}>
+                    <div className={styles.carouselContainer}>
+                      <a 
+                        href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.carouselImageLink}
+                      >
+                        <img 
+                          src={carouselImages[currentImageIndex].src}
+                          alt={carouselImages[currentImageIndex].alt}
+                          className={styles.heroImageActual}
+                        />
+                      </a>
+                      
+                      {carouselImages.length > 1 && (
+                        <>
+                          <button 
+                            className={`${styles.carouselArrow} ${styles.carouselArrowLeft}`}
+                            onClick={goToPrevious}
+                            aria-label="Previous image"
+                          >
+                            &#8249;
+                          </button>
+                          <button 
+                            className={`${styles.carouselArrow} ${styles.carouselArrowRight}`}
+                            onClick={goToNext}
+                            aria-label="Next image"
+                          >
+                            &#8250;
+                          </button>
+                        </>
+                      )}
+                    </div>
+                    
+                    {carouselImages.length > 1 && (
+                      <div className={styles.carouselDots}>
+                        {carouselImages.map((_, index) => (
+                          <button
+                            key={index}
+                            className={`${styles.carouselDot} ${
+                              index === currentImageIndex ? styles.carouselDotActive : ''
+                            }`}
+                            onClick={() => goToSlide(index)}
+                            aria-label={`Go to image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </section>
             
-            {/* ===== EVENT DETAILS CARD ===== */}
             <section className={styles.eventDetailsSection}>
               <div className={styles.eventCard}>
                 <div className={styles.eventHeader}>
@@ -75,27 +170,40 @@ export default function Page() {
                   </div>
                   
                   <div className={styles.detailItem}>
-                    <div className={styles.detailIcon}>📍</div>
-                    <div className={styles.detailContent}>
-                      <div className={styles.detailLabel}>Location</div>
-                      <div className={styles.detailValue}>
-                        Garcia Family Medicine<br/>
-                        801 NW St. Mary Drive<br/>
-                        Blue Springs, MO 64015
+                    <a 
+                      href="https://maps.app.goo.gl/J5KWPCvSxd2X51Au5"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.detailItemLink}
+                    >
+                      <div className={styles.detailIcon}>📍</div>
+                      <div className={styles.detailContent}>
+                        <div className={styles.detailLabel}>Location</div>
+                        <div className={styles.detailValue}>
+                          Garcia Family Medicine<br/>
+                          801 NW St. Mary Drive<br/>
+                          Blue Springs, MO 64015
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                   
                   <div className={styles.detailItem}>
-                    <div className={styles.detailIcon}>🎁</div>
-                    <div className={styles.detailContent}>
-                      <div className={styles.detailLabel}>Prize Package</div>
-                      <div className={styles.detailValue}>
-                        6 Complete Emsella<br/>
-                        CoreLift™ Sessions<br/>
-                        ($2,000 Value)
+                    <a 
+                      href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.detailItemLink} ${styles.prizeCardLink}`}
+                    >
+                      <div className={`${styles.detailIcon} ${styles.prizeIcon}`}>🎁</div>
+                      <div className={styles.detailContent}>
+                        <div className={styles.detailLabel}>Enter Giveaway</div>
+                        <div className={`${styles.detailValue} ${styles.prizeValue}`}>
+                          Win $2,000 in<br/>
+                          CoreLift™ Treatments
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
                 
@@ -111,7 +219,7 @@ export default function Page() {
                       🎫 Register on Eventbrite
                     </a>
                     <a 
-                      href="https://www.facebook.com/share/18aPyjZfTr/"
+                      href="https://www.facebook.com/events/2727449114115945"
                       className={styles.secondaryButton}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -120,13 +228,13 @@ export default function Page() {
                     </a>
                     <a 
                       href="tel:816-427-5320"
-                      className={styles.tertiaryButton}
+                      className={styles.secondaryButton}
                     >
                       📞 Call to Register
                     </a>
                   </div>
                   <p className={styles.registrationNote}>
-                    Free workshop registration • Required for giveaway eligibility • Limited seating available
+                    Free workshop registration • <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Click here to enter $2,000 giveaway</a> • Limited seating available
                   </p>
                   
                   <div className={styles.separatorLine}></div>
@@ -150,7 +258,6 @@ export default function Page() {
               </div>
             </section>
             
-            {/* ===== ABOUT CORELIFT SECTION ===== */}
             <section className={styles.twoColumnSection}>
               <div className={styles.columnLeft}>
                 <h3>About CoreLift™ Therapy</h3>
@@ -205,7 +312,6 @@ export default function Page() {
               </div>
             </section>
             
-            {/* ===== EVENT SCHEDULE ===== */}
             <section className={styles.scheduleSection}>
               <h2>Workshop Schedule</h2>
               <p className={styles.scheduleIntro}>
@@ -254,7 +360,8 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-            </section>{/* ===== PATIENT TESTIMONIALS ===== */}
+            </section>
+
             <section className={styles.testimonialsSection}>
               <h2>CoreLift™ Success Stories</h2>
               <div className={styles.testimonialGrid}>
@@ -285,7 +392,38 @@ export default function Page() {
               </div>
             </section>
 
-            {/* ===== SOCIAL HASHTAGS SECTION ===== */}
+            <section className={styles.ctaSection}>
+              <div className={styles.ctaContent}>
+                <h2>Secure Your Workshop Spot Today</h2>
+                <p>
+                  Don't miss this exclusive opportunity to learn about breakthrough CoreLift™ pelvic health treatments 
+                  and potentially win $2,000 in Emsella therapy. Limited seating available.
+                </p>
+                <div className={styles.ctaButtons}>
+                  <a 
+                    href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                    className={styles.primaryButton}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🎁 RSVP & Enter Giveaway
+                  </a>
+                  <a 
+                    href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/s/JXViZb_ifkCITve3oXJP-Q2?ismsaljsauthenabled"
+                    className={styles.secondaryButton}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Pre-Screening Now
+                  </a>
+                </div>
+                <div className={styles.contactInfo}>
+                  <p>Questions? Call us at <a href="tel:816-427-5320"><strong>816-427-5320</strong></a></p>
+                  <p>Garcia Family Medicine • 801 NW St. Mary Drive, Blue Springs, MO</p>
+                </div>
+              </div>
+            </section>
+
             <section className={styles.socialSection}>
               <div className={styles.socialContent}>
                 <h3>Join Our Pelvic Health Community</h3>
@@ -306,9 +444,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Instagram"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
-                          </svg>
+                          IG
                         </a>
                         <a 
                           href="https://www.facebook.com/hashtag/corelift" 
@@ -317,9 +453,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Facebook"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                          </svg>
+                          FB
                         </a>
                       </div>
                     </div>
@@ -336,9 +470,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Instagram"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
-                          </svg>
+                          IG
                         </a>
                         <a 
                           href="https://www.facebook.com/hashtag/pelvichealthjourney" 
@@ -347,9 +479,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Facebook"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                          </svg>
+                          FB
                         </a>
                       </div>
                     </div>
@@ -366,9 +496,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Instagram"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
-                          </svg>
+                          IG
                         </a>
                         <a 
                           href="https://www.facebook.com/hashtag/emsella" 
@@ -377,9 +505,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Facebook"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                          </svg>
+                          FB
                         </a>
                       </div>
                     </div>
@@ -396,9 +522,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Instagram"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
-                          </svg>
+                          IG
                         </a>
                         <a 
                           href="https://www.facebook.com/hashtag/strongercore" 
@@ -407,9 +531,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           title="View on Facebook"
                         >
-                          <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                          </svg>
+                          FB
                         </a>
                       </div>
                     </div>
@@ -420,55 +542,22 @@ export default function Page() {
                   <p>Follow Garcia Family Medicine for health tips and workshop updates:</p>
                   <div className={styles.profileLinks}>
                     <a 
-                      href="https://instagram.com/garciafamilymedicine"
-                      className={styles.profileLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      📱 Instagram
-                    </a>
-                    <a 
-                      href="https://facebook.com/garciafamilymedicine"
+                      href="https://www.facebook.com/garciafamilymedicine"
                       className={styles.profileLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       👥 Facebook
                     </a>
+                    <a 
+                      href="https://instagram.com/gfmdirectprimarycare"
+                      className={styles.profileLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      📱 Instagram
+                    </a>
                   </div>
-                </div>
-              </div>
-            </section>
-            
-            {/* ===== FINAL CALL TO ACTION ===== */}
-            <section className={styles.ctaSection}>
-              <div className={styles.ctaContent}>
-                <h2>Secure Your Workshop Spot Today</h2>
-                <p>
-                  Don't miss this exclusive opportunity to learn about breakthrough CoreLift™ pelvic health treatments 
-                  and potentially win $2,000 in Emsella therapy. Limited seating available.
-                </p>
-                <div className={styles.ctaButtons}>
-                  <a 
-                    href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
-                    className={styles.primaryButton}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Register on Eventbrite
-                  </a>
-                  <a 
-                    href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/s/JXViZb_ifkCITve3oXJP-Q2?ismsaljsauthenabled"
-                    className={styles.secondaryButton}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Book Pre-Screening Now
-                  </a>
-                </div>
-                <div className={styles.contactInfo}>
-                  <p>Questions? Call us at <strong>816-427-5320</strong></p>
-                  <p>Garcia Family Medicine • 801 NW St. Mary Drive, Blue Springs, MO</p>
                 </div>
               </div>
             </section>
