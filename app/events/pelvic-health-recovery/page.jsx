@@ -41,7 +41,7 @@ export default function Page() {
                 </div>
                 <div className={styles.heroImage}>
                   <img 
-                    src="/images/corelift-pelvic-health-therapy-garcia-family-medicine.jpg" 
+                    src="/images/treatmentgiveaway.png" 
                     alt="CoreLift Emsella treatment chair for pelvic health recovery at Garcia Family Medicine"
                     className={styles.heroImageActual}
                   />

@@ -55,7 +55,7 @@ export default function Page() {
                 </div>
                 <div className={styles.heroImage}>
                   <img 
-                    src="/images/corelift-pelvic-health-therapy-garcia-family-medicine.jpg" 
+                    src="/images/corelift.png" 
                     alt="CoreLift pelvic health therapy at Garcia Family Medicine in Blue Springs Missouri"
                     className={styles.heroImageActual}
                   />
