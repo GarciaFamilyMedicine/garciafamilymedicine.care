@@ -84,6 +84,14 @@
   display: block;
 }
 
+/* Mobile override for image fit */
+@media (max-width: 768px) {
+  .carousel-slide-image {
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+}
+
 /* Loading indicator */
 .carousel-loading-indicator {
   position: absolute;
