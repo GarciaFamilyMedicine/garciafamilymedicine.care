@@ -14,6 +14,12 @@ const DEFAULT_URL = 'https://forms.cloud.microsoft/r/PmYN6fxyAT';
   DEFAULT_URL, so you never break the link logic while you’re staging URLs.
 ----------------------------------------------------------------------------*/
 const slides = [
+    {
+    src: '/images/Banner.png',
+    alt: 'Reclaim your confidence, pelvic health recovery event',
+    fit: 'cover',
+    href: DEFAULT_URL,             // ← change later
+  },
   {
     src: '/images/reclaim.png',
     alt: 'Reclaim your confidence, pelvic health recovery event',

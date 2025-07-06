@@ -8,7 +8,6 @@ import Footer from '../../../components/footer/footer.jsx';
 export default function Page() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Array of images for the carousel
   const carouselImages = [
     {
       src: "/images/events/pelvic-health-recovery/event-01.png",
@@ -32,7 +31,6 @@ export default function Page() {
     }
   ];
 
-  // Auto-advance carousel every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
@@ -66,9 +64,28 @@ export default function Page() {
       <div className={styles.pageContainer}>
         <main className={styles.mainContent}>
           <div className={styles.pageHeader}>
-            <h1>CoreLift™ Pelvic Health Recovery Workshop</h1>
+            <h1>
+              <a 
+                href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.inlineLink}
+              >
+                CoreLift™ Pelvic Health Recovery Workshop
+              </a>
+            </h1>
             <p className={styles.subtitle}>Educational Workshop & $2,000 Treatment Giveaway</p>
-            <div className={styles.eventBadge}>July 31st, 2025 • Blue Springs, MO</div>
+            <div className={styles.eventBadge}>
+              July 31st, 2025 •{' '}
+              <a 
+                href="https://maps.app.goo.gl/J5KWPCvSxd2X51Au5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.inlineLink}
+              >
+                Blue Springs, MO
+              </a>
+            </div>
           </div>
           
           <div className={styles.contentArea}>
@@ -76,10 +93,17 @@ export default function Page() {
               <div className={styles.heroContent}>
                 <div className={styles.heroText}>
                   <h2>Win a Complete CoreLift™ Pelvic Health Recovery Package</h2>
-                  <div className={styles.valueHighlight}>
-                    <span className={styles.valueAmount}>$2,000</span>
-                    <span className={styles.valueLabel}>Treatment Value</span>
-                  </div>
+                  <a 
+                    href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    <div className={styles.valueHighlight}>
+                      <span className={styles.valueAmount}>$2,000</span>
+                      <span className={styles.valueLabel}>Giveaway Entry</span>
+                    </div>
+                  </a>
                   <p className={styles.lead}>
                     Join us for an exclusive educational workshop on pelvic health using revolutionary 
                     Emsella technology. Learn about breakthrough HIFEM treatments and enter to win 
@@ -94,7 +118,7 @@ export default function Page() {
                   <div className={styles.carousel}>
                     <div className={styles.carouselContainer}>
                       <a 
-                        href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                        href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.carouselImageLink}
@@ -113,14 +137,14 @@ export default function Page() {
                             onClick={goToPrevious}
                             aria-label="Previous image"
                           >
-                            &#8249;
+                            ‹
                           </button>
                           <button 
                             className={`${styles.carouselArrow} ${styles.carouselArrowRight}`}
                             onClick={goToNext}
                             aria-label="Next image"
                           >
-                            &#8250;
+                            ›
                           </button>
                         </>
                       )}
@@ -190,7 +214,7 @@ export default function Page() {
                   
                   <div className={styles.detailItem}>
                     <a 
-                      href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                      href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`${styles.detailItemLink} ${styles.prizeCardLink}`}
@@ -234,7 +258,16 @@ export default function Page() {
                     </a>
                   </div>
                   <p className={styles.registrationNote}>
-                    Free workshop registration • <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl" target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>Click here to enter $2,000 giveaway</a> • Limited seating available
+                    Free workshop registration •{' '}
+                    <a 
+                      href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.inlineLink}
+                    >
+                      Click here to enter $2,000 giveaway
+                    </a>{' '}
+                    • Limited seating available
                   </p>
                   
                   <div className={styles.separatorLine}></div>
@@ -259,57 +292,73 @@ export default function Page() {
             </section>
             
             <section className={styles.twoColumnSection}>
-              <div className={styles.columnLeft}>
-                <h3>About CoreLift™ Therapy</h3>
-                <p>
-                  CoreLift™ combines advanced Emsella technology with comprehensive pelvic floor rehabilitation. 
-                  Using breakthrough HIFEM (High-Intensity Focused Electromagnetic) technology, our program 
-                  strengthens pelvic floor muscles for improved intimate health and quality of life.
-                </p>
-                <ul className={styles.benefitsList}>
-                  <li>Non-invasive, fully clothed treatment sessions</li>
-                  <li>28-minute sessions with zero downtime</li>
-                  <li>Equivalent to 11,000 Kegel exercises per session</li>
-                  <li>FDA-approved HIFEM technology</li>
-                  <li>95% patient satisfaction rate</li>
-                  <li>Clinically proven results in 6 sessions</li>
-                  <li>Personalized treatment plans</li>
-                </ul>
-              </div>
+              <a 
+                href="https://garciafamilymedicine.care/corelift"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.columnLeft}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <div>
+                  <h3>About CoreLift™ Therapy</h3>
+                  <p>
+                    CoreLift™ combines advanced Emsella technology with comprehensive pelvic floor rehabilitation. 
+                    Using breakthrough HIFEM (High-Intensity Focused Electromagnetic) technology, our program 
+                    strengthens pelvic floor muscles for improved intimate health and quality of life.
+                  </p>
+                  <ul className={styles.benefitsList}>
+                    <li>Non-invasive, fully clothed treatment sessions</li>
+                    <li>28-minute sessions with zero downtime</li>
+                    <li>Equivalent to 11,000 Kegel exercises per session</li>
+                    <li>FDA-approved HIFEM technology</li>
+                    <li>95% patient satisfaction rate</li>
+                    <li>Clinically proven results in 6 sessions</li>
+                    <li>Personalized treatment plans</li>
+                  </ul>
+                </div>
+              </a>
               
-              <div className={styles.columnRight}>
-                <h3>Conditions We Address</h3>
-                <p>
-                  Our CoreLift™ program helps both men and women experiencing various 
-                  pelvic health concerns. The therapy is suitable for adults of all ages 
-                  dealing with intimate health challenges and core weakness.
-                </p>
-                <div className={styles.conditionsCard}>
-                  <h4>Treatment Applications</h4>
-                  <div className={styles.conditionsList}>
-                    <div className={styles.condition}>
-                      <strong>Stress & Urge Urinary Incontinence</strong>
-                      <span>All types of bladder control issues</span>
-                    </div>
-                    <div className={styles.condition}>
-                      <strong>Erectile Dysfunction (ED)</strong>
-                      <span>Improved blood flow and function</span>
-                    </div>
-                    <div className={styles.condition}>
-                      <strong>Pelvic Organ Prolapse</strong>
-                      <span>Strengthened support muscles</span>
-                    </div>
-                    <div className={styles.condition}>
-                      <strong>Postpartum Recovery</strong>
-                      <span>Restored core and pelvic strength</span>
-                    </div>
-                    <div className={styles.condition}>
-                      <strong>Core Weakness & Pelvic Pain</strong>
-                      <span>Comprehensive strengthening approach</span>
+              <a 
+                href="https://garciafamilymedicine.care/care/pelvichealth/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.columnRight}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <div>
+                  <h3>Conditions We Address</h3>
+                  <p>
+                    Our CoreLift™ program helps both men and women experiencing various 
+                    pelvic health concerns. The therapy is suitable for adults of all ages 
+                    dealing with intimate health challenges and core weakness.
+                  </p>
+                  <div className={styles.conditionsCard}>
+                    <h4>Treatment Applications</h4>
+                    <div className={styles.conditionsList}>
+                      <div className={styles.condition}>
+                        <strong>Stress & Urge Urinary Incontinence</strong>
+                        <span>All types of bladder control issues</span>
+                      </div>
+                      <div className={styles.condition}>
+                        <strong>Erectile Dysfunction (ED)</strong>
+                        <span>Improved blood flow and function</span>
+                      </div>
+                      <div className={styles.condition}>
+                        <strong>Pelvic Organ Prolapse</strong>
+                        <span>Strengthened support muscles</span>
+                      </div>
+                      <div className={styles.condition}>
+                        <strong>Postpartum Recovery</strong>
+                        <span>Restored core and pelvic strength</span>
+                      </div>
+                      <div className={styles.condition}>
+                        <strong>Core Weakness & Pelvic Pain</strong>
+                        <span>Comprehensive strengthening approach</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </section>
             
             <section className={styles.scheduleSection}>
@@ -365,30 +414,48 @@ export default function Page() {
             <section className={styles.testimonialsSection}>
               <h2>CoreLift™ Success Stories</h2>
               <div className={styles.testimonialGrid}>
-                <div className={styles.testimonial}>
+                <a 
+                  href="https://www.google.com/search?sca_esv=9ae922c597ea1563&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E8a3F72hoPrNHfHDelrDCL-iNDi2WbKi0GVxsVTc9GiWFPNwNQS3aXYQ6yo7e1zHAEuh-e0g4nUCssyPBMnwuj_zY_OOZICDO_UweNjft1Vog7bNhg%3D%3D&q=Garcia+Family+Medicine+Reviews&sa=X&ved=2ahUKEwiu0MDB8qaOAxXFnCYFHVSyGhwQ0bkNegQIKBAE&biw=1912&bih=970&dpr=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.testimonial}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
                   <div className={styles.testimonialContent}>
                     After completing my CoreLift™ treatment series, I experienced a 70% 
                     reduction in incontinence episodes. My quality of life has dramatically improved 
                     and I feel like myself again.
                   </div>
                   <div className={styles.testimonialAuthor}>Sarah M., Age 45</div>
-                </div>
+                </a>
                 
-                <div className={styles.testimonial}>
+                <a 
+                  href="https://www.google.com/search?sca_esv=9ae922c597ea1563&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E8a3F72hoPrNHfHDelrDCL-iNDi2WbKi0GVxsVTc9GiWFPNwNQS3aXYQ6yo7e1zHAEuh-e0g4nUCssyPBMnwuj_zY_OOZICDO_UweNjft1Vog7bNhg%3D%3D&q=Garcia+Family+Medicine+Reviews&sa=X&ved=2ahUKEwiu0MDB8qaOAxXFnCYFHVSyGhwQ0bkNegQIKBAE&biw=1912&bih=970&dpr=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.testimonial}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
                   <div className={styles.testimonialContent}>
                     I was initially skeptical about Emsella, but CoreLift™ exceeded my expectations. 
                     No more interruptions during activities I love. The convenience was amazing.
                   </div>
                   <div className={styles.testimonialAuthor}>Jennifer L., Age 38</div>
-                </div>
+                </a>
                 
-                <div className={styles.testimonial}>
+                <a 
+                  href="https://www.google.com/search?sca_esv=9ae922c597ea1563&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E8a3F72hoPrNHfHDelrDCL-iNDi2WbKi0GVxsVTc9GiWFPNwNQS3aXYQ6yo7e1zHAEuh-e0g4nUCssyPBMnwuj_zY_OOZICDO_UweNjft1Vog7bNhg%3D%3D&q=Garcia+Family+Medicine+Reviews&sa=X&ved=2ahUKEwiu0MDB8qaOAxXFnCYFHVSyGhwQ0bkNegQIKBAE&biw=1912&bih=970&dpr=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.testimonial}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
                   <div className={styles.testimonialContent}>
                     The treatment was comfortable and convenient. I could read during 
                     sessions and noticed significant improvements within just a few weeks.
                   </div>
                   <div className={styles.testimonialAuthor}>Maria R., Age 52</div>
-                </div>
+                </a>
               </div>
             </section>
 
@@ -401,7 +468,7 @@ export default function Page() {
                 </p>
                 <div className={styles.ctaButtons}>
                   <a 
-                    href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                    href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
                     className={styles.primaryButton}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -419,7 +486,16 @@ export default function Page() {
                 </div>
                 <div className={styles.contactInfo}>
                   <p>Questions? Call us at <a href="tel:816-427-5320"><strong>816-427-5320</strong></a></p>
-                  <p>Garcia Family Medicine • 801 NW St. Mary Drive, Blue Springs, MO</p>
+                  <p>
+                    <a 
+                      href="https://maps.app.goo.gl/J5KWPCvSxd2X51Au5"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.inlineLink}
+                    >
+                      Garcia Family Medicine • 801 NW St. Mary Drive, Blue Springs, MO
+                    </a>
+                  </p>
                 </div>
               </div>
             </section>
