@@ -30,6 +30,14 @@
   .timeSlot {
     align-self: flex-start;
   }
+  
+  .twoColumnSection {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonialGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Mobile tablet breakpoint */
@@ -97,6 +105,10 @@
     width: 5rem !important;
     height: 5rem !important;
     font-size: 3rem !important;
+  }
+  
+  .testimonialGrid {
+    grid-template-columns: 1fr;
   }
 }
 

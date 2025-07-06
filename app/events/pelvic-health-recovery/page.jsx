@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './pelvic-health-recovery.module.css';
+import mobileStyles from './mobile.module.css';
 import Header from '../../../components/header/header.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 
@@ -30,6 +31,8 @@ export default function Page() {
       alt: "CoreLift therapy consultation and treatment planning session"
     }
   ];
+
+  const rsvpFormUrl = "https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,7 +69,7 @@ export default function Page() {
           <div className={styles.pageHeader}>
             <h1>
               <a 
-                href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                href={rsvpFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.inlineLink}
@@ -94,7 +97,7 @@ export default function Page() {
                 <div className={styles.heroText}>
                   <h2>Win a Complete CoreLift™ Pelvic Health Recovery Package</h2>
                   <a 
-                    href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                    href={rsvpFormUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'none', color: 'inherit' }}
@@ -118,7 +121,7 @@ export default function Page() {
                   <div className={styles.carousel}>
                     <div className={styles.carouselContainer}>
                       <a 
-                        href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                        href={rsvpFormUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.carouselImageLink}
@@ -214,7 +217,7 @@ export default function Page() {
                   
                   <div className={styles.detailItem}>
                     <a 
-                      href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                      href={rsvpFormUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`${styles.detailItemLink} ${styles.prizeCardLink}`}
@@ -235,12 +238,12 @@ export default function Page() {
                   <h4>Multiple Ways to Register</h4>
                   <div className={styles.registrationButtons}>
                     <a 
-                      href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                      href={rsvpFormUrl}
                       className={styles.primaryButton}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      🎫 Register on Eventbrite
+                      🎫 Register on RSVP Form
                     </a>
                     <a 
                       href="https://www.facebook.com/events/2727449114115945"
@@ -260,7 +263,7 @@ export default function Page() {
                   <p className={styles.registrationNote}>
                     Free workshop registration •{' '}
                     <a 
-                      href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                      href={rsvpFormUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.inlineLink}
@@ -468,7 +471,7 @@ export default function Page() {
                 </p>
                 <div className={styles.ctaButtons}>
                   <a 
-                    href="https://www.eventbrite.com/e/corelifttm-pelvic-health-recovery-workshop-tickets-1440010172189?aff=oddtdtcreator"
+                    href={rsvpFormUrl}
                     className={styles.primaryButton}
                     target="_blank"
                     rel="noopener noreferrer"
