@@ -6,11 +6,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const partnerLogos = [
-    { src: '/partners/dpc-alliance.png', alt: 'DPC Alliance Logo' },
-    { src: '/partners/aafp.png', alt: 'AAFP Logo' },
-    { src: '/partners/independence-chamber.png', alt: 'Independence Chamber Logo' },
-    { src: '/partners/mo-academy.png', alt: 'MO Academy Logo' },
-    { src: '/partners/obesity-medicine.png', alt: 'Obesity Medicine Logo' },
+    { src: '/images/footer/partners/dpc-alliance.png', alt: 'DPC Alliance Logo' },
+    { src: '/images/footer/partners/aafp.png', alt: 'AAFP Logo' },
+    { src: '/images/footer/partners/independence-chamber.png', alt: 'Independence Chamber Logo' },
+    { src: '/images/footer/partners/mo-academy.png', alt: 'MO Academy Logo' },
+    { src: '/images/footer/partners/obesity-medicine.png', alt: 'Obesity Medicine Logo' },
   ];
 
   return (

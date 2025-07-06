@@ -72,7 +72,7 @@ export default function HeroSection() {
               mobileStyles.imageGlow
             )}></div>
             <Image
-              src="/images/doctor-tess-garcia-blue-springs.jpg"
+              src="/images/meetthedoctor/doctor-tess-garcia-blue-springs.jpg"
               alt="Dr. Tess Garcia"
               width={400}
               height={400}

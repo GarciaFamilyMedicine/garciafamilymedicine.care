@@ -4,10 +4,54 @@
   .minHScreen {
     background: var(--page-bg) !important;
     color: #1f2937 !important;
+    min-height: 100vh;
   }
   
   .main {
     @apply px-4 py-10;
+  }
+  
+  /* Carousel adjustments for mobile */
+  .carouselWrapper {
+    height: 60vh !important;
+    min-height: 400px !important;
+    margin-top: 0 !important;
+    padding-top: 80px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Mobile carousel navigation */
+  .carousel-nav-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .carousel-prev-button {
+    left: 12px !important;
+  }
+  
+  .carousel-next-button {
+    right: 12px !important;
+  }
+  
+  .carousel-dots-container {
+    bottom: 12px !important;
+    padding: 6px 12px !important;
+    gap: 10px !important;
+  }
+  
+  .carousel-dot {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  
+  .carousel-slide-link:hover {
+    transform: none !important;
+  }
+  
+  .carousel-loading-indicator {
+    padding: 15px !important;
+    font-size: 14px !important;
   }
   
   /* Welcome Card Mobile */
@@ -106,5 +150,95 @@
   
   .iframe {
     @apply h-[calc(70vh-80px)] w-full rounded-md border-0;
+  }
+}
+
+@media (max-width: 480px) {
+  .carouselWrapper {
+    height: 50vh !important;
+    min-height: 300px !important;
+    margin-top: 0 !important;
+    padding-top: 70px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .carousel-nav-button {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .carousel-dots-container {
+    bottom: 8px !important;
+    padding: 4px 8px !important;
+    gap: 8px !important;
+  }
+  
+  .carousel-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .carousel-prev-button {
+    left: 8px !important;
+  }
+  
+  .carousel-next-button {
+    right: 8px !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .mainWelcomeCard,
+  .commentsSection {
+    @apply mx-1 p-3;
+  }
+  
+  .mainWelcomeH1 {
+    @apply text-xl;
+  }
+  
+  .mainWelcomeH2 {
+    @apply text-base;
+  }
+  
+  .carouselWrapper {
+    height: 40vh !important;
+    min-height: 250px !important;
+    margin-top: 0 !important;
+    padding-top: 60px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .carousel-dots-container {
+    bottom: 6px !important;
+    padding: 3px 6px !important;
+    gap: 6px !important;
+  }
+  
+  .carousel-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .carouselWrapper {
+    height: 80vh !important;
+    min-height: 250px !important;
+    margin-top: 0 !important;
+    padding-top: 60px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .carousel-dots-container {
+    bottom: 8px !important;
+    padding: 4px 8px !important;
+  }
+  
+  .carousel-nav-button {
+    width: 36px !important;
+    height: 36px !important;
   }
 }

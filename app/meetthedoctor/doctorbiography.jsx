@@ -460,7 +460,7 @@ export default function DoctorBiography({ animated }) {
                 }}
               >
                 <Image
-                  src="/images/doctor-tess-garcia-blue-springs.jpg"
+                  src="/images/meetthedoctor/doctor-tess-garcia-blue-springs.jpg"
                   alt="Dr. Tess Garcia in her Blue Springs practice"
                   width={400}
                   height={500}
