@@ -1,0 +1,506 @@
+/* =========================================================
+   DESKTOP HEADER DROPDOWNS - Dropdown menu styles for desktop
+   ======================================================= */
+
+@media (min-width: 1201px) {
+  /* Dropdown container and toggle */
+  .desktop-dropdown-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-dropdown-toggle {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 14px;
+    font-weight: 600;
+    height: var(--navbar-height);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+    font-family: var(--font-argentum);
+    letter-spacing: 0.02em;
+  }
+
+  .desktop-dropdown-toggle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--text-white);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .desktop-dropdown-toggle:hover,
+  .desktop-dropdown-toggle.active,
+  .desktop-dropdown-toggle:focus-visible {
+    background: var(--hover-blue);
+    outline: none;
+  }
+
+  .desktop-dropdown-toggle:hover::after,
+  .desktop-dropdown-toggle.active::after,
+  .desktop-dropdown-toggle:focus-visible::after {
+    width: 80%;
+  }
+
+  /* DESKTOP DROPDOWN MENU */
+  .desktop-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 950px;
+    min-height: 320px;
+    background: var(--dropdown-bg);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .desktop-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Dropdown arrow */
+  .desktop-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 8px);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--dropdown-bg);
+    filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1));
+  }
+
+  .desktop-dropdown-content {
+    display: contents;
+  }
+
+  /* Dropdown sections */
+  .desktop-dropdown-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 12px 0 0;
+    grid-column: auto;
+  }
+
+  .desktop-dropdown-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--hover-blue);
+    border-bottom: 3px solid var(--hover-blue);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    word-break: break-word;
+    white-space: normal;
+    font-family: var(--font-argentum);
+    position: relative;
+  }
+
+  .desktop-dropdown-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .desktop-dropdown-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Dropdown links */
+  .desktop-dropdown-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dropdown-link);
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    width: 100%;
+    background: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    gap: 4px;
+    font-family: var(--font-argentum);
+    position: relative;
+  }
+
+  .desktop-dropdown-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 0 10px 10px 0;
+    transition: width 0.2s ease;
+    transform: translateY(-50%);
+  }
+
+  .desktop-dropdown-link:hover,
+  .desktop-dropdown-link:focus-visible {
+    background: var(--dropdown-hover-bg);
+    color: var(--dropdown-hover-text);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .desktop-dropdown-link:hover::before,
+  .desktop-dropdown-link:focus-visible::before {
+    width: 4px;
+  }
+
+  .desktop-dropdown-link:focus-visible {
+    outline: 2px solid var(--hover-blue);
+    outline-offset: 2px;
+  }
+
+  /* Event labels and dates */
+  .desktop-event-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dropdown-link);
+    line-height: 1.3;
+    margin-bottom: 0;
+    white-space: normal;
+  }
+
+  .desktop-event-date {
+    font-size: 12px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 2px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    white-space: normal;
+  }
+
+  /* Submenu styling */
+  .desktop-submenu {
+    margin-top: 8px;
+    padding-left: 1.5rem;
+    list-style: none;
+  }
+
+  .desktop-submenu-link {
+    font-size: 14px;
+    color: var(--dropdown-link);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    padding-left: 8px;
+    position: relative;
+  }
+
+  .desktop-submenu-link::before {
+    content: '→';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.2s ease;
+    color: var(--accent);
+  }
+
+  .desktop-submenu-link:hover {
+    color: var(--hover-blue);
+    background: rgba(29, 83, 159, 0.05);
+    padding-left: 16px;
+  }
+
+  .desktop-submenu-link:hover::before {
+    opacity: 1;
+    left: 0;
+  }
+
+  /* Info panel (third column) */
+  .desktop-dropdown-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    grid-column: 3;
+  }
+
+  .desktop-dropdown-info-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 28px;
+    height: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Ask Dr. section */
+  .desktop-askdr {
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .desktop-askdr h4 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: var(--hover-blue);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-family: var(--font-sumana);
+  }
+
+  .desktop-askdr p {
+    font-size: 14px;
+    margin: 0 0 20px;
+    color: #666;
+    line-height: 1.6;
+    font-family: var(--font-argentum);
+  }
+
+  .desktop-ask-button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--hover-blue) 0%, var(--primary-blue) 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: var(--font-argentum);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-ask-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .desktop-ask-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
+  }
+
+  .desktop-ask-button:hover::before {
+    left: 100%;
+  }
+
+  /* Contact info section */
+  .desktop-contact-info {
+    background: rgba(29, 83, 159, 0.03);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 8px;
+  }
+
+  .desktop-contact-info p {
+    font-size: 14px;
+    color: var(--dropdown-link);
+    margin: 12px 0;
+    line-height: 1.5;
+    font-family: var(--font-argentum);
+  }
+
+  .desktop-contact-info p:first-child {
+    margin-top: 0;
+  }
+
+  .desktop-contact-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .desktop-contact-info strong {
+    color: var(--hover-blue);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-argentum);
+  }
+
+  .desktop-contact-info a {
+    color: var(--hover-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .desktop-contact-info a:hover {
+    text-decoration: underline;
+    color: var(--primary-blue);
+  }
+
+  /* Section title links */
+  .desktop-section-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    padding: 4px 0;
+  }
+
+  .desktop-section-title-link:hover {
+    color: var(--primary-blue);
+    transform: translateX(4px);
+  }
+
+  .desktop-section-title-link:focus-visible {
+    outline: 2px solid var(--hover-blue);
+    outline-offset: 2px;
+  }
+
+  /* Calendar navigation links */
+  .desktop-calendar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-calendar-nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--hover-blue);
+    text-decoration: none;
+    padding: 6px 8px;
+    display: inline-block;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    font-family: var(--font-argentum);
+  }
+
+  .desktop-calendar-nav-link:hover {
+    color: var(--primary-blue);
+    background: rgba(29, 83, 159, 0.05);
+    transform: translateX(4px);
+  }
+
+  .desktop-calendar-nav-link:focus-visible {
+    outline: 2px solid var(--hover-blue);
+    outline-offset: 2px;
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Large desktop dropdown adjustments */
+  .desktop-dropdown-menu {
+    width: 1000px;
+    padding: 36px;
+    gap: 45px;
+  }
+
+  .desktop-dropdown-section-title {
+    font-size: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .desktop-dropdown-link {
+    font-size: 17px;
+    padding: 14px 18px;
+  }
+
+  .desktop-dropdown-info-card {
+    padding: 32px;
+  }
+
+  .desktop-askdr h4 {
+    font-size: 19px;
+  }
+
+  .desktop-ask-button {
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+}
+
+/* Dropdown animation entrance */
+@keyframes desktopDropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.desktop-dropdown-menu.show {
+  animation: desktopDropdownSlideIn 0.3s ease-out;
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-dropdown-menu,
+  .desktop-dropdown-link,
+  .desktop-submenu-link,
+  .desktop-ask-button {
+    transition: none;
+    animation: none;
+  }
+  
+  .desktop-dropdown-link:hover,
+  .desktop-submenu-link:hover {
+    transform: none;
+  }
+}

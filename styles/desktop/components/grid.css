@@ -1,0 +1,124 @@
+/* =========================================================
+   DESKTOP GRID - Grid system and layout utilities for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Desktop grid systems */
+  .desktop-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .desktop-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .desktop-grid-auto-large {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .desktop-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .desktop-grid-three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-grid-four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Asymmetric grids */
+  .desktop-grid-2-1 {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .desktop-grid-1-2 {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .desktop-grid-3-1 {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .desktop-grid-1-3 {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  /* Grid gap utilities */
+  .desktop-gap-sm {
+    gap: 1rem;
+  }
+
+  .desktop-gap-md {
+    gap: 2rem;
+  }
+
+  .desktop-gap-lg {
+    gap: 3rem;
+  }
+
+  .desktop-gap-xl {
+    gap: 4rem;
+  }
+
+  /* Grid alignment utilities */
+  .desktop-grid-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-grid-start {
+    align-items: start;
+    justify-content: start;
+  }
+
+  .desktop-grid-end {
+    align-items: end;
+    justify-content: end;
+  }
+
+  /* Grid item utilities */
+  .desktop-col-span-2 {
+    grid-column: span 2;
+  }
+
+  .desktop-col-span-3 {
+    grid-column: span 3;
+  }
+
+  .desktop-col-span-4 {
+    grid-column: span 4;
+  }
+
+  .desktop-row-span-2 {
+    grid-row: span 2;
+  }
+
+  .desktop-row-span-3 {
+    grid-row: span 3;
+  }
+}
+
+@media (min-width: 1200px) {
+  .desktop-grid {
+    gap: 2.5rem;
+  }
+
+  .desktop-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .desktop-grid-auto-large {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+
+  .desktop-gap-lg {
+    gap: 4rem;
+  }
+
+  .desktop-gap-xl {
+    gap: 5rem;
+  }
+}

@@ -1,0 +1,111 @@
+/* =========================================================
+   DESKTOP FORMS - Enhanced form components for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Desktop form container */
+  .desktop-form {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Desktop form fields */
+  .desktop-input,
+  .desktop-textarea,
+  .desktop-select {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem;
+    color: #333;
+    font-family: var(--font-argentum);
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .desktop-input:focus,
+  .desktop-textarea:focus,
+  .desktop-select:focus {
+    background: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    outline: none;
+  }
+
+  .desktop-input::placeholder,
+  .desktop-textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+  }
+
+  /* Desktop form labels */
+  .desktop-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-argentum);
+  }
+
+  /* Desktop form groups */
+  .desktop-form-group {
+    margin-bottom: 2rem;
+  }
+
+  .desktop-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .desktop-form-row-three {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Desktop form buttons */
+  .desktop-form-submit {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: white;
+    border: none;
+    padding: 1.25rem 3rem;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+    font-family: var(--font-argentum);
+  }
+
+  .desktop-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  }
+
+  .desktop-form-submit:active {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1200px) {
+  .desktop-form {
+    padding: 3.5rem;
+  }
+
+  .desktop-form-row {
+    gap: 2.5rem;
+  }
+
+  .desktop-form-row-three {
+    gap: 2rem;
+  }
+}

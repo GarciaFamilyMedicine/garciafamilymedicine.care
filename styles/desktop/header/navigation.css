@@ -1,0 +1,311 @@
+/* =========================================================
+   DESKTOP HEADER NAVIGATION - Main navigation styles for desktop
+   ======================================================= */
+
+@media (min-width: 1201px) {
+  /* Desktop header container and layout */
+  .desktop-header-container {
+    --top-bar-bg: #032c7c;
+    --primary-blue: #5e8fbc;
+    --hover-blue: #1d539f;
+    --dropdown-bg: #ffffff;
+    --dropdown-link: #10264f;
+    --dropdown-hover-bg: #e8efff;
+    --dropdown-hover-text: #10264f;
+    --logo-red: #f8e0d3;
+    --text-white: #ffffff;
+    --top-bar-height: 25px;
+    --navbar-height: 60px;
+    --logo-size: 85px;
+    --transition: 0.2s;
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* TOP BAR DESKTOP */
+  .desktop-topbar {
+    position: fixed;
+    left: var(--logo-size);
+    top: 0;
+    right: 0;
+    height: var(--top-bar-height);
+    background: var(--top-bar-bg);
+    z-index: 1002;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .desktop-topbuttons { 
+    display: flex; 
+    gap: 15px; 
+  }
+
+  .desktop-topbutton {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 12px;
+    cursor: pointer;
+    height: var(--top-bar-height);
+    min-width: 80px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+    font-family: var(--font-argentum);
+    font-weight: 500;
+  }
+
+  .desktop-topbutton:hover, 
+  .desktop-topbutton:focus-visible { 
+    background: var(--hover-blue); 
+    outline: none; 
+  }
+
+  /* LOGO DESKTOP */
+  .desktop-logo {
+    position: fixed;
+    left: 0; 
+    top: 0;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    background: var(--logo-red);
+    z-index: 1004;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .desktop-logo:hover {
+    transform: scale(1.02);
+  }
+
+  .desktop-logo:focus-visible {
+    outline: 3px solid var(--hover-blue);
+    outline-offset: 3px;
+  }
+
+  .desktop-logo img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+
+  /* NAVBAR DESKTOP */
+  .desktop-navbar {
+    position: fixed;
+    top: var(--top-bar-height);
+    left: 0; 
+    right: 0;
+    height: var(--navbar-height);
+    background: var(--primary-blue);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    padding-left: var(--logo-size);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  }
+
+  /* NAV LINKS DESKTOP */
+  .desktop-navlinks {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  .desktop-navlinks li { 
+    flex: 1; 
+    text-align: center; 
+  }
+
+  .desktop-navlink,
+  .desktop-navlinks > li > a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    transition: all var(--transition);
+    position: relative;
+    font-family: var(--font-argentum);
+    letter-spacing: 0.02em;
+  }
+
+  .desktop-navlink::after,
+  .desktop-navlinks > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--text-white);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .desktop-navlink:hover,
+  .desktop-navlink:focus-visible,
+  .desktop-navlinks > li > a:hover,
+  .desktop-navlinks > li > a:focus-visible { 
+    background: var(--hover-blue);
+    outline: none;
+  }
+
+  .desktop-navlink:hover::after,
+  .desktop-navlink:focus-visible::after,
+  .desktop-navlinks > li > a:hover::after,
+  .desktop-navlinks > li > a:focus-visible::after {
+    width: 80%;
+  }
+
+  /* SPACER FOR CONTENT */
+  .desktop-header-offset { 
+    height: calc(var(--top-bar-height) + var(--navbar-height)); 
+  }
+
+  /* Enhanced hover effects for desktop navigation */
+  .desktop-navlink,
+  .desktop-navlinks > li > a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-navlink::before,
+  .desktop-navlinks > li > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .desktop-navlink:hover::before,
+  .desktop-navlinks > li > a:hover::before {
+    left: 100%;
+  }
+
+  /* Active state styling */
+  .desktop-navlink.active,
+  .desktop-navlinks > li > a.active {
+    background: var(--hover-blue);
+  }
+
+  .desktop-navlink.active::after,
+  .desktop-navlinks > li > a.active::after {
+    width: 90%;
+  }
+
+  /* Improved accessibility */
+  .desktop-navlink:focus,
+  .desktop-navlinks > li > a:focus,
+  .desktop-topbutton:focus,
+  .desktop-logo:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+  }
+
+  /* Skip to content link for accessibility */
+  .desktop-skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background: var(--hover-blue);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    z-index: 9999;
+    transition: top 0.3s ease;
+  }
+
+  .desktop-skip-link:focus {
+    top: 10px;
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Large desktop navigation adjustments */
+  .desktop-header-container {
+    --logo-size: 90px;
+    --navbar-height: 65px;
+  }
+
+  .desktop-topbar {
+    left: 90px;
+    padding: 0 6%;
+  }
+
+  .desktop-navbar {
+    height: 65px;
+    padding-left: 90px;
+  }
+
+  .desktop-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .desktop-navlink,
+  .desktop-navlinks > li > a {
+    font-size: 15px;
+    padding: 0 25px;
+    height: 65px;
+  }
+
+  .desktop-topbutton {
+    font-size: 13px;
+    min-width: 90px;
+    padding: 0 12px;
+  }
+}
+
+/* Animation for smooth navigation transitions */
+@keyframes desktopNavSlideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.desktop-navbar,
+.desktop-topbar {
+  animation: desktopNavSlideIn 0.6s ease-out;
+}
+
+/* Disable animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-navbar,
+  .desktop-topbar,
+  .desktop-navlink::before,
+  .desktop-navlinks > li > a::before,
+  .desktop-navlink::after,
+  .desktop-navlinks > li > a::after,
+  .desktop-logo {
+    animation: none;
+    transition: none;
+  }
+}

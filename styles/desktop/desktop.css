@@ -1,0 +1,69 @@
+/* =========================================================
+   DESKTOP STYLES - Organized by feature/module
+   ======================================================= */
+
+/* Desktop utilities and patterns */
+@import './utilities/layout.css';
+@import './utilities/typography.css';
+@import './utilities/spacing.css';
+
+/* Component styles */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/forms.css';
+@import './components/grid.css';
+
+/* Header and Navigation */
+@import './header/navigation.css';
+@import './header/dropdowns.css';
+@import './header/layout.css';
+
+/* Page-specific styles */
+@import './pages/homepage.css';
+@import './pages/contact.css';
+@import './pages/services.css';
+
+/* Desktop-specific global adjustments */
+@media (min-width: 769px) {
+  /* Enhanced large screen optimizations */
+  .page-layout {
+    padding-top: 85px; /* Accounts for desktop header height */
+  }
+
+  .main-content {
+    max-width: 1400px;
+    padding: 3rem 2rem;
+  }
+
+  /* Enhanced desktop component spacing */
+  .hero-section {
+    padding: 4rem 0 5rem;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.375rem;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop optimizations */
+  .main-content {
+    max-width: 1600px;
+    padding: 4rem 3rem;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 800px;
+  }
+}

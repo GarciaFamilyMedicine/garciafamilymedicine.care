@@ -1,0 +1,231 @@
+/* =========================================================
+   DESKTOP BUTTONS - Enhanced button styles for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Enhanced desktop button styles */
+  .desktop-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff7a2b 100%);
+    color: white;
+    gap: 0.75rem;
+    min-width: 180px;
+  }
+
+  .desktop-btn-primary:hover {
+    background: linear-gradient(135deg, #ff7a2b 0%, #e6691a 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
+  }
+
+  .desktop-btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+  }
+
+  .desktop-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e40af;
+    gap: 0.75rem;
+    min-width: 180px;
+  }
+
+  .desktop-btn-secondary:hover {
+    background: #ffffff;
+    color: #1e40af;
+    border-color: #ff8c42;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
+  }
+
+  .desktop-btn-secondary:active {
+    transform: translateY(-1px);
+  }
+
+  /* Desktop button variants */
+  .desktop-btn-large {
+    padding: 1.5rem 3rem;
+    font-size: 1.25rem;
+    border-radius: 16px;
+    min-width: 220px;
+  }
+
+  .desktop-btn-small {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    min-width: 140px;
+  }
+
+  .desktop-btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .desktop-btn-outline:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .desktop-btn-ghost {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .desktop-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Button groups for desktop */
+  .desktop-btn-group {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .desktop-btn-group-left {
+    justify-content: flex-start;
+  }
+
+  .desktop-btn-group-right {
+    justify-content: flex-end;
+  }
+
+  /* Icon buttons for desktop */
+  .desktop-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .desktop-btn-icon:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .desktop-btn-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* CTA button special styling */
+  .desktop-cta-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff7a2b 50%, #e6691a 100%);
+    background-size: 200% 200%;
+    animation: desktopGradientShift 4s ease-in-out infinite;
+  }
+
+  .desktop-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.8s ease;
+  }
+
+  .desktop-cta-button:hover::before {
+    left: 100%;
+  }
+
+  /* Focus states for accessibility */
+  .desktop-btn-primary:focus-visible,
+  .desktop-btn-secondary:focus-visible,
+  .desktop-btn-outline:focus-visible,
+  .desktop-btn-ghost:focus-visible,
+  .desktop-btn-icon:focus-visible {
+    outline: 3px solid rgba(255, 140, 66, 0.5);
+    outline-offset: 3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop button adjustments */
+  .desktop-btn-primary,
+  .desktop-btn-secondary {
+    padding: 1.375rem 3rem;
+    font-size: 1.25rem;
+    min-width: 200px;
+  }
+
+  .desktop-btn-large {
+    padding: 1.75rem 3.5rem;
+    font-size: 1.375rem;
+    min-width: 250px;
+  }
+
+  .desktop-btn-group {
+    gap: 2rem;
+  }
+
+  .desktop-btn-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .desktop-btn-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Keyframe animations */
+@keyframes desktopGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Disable animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-cta-button {
+    animation: none;
+  }
+  
+  .desktop-cta-button::before {
+    transition: none;
+  }
+}

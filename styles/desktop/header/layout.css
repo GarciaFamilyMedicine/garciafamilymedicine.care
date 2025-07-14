@@ -1,0 +1,48 @@
+/* =========================================================
+   DESKTOP HEADER LAYOUT - Header-specific layout utilities
+   ======================================================= */
+
+@media (min-width: 1201px) {
+  /* Header layout utilities */
+  .desktop-header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .desktop-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Header spacing and positioning */
+  .desktop-header-space {
+    height: calc(var(--top-bar-height, 25px) + var(--navbar-height, 60px));
+  }
+
+  .desktop-header-content {
+    padding-top: calc(var(--top-bar-height, 25px) + var(--navbar-height, 60px) + 2rem);
+  }
+
+  /* Header background utilities */
+  .desktop-header-transparent {
+    background: rgba(94, 143, 188, 0.9);
+    backdrop-filter: blur(10px);
+  }
+
+  .desktop-header-solid {
+    background: var(--primary-blue);
+  }
+
+  /* Header shadow utilities */
+  .desktop-header-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-header-shadow-lg {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+}

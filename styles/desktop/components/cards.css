@@ -1,0 +1,303 @@
+/* =========================================================
+   DESKTOP CARDS - Enhanced card components for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Enhanced desktop card base */
+  .desktop-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .desktop-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(-6px);
+  }
+
+  .desktop-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Desktop card variants */
+  .desktop-card-elevated {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-card-elevated:hover {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+  }
+
+  .desktop-card-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .desktop-card-glass:hover {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Info card enhanced for desktop */
+  .desktop-info-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-info-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .desktop-info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.12);
+  }
+
+  .desktop-info-card:hover::after {
+    opacity: 1;
+  }
+
+  .desktop-info-card h2 {
+    font-family: var(--font-sumana);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .desktop-info-card h3 {
+    font-family: var(--font-sumana);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+  }
+
+  .desktop-info-card p {
+    font-family: var(--font-argentum);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Service cards for desktop */
+  .desktop-service-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .desktop-service-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .desktop-service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .desktop-service-card:hover::before {
+    opacity: 0.05;
+  }
+
+  /* Card grid layouts for desktop */
+  .desktop-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin: 3rem 0;
+  }
+
+  .desktop-card-grid-two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin: 3rem 0;
+  }
+
+  .desktop-card-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin: 3rem 0;
+  }
+
+  .desktop-card-grid-four {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  /* Testimonial cards for desktop */
+  .desktop-testimonial-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid var(--accent);
+    position: relative;
+    transition: all 0.4s ease;
+  }
+
+  .desktop-testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .desktop-testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+    border-left-width: 8px;
+  }
+
+  /* Feature cards for desktop */
+  .desktop-feature-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-feature-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .desktop-feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .desktop-feature-card:hover .desktop-feature-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .desktop-feature-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop card adjustments */
+  .desktop-card,
+  .desktop-info-card,
+  .desktop-service-card,
+  .desktop-testimonial-card {
+    padding: 3.5rem;
+  }
+
+  .desktop-card-grid {
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .desktop-card-grid-two {
+    gap: 4rem;
+  }
+
+  .desktop-card-grid-three {
+    gap: 3rem;
+  }
+
+  .desktop-card-grid-four {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .desktop-info-card h2 {
+    font-size: 2rem;
+  }
+
+  .desktop-feature-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .desktop-feature-icon svg {
+    width: 45px;
+    height: 45px;
+  }
+}

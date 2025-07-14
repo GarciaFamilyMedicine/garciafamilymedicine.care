@@ -1,0 +1,275 @@
+/* =========================================================
+   DESKTOP HOMEPAGE - Homepage-specific styles for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Desktop hero section */
+  .desktop-hero {
+    padding: 6rem 0 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .desktop-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .desktop-hero-title {
+    font-family: var(--font-sumana);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .desktop-hero-subtitle {
+    font-family: var(--font-argentum);
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+  }
+
+  .desktop-hero-cta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  /* Desktop carousel enhancements */
+  .desktop-carousel {
+    margin: 4rem 0;
+    position: relative;
+  }
+
+  .desktop-carousel-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+
+  .desktop-carousel-slide {
+    height: 500px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-carousel-content {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    margin: 0 2rem;
+  }
+
+  .desktop-carousel-title {
+    font-family: var(--font-sumana);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .desktop-carousel-text {
+    font-family: var(--font-argentum);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  /* Desktop services section */
+  .desktop-services {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  }
+
+  .desktop-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .desktop-service-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .desktop-service-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .desktop-service-card:hover .desktop-service-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .desktop-service-title {
+    font-family: var(--font-sumana);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .desktop-service-description {
+    font-family: var(--font-argentum);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  /* Desktop about section */
+  .desktop-about {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+  }
+
+  .desktop-about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .desktop-about-text {
+    font-family: var(--font-argentum);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .desktop-about-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .desktop-about-image:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  .desktop-about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop homepage adjustments */
+  .desktop-hero {
+    padding: 8rem 0 10rem;
+  }
+
+  .desktop-hero-title {
+    font-size: 5rem;
+  }
+
+  .desktop-hero-subtitle {
+    font-size: 1.625rem;
+    max-width: 900px;
+  }
+
+  .desktop-hero-cta {
+    gap: 2.5rem;
+  }
+
+  .desktop-carousel-slide {
+    height: 600px;
+  }
+
+  .desktop-carousel-content {
+    padding: 4rem;
+    max-width: 700px;
+  }
+
+  .desktop-carousel-title {
+    font-size: 3rem;
+  }
+
+  .desktop-carousel-text {
+    font-size: 1.375rem;
+  }
+
+  .desktop-services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 4rem;
+  }
+
+  .desktop-service-card {
+    padding: 3.5rem;
+  }
+
+  .desktop-service-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .desktop-about-content {
+    gap: 5rem;
+  }
+
+  .desktop-about-text {
+    font-size: 1.375rem;
+  }
+}

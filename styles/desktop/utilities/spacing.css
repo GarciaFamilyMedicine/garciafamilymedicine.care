@@ -1,0 +1,159 @@
+/* =========================================================
+   DESKTOP SPACING - Spacing utilities optimized for desktop
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Desktop margin utilities */
+  .desktop-m-0 { margin: 0; }
+  .desktop-m-1 { margin: 0.5rem; }
+  .desktop-m-2 { margin: 1rem; }
+  .desktop-m-3 { margin: 1.5rem; }
+  .desktop-m-4 { margin: 2rem; }
+  .desktop-m-5 { margin: 2.5rem; }
+  .desktop-m-6 { margin: 3rem; }
+  .desktop-m-8 { margin: 4rem; }
+  .desktop-m-10 { margin: 5rem; }
+  .desktop-m-12 { margin: 6rem; }
+
+  /* Desktop margin top utilities */
+  .desktop-mt-0 { margin-top: 0; }
+  .desktop-mt-1 { margin-top: 0.5rem; }
+  .desktop-mt-2 { margin-top: 1rem; }
+  .desktop-mt-3 { margin-top: 1.5rem; }
+  .desktop-mt-4 { margin-top: 2rem; }
+  .desktop-mt-5 { margin-top: 2.5rem; }
+  .desktop-mt-6 { margin-top: 3rem; }
+  .desktop-mt-8 { margin-top: 4rem; }
+  .desktop-mt-10 { margin-top: 5rem; }
+  .desktop-mt-12 { margin-top: 6rem; }
+
+  /* Desktop margin bottom utilities */
+  .desktop-mb-0 { margin-bottom: 0; }
+  .desktop-mb-1 { margin-bottom: 0.5rem; }
+  .desktop-mb-2 { margin-bottom: 1rem; }
+  .desktop-mb-3 { margin-bottom: 1.5rem; }
+  .desktop-mb-4 { margin-bottom: 2rem; }
+  .desktop-mb-5 { margin-bottom: 2.5rem; }
+  .desktop-mb-6 { margin-bottom: 3rem; }
+  .desktop-mb-8 { margin-bottom: 4rem; }
+  .desktop-mb-10 { margin-bottom: 5rem; }
+  .desktop-mb-12 { margin-bottom: 6rem; }
+
+  /* Desktop margin left/right utilities */
+  .desktop-ml-0 { margin-left: 0; }
+  .desktop-ml-auto { margin-left: auto; }
+  .desktop-mr-0 { margin-right: 0; }
+  .desktop-mr-auto { margin-right: auto; }
+  .desktop-mx-auto { margin-left: auto; margin-right: auto; }
+
+  /* Desktop padding utilities */
+  .desktop-p-0 { padding: 0; }
+  .desktop-p-1 { padding: 0.5rem; }
+  .desktop-p-2 { padding: 1rem; }
+  .desktop-p-3 { padding: 1.5rem; }
+  .desktop-p-4 { padding: 2rem; }
+  .desktop-p-5 { padding: 2.5rem; }
+  .desktop-p-6 { padding: 3rem; }
+  .desktop-p-8 { padding: 4rem; }
+  .desktop-p-10 { padding: 5rem; }
+  .desktop-p-12 { padding: 6rem; }
+
+  /* Desktop padding top utilities */
+  .desktop-pt-0 { padding-top: 0; }
+  .desktop-pt-1 { padding-top: 0.5rem; }
+  .desktop-pt-2 { padding-top: 1rem; }
+  .desktop-pt-3 { padding-top: 1.5rem; }
+  .desktop-pt-4 { padding-top: 2rem; }
+  .desktop-pt-5 { padding-top: 2.5rem; }
+  .desktop-pt-6 { padding-top: 3rem; }
+  .desktop-pt-8 { padding-top: 4rem; }
+  .desktop-pt-10 { padding-top: 5rem; }
+  .desktop-pt-12 { padding-top: 6rem; }
+
+  /* Desktop padding bottom utilities */
+  .desktop-pb-0 { padding-bottom: 0; }
+  .desktop-pb-1 { padding-bottom: 0.5rem; }
+  .desktop-pb-2 { padding-bottom: 1rem; }
+  .desktop-pb-3 { padding-bottom: 1.5rem; }
+  .desktop-pb-4 { padding-bottom: 2rem; }
+  .desktop-pb-5 { padding-bottom: 2.5rem; }
+  .desktop-pb-6 { padding-bottom: 3rem; }
+  .desktop-pb-8 { padding-bottom: 4rem; }
+  .desktop-pb-10 { padding-bottom: 5rem; }
+  .desktop-pb-12 { padding-bottom: 6rem; }
+
+  /* Desktop padding left/right utilities */
+  .desktop-pl-0 { padding-left: 0; }
+  .desktop-pl-1 { padding-left: 0.5rem; }
+  .desktop-pl-2 { padding-left: 1rem; }
+  .desktop-pl-3 { padding-left: 1.5rem; }
+  .desktop-pl-4 { padding-left: 2rem; }
+  .desktop-pl-5 { padding-left: 2.5rem; }
+  .desktop-pl-6 { padding-left: 3rem; }
+
+  .desktop-pr-0 { padding-right: 0; }
+  .desktop-pr-1 { padding-right: 0.5rem; }
+  .desktop-pr-2 { padding-right: 1rem; }
+  .desktop-pr-3 { padding-right: 1.5rem; }
+  .desktop-pr-4 { padding-right: 2rem; }
+  .desktop-pr-5 { padding-right: 2.5rem; }
+  .desktop-pr-6 { padding-right: 3rem; }
+
+  .desktop-px-0 { padding-left: 0; padding-right: 0; }
+  .desktop-px-2 { padding-left: 1rem; padding-right: 1rem; }
+  .desktop-px-4 { padding-left: 2rem; padding-right: 2rem; }
+  .desktop-px-6 { padding-left: 3rem; padding-right: 3rem; }
+  .desktop-px-8 { padding-left: 4rem; padding-right: 4rem; }
+
+  .desktop-py-0 { padding-top: 0; padding-bottom: 0; }
+  .desktop-py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+  .desktop-py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+  .desktop-py-6 { padding-top: 3rem; padding-bottom: 3rem; }
+  .desktop-py-8 { padding-top: 4rem; padding-bottom: 4rem; }
+
+  /* Desktop gap utilities for flexbox/grid */
+  .desktop-gap-1 { gap: 0.5rem; }
+  .desktop-gap-2 { gap: 1rem; }
+  .desktop-gap-3 { gap: 1.5rem; }
+  .desktop-gap-4 { gap: 2rem; }
+  .desktop-gap-5 { gap: 2.5rem; }
+  .desktop-gap-6 { gap: 3rem; }
+  .desktop-gap-8 { gap: 4rem; }
+  .desktop-gap-10 { gap: 5rem; }
+
+  /* Desktop section spacing patterns */
+  .desktop-section-spacing {
+    margin-bottom: 5rem;
+  }
+
+  .desktop-section-spacing-large {
+    margin-bottom: 6rem;
+  }
+
+  .desktop-content-spacing {
+    margin-bottom: 3rem;
+  }
+
+  .desktop-content-spacing-small {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop spacing adjustments */
+  .desktop-section-spacing {
+    margin-bottom: 6rem;
+  }
+
+  .desktop-section-spacing-large {
+    margin-bottom: 8rem;
+  }
+
+  .desktop-content-spacing {
+    margin-bottom: 4rem;
+  }
+
+  .desktop-content-spacing-small {
+    margin-bottom: 2.5rem;
+  }
+}

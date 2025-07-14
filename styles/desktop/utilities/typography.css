@@ -1,0 +1,190 @@
+/* =========================================================
+   DESKTOP TYPOGRAPHY - Enhanced typography for larger screens
+   ======================================================= */
+
+@media (min-width: 769px) {
+  /* Desktop heading scales */
+  .desktop-h1 {
+    font-family: var(--font-sumana);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+
+  .desktop-h2 {
+    font-family: var(--font-sumana);
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .desktop-h3 {
+    font-family: var(--font-sumana);
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: 1rem;
+  }
+
+  .desktop-h4 {
+    font-family: var(--font-sumana);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+  }
+
+  .desktop-h5 {
+    font-family: var(--font-sumana);
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+
+  .desktop-h6 {
+    font-family: var(--font-sumana);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.625rem;
+  }
+
+  /* Desktop body text scales */
+  .desktop-lead {
+    font-family: var(--font-argentum);
+    font-size: 1.375rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    max-width: 65ch;
+  }
+
+  .desktop-body {
+    font-family: var(--font-argentum);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    max-width: 65ch;
+  }
+
+  .desktop-body-small {
+    font-family: var(--font-argentum);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    max-width: 65ch;
+  }
+
+  .desktop-caption {
+    font-family: var(--font-argentum);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Desktop-specific text utilities */
+  .desktop-text-center {
+    text-align: center;
+  }
+
+  .desktop-text-left {
+    text-align: left;
+  }
+
+  .desktop-text-right {
+    text-align: right;
+  }
+
+  /* Enhanced hero typography for desktop */
+  .desktop-hero-title {
+    font-family: var(--font-sumana);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-hero-subtitle {
+    font-family: var(--font-argentum);
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Desktop section titles */
+  .desktop-section-title {
+    font-family: var(--font-sumana);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .desktop-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4rem;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktop typography adjustments */
+  .desktop-h1 {
+    font-size: 4.5rem;
+  }
+
+  .desktop-h2 {
+    font-size: 3.5rem;
+  }
+
+  .desktop-h3 {
+    font-size: 2.75rem;
+  }
+
+  .desktop-lead {
+    font-size: 1.5rem;
+    max-width: 70ch;
+  }
+
+  .desktop-body {
+    font-size: 1.25rem;
+    max-width: 70ch;
+  }
+
+  .desktop-hero-title {
+    font-size: 5rem;
+  }
+
+  .desktop-hero-subtitle {
+    font-size: 1.625rem;
+    max-width: 900px;
+  }
+
+  .desktop-section-title {
+    font-size: 3rem;
+  }
+}
