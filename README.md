@@ -1,4 +1,79 @@
-# Garcia Family Medicine Web Project – To‑Do List
+# Garcia Family Medicine Website
+
+**Professional healthcare website built with Next.js, featuring responsive design, accessibility compliance, and modern web standards.**
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Visit `http://localhost:3000` to see the website.
+
+## 📚 Documentation
+
+- **[Getting Started](docs/development/getting-started.md)** - Setup and development guide
+- **[Coding Standards](docs/development/coding-standards.md)** - Code style and best practices
+- **[Mobile Development](docs/development/mobile-development.md)** - Mobile-first development guidelines
+- **[Component Documentation](docs/components/)** - Individual component guides
+- **[CHANGELOG.md](CHANGELOG.md)** - Complete project history
+
+## 🏗️ Architecture
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS + CSS Modules
+- **Deployment**: Azure Static Web Apps
+- **Accessibility**: WCAG 2.1 AA compliant
+- **Mobile-First**: Responsive design with 44px touch targets
+
+## 📱 Mobile Optimization
+
+- ✅ **Touch targets** meet 44px minimum requirement
+- ✅ **Font sizes** comply with 14px readability standards
+- ✅ **Responsive breakpoints** for all device sizes
+- ✅ **Performance optimized** for mobile networks
+
+## ♿ Accessibility Features
+
+- **Screen reader** compatible navigation
+- **Keyboard-only** interaction support
+- **High contrast** mode support
+- **Touch-friendly** interface design
+- **Semantic HTML** structure throughout
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Next.js 15 | React framework with App Router |
+| Tailwind CSS | Utility-first styling |
+| CSS Modules | Component-scoped styles |
+| React Icons | Icon library |
+| Chart.js | Data visualization |
+
+## 📦 Project Structure
+
+```
+├── app/                 # Next.js App Router pages
+├── components/          # Reusable React components
+├── public/             # Static assets
+├── docs/               # Comprehensive documentation
+├── CHANGELOG.md        # Project changelog
+└── CLAUDE.md          # Claude Code instructions
+```
+
+## 🚀 Deployment
+
+The website automatically deploys to Azure Static Web Apps when changes are pushed to the main branch.
+
+## 📋 Development To‑Do List
 
 ## 🔲 Navigation & Layout
 - [ ] **Flyout menu:** Add links to hashtag buttons (so they open relevant sections or external resources).
