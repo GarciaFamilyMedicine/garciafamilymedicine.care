@@ -87,3 +87,26 @@ public/images/             # Static assets organized by section
 - **Events**: Temporal organization (`/events/current`, `/events/past`)
 - **Images**: Structured by page/section in `/public/images`
 - **Mobile styles**: Separate stylesheets for mobile-specific styling
+
+## Documentation Standards
+
+### CHANGELOG.md Requirements
+- **Location**: Root directory (NOT in docs/) - industry standard
+- **Format**: Chronological order with NEWEST entries first
+- **Structure**: `## [Version] - YYYY-MM-DD` with Added/Fixed/Changed/Removed subsections
+- **Versioning**: Semantic versioning (MAJOR.MINOR.PATCH)
+- **Updates**: MUST be updated before every deployment for significant changes
+- **Automation**: Pre-commit hooks enforce documentation standards
+
+### Documentation Workflow
+- Always update CHANGELOG.md for feat:, fix:, and breaking changes
+- Use chronological order: newest versions at top
+- Group changes within versions by type (Added/Fixed/Changed/Removed)
+- Run `./scripts/setup-git-hooks.sh` after initial setup
+- Pre-commit hooks will verify documentation compliance
+
+### Important Instructions
+- NEVER create files unless absolutely necessary for achieving goals
+- ALWAYS prefer editing existing files over creating new ones
+- Documentation files should only be created when explicitly requested
+- CHANGELOG.md is critical and must be maintained for all significant changes

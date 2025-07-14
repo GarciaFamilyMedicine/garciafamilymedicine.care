@@ -77,24 +77,34 @@ When making significant changes, update `CHANGELOG.md`:
 3. **Group related changes** under appropriate headings
 4. **Link to relevant documentation** when applicable
 
-### Example Entry Format
+### Example Entry Format (Chronological Order)
 ```markdown
 ## [2.1.0] - 2025-01-14
-
 ### Added
-- **Mobile Breakpoint System**: Enhanced Tailwind config with mobile-sm, mobile-xs utilities
-- **Touch Target Standards**: 44px minimum touch targets across all interactive elements
-- **Accessibility Compliance**: WCAG 2.1 AA standard implementation
+- Mobile breakpoint system: Enhanced Tailwind config with mobile-sm, mobile-xs utilities
+- Touch target standards: 44px minimum touch targets across all interactive elements
+- Accessibility compliance: WCAG 2.1 AA standard implementation
 
 ### Fixed
-- **Font Size Issues**: Eliminated fonts below 14px readability threshold
-- **Touch Interaction**: Improved carousel navigation on mobile devices
-- **Button Sizing**: Consistent accessibility standards on all screen sizes
+- Font size issues: Eliminated fonts below 14px readability threshold
+- Touch interaction: Improved carousel navigation on mobile devices
+- Button sizing: Consistent accessibility standards on all screen sizes
 
 ### Changed
-- **CSS Architecture**: Migrated to mobile-first responsive design patterns
-- **Component Organization**: Consolidated duplicate directory structures
+- CSS architecture: Migrated to mobile-first responsive design patterns
+- Component organization: Consolidated duplicate directory structures
+
+## [2.0.0] - 2025-01-14
+### Added
+- Next.js Image optimization: Replaced all img tags with optimized components
+- Font loading optimization: Implemented Next.js Google Fonts API
 ```
+
+**Key Format Rules:**
+- **Newest entries first** (chronological descending order)
+- **Version sections** organized by date, not by change type
+- **Within each version**: Group by Added/Fixed/Changed/Removed
+- **Concise descriptions** focusing on user impact
 
 ## 🔄 Release Process
 

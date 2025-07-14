@@ -29,7 +29,13 @@ npm run dev
 
 The development server will start at `http://localhost:3000`.
 
-### 4. Build for Production
+### 4. Setup Git Hooks (Required)
+```bash
+# Setup documentation enforcement hooks
+./scripts/setup-git-hooks.sh
+```
+
+### 5. Build for Production
 ```bash
 npm run build
 ```
@@ -120,16 +126,34 @@ open http://localhost:3000
 - Verify accessibility with screen readers
 - Run linting: `npm run lint`
 
-### 4. Build and Deploy
+### 4. Update Documentation
+```bash
+# Update CHANGELOG.md with your changes
+# Format: newest entries first, chronological order
+# Add to [Unreleased] section:
+## [Unreleased]
+### Added
+- New feature description
+### Fixed  
+- Bug fix description
+```
+
+### 5. Build and Deploy
 ```bash
 # Test production build
 npm run build
 
-# Commit changes
+# Commit changes (git hooks will verify documentation)
 git add .
 git commit -m "feat: Add new feature"
 git push
 ```
+
+**Note**: Git hooks will automatically check that:
+- CHANGELOG.md is updated for significant changes
+- Documentation links are valid
+- Lint checks pass
+- Proper chronological order is maintained
 
 ## 🏗️ Architecture Overview
 
