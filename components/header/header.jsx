@@ -7,7 +7,6 @@ import {
   FaUserMd, 
   FaNewspaper, 
   FaHospital, 
-  FaDumbbell, 
   FaHandshake, 
   FaQuestionCircle, 
   FaPhone, 
@@ -40,33 +39,28 @@ export default function Header() {
     return getEventsData();
   }, []); // Only calculate once when component mounts
 
-  // Responsive check
+  // Responsive check and menu collapse on resize
   useEffect(() => {
     function handleResize() {
       const mobile = window.innerWidth <= 768;
       const wasMobile = isMobile;
       setIsMobile(mobile);
       
+      // Close flyout when switching from mobile to desktop
       if (wasMobile && !mobile) {
         setIsFlyoutOpen(false);
       }
+      
+      // Collapse all menus on any resize
+      setIsMenuOpen(false);
+      setActiveDrop(null);
+      setActiveSubmenu(null);
     }
     
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Collapse menus on resize
-  useEffect(() => {
-    const onResize = () => {
-      setIsMenuOpen(false);
-      setActiveDrop(null);
-      setActiveSubmenu(null);
-    };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+  }, [isMobile]);
 
   // Keyboard support
   useEffect(() => {
@@ -100,6 +94,15 @@ export default function Header() {
       document.body.style.overflow = '';
     };
   }, [isMobile, isMenuOpen]);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   // Memoize mobile menu items to prevent recalculation
   const mobileMenuItems = useMemo(() => {

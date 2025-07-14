@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Header from '../components/header/header.jsx';
-import Footer from '../components/footer/footer.jsx';
+import Image from 'next/image';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 import styles from './page.module.css';
 import mobileStyles from './mobile.module.css';
 
@@ -143,7 +144,6 @@ export default function Home() {
     const updateHeaderHeight = () => {
       if (headerRef.current) {
         const height = headerRef.current.offsetHeight;
-        console.log('Header height:', height); // Debug log
         setHeaderHeight(height);
         // Also set CSS custom property for use in other components
         document.documentElement.style.setProperty('--header-height', `${height}px`);
@@ -209,7 +209,7 @@ export default function Home() {
         <Header />
       </div>
 
-      {/* Hero carousel integrated directly */}
+      {/* Hero carousel section */}
       <section 
         className={styles.carouselWrapper}
         style={{ 
@@ -218,6 +218,7 @@ export default function Home() {
           minHeight: '300px'
         }}
         aria-label="Garcia Family Medicine Services Carousel"
+        role="region"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
@@ -248,13 +249,15 @@ export default function Home() {
                 className={styles['carousel-slide-link']}
               >
                 <div className={styles['carousel-slide-image-container']}>
-                  <img
+                  <Image
                     src={slide.src}
                     alt={slide.alt}
+                    width={1920}
+                    height={1080}
                     className={styles['carousel-slide-image']}
+                    priority={index === 0}
                     onLoad={() => handleImageLoad(index)}
                     onError={() => {
-                      console.log(`Failed to load image ${index}: ${slide.src}`);
                       handleImageLoad(index); // Still mark as "loaded" to prevent infinite loading
                     }}
                   />

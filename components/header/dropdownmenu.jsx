@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Calendar from '../calendar/calendar';
 import styles from './dropdownmenu.module.css';
 import mobileStyles from './dropdownmenu.mobile.module.css';
@@ -17,6 +18,7 @@ export default function DropdownMenu({
   isMobile = false,
   eventsData = null, // Accept events data as prop to prevent duplicate processing
 }) {
+  const router = useRouter();
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   const handleLinkClick = () => {
@@ -27,8 +29,8 @@ export default function DropdownMenu({
 
   // Add click handler for calendar month title
   const handleCalendarClick = () => {
-    // Navigate to events page
-    window.location.href = '/events/current';
+    // Navigate to events page using Next.js router
+    router.push('/events/current');
     handleLinkClick(); // Close dropdown
   };
 
@@ -61,7 +63,6 @@ export default function DropdownMenu({
         for (const selector of possibleSelectors) {
           titleElement = document.querySelector(selector);
           if (titleElement) {
-            console.log('Found calendar title with selector:', selector);
             break;
           }
         }
@@ -80,8 +81,6 @@ export default function DropdownMenu({
             titleElement.style.color = '';
             titleElement.style.transform = '';
           };
-        } else {
-          console.log('Could not find calendar title element');
         }
       }, 100);
 

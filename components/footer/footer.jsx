@@ -1,9 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import styles from './footer.module.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const partnerLogos = [
     { src: '/images/footer/partners/dpc-alliance.png', alt: 'DPC Alliance Logo' },
@@ -12,6 +18,31 @@ export default function Footer() {
     { src: '/images/footer/partners/mo-academy.png', alt: 'MO Academy Logo' },
     { src: '/images/footer/partners/obesity-medicine.png', alt: 'Obesity Medicine Logo' },
   ];
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setSubmitMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      // TODO: Implement actual newsletter subscription
+      // For now, just simulate success
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setSubmitMessage('Thank you for subscribing! We\'ll keep you updated.');
+      setEmail('');
+    } catch (error) {
+      setSubmitMessage('Something went wrong. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer className={`${styles.footer} ${styles.container}`}>
@@ -74,17 +105,27 @@ export default function Footer() {
           <div className={styles.newsletterContainer}>
             <h2 className={styles.newsletterTitle}>Subscribe</h2>
             <p className={styles.newsletterSubtitle}>Sign up for news and updates</p>
-            <form className={styles.newsletterForm}>
+            <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
                 placeholder="Email"
                 className={styles.newsletterInput}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubmitting}
                 required
               />
-              <button type="submit" className={styles.newsletterButton}>
-                Sign Up
+              <button 
+                type="submit" 
+                className={styles.newsletterButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Signing Up...' : 'Sign Up'}
               </button>
             </form>
+            {submitMessage && (
+              <p className={styles.submitMessage}>{submitMessage}</p>
+            )}
           </div>
 
           <div className={styles.gigiLogoWrapper}>
@@ -114,22 +155,21 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <div className={styles.navLinksGrid}>
-          <Link href="/blog" className={styles.navLink}>Health Safety | Blog</Link>
-          <Link href="/tess-talk-spotify" className={styles.navLink}>Tess Talk | Podcast</Link>
-          <Link href="/meet-dr-tess-garcia" className={styles.navLink}>Meet the Doctor</Link>
-          <Link href="/affordable-healthcare-memberships" className={styles.navLink}>Memberships</Link>
-          <Link href="/announcements" className={styles.navLink}>Announcements</Link>
-          <Link href="/department-of-transportation-physicals" className={styles.navLink}>DOT Certifications</Link>
-          <Link href="/independent-medical-examinations" className={styles.navLink}>Medical Examinations</Link>
-          <Link href="/medicare-services" className={styles.navLink}>Medicare Services</Link>
-          <Link href="/mental-health-services" className={styles.navLink}>Mental Health</Link>
-          <Link href="/pain-management-services" className={styles.navLink}>Pain Management</Link>
-          <Link href="/telehealth-services" className={styles.navLink}>Telehealth</Link>
-          <Link href="/veterans-services" className={styles.navLink}>Veteran Services</Link>
-          <Link href="/weight-management-services" className={styles.navLink}>Weight Management</Link>
-          <Link href="/faq" className={styles.navLink}>Join the Family</Link>
-          <Link href="/faq" className={styles.navLink}>FAQs</Link>
-          <Link href="/contact-us" className={styles.navLink}>Contact</Link>
+          <Link href="/meetthedoctor" className={styles.navLink}>Meet the Doctor</Link>
+          <Link href="/events/current" className={styles.navLink}>Current Events</Link>
+          <Link href="/events/past" className={styles.navLink}>Past Events</Link>
+          <Link href="/care/pelvichealth" className={styles.navLink}>Pelvic Health</Link>
+          <Link href="/services/corelift" className={styles.navLink}>CoreLift™ Program</Link>
+          <Link href="/care/dot-certifications" className={styles.navLink}>DOT Certifications</Link>
+          <Link href="/care/independent-medical-examinations" className={styles.navLink}>Medical Examinations</Link>
+          <Link href="/care/medicare" className={styles.navLink}>Medicare Services</Link>
+          <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>
+          <Link href="/care/pain-management" className={styles.navLink}>Pain Management</Link>
+          <Link href="/care/telehealth" className={styles.navLink}>Telehealth</Link>
+          <Link href="/care/veteran-services" className={styles.navLink}>Veteran Services</Link>
+          <Link href="/care/weight-management" className={styles.navLink}>Weight Management</Link>
+          <Link href="/#faqs" className={styles.navLink}>FAQs</Link>
+          <Link href="/contact" className={styles.navLink}>Contact</Link>
         </div>
 
         {/* Copyright */}

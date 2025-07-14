@@ -9,7 +9,6 @@ export default function PillButton({
   ...props
 }) {
   const handleClick = (e) => {
-    console.log('PillButton clicked!', { onClick, ariaExpanded });
     if (onClick) {
       onClick(e);
     }

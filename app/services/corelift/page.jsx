@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './corelift.module.css';
-import Header from '../../../components/header/header.jsx';
-import Footer from '../../../components/footer/footer.jsx';
+import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 
 export default function Page() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -121,10 +122,13 @@ export default function Page() {
                         rel="noopener noreferrer"
                         className={styles.carouselImageLink}
                       >
-                        <img 
+                        <Image 
                           src={carouselImages[currentImageIndex].src}
                           alt={carouselImages[currentImageIndex].alt}
+                          width={800}
+                          height={600}
                           className={styles.heroImageActual}
+                          priority
                         />
                       </a>
                       

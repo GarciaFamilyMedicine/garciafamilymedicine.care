@@ -27,8 +27,8 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.10"
   },
-  "description": "- [ ] **Flyout menu:** Add links to hashtag buttons (so they open relevant sections or external resources).\r - [ ] **Flyout menu:** Improve mobile formatting (center content more vertically and horizontally).\r - [ ] **Pill button (mobile):** Fix alignment for true flex centering between logo and sandwich/hamburger menu.\r - [ ] **Header nav:** Add “News” button.\r - [ ] **Header nav:** Combine News and Events buttons (with dropdown or column layout for both news and event links).\r - [ ] **Header polish:** Finish layout, ensure buttons and links are consistent and functional.",
-  "main": "tailwind.config.js",
+  "description": "Garcia Family Medicine website - Next.js application with React 19 and Tailwind CSS for compassionate healthcare services in Blue Springs, Missouri",
+  "main": "next.config.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/garciafamilymedicine/garciafamilymedicine.care.git"
