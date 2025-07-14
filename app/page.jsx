@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Header from '../components/header';
 import Footer from '../components/footer/footer';
 import styles from './page.module.css';
-import mobileStyles from './mobile.module.css';
+// Mobile styles now handled by global mobile CSS
 
 const DEFAULT_URL = 'https://garciafamilymedicine.care/contact';
 
@@ -202,7 +202,7 @@ export default function Home() {
     <div className={combineStyles(
       "min-h-screen bg-background text-foreground font-sans flex flex-col",
       styles.minHScreen,
-      mobileStyles.minHScreen
+      'page-layout'
     )}>
       {/* Fixed header with ref for measurement */}
       <div ref={headerRef} className={styles.headerContainer}>
@@ -317,31 +317,31 @@ export default function Home() {
       {/* MAIN BODY */}
       <main className={combineStyles(
         styles.main,
-        mobileStyles.main,
+        'main-content',
         "flex flex-col items-center flex-grow"
       )}>
         {/* Welcome card */}
         <section className={combineStyles(
           styles.mainWelcomeCard,
-          mobileStyles.mainWelcomeCard
+          'mainWelcomeCard'
         )}>
           <h1 className={combineStyles(
             styles.mainWelcomeH1,
-            mobileStyles.mainWelcomeH1
+            'mainWelcomeH1'
           )}>
             Welcome to Garcia Family Medicine
           </h1>
           
           <h2 className={combineStyles(
             styles.mainWelcomeH2,
-            mobileStyles.mainWelcomeH2
+            'mainWelcomeH2'
           )}>
             Compassionate Healthcare Overflowing with Love in Blue Springs, MO!
           </h2>
 
           <p className={combineStyles(
             styles.mainWelcomeP,
-            mobileStyles.mainWelcomeP
+            'mainWelcomeP'
           )}>
             Step into a healthcare experience rooted in trust, integrity, and the boundless love of God! At&nbsp;
             <strong className={styles.mainWelcomeStrong}>Garcia Family Medicine</strong>, we're passionately committed to making healthcare in Blue Springs, MO,&nbsp;
@@ -356,7 +356,7 @@ export default function Home() {
             id="readMoreButton"
             className={combineStyles(
               styles.readMoreButton,
-              mobileStyles.readMoreButton
+              'readMoreButton'
             )}
             onClick={() => setIsExpanded(!isExpanded)}
             aria-expanded={isExpanded}
@@ -369,21 +369,21 @@ export default function Home() {
             id="moreContent"
             className={combineStyles(
               styles.careSection,
-              mobileStyles.careSection,
-              isExpanded ? mobileStyles.expanded : '',
+              'careSection',
+              isExpanded ? 'expanded' : '',
               'transition-all duration-300',
               isExpanded ? 'max-h-[2000px] pt-2' : 'max-h-0 overflow-hidden'
             )}
           >
             <h3 className={combineStyles(
               styles.careSectionH3,
-              mobileStyles.careSectionH3
+              'careSectionH3'
             )}>
               Garcia Family Medicine: Where Love Meets Exceptional Care!
             </h3>
             <p className={combineStyles(
               styles.careSectionP,
-              mobileStyles.careSectionP
+              'careSectionP'
             )}>
               At <strong>Garcia Family Medicine</strong>, we're different—and that difference shines with purpose.
               Guided by faith and a heart for healing, we prioritize your mental and physical well‑being above all else.
@@ -391,48 +391,48 @@ export default function Home() {
             </p>
             <ul className={combineStyles(
               styles.careSectionUl,
-              mobileStyles.careSectionUl
+              'careSectionUl'
             )}>
               <li className={combineStyles(
                 styles.careSectionLi,
-                mobileStyles.careSectionLi
+                'careSectionLi'
               )}>
                 <strong>Loving Care:</strong> From preventive checkups to managing chronic conditions like diabetes or hypertension, plus mental health support filled with empathy.
               </li>
               <li className={combineStyles(
                 styles.careSectionLi,
-                mobileStyles.careSectionLi
+                'careSectionLi'
               )}>
                 <strong>Heavenly Convenience:</strong> Quick, easy appointments that honor your time and needs.
               </li>
               <li className={combineStyles(
                 styles.careSectionLi,
-                mobileStyles.careSectionLi
+                'careSectionLi'
               )}>
                 <strong>Affordable Blessings:</strong> Transparent pricing that brings peace to your wallet and soul.
               </li>
             </ul>
             <p className={combineStyles(
               styles.careSectionP,
-              mobileStyles.careSectionP
+              'careSectionP'
             )}>
               Located in Blue Springs, MO, we extend our warm, trustworthy embrace to Independence, Lee's Summit, and the entire Kansas City metro area. With integrity at our core, we're here to provide family medicine that feels like a hug from above—because your health is a sacred gift, and we cherish it!
             </p>
             <h3 className={combineStyles(
               styles.careSectionH3,
-              mobileStyles.careSectionH3
+              'careSectionH3'
             )}>
               Trust in Us – Call Today!
             </h3>
             <p className={combineStyles(
               styles.careSectionP,
-              mobileStyles.careSectionP
+              'careSectionP'
             )}>
               Ready to experience healthcare infused with compassion and the love of God? At Garcia Family Medicine, we're more than a practice—we're a ministry of wellness, serving Blue Springs, MO, and beyond with unwavering dedication. Whether you need a routine visit, ongoing care, or a kind ear for your mental health journey, our team is here to lift you up with trust and tenderness.
             </p>
             <p className={combineStyles(
               styles.careSectionP,
-              mobileStyles.careSectionP
+              'careSectionP'
             )}>
               Pick up the phone and call&nbsp;
               <a href="tel:816-427-5320" className={styles.textLink}>816‑427‑5320</a>&nbsp;now—let us welcome you into our family! Join the countless patients in Blue Springs, Independence, Lee's Summit, and the Kansas City metro area who've found healing and hope with us. Dial&nbsp;
@@ -442,7 +442,7 @@ export default function Home() {
               href="tel:816-427-5320"
               className={combineStyles(
                 styles.callButton,
-                mobileStyles.callButton
+                'callButton'
               )}
             >
               Call Now: 816‑427‑5320
@@ -453,17 +453,17 @@ export default function Home() {
         {/* Ask-Dr-Tess */}
         <section className={combineStyles(
           styles.commentsSection,
-          mobileStyles.commentsSection
+          'commentsSection'
         )}>
           <h3 className={combineStyles(
             styles.commentsSectionH3,
-            mobileStyles.commentsSectionH3
+            'commentsSectionH3'
           )}>
             Got burning questions too tricky, awkward, or unknown to voice?
           </h3>
           <p className={combineStyles(
             styles.commentsSectionP,
-            mobileStyles.commentsSectionP
+            'commentsSectionP'
           )}>
             Dr. Tess is here for you! Submit your questions through our secure form for a judgment‑free response, or call&nbsp;
             <a href="tel:816-427-5320" className={styles.textLink}>816‑427‑5320</a>&nbsp;for a personal chat.
@@ -472,7 +472,7 @@ export default function Home() {
             onClick={() => setIsPopupOpen(true)}
             className={combineStyles(
               styles.askButton,
-              mobileStyles.askButton
+              'askButton'
             )}
             aria-haspopup="dialog"
           >
@@ -487,7 +487,7 @@ export default function Home() {
           id="popup"
           className={combineStyles(
             styles.popup,
-            mobileStyles.popup,
+            'popup',
             'opacity-100'
           )}
           role="dialog"
@@ -496,12 +496,12 @@ export default function Home() {
         >
           <div className={combineStyles(
             styles.popupContent,
-            mobileStyles.popupContent
+            'popupContent'
           )}>
             <button
               className={combineStyles(
                 styles.close,
-                mobileStyles.close
+                'close'
               )}
               onClick={() => setIsPopupOpen(false)}
               aria-label="Close dialog"
@@ -514,7 +514,7 @@ export default function Home() {
               src="https://forms.office.com/r/R5vkttmxpe"
               className={combineStyles(
                 styles.iframe,
-                mobileStyles.iframe
+                'iframe'
               )}
             />
           </div>
