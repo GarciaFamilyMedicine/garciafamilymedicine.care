@@ -32,10 +32,6 @@ export const getEventsData = () => {
     return cachedEventsData;
   }
 
-  // Only log in development mode and only once per hour
-  if (process.env.NODE_ENV === 'development' && cachedTimestamp !== cacheKey) {
-    console.log('🗓️ Processing calendar events...', rawEvents.length, 'total events');
-  }
 
   const currentMonth = now.getMonth(); // 0-based (e.g., May = 4)
   const currentYear = now.getFullYear();
@@ -92,9 +88,6 @@ export const getEventsData = () => {
 
   cachedTimestamp = cacheKey;
   
-  if (process.env.NODE_ENV === 'development' && cachedEventsData.upcomingEvents.length > 0) {
-    console.log('📅 Processed events:', cachedEventsData.upcomingEvents.map(e => e.label).join(', '));
-  }
 
   return cachedEventsData;
 };

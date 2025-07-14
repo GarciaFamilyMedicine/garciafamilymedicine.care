@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.0] - 2025-01-14
+### Added
+- Functional newsletter subscription system with email validation
+- Local storage handling for newsletter subscriptions
+- Duplicate subscription detection and user feedback
+
+### Changed
+- Standardized all import statements by removing .jsx extensions across codebase
+- Optimized component organization and file structure
+- Enhanced coding standards compliance throughout application
+
+### Fixed
+- Removed all console.log statements from production code
+- Eliminated unused FloatingDots component file
+- Improved newsletter form functionality from TODO to production-ready
+- Standardized React component patterns and JSX structure
+
+### Removed
+- Development console statements that were polluting production builds
+- Unused floatingdots.jsx component file
+
 ## [2.3.0] - 2025-01-14
 ### Added
 - Industry-standard changelog format with chronological order (newest first)

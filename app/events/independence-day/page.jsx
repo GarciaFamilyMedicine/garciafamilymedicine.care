@@ -1,8 +1,8 @@
 'use client';
 
 import styles from './independence-day.module.css';
-import Header from '../../../components/header/header.jsx';
-import Footer from '../../../components/footer/footer.jsx';
+import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 
 export default function Page() {
   return (

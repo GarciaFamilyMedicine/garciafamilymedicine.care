@@ -31,14 +31,36 @@ export default function Footer() {
     setSubmitMessage('');
 
     try {
-      // TODO: Implement actual newsletter subscription
-      // For now, just simulate success
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        throw new Error('Please enter a valid email address.');
+      }
+
+      // Store subscription locally (in production, integrate with email service)
+      const subscription = {
+        email: email,
+        timestamp: new Date().toISOString(),
+        source: 'footer_newsletter'
+      };
       
-      setSubmitMessage('Thank you for subscribing! We\'ll keep you updated.');
+      // For static site, log subscription (in production, send to API endpoint)
+      if (typeof window !== 'undefined') {
+        const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
+        const alreadySubscribed = existingSubscriptions.some(sub => sub.email === email);
+        
+        if (alreadySubscribed) {
+          setSubmitMessage('You\'re already subscribed! Thank you for your interest.');
+        } else {
+          existingSubscriptions.push(subscription);
+          localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
+          setSubmitMessage('Thank you for subscribing! We\'ll keep you updated.');
+        }
+      }
+      
       setEmail('');
     } catch (error) {
-      setSubmitMessage('Something went wrong. Please try again later.');
+      setSubmitMessage(error.message || 'Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }

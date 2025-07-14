@@ -22,10 +22,6 @@ export default function Calendar() {
 
   // Memoize event processing to prevent duplicate calculations
   const { eventsByMonth, linksByMonth } = useMemo(() => {
-    // Only log once when component mounts
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🗓️ Initializing calendar with', rawEvents.length, 'events');
-    }
 
     const eventsByMonth = {};
     const linksByMonth = {};

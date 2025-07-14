@@ -2,14 +2,14 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Header from '../../components/header/header.jsx';
-import Footer from '../../components/footer/footer.jsx';
-import FloatingNav from './floatingnav.jsx';
-import HeroSection from './herosection.jsx';              // Hero section with Dr. Tess photo
-import QuotesAndStats from './quotesandstats.jsx';        // Merged: Quotes carousel and statistics
-import CareerTimeline from './careertimeline.jsx';        // Merged: Timeline with TimelineItem component
-import DoctorBiography from './doctorbiography.jsx';      // Enhanced: Hero-style background with paragraph animation
-import ConnectSection from './connectsection.jsx';        // Call-to-action section
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import FloatingNav from './floatingnav';
+import HeroSection from './herosection';              // Hero section with Dr. Tess photo
+import QuotesAndStats from './quotesandstats';        // Merged: Quotes carousel and statistics
+import CareerTimeline from './careertimeline';        // Merged: Timeline with TimelineItem component
+import DoctorBiography from './doctorbiography';      // Enhanced: Hero-style background with paragraph animation
+import ConnectSection from './connectsection';        // Call-to-action section
 import styles from './meetthedoctor.module.css';
 import mobileStyles from './mobile.module.css';
 import { setupSmoothLinks } from '../utils/smoothscroll';
