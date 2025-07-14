@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Header from '../../components/header/header';
+import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 import FloatingNav from './floatingnav';
 import HeroSection from './herosection';              // Hero section with Dr. Tess photo

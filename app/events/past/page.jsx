@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import styles from './past.module.css';
-import Header from '../../../components/header/header';
+import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
 import { rawEvents } from '../../../components/calendar/calendar-events';
 import { getMonthTheme } from '../../../components/calendar/monthly-themes';
