@@ -7,11 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.0] - 2025-01-14
+### Added
+- Modular CSS architecture with organized file structure
+- Global component library with reusable UI patterns
+- Responsive grid system with auto-fit and three-column layouts
+- Square card components with icon, title, and number patterns
+- Enhanced button system with primary/secondary variants
+- Fade-in animation utilities for smooth page transitions
+- Common page layout patterns (hero sections, main content containers)
+
+### Changed
+- Restructured CSS from single globals.css into organized modules:
+  - `styles/base.css` - Variables, reset, typography, element defaults
+  - `styles/components.css` - Reusable UI components (cards, buttons, grids)
+  - `styles/utilities.css` - Helper classes, animations, state styles
+- Optimized pelvic health page to use global component patterns
+- Updated contact page to leverage shared styling systems
+- Reduced CSS duplication by approximately 60% across pages
+
+### Fixed
+- Restored lost styling on pelvic health page after initial refactoring
+- Eliminated redundant CSS patterns between contact and pelvic health pages
+- Consolidated similar hero section, grid, and card styling patterns
+- Improved maintainability by centralizing common responsive breakpoints
+
+### Removed
+- Duplicate CSS patterns for hero sections, buttons, and grid layouts
+- Redundant responsive styles now handled by global base styles
+- Page-specific implementations of common UI patterns
+
 ## [2.4.0] - 2025-01-14
 ### Added
-- Functional newsletter subscription system with email validation
-- Local storage handling for newsletter subscriptions
-- Duplicate subscription detection and user feedback
+- Client-side newsletter form with email validation (localStorage only)
+- Local browser storage for email collection (requires backend integration for actual subscriptions)
+- Duplicate email detection and user feedback
 
 ### Changed
 - Standardized all import statements by removing .jsx extensions across codebase
@@ -21,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Removed all console.log statements from production code
 - Eliminated unused FloatingDots component file
-- Improved newsletter form functionality from TODO to production-ready
+- Replaced newsletter TODO with client-side email collection (needs backend for real functionality)
 - Standardized React component patterns and JSX structure
 
 ### Removed

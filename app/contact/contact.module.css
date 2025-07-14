@@ -1,96 +1,68 @@
 /* ================ BASE LAYOUT ================ */
 .pageContainer {
-  min-height: 100vh;
-  padding-top: 78px;
-  font-family: var(--font-argentum);
   background: linear-gradient(135deg, #2e84da 0%, #2e84da 50%, #2e84da 100%);
   color: #ffffff;
 }
 
+/* Using global .main-content */
 .mainContent {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.6s ease;
+  /* Inherits from global .main-content */
 }
 
-.mainContent.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Using global .fade-in-content utility for animation */
 
 /* ================ HERO SECTION ================ */
+/* Using global .hero-section */
 .heroSection {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 3rem 0;
+  /* Inherits from global .hero-section */
 }
 
+/* Using global .hero-title */
 .heroTitle {
-  font-family: var(--font-sumana);
-  font-size: 3.5rem;
-  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Inherits from global .hero-title */
 }
 
+/* Using global .hero-subtitle */
 .heroSubtitle {
-  font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  /* Inherits from global .hero-subtitle */
 }
 
+/* Using global .cta-buttons */
 .ctaButtons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  /* Inherits from global .cta-buttons */
 }
 
 /* ================ BUTTONS ================ */
-.primaryButton, 
-.secondaryButton,
+/* Using global .btn-primary and .btn-secondary classes */
+.primaryButton {
+  /* Inherits from global .btn-primary */
+}
+
+.secondaryButton {
+  /* Inherits from global .btn-secondary */
+}
+
 .directionsButton {
+  /* Extends global .btn-secondary with specific styling */
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e40af;
+  border: 2px solid #ffffff;
+  font-weight: 700;
   display: inline-block;
   padding: 1rem 2rem;
   font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
   font-size: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-.primaryButton {
-  background: linear-gradient(135deg, #ff8c42 0%, #ff7a2b 100%);
-  color: white;
-  border: 2px solid transparent;
-}
-
-.primaryButton:hover {
-  background: linear-gradient(135deg, #ff7a2b 0%, #e6691a 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.3);
-}
-
-.secondaryButton,
-.directionsButton {
-  background: rgba(255, 255, 255, 0.95);
-  color: #1e40af;
-  border: 2px solid #ffffff;
-  font-weight: 700;
-}
-
-.secondaryButton:hover,
 .directionsButton:hover {
   background: #ffffff;
   color: #1e40af;
@@ -104,35 +76,15 @@
   margin-bottom: 3rem;
 }
 
+/* Using global .grid-auto-fit-large */
 .infoGrid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-bottom: 3rem;
+  /* Inherits from global .grid-auto-fit-large */
 }
 
+/* Using global .info-card-enhanced component */
 .infoCard {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(74, 144, 226, 0.2);
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.infoCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.infoCard h2 {
-  font-family: var(--font-sumana);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1e40af;
-  margin-bottom: 1.5rem;
-  border-bottom: 3px solid #4a90e2;
-  padding-bottom: 0.5rem;
+  /* Inherits from global .info-card-enhanced */
 }
 
 /* ================ CONTACT DETAILS ================ */
@@ -231,29 +183,7 @@
 
 /* ================ RESPONSIVE DESIGN ================ */
 @media (max-width: 768px) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-  
-  .heroSubtitle {
-    font-size: 1.1rem;
-  }
-  
-  .ctaButtons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .primaryButton,
-  .secondaryButton {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
-  
-  .infoGrid {
-    grid-template-columns: 1fr;
-  }
+  /* Hero responsive styles moved to global base.css */
   
   .contactItem {
     flex-direction: column;
@@ -262,12 +192,4 @@
   }
 }
 
-@media (min-width: 769px) {
-  .heroTitle {
-    font-size: 4rem;
-  }
-  
-  .mainContent {
-    padding: 3rem 2rem;
-  }
-}
+/* Large screen responsive styles moved to global base.css */

@@ -1,0 +1,262 @@
+/* =========================================================
+   REUSABLE COMPONENTS - UI Components used across pages
+   ======================================================= */
+
+/* Card component - reusable across pages */
+.card {
+  background: #fff;
+  border: 1px solid #e4e7eb;
+  border-radius: 0px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: box-shadow .3s, transform .3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,.10);
+  transform: translateY(-3px);
+}
+
+/* Typography - reusable heading with underline */
+.h2-underline {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.875rem;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: .75rem;
+}
+
+.h2-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.5rem;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Lead text - reusable typography */
+.lead {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+/* Chip component - reusable UI element */
+.chip {
+  background: var(--accent);
+  color: #fff;
+  padding: 0 .5rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Info cards - reusable grid pattern */
+.info-section {
+  margin-bottom: 3rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin-top: 1.25rem;
+}
+
+.info-card {
+  flex: 1 1 calc(50% - 1.75rem);
+  min-width: 280px;
+  border-top: 4px solid var(--accent);
+}
+
+/* Icon list - reusable pattern */
+.icon-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.icon-list li {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: .8rem;
+  line-height: 1.55;
+}
+
+.icon-list li svg {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+/* Button components - reusable across pages */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff8c42 0%, #ff7a2b 100%);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ff7a2b 0%, #e6691a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e40af;
+  border: 2px solid #ffffff;
+  font-weight: 700;
+}
+
+.btn-secondary:hover {
+  background: #ffffff;
+  color: #1e40af;
+  border-color: #ff8c42;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.3);
+}
+
+/* Enhanced info card - extending the existing pattern */
+.info-card-enhanced {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-enhanced:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.info-card-enhanced h2 {
+  font-family: var(--font-sumana);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #4a90e2;
+  padding-bottom: 0.5rem;
+}
+
+/* Grid layout patterns - reusable across pages */
+.grid-auto-fit {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-auto-fit-large {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-three-col {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .grid-three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Square card pattern - reusable */
+.square-card {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1.4rem;
+  text-align: center;
+}
+
+.square-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.square-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.big-number {
+  font-family: var(--font-sumana);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  margin: 0.15rem 0 0.8rem;
+}
+
+.square-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Responsive adjustments for components */
+@media(max-width: 992px) {
+  .lead { 
+    font-size: 1.15rem; 
+  }
+}
+
+@media(max-width: 768px) {
+  .info-card,
+  .info-card-enhanced { 
+    flex: 1 1 100%; 
+  }
+  
+  .h2-underline { 
+    font-size: 1.5rem; 
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}

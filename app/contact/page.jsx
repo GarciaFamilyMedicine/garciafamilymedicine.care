@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './contact.module.css';
-import Header from '../../components/header/header';
+import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 
 export default function Contact() {
@@ -16,19 +16,19 @@ export default function Contact() {
     <>
       <Header />
       
-      <div className={styles.pageContainer}>
-        <main className={`${styles.mainContent} ${isVisible ? styles.visible : ''}`}>
+      <div className={`${styles.pageContainer} page-layout`}>
+        <main className={`${styles.mainContent} main-content fade-in-content ${isVisible ? 'visible' : ''}`}>
           {/* Hero Section */}
-          <section className={styles.heroSection}>
-            <h1 className={styles.heroTitle}>Contact Us</h1>
-            <p className={styles.heroSubtitle}>
+          <section className={`${styles.heroSection} hero-section`}>
+            <h1 className={`${styles.heroTitle} hero-title`}>Contact Us</h1>
+            <p className={`${styles.heroSubtitle} hero-subtitle`}>
               Connect with Garcia Family Medicine for personalized healthcare and affordable care options.
             </p>
-            <div className={styles.ctaButtons}>
-              <a href="tel:+18164275320" className={styles.primaryButton}>
+            <div className={`${styles.ctaButtons} cta-buttons`}>
+              <a href="tel:+18164275320" className={`${styles.primaryButton} btn-primary`}>
                 Call (816) 427-5320
               </a>
-              <a href="sms:+18167082719" className={styles.secondaryButton}>
+              <a href="sms:+18167082719" className={`${styles.secondaryButton} btn-secondary`}>
                 Text (816) 708-2719
               </a>
             </div>
@@ -36,7 +36,7 @@ export default function Contact() {
           
           {/* Contact Info Section */}
           <section className={styles.infoSection}>
-            <div className={styles.infoGrid}>
+            <div className={`${styles.infoGrid} grid-auto-fit-large`}>
               <ContactDetails />
               <OfficeHours />
               <LocationInfo />
@@ -54,7 +54,7 @@ export default function Contact() {
 }
 
 const ContactDetails = () => (
-  <div className={styles.infoCard}>
+  <div className={`${styles.infoCard} info-card-enhanced`}>
     <h2>Contact Information</h2>
     <div className={styles.contactList}>
       <div className={styles.contactItem}>
@@ -80,7 +80,7 @@ const ContactDetails = () => (
 );
 
 const OfficeHours = () => (
-  <div className={styles.infoCard}>
+  <div className={`${styles.infoCard} info-card-enhanced`}>
     <h2>Office Hours</h2>
     <div className={styles.hoursList}>
       <div className={styles.hoursItem}>
@@ -104,7 +104,7 @@ const OfficeHours = () => (
 );
 
 const LocationInfo = () => (
-  <div className={styles.infoCard}>
+  <div className={`${styles.infoCard} info-card-enhanced`}>
     <h2>Location</h2>
     <div className={styles.address}>
       <p>801 NW St. Mary Drive, Suite 209</p>

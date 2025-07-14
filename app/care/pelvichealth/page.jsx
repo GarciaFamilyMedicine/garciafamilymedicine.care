@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import styles  from './pelvichealth.module.css';
-import Header  from '../../../components/header/header';
+import Header from '../../../components/header';
 import Footer  from '../../../components/footer/footer';
 
 /* hero */
@@ -39,8 +39,8 @@ export default function Page() {
   return (
     <>
       <Header />
-      <div className={`${styles.vars} ${styles.page}`}>
-        <main className={styles.main}>
+      <div className={`${styles.vars} ${styles.page} page-layout`}>
+        <main className={`${styles.main} main-content`}>
           <IntroSection />
           <UnderstandingSection />
           <PrevalenceCards />
