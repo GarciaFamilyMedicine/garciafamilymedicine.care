@@ -211,7 +211,7 @@ export default function Home() {
 
       {/* Hero carousel section */}
       <section 
-        className={styles.carouselWrapper}
+        className="carousel-wrapper"
         style={{ 
           marginTop: headerHeight > 0 ? `${headerHeight}px` : '80px',
           height: headerHeight > 0 ? `calc(100vh - ${headerHeight}px)` : 'calc(100vh - 80px)',
@@ -226,18 +226,18 @@ export default function Home() {
       >
         {/* Loading indicator */}
         {isLoading && (
-          <div className={styles['carousel-loading-indicator']}>
-            <div className={styles['carousel-loading-spinner']}></div>
+          <div className="carousel-loading-indicator">
+            <div className="carousel-loading-spinner"></div>
             <p>Loading images...</p>
           </div>
         )}
 
-        <div className={styles['carousel-container']}>
+        <div className="carousel-container">
           {slides.map((slide, index) => (
             <div
               key={`slide-${index}`}
-              className={`${styles['carousel-slide']} ${
-                index === currentIndex ? styles['carousel-active'] : ''
+              className={`carousel-slide ${
+                index === currentIndex ? 'active' : ''
               }`}
               aria-hidden={index !== currentIndex}
             >
@@ -246,15 +246,15 @@ export default function Home() {
                 target={slide.target}
                 rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
                 aria-label={slide.alt}
-                className={styles['carousel-slide-link']}
+                className="carousel-slide-link"
               >
-                <div className={styles['carousel-slide-image-container']}>
+                <div className="carousel-slide-image-container">
                   <Image
                     src={slide.src}
                     alt={slide.alt}
                     width={1920}
                     height={1080}
-                    className={styles['carousel-slide-image']}
+                    className="carousel-slide-image"
                     priority={index === 0}
                     onLoad={() => handleImageLoad(index)}
                     onError={() => {
@@ -269,7 +269,7 @@ export default function Home() {
 
         {/* Navigation Arrows */}
         <button 
-          className={`${styles['carousel-nav-button']} ${styles['carousel-prev-button']}`}
+          className="carousel-nav-button carousel-prev-button"
           onClick={prevSlide}
           aria-label="Previous slide"
           disabled={isLoading}
@@ -280,7 +280,7 @@ export default function Home() {
         </button>
         
         <button 
-          className={`${styles['carousel-nav-button']} ${styles['carousel-next-button']}`}
+          className="carousel-nav-button carousel-next-button"
           onClick={nextSlide}
           aria-label="Next slide"
           disabled={isLoading}
@@ -291,12 +291,12 @@ export default function Home() {
         </button>
 
         {/* Dots Navigation */}
-        <div className={styles['carousel-dots-container']}>
+        <div className="carousel-dots-container">
           {slides.map((_, index) => (
             <button
               key={`dot-${index}`}
-              className={`${styles['carousel-dot']} ${
-                index === currentIndex ? styles['carousel-dot-active'] : ''
+              className={`carousel-dot ${
+                index === currentIndex ? 'active' : ''
               }`}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -307,7 +307,7 @@ export default function Home() {
         </div>
 
         {/* Slide counter for accessibility */}
-        <div className={styles['carousel-slide-counter']} aria-live="polite">
+        <div className="carousel-slide-counter" aria-live="polite">
           <span className="sr-only">
             Slide {currentIndex + 1} of {slides.length}
           </span>

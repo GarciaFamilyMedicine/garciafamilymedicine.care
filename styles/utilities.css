@@ -39,6 +39,31 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
+/* Common gradient utilities */
+.bg-gradient-primary-accent {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.bg-gradient-primary-accent-horizontal {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.bg-gradient-primary-secondary {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+}
+
+.bg-gradient-primary-secondary-135 {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+}
+
+/* Text gradient utilities */
+.text-gradient-primary-accent {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* State utilities */
 .loading {
   pointer-events: none;

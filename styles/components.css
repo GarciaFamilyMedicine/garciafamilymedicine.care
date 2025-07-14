@@ -2,6 +2,9 @@
    REUSABLE COMPONENTS - UI Components used across pages
    ======================================================= */
 
+/* Import component modules */
+@import './components/carousel.css';
+
 /* Card component - reusable across pages */
 .card {
   background: #fff;
