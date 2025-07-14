@@ -211,10 +211,10 @@
   }
   
   .socialHashtag {
-    font-size: 9px;
-    min-width: 28px;
-    height: 24px;
-    padding: 4px 8px;
+    font-size: 14px;
+    min-width: 44px;
+    height: 44px;
+    padding: 8px 12px;
   }
   
   .profileLinks {

@@ -31,9 +31,9 @@
 
 @media (max-width: 768px) {
   .pillButton {
-    font-size: 13px !important;
-    padding: 8px 16px !important;
-    height: 36px;
+    font-size: 14px !important;
+    padding: 12px 16px !important;
+    height: 44px;
     width: auto;
     max-width: 240px;
     min-width: 180px;
@@ -58,9 +58,9 @@
 
 @media (max-width: 480px) {
   .pillButton {
-    font-size: 12px !important;
-    padding: 8px 16px !important;
-    height: 38px;
+    font-size: 14px !important;
+    padding: 12px 16px !important;
+    height: 44px;
     min-width: 180px;
     max-width: 260px;
   }
