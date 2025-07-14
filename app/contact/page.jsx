@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import styles from './contact.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 
@@ -15,33 +16,33 @@ export default function Contact() {
     <>
       <Header />
       
-      <div className="page-layout">
-        <main className={`main-content fade-in-content ${isVisible ? 'visible' : ''}`}>
+      <div className={`${styles.pageContainer} page-layout`}>
+        <main className={`${styles.mainContent} main-content fade-in-content ${isVisible ? 'visible' : ''}`}>
           {/* Hero Section */}
-          <section className="hero-section">
-            <h1 className="hero-title">Contact Us</h1>
-            <p className="hero-subtitle">
+          <section className={`${styles.heroSection} hero-section`}>
+            <h1 className={`${styles.heroTitle} hero-title`}>Contact Us</h1>
+            <p className={`${styles.heroSubtitle} hero-subtitle`}>
               Connect with Garcia Family Medicine for personalized healthcare and affordable care options.
             </p>
-            <div className="cta-buttons">
-              <a href="tel:+18164275320" className="btn-primary">
+            <div className={`${styles.ctaButtons} cta-buttons`}>
+              <a href="tel:+18164275320" className={`${styles.primaryButton} btn-primary`}>
                 Call (816) 427-5320
               </a>
-              <a href="sms:+18167082719" className="btn-secondary">
+              <a href="sms:+18167082719" className={`${styles.secondaryButton} btn-secondary`}>
                 Text (816) 708-2719
               </a>
             </div>
           </section>
           
           {/* Contact Info Section */}
-          <section className="info-section">
-            <div className="grid-auto-fit-large">
+          <section className={styles.infoSection}>
+            <div className={`${styles.infoGrid} grid-auto-fit-large`}>
               <ContactDetails />
               <OfficeHours />
               <LocationInfo />
             </div>
-            <div className="card">
-              <p className="lead">We accept Medicare and offer affordable cash-pay rates for uninsured patients.</p>
+            <div className={styles.bottomNotice}>
+              <p>We accept Medicare and offer affordable cash-pay rates for uninsured patients.</p>
             </div>
           </section>
         </main>
@@ -53,67 +54,67 @@ export default function Contact() {
 }
 
 const ContactDetails = () => (
-  <div className="card info-card">
-    <h2 className="h2-underline">Contact Information</h2>
-    <ul className="icon-list">
-      <li>
-        <span>Phone:</span>
-        <a href="tel:+18164275320">(816) 427-5320</a>
-      </li>
-      <li>
-        <span>Text:</span>
-        <a href="sms:+18167082719">(816) 708-2719</a>
-      </li>
-      <li>
-        <span>Fax:</span>
-        <span>(888) 807-2718</span>
-      </li>
-      <li>
-        <span>Email:</span>
-        <a href="mailto:hello@garciafamilymedicine.care">
+  <div className={`${styles.infoCard} info-card-enhanced`}>
+    <h2>Contact Information</h2>
+    <div className={styles.contactTable}>
+      <div className={styles.contactTableRow}>
+        <span className={styles.contactTableLabel}>Phone:</span>
+        <a href="tel:+18164275320" className={styles.contactTableValue}>(816) 427-5320</a>
+      </div>
+      <div className={styles.contactTableRow}>
+        <span className={styles.contactTableLabel}>Text:</span>
+        <a href="sms:+18167082719" className={styles.contactTableValue}>(816) 708-2719</a>
+      </div>
+      <div className={styles.contactTableRow}>
+        <span className={styles.contactTableLabel}>Fax:</span>
+        <span className={styles.contactTableValue}>(888) 807-2718</span>
+      </div>
+      <div className={styles.contactTableRow}>
+        <span className={styles.contactTableLabel}>Email:</span>
+        <a href="mailto:hello@garciafamilymedicine.care" className={styles.contactTableValue}>
           hello@garciafamilymedicine.care
         </a>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 );
 
 const OfficeHours = () => (
-  <div className="card info-card">
-    <h2 className="h2-underline">Office Hours</h2>
-    <ul className="icon-list">
-      <li>
-        <span>Monday:</span>
-        <span style={{fontStyle: 'italic', color: '#64748b'}}>Closed</span>
-      </li>
-      <li>
-        <span>Tuesday - Friday:</span>
-        <span>1:00 PM - 7:00 PM</span>
-      </li>
-      <li>
-        <span>Saturday:</span>
-        <span>1:00 PM - 3:00 PM</span>
-      </li>
-      <li>
-        <span>Sunday:</span>
-        <span style={{fontStyle: 'italic', color: '#64748b'}}>Closed</span>
-      </li>
-    </ul>
+  <div className={`${styles.infoCard} info-card-enhanced`}>
+    <h2>Office Hours</h2>
+    <div className={styles.hoursTable}>
+      <div className={styles.hoursTableRow}>
+        <span className={styles.hoursTableDay}>Monday</span>
+        <span className={`${styles.hoursTableTime} ${styles.closed}`}>Closed</span>
+      </div>
+      <div className={styles.hoursTableRow}>
+        <span className={styles.hoursTableDay}>Tuesday - Friday</span>
+        <span className={styles.hoursTableTime}>1:00 PM - 7:00 PM</span>
+      </div>
+      <div className={styles.hoursTableRow}>
+        <span className={styles.hoursTableDay}>Saturday</span>
+        <span className={styles.hoursTableTime}>1:00 PM - 3:00 PM</span>
+      </div>
+      <div className={styles.hoursTableRow}>
+        <span className={styles.hoursTableDay}>Sunday</span>
+        <span className={`${styles.hoursTableTime} ${styles.closed}`}>Closed</span>
+      </div>
+    </div>
   </div>
 );
 
 const LocationInfo = () => (
-  <div className="card info-card">
-    <h2 className="h2-underline">Location</h2>
-    <p className="lead">
-      801 NW St. Mary Drive, Suite 209<br />
-      Blue Springs, MO 64014
-    </p>
+  <div className={`${styles.infoCard} info-card-enhanced`}>
+    <h2>Location</h2>
+    <div className={styles.address}>
+      <p>801 NW St. Mary Drive, Suite 209</p>
+      <p>Blue Springs, MO 64014</p>
+    </div>
     <a
       href="https://www.google.com/maps/place/801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014"
       target="_blank"
       rel="noopener noreferrer"
-      className="btn-primary"
+      className={styles.directionsButton}
     >
       Get Directions
     </a>
