@@ -28,26 +28,26 @@ export const nav_links = [
     dropdown: {
       links: [
         {
-          title: 'Specialized Care',
-          items: [
-            { label: 'Pelvic Health', href: '/care/pelvichealth' },
-            { label: 'Department of Transportation Certifications', href: '/care/dot-certifications' },
-            { label: 'Independent Medical Examinations', href: '/care/independent-medical-examinations' },
-            { label: 'Medicare Services', href: '/care/medicare' },
-            { label: 'Mental Health Services', href: '/care/mental-health' },
-            { label: 'Pain Management Services', href: '/care/pain-management' },
-            { label: 'Telehealth Service', href: '/care/telehealth' },
-            { label: 'Veteran Services', href: '/care/veteran-services' },
-            { label: 'Weight Management Services', href: '/care/weight-management' }
-          ],
-        },
-        {
           title: 'Core Medical Services',
           items: [
             {
               label: 'CoreLift™ Pelvic Health Program',
               href: '/services/corelift'
             }
+          ],
+        },
+        {
+          title: 'Specialized Care',
+          items: [
+            { label: 'Department of Transportation Certifications', href: '/care/dot-certifications' },
+            { label: 'Independent Medical Examinations', href: '/care/independent-medical-examinations' },
+            { label: 'Medicare Services', href: '/care/medicare' },
+            { label: 'Mental Health Services', href: '/care/mental-health' },
+            { label: 'Pain Management Services', href: '/care/pain-management' },
+            { label: 'Pelvic Health', href: '/care/pelvichealth' },
+            { label: 'Telehealth Service', href: '/care/telehealth' },
+            { label: 'Veterans Healthcare', href: '/care/veterans' },
+            { label: 'Weight Management Services', href: '/care/weight-management' }
           ],
         },
       ],
