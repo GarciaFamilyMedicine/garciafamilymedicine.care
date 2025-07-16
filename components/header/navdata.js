@@ -18,8 +18,9 @@ export const nav_links = [
   {
     label: 'News & Events',
     dropdown: {
-      // Will be dynamically populated
-      isDynamic: true
+      // Will be dynamically populated with news and events
+      isDynamic: true,
+      includeNews: true
     },
   },
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Calendar from '../calendar/calendar';
+import { getRecentPosts, formatDate } from '../blog/blog-data';
 import styles from './dropdownmenu.module.css';
 import mobileStyles from './dropdownmenu.mobile.module.css';
 
@@ -166,11 +167,38 @@ export default function DropdownMenu({
                     className={styles.sectionTitleLink}
                     onClick={handleLinkClick}
                   >
-                    News
+                    Recent News
                   </Link>
                 </h3>
                 <ul>
-                  {/* Future: Add mapped news blog posts here */}
+                  {(() => {
+                    try {
+                      const recentNews = getRecentPosts(3);
+                      return recentNews.map((post, index) => (
+                        <li key={post.id || index}>
+                          <Link
+                            href={`/news/${post.slug}`}
+                            className={styles.dropdownlink}
+                            onClick={handleLinkClick}
+                          >
+                            <div className={styles.newsItem}>
+                              <div className={styles.newsTitle}>{post.title}</div>
+                              <div className={styles.newsDate}>{formatDate(post.publishedDate)}</div>
+                              <div className={styles.newsCategory}>{post.category}</div>
+                            </div>
+                          </Link>
+                        </li>
+                      ));
+                    } catch (error) {
+                      console.warn('Error loading recent news:', error);
+                      return (
+                        <li>
+                          <span className={styles.dropdownlink}>No recent news available</span>
+                        </li>
+                      );
+                    }
+                  })()
+                  }
                 </ul>
                 
                 {/* News footer link aligned with other columns */}

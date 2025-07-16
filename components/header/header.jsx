@@ -22,6 +22,7 @@ import ReclaimConfidenceFlyout from './reclaimconfidenceflyout';
 import PillButton from './pillbutton';
 import Calendar from '../calendar/calendar';
 import { getEventsData } from '../calendar/calendar-events';
+import { getRecentPosts } from '../blog/blog-data';
 import styles from './header.module.css';
 import mobileStyles from './mobile.module.css';
 import pillStyles from './pillbutton.module.css';
@@ -123,6 +124,21 @@ export default function Header() {
         // Special handling for News & Events - match desktop dropdown exactly
         if (link.label === 'News & Events') {
           allItems = [];
+          
+          // Add recent news posts
+          try {
+            const recentNews = getRecentPosts(3);
+            const newsItems = recentNews.map((post) => ({
+              label: post.title,
+              href: `/news/${post.slug}`,
+              isNews: true,
+              date: post.publishedDate,
+              category: post.category
+            }));
+            allItems.push(...newsItems);
+          } catch (error) {
+            console.warn('Error loading recent news:', error);
+          }
           
           // Add upcoming events exactly like desktop dropdown does
           if (eventsData?.upcomingEvents?.length) {
