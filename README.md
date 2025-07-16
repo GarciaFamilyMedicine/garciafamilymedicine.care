@@ -62,12 +62,68 @@ Visit `http://localhost:3000` to see the website.
 
 ```
 ├── app/                 # Next.js App Router pages
+│   ├── news/            # Blog system
+│   │   ├── [slug]/      # Dynamic blog post pages
+│   │   └── page.jsx     # Main blog listing page
+│   └── care/            # Medical service pages
 ├── components/          # Reusable React components
+│   ├── blog/            # Blog management system
+│   │   └── blog-data.js # Blog posts and helper functions
+│   └── header/          # Navigation with news integration
 ├── public/             # Static assets
+│   └── images/blog/     # Blog post images
 ├── docs/               # Comprehensive documentation
 ├── CHANGELOG.md        # Project changelog
 └── CLAUDE.md          # Claude Code instructions
 ```
+
+## 📰 Blog System
+
+The website includes a comprehensive blog system integrated with the News & Events navigation:
+
+### Features
+- **Main blog page** at `/news` with category filtering and featured posts
+- **Individual post pages** with sidebar, recent posts, and CTAs
+- **News & Events dropdown** shows recent blog posts alongside events
+- **Responsive design** with mobile-optimized layouts
+- **Newsletter signup** and social sharing functionality
+- **SEO-friendly** static generation with `generateStaticParams`
+
+### Managing Blog Content
+
+Blog posts are managed in `components/blog/blog-data.js`. To add a new post:
+
+1. **Add post object** to the `blogPosts` array:
+```javascript
+{
+  id: 4, // Unique ID
+  slug: 'your-post-slug', // URL slug
+  title: 'Your Post Title',
+  excerpt: 'Brief description for listings',
+  content: `<p>Full HTML content...</p>`,
+  author: 'Dr. Tess Garcia',
+  publishedDate: '2025-01-16',
+  category: 'Health Tips', // or 'Practice News', 'Service Updates'
+  tags: ['tag1', 'tag2'],
+  featured: false, // Set to true for featured posts
+  image: '/images/blog/your-image.jpg'
+}
+```
+
+2. **Build and deploy** - Static routes are automatically generated
+
+### Blog Categories
+- **Health Tips** - Medical advice and wellness content
+- **Practice News** - Practice updates and announcements  
+- **Service Updates** - New services and program changes
+
+### Available Helper Functions
+- `getRecentPosts(limit)` - Get recent posts for dropdown/sidebar
+- `getFeaturedPosts()` - Get posts marked as featured
+- `getPostsByCategory(category)` - Filter by category
+- `searchPosts(query)` - Search functionality
+- `formatDate(dateString)` - Format dates for display
+- `getReadingTime(content)` - Calculate reading time
 
 ## 🚀 Deployment
 
