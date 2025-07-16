@@ -1,5 +1,5 @@
 'use client';
-import { Doughnut } from 'react-chartjs-2';
+import { useState, useEffect } from 'react';
 import { H2 } from './typography';
 import styles from '../pelvichealth.module.css';
 
@@ -50,7 +50,7 @@ const options = {
 };
 
 /* ---------- prevalence card ---------- */
-function StatCard({ title, subtitle, val, accent, desc }) {
+function StatCard({ title, subtitle, val, accent, desc, Doughnut, chartsLoaded }) {
   return (
     <div className={`statCard ${styles.card} ${styles.infoCard}`} style={{ transition:'transform .3s,box-shadow .3s' }}>
       <div className="statCardHeader" style={{ background:`${accent}25`, color:accent }}>
@@ -64,11 +64,34 @@ function StatCard({ title, subtitle, val, accent, desc }) {
       )}
 
       <div className="doughnutShadow" style={{ height:240, marginTop:'.75rem' }}>
-        <Doughnut
-          data={makeData(val, accent)}
-          options={options}
-          plugins={[centerText(accent)]}
-        />
+        {chartsLoaded && Doughnut ? (
+          <Doughnut
+            data={makeData(val, accent)}
+            options={options}
+            plugins={[centerText(accent)]}
+          />
+        ) : (
+          <div style={{
+            height: '240px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            background: '#f5f5f5',
+            borderRadius: '50%',
+            margin: '0 auto',
+            width: '240px',
+            position: 'relative'
+          }}>
+            <div style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: accent,
+              textAlign: 'center'
+            }}>
+              {val}%
+            </div>
+          </div>
+        )}
       </div>
 
       <p className={`${styles.statDesc}`}>
@@ -80,6 +103,20 @@ function StatCard({ title, subtitle, val, accent, desc }) {
 
 /* ---------- section ---------- */
 export default function PrevalenceCardsSection() {
+  const [chartsLoaded, setChartsLoaded] = useState(false);
+  const [Doughnut, setDoughnut] = useState(null);
+
+  useEffect(() => {
+    // Dynamically import chart components only on client side
+    import('react-chartjs-2').then((chartModule) => {
+      setDoughnut(() => chartModule.Doughnut);
+      setChartsLoaded(true);
+    }).catch((error) => {
+      console.error('Error loading charts:', error);
+      setChartsLoaded(true); // Show content even if charts fail
+    });
+  }, []);
+
   return (
     <section className={`${styles.softSection} ${styles.infoSection}`} aria-labelledby="prevalence-title">
       <H2 id="prevalence-title">Prevalence of Pelvic Health Issues</H2>
@@ -90,21 +127,27 @@ export default function PrevalenceCardsSection() {
           subtitle="Urinary Incontinence"
           val={50}
           accent={COLORS.women}
-          desc={<><strong>50 %</strong> of women experience leakage; stress‑type peaks age 45‑49.</>}
+          desc={<><strong>50 %</strong> of women experience leakage; stress‑type peaks age 45‑49.</>}
+          Doughnut={Doughnut}
+          chartsLoaded={chartsLoaded}
         />
         <StatCard
           title="Men (UI)"
           subtitle="Urinary Incontinence"
           val={21}
           accent={COLORS.menUI}
-          desc={<><strong>21 %</strong> of men 45‑64 report leakage; <strong>6‑8 %</strong> after prostatectomy.</>}
+          desc={<><strong>21 %</strong> of men 45‑64 report leakage; <strong>6‑8 %</strong> after prostatectomy.</>}
+          Doughnut={Doughnut}
+          chartsLoaded={chartsLoaded}
         />
         <StatCard
           title="Men (ED)"
           subtitle="Erectile Dysfunction"
           val={52}
           accent={COLORS.menED}
-          desc={<><strong>52 %</strong> of men 40‑70 live with ED—often linked to pelvic‑floor weakness.</>}
+          desc={<><strong>52 %</strong> of men 40‑70 live with ED—often linked to pelvic‑floor weakness.</>}
+          Doughnut={Doughnut}
+          chartsLoaded={chartsLoaded}
         />
       </div>
     </section>
