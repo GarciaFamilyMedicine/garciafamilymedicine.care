@@ -30,6 +30,7 @@ export const nav_links = [
       links: [
         {
           title: 'Core Medical Services',
+          subtitle: 'Primary healthcare offerings and specialized programs',
           items: [
             {
               label: 'CoreLift™ Pelvic Health Program',
@@ -39,6 +40,7 @@ export const nav_links = [
         },
         {
           title: 'Specialized Care',
+          subtitle: 'Advanced medical services for specific health needs',
           items: [
             { label: 'Department of Transportation Certifications', href: '/care/dot-certifications' },
             { label: 'Independent Medical Examinations', href: '/care/independent-medical-examinations' },
@@ -75,7 +77,8 @@ export const nav_links = [
     dropdown: {
       links: [
         {
-          title: 'our partners',
+          title: 'Our Partners',
+          subtitle: 'Trusted organizations supporting our community mission',
           items: [
             { label: "gigiSafeHOUSE", href: 'https://gigisafehouse.com' },
           ],

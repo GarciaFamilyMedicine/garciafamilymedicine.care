@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import styles from './page.module.css';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
-import { blogPosts, getPostBySlug, getRecentPosts, formatDate, getReadingTime } from '../../../components/blog/blog-data';
+import { blogPosts, getPostBySlug, getRecentPosts, formatDate, getReadingTime, getAdjacentPosts } from '../../../components/blog/blog-data';
 import Link from 'next/link';
 
 // Generate static params for all blog posts
@@ -16,6 +16,7 @@ export default function BlogPostPage({ params }) {
   const { slug } = params;
   const post = getPostBySlug(slug);
   const recentPosts = getRecentPosts(3).filter(p => p.slug !== slug);
+  const { previous, next } = getAdjacentPosts(slug);
 
   if (!post) {
     notFound();
@@ -79,6 +80,37 @@ export default function BlogPostPage({ params }) {
                     </button>
                   </div>
                 </div>
+
+                {/* Previous/Next Navigation */}
+                {(previous || next) && (
+                  <div className={styles.articleNavigation}>
+                    <div className={styles.navigationGrid}>
+                      {previous ? (
+                        <Link href={`/news/${previous.slug}`} className={styles.navCard}>
+                          <div className={styles.navDirection}>← Previous Article</div>
+                          <div className={styles.navTitle}>{previous.title}</div>
+                          <div className={styles.navMeta}>
+                            {formatDate(previous.publishedDate)} • {previous.category}
+                          </div>
+                        </Link>
+                      ) : (
+                        <div></div>
+                      )}
+                      
+                      {next ? (
+                        <Link href={`/news/${next.slug}`} className={`${styles.navCard} ${styles.navCardNext}`}>
+                          <div className={styles.navDirection}>Next Article →</div>
+                          <div className={styles.navTitle}>{next.title}</div>
+                          <div className={styles.navMeta}>
+                            {formatDate(next.publishedDate)} • {next.category}
+                          </div>
+                        </Link>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Contact CTA */}
                 <div className={styles.cta}>

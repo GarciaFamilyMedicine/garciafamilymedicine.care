@@ -215,7 +215,12 @@ export default function DropdownMenu({
             ) : (
               link.dropdown.links?.[0] && (
                 <>
-                  <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[0].title}</h3>
+                  <div className={styles.sectionHeader}>
+                    <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[0].title}</h3>
+                    {link.dropdown.links[0].subtitle && (
+                      <p className={styles.sectionSubtitle}>{link.dropdown.links[0].subtitle}</p>
+                    )}
+                  </div>
                   <ul>
                     {link.dropdown.links[0].items?.map((item, itemIndex) => (
                       <li key={item.label + '-' + itemIndex}>
@@ -323,7 +328,12 @@ export default function DropdownMenu({
             ) : (
               link.dropdown.links?.[1] && (
                 <>
-                  <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[1].title}</h3>
+                  <div className={styles.sectionHeader}>
+                    <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[1].title}</h3>
+                    {link.dropdown.links[1].subtitle && (
+                      <p className={styles.sectionSubtitle}>{link.dropdown.links[1].subtitle}</p>
+                    )}
+                  </div>
                   <ul>
                     {link.dropdown.links[1].items?.map((item, itemIndex) => (
                       <li key={item.label + '-' + itemIndex}>

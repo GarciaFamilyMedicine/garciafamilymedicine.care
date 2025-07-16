@@ -173,3 +173,13 @@ export const getReadingTime = (content) => {
   const minutes = Math.ceil(words / wordsPerMinute);
   return `${minutes} min read`;
 };
+
+export const getAdjacentPosts = (currentSlug) => {
+  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.publishedDate) - new Date(a.publishedDate));
+  const currentIndex = sortedPosts.findIndex(post => post.slug === currentSlug);
+  
+  return {
+    previous: currentIndex > 0 ? sortedPosts[currentIndex - 1] : null,
+    next: currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null
+  };
+};
