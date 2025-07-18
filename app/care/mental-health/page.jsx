@@ -245,28 +245,6 @@ export default function MentalHealthPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Ready to Prioritize Your Mental Health?</h2>
-              <p>Take the first step toward better mental wellness with compassionate, integrated care</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Call Now: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Confidential Mental Health Services</p>
-                  <p>Telehealth appointments available for mental health consultations</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

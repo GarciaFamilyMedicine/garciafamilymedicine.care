@@ -246,28 +246,6 @@ export default function TelehealthPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Ready to Try Virtual Healthcare?</h2>
-              <p>Experience convenient, high-quality medical care from the comfort of your home</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Schedule Virtual Visit: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Secure HIPAA-Compliant Telehealth Platform</p>
-                  <p>Virtual appointments available Monday-Friday</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

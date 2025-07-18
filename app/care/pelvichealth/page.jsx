@@ -333,23 +333,6 @@ export default function PelvicHealthPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.cta}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Ready to Restore Your Confidence?</h2>
-              <p>Take the first step toward better pelvic health with our advanced Emsella program. Addressing these conditions with innovative, non‑invasive treatments while considering cultural norms, social determinants, and barriers to healthcare access.</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.primaryButton}>
-                  Call Now: 816-427-5320
-                </a>
-                <a href="/contact" className={styles.secondaryButton}>
-                  Request Consultation
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

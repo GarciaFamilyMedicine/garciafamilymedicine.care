@@ -21,6 +21,7 @@
 
 ### 🚀 **Deployment & Operations**
 - **[Deployment Guide](Deployment-Guide)** - Azure Static Web Apps deployment
+- **[Email Integration](Email-Integration)** - Newsletter signup with SharePoint
 - **[Troubleshooting](Troubleshooting)** - Common issues and solutions
 - **[Performance Optimization](Performance-Optimization)** - Speed and optimization tips
 
@@ -52,6 +53,7 @@ Garcia Family Medicine's website serves patients in Blue Springs, MO, and the Ka
 - ✅ **SEO Friendly** - Optimized for search engines
 - ✅ **Modern Architecture** - Next.js App Router with static export
 - ✅ **Professional Medical Design** - Healthcare-focused UI/UX
+- ✅ **Email Integration** - Automated newsletter signup with SharePoint
 
 ### 🎯 **Quick Start**
 
@@ -70,10 +72,11 @@ Visit `http://localhost:3000` to see the website in action.
 
 ### 📋 **Project Status**
 
-- **Current Version**: 2.5.0
+- **Current Version**: 2.6.0
 - **Status**: Active Development
 - **Last Updated**: January 2025
 - **Deployment**: Azure Static Web Apps
+- **Latest Feature**: Automated email integration with SharePoint
 
 ### 🤝 **Contributing**
 

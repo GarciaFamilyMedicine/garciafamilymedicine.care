@@ -245,28 +245,6 @@ export default function PainManagementPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Ready to Find Pain Relief?</h2>
-              <p>Don't let pain control your life. Schedule a consultation to explore your pain management options</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Call Now: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Comprehensive Pain Management Services</p>
-                  <p>Personalized treatment plans designed for your specific pain condition</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

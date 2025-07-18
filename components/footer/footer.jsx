@@ -2,14 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import EmailSubscription from '../EmailSubscription';
 import styles from './footer.module.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
 
   const partnerLogos = [
     { src: '/images/footer/partners/dpc-alliance.png', alt: 'DPC Alliance Logo' },
@@ -17,77 +14,12 @@ export default function Footer() {
     { src: '/images/footer/partners/independence-chamber.png', alt: 'Independence Chamber Logo' },
     { src: '/images/footer/partners/mo-academy.png', alt: 'MO Academy Logo' },
     { src: '/images/footer/partners/obesity-medicine.png', alt: 'Obesity Medicine Logo' },
+    { src: '/gigisafehouse.png', alt: "Gigi's Safe House Logo", href: 'https://gigisafehouse.com' },
   ];
-
-  const handleNewsletterSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!email.trim()) {
-      setSubmitMessage('Please enter a valid email address.');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitMessage('');
-
-    try {
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        throw new Error('Please enter a valid email address.');
-      }
-
-      // Store subscription locally (in production, integrate with email service)
-      const subscription = {
-        email: email,
-        timestamp: new Date().toISOString(),
-        source: 'footer_newsletter'
-      };
-      
-      // For static site, log subscription (in production, send to API endpoint)
-      if (typeof window !== 'undefined') {
-        const existingSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-        const alreadySubscribed = existingSubscriptions.some(sub => sub.email === email);
-        
-        if (alreadySubscribed) {
-          setSubmitMessage('You\'re already subscribed! Thank you for your interest.');
-        } else {
-          existingSubscriptions.push(subscription);
-          localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-          setSubmitMessage('Thank you for subscribing! We\'ll keep you updated.');
-        }
-      }
-      
-      setEmail('');
-    } catch (error) {
-      setSubmitMessage(error.message || 'Something went wrong. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <footer className={`${styles.footer} ${styles.container}`}>
       <div className={styles.footerContainer}>
-        {/* Partner Logos */}
-        <div className={styles.partnerLogosGrid}>
-          {partnerLogos.map((logo, index) => (
-            <div key={index} className={styles.partnerLogoContainer}>
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={100}
-                height={100}
-                className={styles.partnerLogo}
-              />
-            </div>
-          ))}
-        </div>
-
-        <p className={styles.partnerText}>We are proud partners of the above associations.</p>
-
-        <hr className={styles.footerDivider} />
-
         {/* Contact Information */}
         <div className={styles.contactInfoSection}>
           <div className={styles.contactInfoGrid}>
@@ -122,44 +54,23 @@ export default function Footer() {
 
         <hr className={styles.footerDivider} />
 
-        {/* Combined Section */}
+        {/* Newsletter and Map Section */}
         <div className={styles.contentSection}>
           <div className={styles.newsletterContainer}>
             <h2 className={styles.newsletterTitle}>Subscribe</h2>
             <p className={styles.newsletterSubtitle}>Sign up for news and updates</p>
-            <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
-              <input
-                type="email"
-                placeholder="Email"
-                className={styles.newsletterInput}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isSubmitting}
-                required
-              />
-              <button 
-                type="submit" 
-                className={styles.newsletterButton}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Signing Up...' : 'Sign Up'}
-              </button>
-            </form>
-            {submitMessage && (
-              <p className={styles.submitMessage}>{submitMessage}</p>
-            )}
-          </div>
-
-          <div className={styles.gigiLogoWrapper}>
-            <div className={styles.gigiLogoContainer}>
-              <Image
-                src="/gigisafehouse.png"
-                alt="Gigi's Safe House Logo"
-                width={100}
-                height={50}
-                className={styles.gigiLogo}
-              />
-            </div>
+            <EmailSubscription 
+              source="footer_newsletter"
+              buttonText="Sign Up"
+              placeholder="Email"
+              showLabels={false}
+              customStyles={{
+                form: styles.newsletterForm,
+                input: styles.newsletterInput,
+                button: styles.newsletterButton,
+                message: styles.submitMessage
+              }}
+            />
           </div>
 
           <div className={styles.mapWrapper}>
@@ -175,13 +86,74 @@ export default function Footer() {
 
         <hr className={styles.footerDivider} />
 
+        {/* Comprehensive CTA Section */}
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <div className={styles.ctaHeader}>
+              <h2 className={styles.ctaTitle}>Ready to Take Control of Your Health?</h2>
+              <p className={styles.ctaDescription}>
+                Experience personalized healthcare with Garcia Family Medicine. From routine care to specialized services, 
+                we're here to support your health journey with compassionate, comprehensive medical care.
+              </p>
+            </div>
+            
+            <div className={styles.ctaActions}>
+              <div className={styles.ctaButtons}>
+                <a href="tel:816-427-5320" className={styles.primaryCtaButton}>
+                  📞 Call Now: (816) 427-5320
+                </a>
+                <a href="sms:8167082719" className={styles.secondaryCtaButton}>
+                  💬 Text: (816) 708-2719
+                </a>
+                <a href="/contact" className={styles.tertiaryCtaButton}>
+                  📅 Schedule Online
+                </a>
+              </div>
+              
+              <div className={styles.ctaFeatures}>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>🏥</span>
+                  <span>Same-Day Appointments</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>💻</span>
+                  <span>Telehealth Available</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>🎖️</span>
+                  <span>Veterans Welcome</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>📋</span>
+                  <span>Medicare Accepted</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr className={styles.footerDivider} />
+
         {/* Navigation Links */}
         <div className={styles.navLinksGrid}>
           <Link href="/meetthedoctor" className={styles.navLink}>Meet the Doctor</Link>
+          <Link href="/news" className={styles.navLink}>News & Blog</Link>
           <Link href="/events/current" className={styles.navLink}>Current Events</Link>
           <Link href="/events/past" className={styles.navLink}>Past Events</Link>
-          <Link href="/care/pelvichealth" className={styles.navLink}>Pelvic Health</Link>
+          
+          {/* Core Medical Services */}
           <Link href="/services/corelift" className={styles.navLink}>CoreLift™ Program</Link>
+          <Link href="/care/primary-care" className={styles.navLink}>Primary Care</Link>
+          <Link href="/care/wellness-exams" className={styles.navLink}>Wellness Exams</Link>
+          <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
+          <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
+          <Link href="/care/family-medicine" className={styles.navLink}>Family Medicine</Link>
+          <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
+          <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
+          <Link href="/care/pediatric-care" className={styles.navLink}>Pediatric Care</Link>
+          
+          {/* Specialized Care */}
+          <Link href="/care/pelvichealth" className={styles.navLink}>Pelvic Health</Link>
           <Link href="/care/dot-certifications" className={styles.navLink}>DOT Certifications</Link>
           <Link href="/care/independent-medical-examinations" className={styles.navLink}>Medical Examinations</Link>
           <Link href="/care/medicare" className={styles.navLink}>Medicare Services</Link>
@@ -190,6 +162,7 @@ export default function Footer() {
           <Link href="/care/telehealth" className={styles.navLink}>Telehealth</Link>
           <Link href="/care/veteran-services" className={styles.navLink}>Veteran Services</Link>
           <Link href="/care/weight-management" className={styles.navLink}>Weight Management</Link>
+          
           <Link href="/#faqs" className={styles.navLink}>FAQs</Link>
           <Link href="/contact" className={styles.navLink}>Contact</Link>
         </div>

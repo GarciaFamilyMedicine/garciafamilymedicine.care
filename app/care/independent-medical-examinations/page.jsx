@@ -213,28 +213,6 @@ export default function IndependentMedicalExaminationsPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Need an Independent Medical Examination?</h2>
-              <p>Contact Garcia Family Medicine for objective, professional medical evaluations</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Call Now: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Professional IME Services Available</p>
-                  <p>Reports typically completed within 7-10 business days</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

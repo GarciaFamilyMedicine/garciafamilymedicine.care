@@ -167,7 +167,7 @@
   
   .navLinksGrid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
   }
@@ -213,6 +213,156 @@
     color: var(--footer-text);
     font-size: 0.75rem;
   }
+
+  /* Comprehensive CTA Section Styles */
+  .ctaSection {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    margin: 1rem 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ctaSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .ctaContent {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .ctaHeader {
+    margin-bottom: 2rem;
+  }
+
+  .ctaTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .ctaDescription {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ctaActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .ctaButtons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .primaryCtaButton {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+    border: 2px solid transparent;
+  }
+
+  .primaryCtaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .secondaryCtaButton {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .secondaryCtaButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .tertiaryCtaButton {
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .tertiaryCtaButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+  }
+
+  .ctaFeatures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .feature:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .featureIcon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
   
   /* Responsive Styles */
   @media (max-width: 768px) {
@@ -236,6 +386,35 @@
     .newsletterForm {
       flex-direction: column;
     }
+
+    .ctaSection {
+      padding: 2rem 1.5rem;
+    }
+
+    .ctaTitle {
+      font-size: 1.75rem;
+    }
+
+    .ctaDescription {
+      font-size: 1rem;
+    }
+
+    .ctaButtons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .primaryCtaButton,
+    .secondaryCtaButton,
+    .tertiaryCtaButton {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .ctaFeatures {
+      grid-template-columns: 1fr 1fr;
+    }
   }
   
   @media (max-width: 480px) {
@@ -244,6 +423,18 @@
     }
   
     .navLinksGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .ctaSection {
+      padding: 1.5rem 1rem;
+    }
+
+    .ctaTitle {
+      font-size: 1.5rem;
+    }
+
+    .ctaFeatures {
       grid-template-columns: 1fr;
     }
   }

@@ -48,8 +48,7 @@ export default function BlogPostPage({ params }) {
         {/* Article Content */}
         <section className={styles.article}>
           <div className={styles.container}>
-            <div className={styles.articleLayout}>
-              <article className={styles.articleContent}>
+            <article className={styles.articleContent}>
                 <div 
                   className={styles.content}
                   dangerouslySetInnerHTML={{ __html: post.content }}
@@ -112,85 +111,7 @@ export default function BlogPostPage({ params }) {
                   </div>
                 )}
 
-                {/* Contact CTA */}
-                <div className={styles.cta}>
-                  <h3>Have Questions About This Topic?</h3>
-                  <p>Our medical team is here to help. Schedule an appointment to discuss your health concerns.</p>
-                  <div className={styles.ctaButtons}>
-                    <a href="tel:816-427-5320" className={styles.primaryButton}>
-                      Call: 816-427-5320
-                    </a>
-                    <Link href="/contact" className={styles.secondaryButton}>
-                      Schedule Online
-                    </Link>
-                  </div>
-                </div>
-              </article>
-
-              {/* Sidebar */}
-              <aside className={styles.sidebar}>
-                {/* Recent Posts */}
-                <div className={styles.sidebarSection}>
-                  <h3>Recent Articles</h3>
-                  <div className={styles.recentPosts}>
-                    {recentPosts.map(recentPost => (
-                      <article key={recentPost.id} className={styles.recentPost}>
-                        <div className={styles.recentPostImage}>
-                          <div className={styles.recentCategoryBadge}>
-                            {recentPost.category}
-                          </div>
-                        </div>
-                        <div className={styles.recentPostContent}>
-                          <h4>
-                            <Link href={`/news/${recentPost.slug}`}>
-                              {recentPost.title}
-                            </Link>
-                          </h4>
-                          <p className={styles.recentPostDate}>
-                            {formatDate(recentPost.publishedDate)}
-                          </p>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Quick Contact */}
-                <div className={styles.sidebarSection}>
-                  <h3>Contact Us</h3>
-                  <div className={styles.quickContact}>
-                    <div className={styles.contactItem}>
-                      <strong>📞 Phone</strong>
-                      <a href="tel:816-427-5320">816-427-5320</a>
-                    </div>
-                    <div className={styles.contactItem}>
-                      <strong>🕒 Hours</strong>
-                      <span>Mon–Fri: 8 a.m.–7 p.m.</span>
-                    </div>
-                    <div className={styles.contactItem}>
-                      <strong>📍 Location</strong>
-                      <span>801 NW St. Mary Drive<br />Blue Springs, MO</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Newsletter Signup */}
-                <div className={styles.sidebarSection}>
-                  <h3>Stay Updated</h3>
-                  <p>Get health tips and practice updates.</p>
-                  <div className={styles.newsletterForm}>
-                    <input 
-                      type="email" 
-                      placeholder="Your email"
-                      className={styles.emailInput}
-                    />
-                    <button className={styles.subscribeButton}>
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </aside>
-            </div>
+            </article>
           </div>
         </section>
       </main>

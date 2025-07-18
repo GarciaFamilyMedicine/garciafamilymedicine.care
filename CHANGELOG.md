@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.0] - 2025-01-18
+### Added
+- Microsoft 365 email integration with SharePoint and Power Automate
+- Reusable EmailSubscription component with webhook support
+- SharePoint list integration for newsletter subscriber management
+- Power Automate flow with app-only authentication (no manual OAuth required)
+- HIPAA compliance documentation for current and future health data collection
+- Comprehensive wiki documentation for email integration setup
+- IP address tracking capability through Power Automate
+- Unsubscribe token generation for each subscriber
+- Environment variable configuration for webhook URL
+
+### Changed
+- Updated EmailSubscription component to support SharePoint integration
+- Enhanced privacy considerations for potential health questionnaire use
+- Improved error handling with fallback to localStorage when webhook unavailable
+- Added placeholder for IP address collection (actual IP captured by Power Automate)
+
+### Security
+- Implemented HTTPS-only webhook communication
+- Added validation for webhook URL configuration
+- Prepared infrastructure for HIPAA-compliant health data collection
+- Documented required safeguards for future PHI collection
+
+### Documentation
+- Created comprehensive HIPAA compliance analysis
+- Added reusable integration guide for future projects
+- Updated CLAUDE.md with Power Automate learnings
+- Documented SharePoint column structure and requirements
+
 ## [2.5.0] - 2025-01-14
 ### Added
 - Modular CSS architecture with organized file structure

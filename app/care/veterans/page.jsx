@@ -402,28 +402,6 @@ export default function VeteransPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Serving Those Who Served Our Nation</h2>
-              <p>Honor your service with healthcare that understands your unique experiences, challenges, and the sacrifices you've made for our country</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Schedule Your Appointment: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Veteran-Centered Healthcare Excellence</p>
-                  <p><strong>Thank you for your service to our nation 🇺🇸</strong></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

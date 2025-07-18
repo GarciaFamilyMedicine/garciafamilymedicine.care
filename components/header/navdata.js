@@ -35,6 +35,38 @@ export const nav_links = [
             {
               label: 'CoreLift™ Pelvic Health Program',
               href: '/services/corelift'
+            },
+            {
+              label: 'Primary Care Services',
+              href: '/care/primary-care'
+            },
+            {
+              label: 'Annual Wellness Exams',
+              href: '/care/wellness-exams'
+            },
+            {
+              label: 'Chronic Disease Management',
+              href: '/care/chronic-disease'
+            },
+            {
+              label: 'Preventive Care',
+              href: '/care/preventive-care'
+            },
+            {
+              label: 'Family Medicine',
+              href: '/care/family-medicine'
+            },
+            {
+              label: 'Women\'s Health',
+              href: '/care/womens-health'
+            },
+            {
+              label: 'Men\'s Health',
+              href: '/care/mens-health'
+            },
+            {
+              label: 'Pediatric Care',
+              href: '/care/pediatric-care'
             }
           ],
         },

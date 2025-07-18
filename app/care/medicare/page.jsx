@@ -214,28 +214,6 @@ export default function MedicarePage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2>Ready to Use Your Medicare Benefits?</h2>
-              <p>Schedule your appointment today and experience comprehensive Medicare-covered care at Garcia Family Medicine</p>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.ctaButton}>
-                  Call Now: 816-427-5320
-                </a>
-              </div>
-              <div className={styles.ctaInfo}>
-                <div className={styles.clinicInfo}>
-                  <h4>Garcia Family Medicine</h4>
-                  <p>801 NW St. Mary Drive</p>
-                  <p>Medicare Provider • All Plans Accepted</p>
-                  <p>Bring your Medicare card and photo ID to your appointment</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
