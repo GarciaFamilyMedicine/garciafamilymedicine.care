@@ -54,7 +54,9 @@
       "Bash(git rm:*)",
       "Bash(gh secret set:*)",
       "Bash(git filter-branch:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git clone:*)"
     ],
     "deny": []
   }
