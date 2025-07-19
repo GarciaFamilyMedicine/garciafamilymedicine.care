@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './EmailSubscription.module.css';
+import styles from './emailsubscription.module.css';
 
 export default function EmailSubscription({ 
   source = 'website',

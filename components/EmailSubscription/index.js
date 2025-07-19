@@ -1,2 +1,2 @@
-export { default } from './EmailSubscription';
-export { default as EmailSubscription } from './EmailSubscription';
+export { default } from './emailsubscription';
+export { default as EmailSubscription } from './emailsubscription';

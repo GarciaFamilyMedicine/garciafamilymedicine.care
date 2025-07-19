@@ -43,7 +43,9 @@
       "Bash(msiexec:*)",
       "Bash(dotnet tool install:*)",
       "Bash(cat:*)",
-      "Bash(APP_ID=\"53ca6956-0a2d-498a-bbb6-0e025d652905\")"
+      "Bash(APP_ID=\"53ca6956-0a2d-498a-bbb6-0e025d652905\")",
+      "Bash(git reset:*)",
+      "Bash(git config:*)"
     ],
     "deny": []
   }
