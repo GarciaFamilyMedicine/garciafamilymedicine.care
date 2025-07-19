@@ -209,9 +209,10 @@ curl -X POST "{flow-uri}/triggers/manual/listCallbackUrl?api-version=2016-11-01"
 4. SharePoint/Email must be added manually in UI
 
 ### Current Implementation Status
-- **Power Automate Flow**: Created and running (ID: 3a536618-a308-453c-bfdc-f6d91a198cc6)
-- **Webhook**: Active and tested
+- **Power Automate Flow**: Created and running (ID: 81f5aae6-c489-4fcd-9a1b-40cc2e6bf492)
+- **Webhook**: Rotated and secured (January 19, 2025)
 - **SharePoint List**: Created (ID: 2BC93255-8AC1-41E4-BE25-066CF2941D0D)
+- **Azure App Settings**: Configured with new webhook URL
 - **Missing**: SharePoint action (requires manual OAuth authorization)
 
 ### Alternative Approaches Tested
