@@ -1,0 +1,492 @@
+/* Landing Page Styles */
+.landingWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Simple Header */
+.landingHeader {
+  background: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  height: auto;
+  width: auto;
+  max-height: 60px;
+}
+
+/* Main Content */
+.landingMain {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.landingContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.heroSection {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #032c7c;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton,
+.callButton,
+.textButton,
+.enterSiteButton {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryButton {
+  background: #032c7c;
+  color: white;
+  box-shadow: 0 4px 15px rgba(3, 44, 124, 0.3);
+}
+
+.primaryButton:hover {
+  background: #1e539f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(3, 44, 124, 0.4);
+}
+
+.secondaryButton {
+  background: white;
+  color: #032c7c;
+  border: 2px solid #032c7c;
+}
+
+.secondaryButton:hover {
+  background: #032c7c;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Content Section */
+.contentSection {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sectionContent {
+  line-height: 1.8;
+}
+
+.leadText {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.readMoreButton {
+  background: #1e539f;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.readMoreButton:hover {
+  background: #032c7c;
+  transform: translateY(-2px);
+}
+
+/* Expandable Content */
+.expandableContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  margin-top: 2rem;
+}
+
+.expandableContent.expanded {
+  max-height: 2000px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  color: #032c7c;
+  margin: 2rem 0 1rem;
+  font-weight: 700;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.benefitsList li {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-left: 4px solid #1e539f;
+  border-radius: 8px;
+}
+
+.benefitsList strong {
+  color: #032c7c;
+}
+
+.callToAction {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+.callToAction a {
+  color: #1e539f;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.callToAction a:hover {
+  text-decoration: underline;
+}
+
+.ctaButtonsExpanded {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Ask Dr. Tess Section */
+.askDrTessSection {
+  background: linear-gradient(135deg, #032c7c 0%, #1e539f 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 30px rgba(3, 44, 124, 0.3);
+}
+
+.askDrTessTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.askDrTessSubtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.askDrTessSubtitle a {
+  color: white;
+  text-decoration: underline;
+}
+
+.askDrTessButton {
+  background: white;
+  color: #032c7c;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.askDrTessButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Newsletter Section */
+.newsletterLandingSection {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.newsletterLandingSection h2 {
+  font-size: 1.8rem;
+  color: #032c7c;
+  margin-bottom: 0.5rem;
+}
+
+.newsletterLandingSection p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.newsletterContainer {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.newsletterInput:focus {
+  outline: none;
+  border-color: #1e539f;
+}
+
+.newsletterButton {
+  padding: 0.75rem 2rem;
+  background: #1e539f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletterButton:hover {
+  background: #032c7c;
+  transform: translateY(-2px);
+}
+
+/* Final CTA */
+.finalCta {
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.finalCta h2 {
+  font-size: 2rem;
+  color: #032c7c;
+  margin-bottom: 2rem;
+}
+
+.finalCtaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.callButton {
+  background: #28a745;
+  color: white;
+}
+
+.callButton:hover {
+  background: #218838;
+}
+
+.textButton {
+  background: #007bff;
+  color: white;
+}
+
+.textButton:hover {
+  background: #0056b3;
+}
+
+.enterSiteButton {
+  background: #032c7c;
+  color: white;
+}
+
+.enterSiteButton:hover {
+  background: #1e539f;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.popupContent {
+  background: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #032c7c;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background: #1e539f;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Footer */
+.landingFooter {
+  background: #032c7c;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+}
+
+.landingFooter p {
+  margin: 0.5rem 0;
+}
+
+.landingFooter a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.landingFooter a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .callButton,
+  .textButton,
+  .enterSiteButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .askDrTessTitle {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+  }
+
+  .newsletterInput {
+    width: 100%;
+  }
+
+  .finalCtaButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .popupContent {
+    height: 90vh;
+    margin: 1rem;
+  }
+}
