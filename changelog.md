@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-01-19
+### Added
+- Complete Core Medical Services pages:
+  - Wellness Exams with comprehensive health assessments
+  - Chronic Disease Management for long-term conditions
+  - Preventive Care services and screenings
+  - Family Medicine for all ages
+  - Women's Health comprehensive services
+  - Men's Health specialized care
+  - Pediatric Care from newborns to teens
+- Faith & Family Medicine™ page with comprehensive spiritual care integration
+- Trademarked service names in navigation:
+  - Faith & Family Medicine™
+  - ClearRoad™ DOT Exams
+  - ValorView™ IME
+
+### Fixed
+- Email subscription system completely rebuilt:
+  - Created new Power Automate flow with app-only authentication
+  - Fixed SharePoint integration with correct site ID and column mappings
+  - Emails now successfully saving to SharePoint list
+  - No manual OAuth configuration required
+- Updated webhook URLs in both local and production environments
+
+### Changed
+- Navigation structure updated with all new service pages
+- Header navigation includes trademarked service names
+- Claude.md documentation updated with working email integration details
+
+### Security
+- Rotated webhook URLs after security incident
+- Generated fresh client secret for app registration (expires 2027)
+- Verified no secrets exposed in documentation or wiki files
+
 ## [2.6.1] - 2025-01-18
 ### Fixed
 - Add environment variables to GitHub Actions workflow for email integration

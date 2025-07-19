@@ -252,8 +252,10 @@ curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/e
 
 #### Created Resources:
 - **App Registration**: GarciaNewsletterApp (ID: 53ca6956-0a2d-498a-bbb6-0e025d652905)
-- **Power Automate Flow**: Garcia Newsletter FINAL WORKING (ID: c3dd0e28-c63b-4c29-be2e-04086f616de5)
-- **Webhook URL**: Active in .env.local
+- **Power Automate Flow**: Garcia Newsletter WORKING 2025 (ID: b190d199-043a-46a3-a097-3ba673207999)
+- **Webhook URL**: Active in .env.local and Azure App Settings
+- **Client Secret**: Generated fresh on 2025-07-19 (expires 2027)
+- **Verified Working**: Emails ARE being saved to SharePoint list
 
 #### How It Works:
 1. Website form submits to webhook

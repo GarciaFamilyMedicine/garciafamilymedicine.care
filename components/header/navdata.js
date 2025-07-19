@@ -74,8 +74,9 @@ export const nav_links = [
           title: 'Specialized Care',
           subtitle: 'Advanced medical services for specific health needs',
           items: [
-            { label: 'Department of Transportation Certifications', href: '/care/dot-certifications' },
-            { label: 'Independent Medical Examinations', href: '/care/independent-medical-examinations' },
+            { label: 'Faith & Family Medicine™', href: '/care/faith-family-medicine' },
+            { label: 'ClearRoad™ DOT Exams', href: '/care/dot-certifications' },
+            { label: 'ValorView™ IME', href: '/care/independent-medical-examinations' },
             { label: 'Medicare Services', href: '/care/medicare' },
             { label: 'Mental Health Services', href: '/care/mental-health' },
             { label: 'Pain Management Services', href: '/care/pain-management' },
