@@ -57,9 +57,7 @@ export default function EmailSubscription({
       };
 
       // Check if newsletter is enabled and webhook URL is configured
-      // Temporary solution until Azure Portal configuration is set up
-      const webhookUrl = process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL || 
-        'https://default1b5ab773bfb5457caec39bf1b8da58.4a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ecb3dbc92616416ba209fd546a09b200/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Oxqlvj0fNMJHAdTh5RRcJXGWnpx6eggZQk65OHTgy3M';
+      const webhookUrl = process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL;
       const isEnabled = process.env.NEXT_PUBLIC_NEWSLETTER_ENABLED !== 'false';
       
       // Validate webhook URL is not placeholder
@@ -83,6 +81,7 @@ export default function EmailSubscription({
         }
 
         const successMsg = successMessage || 
+          process.env.NEXT_PUBLIC_NEWSLETTER_SUCCESS_MESSAGE || 
           'Thank you for subscribing! Check your email for confirmation.';
         
         setMessage(successMsg);
@@ -105,7 +104,7 @@ export default function EmailSubscription({
           } else {
             existingSubscriptions.push(subscription);
             localStorage.setItem('newsletter_subscriptions', JSON.stringify(existingSubscriptions));
-            setMessage('Thank you! Your subscription has been saved. We\'ll add you to our newsletter once our system is fully configured.');
+            setMessage('Thank you for subscribing! We\'ll keep you updated.');
             setMessageType('success');
             setEmail('');
             
@@ -118,7 +117,8 @@ export default function EmailSubscription({
     } catch (error) {
       console.error('Newsletter submission error:', error);
       const errorMsg = errorMessage || 
-        'Something went wrong. Please try again or contact us at (816) 427-5320.';
+        process.env.NEXT_PUBLIC_NEWSLETTER_ERROR_MESSAGE || 
+        'Something went wrong. Please try again later.';
       
       setMessage(errorMsg);
       setMessageType('error');
