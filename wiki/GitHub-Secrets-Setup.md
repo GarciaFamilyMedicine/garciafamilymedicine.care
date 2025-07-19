@@ -8,10 +8,7 @@ The email integration requires environment variables to be set as GitHub Secrets
 ### 1. NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL
 The Power Automate webhook URL for processing email subscriptions.
 
-**Value:**
-```
-https://default1b5ab773bfb5457caec39bf1b8da58.4a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ecb3dbc92616416ba209fd546a09b200/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Oxqlvj0fNMJHAdTh5RRcJXGWnpx6eggZQk65OHTgy3M
-```
+**Value:** Get this from your Power Automate flow's HTTP trigger. It should start with `https://` and contain your environment ID.
 
 ### 2. NEXT_PUBLIC_NEWSLETTER_ENABLED
 Controls whether the newsletter signup is enabled.

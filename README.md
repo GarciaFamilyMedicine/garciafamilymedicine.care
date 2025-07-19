@@ -1,446 +1,250 @@
 # Garcia Family Medicine Website
 
-**Professional healthcare website built with Next.js, featuring responsive design, accessibility compliance, and modern web standards.**
+[![Azure Static Web Apps CI/CD](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care/workflows/Azure%20Static%20Web%20Apps%20CI/CD/badge.svg)](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care/actions)
+[![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black?logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.10-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-Proprietary-red)](LICENSE)
 
-## 🚀 Quick Start
+Modern, accessible healthcare website for Garcia Family Medicine - a Direct Primary Care practice serving Blue Springs, MO and the Kansas City metro area.
 
-```bash
-# Clone the repository
-git clone https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care.git
+## 🏥 About
 
-# Install dependencies
-npm install
+Garcia Family Medicine provides personalized, faith-driven healthcare with a focus on accessibility and patient-centered care. This website serves as the digital front door to our practice, offering patients easy access to information, services, and care options.
 
-# Start development server
-npm run dev
-```
+### ✨ Key Features
 
-Visit `http://localhost:3000` to see the website.
-
-## 📚 Documentation
-
-- **[Getting Started](docs/development/getting-started.md)** - Setup and development guide
-- **[Coding Standards](docs/development/coding-standards.md)** - Code style and best practices
-- **[Mobile Development](docs/development/mobile-development.md)** - Mobile-first development guidelines
-- **[Component Documentation](docs/components/)** - Individual component guides
-- **[CHANGELOG.md](CHANGELOG.md)** - Complete project history
-
-## 🏗️ Architecture
-
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS + CSS Modules
-- **Deployment**: Azure Static Web Apps
-- **Accessibility**: WCAG 2.1 AA compliant
-- **Mobile-First**: Responsive design with 44px touch targets
-
-## 📱 Mobile Optimization
-
-- ✅ **Touch targets** meet 44px minimum requirement
-- ✅ **Font sizes** comply with 14px readability standards
-- ✅ **Responsive breakpoints** for all device sizes
-- ✅ **Performance optimized** for mobile networks
-
-## ♿ Accessibility Features
-
-- **Screen reader** compatible navigation
-- **Keyboard-only** interaction support
-- **High contrast** mode support
-- **Touch-friendly** interface design
-- **Semantic HTML** structure throughout
+- 📱 **Responsive Design** - Mobile-first approach with optimized touch targets
+- ♿ **WCAG 2.1 AA Compliant** - Full accessibility for all users
+- 🔒 **HIPAA-Ready Infrastructure** - Secure email collection with Microsoft 365 integration
+- 📅 **Interactive Calendar** - Dynamic event management system
+- 📰 **Blog/News System** - Content management with category filtering
+- 🚀 **Lightning Performance** - Static generation with Next.js 15
+- 🌐 **SEO Optimized** - Structured data and meta tags
 
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
-| Next.js 15 | React framework with App Router |
-| Tailwind CSS | Utility-first styling |
-| CSS Modules | Component-scoped styles |
-| React Icons | Icon library |
-| Chart.js | Data visualization |
+| [Next.js 15.3.3](https://nextjs.org/) | React framework with App Router |
+| [Tailwind CSS 3.4.10](https://tailwindcss.com/) | Utility-first styling |
+| [CSS Modules](https://github.com/css-modules/css-modules) | Component-scoped styles |
+| [React 19](https://react.dev/) | UI library |
+| [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) | Hosting platform |
+| [Microsoft 365](https://www.microsoft.com/en-us/microsoft-365) | Email integration |
+
+## 📊 Developer Stats
+
+### GitHub Activity
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=donniedice&show_icons=true&theme=dark&hide_border=true)
+
+### Languages Used
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=donniedice&layout=compact&theme=dark&hide_border=true)
+
+### Contribution Graph
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=donniedice&theme=dark&hide_border=true)
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18.17.0 or higher
+- npm 9.x or higher
+- Git
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care.git
+cd garciafamilymedicine.care
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.local.example .env.local
+
+# Start development server
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to see the application.
 
 ## 📦 Project Structure
 
 ```
-├── app/                 # Next.js App Router pages
-│   ├── news/            # Blog system
-│   │   ├── [slug]/      # Dynamic blog post pages
-│   │   └── page.jsx     # Main blog listing page
-│   └── care/            # Medical service pages
-├── components/          # Reusable React components
-│   ├── blog/            # Blog management system
-│   │   └── blog-data.js # Blog posts and helper functions
-│   └── header/          # Navigation with news integration
-├── public/             # Static assets
-│   └── images/blog/     # Blog post images
-├── docs/               # Comprehensive documentation
-├── CHANGELOG.md        # Project changelog
-└── CLAUDE.md          # Claude Code instructions
+garciafamilymedicine.care/
+├── app/                        # Next.js App Router
+│   ├── care/                  # Medical service pages
+│   ├── events/                # Event pages
+│   ├── news/                  # Blog system
+│   │   ├── [slug]/           # Dynamic blog posts
+│   │   └── page.jsx          # Blog listing
+│   └── services/             # Service pages
+├── components/                # React components
+│   ├── EmailSubscription/    # Newsletter signup
+│   ├── blog/                 # Blog utilities
+│   ├── calendar/             # Event calendar
+│   ├── header/               # Navigation
+│   └── footer/               # Footer with CTAs
+├── public/                   # Static assets
+├── styles/                   # Global styles
+├── wiki/                     # Documentation
+└── .github/                  # CI/CD workflows
 ```
+
+## 📝 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server on port 3000 |
+| `npm run build` | Build production-ready static files |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint for code quality |
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the [wiki](wiki/) directory:
+
+- [Architecture Overview](wiki/Architecture-Overview.md) - System design and patterns
+- [Development Guide](wiki/Development-Guide.md) - Setup and best practices
+- [Email Integration](wiki/Email-Integration.md) - Microsoft 365 setup
+- [HIPAA Compliance](wiki/HIPAA-Compliance.md) - Security considerations
+- [GitHub Secrets Setup](wiki/GitHub-Secrets-Setup.md) - Environment configuration
+- [Changelog](CHANGELOG.md) - Version history
 
 ## 📰 Blog System
 
-The website includes a comprehensive blog system integrated with the News & Events navigation:
+The integrated blog system supports:
 
-### Features
-- **Main blog page** at `/news` with category filtering and featured posts
-- **Individual post pages** with sidebar, recent posts, and CTAs
-- **News & Events dropdown** shows recent blog posts alongside events
-- **Responsive design** with mobile-optimized layouts
-- **Newsletter signup** and social sharing functionality
-- **SEO-friendly** static generation with `generateStaticParams`
+- Dynamic routing with static generation
+- Category filtering (Health Tips, Practice News, Service Updates)
+- Featured posts and recent posts widgets
+- SEO-friendly URLs and meta tags
+- Newsletter integration
 
 ### Managing Blog Content
 
-Blog posts are managed in `components/blog/blog-data.js`. To add a new post:
+Blog posts are managed in `components/blog/blog-data.js`:
 
-1. **Add post object** to the `blogPosts` array:
 ```javascript
 {
-  id: 4, // Unique ID
-  slug: 'your-post-slug', // URL slug
-  title: 'Your Post Title',
-  excerpt: 'Brief description for listings',
-  content: `<p>Full HTML content...</p>`,
+  id: 4,
+  slug: 'your-post-slug',
+  title: 'Post Title',
+  excerpt: 'Brief description',
+  content: '<p>Full HTML content...</p>',
   author: 'Dr. Tess Garcia',
-  publishedDate: '2025-01-16',
-  category: 'Health Tips', // or 'Practice News', 'Service Updates'
-  tags: ['tag1', 'tag2'],
-  featured: false, // Set to true for featured posts
-  image: '/images/blog/your-image.jpg'
+  publishedDate: '2025-01-19',
+  category: 'Health Tips',
+  tags: ['wellness', 'prevention'],
+  featured: false,
+  image: '/images/blog/image.jpg'
 }
 ```
 
-2. **Build and deploy** - Static routes are automatically generated
+## 🔐 Environment Variables
 
-### Blog Categories
-- **Health Tips** - Medical advice and wellness content
-- **Practice News** - Practice updates and announcements  
-- **Service Updates** - New services and program changes
+Required for production deployment:
 
-### Available Helper Functions
-- `getRecentPosts(limit)` - Get recent posts for dropdown/sidebar
-- `getFeaturedPosts()` - Get posts marked as featured
-- `getPostsByCategory(category)` - Filter by category
-- `searchPosts(query)` - Search functionality
-- `formatDate(dateString)` - Format dates for display
-- `getReadingTime(content)` - Calculate reading time
+```env
+NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL=     # Power Automate webhook
+NEXT_PUBLIC_NEWSLETTER_ENABLED=true     # Enable newsletter
+NEXT_PUBLIC_NEWSLETTER_SUCCESS_MESSAGE= # Success message
+NEXT_PUBLIC_NEWSLETTER_ERROR_MESSAGE=   # Error message
+```
+
+See [GitHub Secrets Setup](wiki/GitHub-Secrets-Setup.md) for configuration details.
 
 ## 🚀 Deployment
 
-The website automatically deploys to Azure Static Web Apps when changes are pushed to the main branch.
+### Automatic Deployment
 
-## 📋 Development To‑Do List
+The site automatically deploys via GitHub Actions when changes are pushed to `main`.
 
-## 🔲 Navigation & Layout
-- [ ] **Flyout menu:** Add links to hashtag buttons (so they open relevant sections or external resources).
-- [ ] **Flyout menu:** Improve mobile formatting (center content more vertically and horizontally).
-- [ ] **Pill button (mobile):** Fix alignment for true flex centering between logo and sandwich/hamburger menu.
-- [ ] **Header nav:** Add “News” button.
-- [ ] **Header nav:** Combine News and Events buttons (with dropdown or column layout for both news and event links).
-- [ ] **Header polish:** Finish layout, ensure buttons and links are consistent and functional.
+### Manual Build
 
-## 🔲 Content & Features
-- [ ] **Blog system:** Install and integrate a simple blogging/news system (consider options like MDX, Notion CMS, or Netlify CMS).
-- [ ] **Patient docs:** Add section for New Patient & Established Patient documents (printable/downloadable before appointments).
-- [ ] **Newsletter signup:** Connect input box to actual newsletter system (preferably Microsoft Forms/List or another integrated solution).
-- [ ] **Input linking:** Wire up all relevant input boxes to backend or email notification as appropriate.
+```bash
+# Build static files
+npm run build
 
-## 🔲 Internationalization & Accessibility
-- [ ] **i18n:** Install and configure for Spanish (with language switcher).
-- [ ] **Images with text:** Implement logic to swap images containing text based on selected translation.
-- [ ] **SEO/Best practices:** Audit headers, meta tags, semantic HTML, and ARIA attributes.
-- [ ] **Accessibility polish:** Keyboard navigation, color contrast, skip links, focus outlines, etc.
-
-## 🔲 General Polish & Fixes
-- [ ] **Button linking:** Ensure all buttons in header, flyout, and nav link to correct pages or perform correct actions.
-- [ ] **General layout:** Continue polish, responsive improvements, and bug fixes as needed.
----
----
----
----
-# Garcia Family Medicine Next.js Frontend Development Guide
-
-Welcome to the `garciafamilymedicine.care` repository! This is a Next.js-based frontend application for [garciafamilymedicine.care](https://garciafamilymedicine.care), delivering a compassionate, faith-driven healthcare experience for patients in Blue Springs, MO, and the Kansas City metro area. Built with modern web technologies, it’s designed for deployment to Azure Static Web Apps.
-
-## Overview
-
-- **Framework**: Next.js 15.2.1
-- **Frontend**: React 19
-- **Styling**: Tailwind CSS (v3.4.10, with custom configuration)
-- **Deployment**: Planned for Azure Static Web Apps (serverless mode using `.next`)
-- **Repository**: [github.com/GarciaFamilyMedicine/garciafamilymedicine.care](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care)
-
-## Workflow
-
-We use a feature branch workflow where each developer works on their own feature branch created from `main`. Changes are merged into `main` via pull requests after review and approval. This streamlined process eliminates the need for forking or a separate `development` branch.
-
-### Feature Branch Naming Convention
-Create feature branches using the format `feature/development-<yourname>`, where `<yourname>` is your identifier (e.g., `feature/development-joseph` for Joseph). This helps track who is working on which feature.
-
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-- **Node.js**: Version 18.17.0 or later ([Download](https://nodejs.org/))
-- **Git**: For version control ([Download](https://git-scm.com/))
-- **Visual Studio Code (VS Code)**: Recommended code editor ([Download](https://code.visualstudio.com/))
-- **GitHub CLI (`gh`)**: For submitting pull requests from the command line ([Download](https://cli.github.com/))
-
-## Setting Up the Development Environment
-
-This section guides you through setting up your development environment on Windows 11 Pro.
-
-### Install Required Tools
-
-You’ll need Git, Node.js (with npm), Visual Studio Code (VS Code), and the GitHub CLI (`gh`). Here’s how to install them efficiently.
-
-#### Option 1: One-Liner Installation with winget (Recommended)
-Windows 11 Pro includes `winget`, a package manager that simplifies installations. Use this single command to install everything:
-
-1. Open PowerShell (search "PowerShell" in the Start menu).
-2. Run:
-   ```powershell
-   winget install --id Git.Git -e --silent; winget install --id OpenJS.NodeJS.LTS -e --silent; winget install --id Microsoft.VisualStudioCode -e --silent; winget install --id GitHub.cli -e --silent
-   ```
-   - This installs Git, Node.js LTS, VS Code, and GitHub CLI (`gh`) silently without prompts.
-
-#### Option 2: Manual Installation
-If `winget` isn’t available or you prefer manual setup:
-- **Git**: Download from [git-scm.com](https://git-scm.com/download/win) and install with default settings.
-- **Node.js**: Get the LTS version from [nodejs.org](https://nodejs.org/en/download/) and install.
-- **VS Code**: Download from [code.visualstudio.com](https://code.visualstudio.com/download) and install.
-- **GitHub CLI (`gh`)**: Download from [cli.github.com](https://cli.github.com/) and install.
-
-### Verify Installations
-Open a new PowerShell window and check:
-```powershell
-git --version
-node -v
-npm -v
-code --version
-gh --version
-```
-Each command should return a version number (e.g., `git version 2.43.0.windows.1`, `gh version 2.20.0`). If any fail, reinstall that tool.
-
-### Fix PowerShell Execution Policy
-
-Windows may block npm scripts due to a restrictive execution policy. Adjust it as follows:
-
-1. Open PowerShell as Administrator (right-click Start > Windows PowerShell (Admin)).
-2. Check the current policy:
-   ```powershell
-   Get-ExecutionPolicy
-   ```
-   - If it says `Restricted`, proceed.
-3. Allow local scripts:
-   ```powershell
-   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-   ```
-4. Type `Y` and press Enter to confirm.
-5. Test npm:
-   ```powershell
-   npm --version
-   ```
-   - You should see a version number (e.g., `10.2.3`).
-
-### Configure Git
-
-Set your Git identity for commits:
-```powershell
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-- Replace with your actual name and email (use the same email as your GitHub account).
-
-### Authenticate with GitHub CLI
-
-To use `gh` for submitting pull requests, log in to your GitHub account:
-
-1. In PowerShell, run:
-   ```powershell
-   gh auth login
-   ```
-2. Follow the prompts:
-   - Select **GitHub.com**.
-   - Choose your preferred authentication method (e.g., **Browser**).
-   - Open the link provided in your browser, enter the code, and authorize `gh`.
-
-## Cloning the Repository
-
-1. **Clone the Main Repository**:
-   - In PowerShell, navigate to your desired folder (e.g., `cd C:\Projects`) and run:
-     ```powershell
-     git clone https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care.git
-     cd garciafamilymedicine.care
-     ```
-   - Enter your GitHub username and a [Personal Access Token](https://github.com/settings/tokens) (generate one with `repo` scope) when prompted.
-   - **Note**: You need write access to the main repository to push your feature branches. If you don’t have access, contact the repository admin.
-
-## Setting Up the Feature Branch Workflow
-
-1. **Fetch Latest Changes**:
-   ```powershell
-   git fetch origin
-   ```
-
-2. **Switch to `main`**:
-   ```powershell
-   git checkout main
-   ```
-
-3. **Create a Feature Branch**:
-   - From `main`:
-     ```powershell
-     git checkout main
-     git checkout -b feature/development-joseph
-     ```
-   - Replace `joseph` with your identifier if different.
-
-## Working on the Code
-
-1. **Install Dependencies**:
-   - In the project folder, run:
-     ```powershell
-     npm install
-     ```
-   - This downloads all Next.js and Tailwind CSS dependencies listed in `package.json`.
-
-2. **Start the Development Server**:
-   - Run:
-     ```powershell
-     npm run dev
-     ```
-   - Visit `http://localhost:3000` in your browser to see the app.
-
-3. **Project Structure**:
-   Below is the directory structure of the repository as of May 13, 2025:
-   ```
-   garciafamilymedicine.care/
-   ├── .github/                    # GitHub Actions workflows
-   ├── .next/                      # Next.js build output
-   ├── app/                        # Next.js App Router pages
-   │   ├── pelvichealth/           # Pelvic health page
-   │   │   ├── page.jsx            # Pelvic health page component
-   │   │   └── pelvichealth.css    # Page-specific styles
-   │   ├── globals.css             # Global styles with Tailwind
-   │   ├── layout.js               # Root layout
-   │   └── page.js                 # Homepage
-   ├── components/                 # Reusable React components
-   │   ├── footer/                 # Footer component
-   │   │   ├── footer.jsx          # Footer logic
-   │   │   └── footer.module.css   # Footer-specific styles
-   │   └── header/                 # Header component
-   │       ├── header.jsx          # Header logic
-   │       └── header.module.css   # Header-specific styles
-   ├── public/                     # Static assets
-   │   ├── images/                 # Image assets
-   │   │   └── logo.png            # Site logo
-   │   ├── partners/               # Partner logos
-   │   │   ├── aafp.png            # AAFP logo
-   │   │   ├── dpc-alliance.png    # DPC Alliance logo
-   │   │   ├── independence-chamber.png # Independence Chamber logo
-   │   │   ├── mo-academy.png      # MO Academy logo
-   │   │   └── obesity-medicine.png # Obesity Medicine logo
-   │   ├── favicon.ico             # Site favicon
-   │   ├── file.svg                # SVG asset
-   │   ├── gigisafehouse.png       # Placeholder image
-   │   ├── globe.svg               # SVG asset
-   │   ├── next.svg                # Next.js logo
-   │   ├── placeholder-logo.svg    # Placeholder logo
-   │   ├── vercel.svg              # Vercel logo
-   │   └── window.svg              # SVG asset
-   ├── .gitattributes              # Git attributes
-   ├── .gitignore                  # Git ignore rules
-   ├── eslint.config.mjs           # ESLint configuration
-   ├── jsconfig.json               # JavaScript configuration
-   ├── next.config.mjs             # Next.js configuration
-   ├── package-lock.json           # npm lockfile
-   ├── package.json                # Project dependencies
-   ├── postcss.config.mjs          # PostCSS configuration
-   ├── README.md                   # Project documentation
-   └── tailwind.config.js          # Tailwind CSS configuration
-   ```
-
-4. **Edit and Test**:
-   - Modify files (e.g., `/app/page.js`, `/components/header/header.jsx`) in VS Code.
-   - Test locally with `npm run dev`.
-
-## Submitting a Pull Request
-
-1. **Commit Changes**:
-   - Stage:
-     ```powershell
-     git add .
-     ```
-   - Commit:
-     ```powershell
-     git commit -m "Update homepage content"
-     ```
-
-2. **Push to the Main Repository**:
-   ```powershell
-   git push origin feature/development-joseph
-   ```
-
-3. **Create a Pull Request**:
-   - **Option 1: Using GitHub CLI** (Recommended):
-     ```powershell
-     gh pr create --base main --head feature/development-joseph --title "Update homepage content" --body "Description of the changes"
-     ```
-   - **Option 2: Using GitHub Web Interface**:
-     - Go to [github.com/GarciaFamilyMedicine/garciafamilymedicine.care](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care).
-     - Click **Pull requests** > **New pull request**.
-     - Select your feature branch (e.g., `feature/development-joseph`) as the source and `main` as the target.
-     - Add a title and description, then submit.
-
-## Keeping Your Feature Branch Updated
-
-To avoid merge conflicts, regularly pull changes from `main` into your feature branch:
-```powershell
-git pull origin main
+# Files are output to 'out' directory
+# Deploy this directory to any static hosting service
 ```
 
-## Tailwind CSS Setup and Notes
+## 🤝 Contributing
 
-### Current Setup
-- **Version**: Tailwind CSS v3.4.10 (stable, compatible with Next.js 15.2.1).
-- **Configuration**: Defined in `tailwind.config.js`, with content paths (`./app/**/*`, `./components/**/*`) and extended theme for colors (`background`, `foreground`) and fonts (`sans`, `sumana`).
-- **PostCSS**: Configured in `postcss.config.mjs` with `tailwindcss` and `autoprefixer` plugins.
-- **Styles**:
-  - `/app/globals.css`: Uses Tailwind directives (`@tailwind base`, `@components`, `@utilities`) with custom CSS for fonts (Sumana, Argentum Sans) and variables (`--page-bg`, `--text-color`).
-  - `/app/pelvichealth/pelvichealth.css`: Page-specific styles for the pelvic health page.
-  - `/components/*/module.css`: CSS Modules for `header` and `footer` components.
+### Workflow
 
-### Known Issues
-- **Build Errors**: Builds previously failed due to a reference to `@tailwindcss/postcss`, a non-existent package. This was resolved by removing it from `package.json` and ensuring correct PostCSS setup in `postcss.config.mjs`.
-- **npx Issues**: Early `npx tailwindcss init` failures were due to npm environment issues. If `npx` fails, use:
-  ```powershell
-  .\node_modules\.bin\tailwindcss init
-  ```
-- **Tailwind v4 Caution**: Avoid upgrading to Tailwind v4 (experimental) as it may break compatibility with Next.js 15.2.1.
-- **CSS Modules**: The use of CSS Modules (`header.module.css`, `footer.module.css`) alongside Tailwind in `globals.css` requires careful management to avoid style conflicts.
+1. Create feature branch: `feature/your-feature-name`
+2. Make changes following our [coding standards](docs/development/coding-standards.md)
+3. Test thoroughly on mobile and desktop
+4. Submit pull request to `main`
 
-### Recommendations
-- Verify `node_modules/tailwindcss`, `postcss`, and `autoprefixer` exist after `npm install`.
-- If build errors occur, clean the project:
-  ```powershell
-  Remove-Item -Recurse -Force node_modules
-  Remove-Item -Force package-lock.json
-  npm install
-  ```
-- Run `npm ls tailwindcss postcss autoprefixer` to check for dependency conflicts.
-- Use `npm audit fix` cautiously, avoiding `--force` to prevent unwanted dependency changes.
-- Prefer Tailwind classes in JSX for component styles, reserving `globals.css` and CSS Modules for global or complex styles.
-- Ensure `next.config.mjs` is minimal to avoid interfering with Tailwind/PostCSS processing.
+### Code Style
 
-## Important Notes
-- **Node.js Version**: Use Node.js 18.17.0 or later to avoid compatibility issues.
-- **Next.js App Router**: The project uses the App Router (`/app` directory), not the older Pages Router.
-- **Deployment**: Plan for Azure Static Web Apps deployment. Ensure `next.config.mjs` is compatible with serverless mode.
-- **Styling Consistency**: Combine Tailwind classes with CSS Modules carefully, testing for conflicts in development.
-- **Debugging**: If errors persist, check npm cache logs (e.g., `C:\Users\<YourUser>\AppData\Local\npm-cache\_logs`) and share with the team.
-- **Assets**: The `/public` directory contains partner logos and a placeholder `gigisafehouse.png`, which should be replaced with relevant Garcia Family Medicine assets.
+- Use lowercase filenames (e.g., `emailsubscription.jsx`)
+- Follow existing patterns and conventions
+- Run `npm run lint` before committing
+- Write meaningful commit messages
 
-## License
+### Commit Format
 
-[MIT License]  
-© 2025 Garcia Family Medicine
+```
+feat: Add new feature
+fix: Fix bug
+docs: Update documentation
+style: Format code
+refactor: Refactor code
+test: Add tests
+chore: Update dependencies
+```
+
+## 📱 Mobile Optimization
+
+- ✅ 44px minimum touch targets
+- ✅ 14px minimum font size
+- ✅ Responsive breakpoints for all devices
+- ✅ Performance optimized for 3G networks
+- ✅ Progressive enhancement approach
+
+## ♿ Accessibility
+
+- **WCAG 2.1 AA** compliant
+- **Screen reader** optimized
+- **Keyboard navigation** throughout
+- **High contrast** mode support
+- **Focus indicators** on all interactive elements
+
+## 🔒 Security
+
+- HIPAA-compliant infrastructure ready
+- Secure email collection via Microsoft 365
+- No sensitive data in repository
+- Environment variables for secrets
+- Regular security updates
+
+## 📄 License
+
+© 2025 Garcia Family Medicine. All rights reserved.
+
+This is proprietary software. Unauthorized copying, modification, or distribution is prohibited.
+
+## 👥 Team
+
+**Lead Developer**: Donnie Dice ([@donniedice](https://github.com/donniedice))  
+**Medical Director**: Dr. Tess Garcia  
+**Practice**: Garcia Family Medicine
+
+## 📞 Contact
+
+**Website**: [garciafamilymedicine.care](https://garciafamilymedicine.care)  
+**Phone**: (816) 427-5320  
+**Text**: (816) 708-2719  
+**Location**: Blue Springs, Missouri
+
+---
+
+<p align="center">
+  Built with ❤️ for better healthcare accessibility
+</p>
