@@ -57,7 +57,9 @@
       "Bash(git stash:*)",
       "Bash(git remote set-url:*)",
       "Bash(git clone:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(./update-wiki.sh)",
+      "Bash(gh run list:*)"
     ],
     "deny": []
   }
