@@ -39,12 +39,21 @@ export default function EmailSubscription({
         throw new Error('Please enter a valid email address.');
       }
 
+      // Generate a unique unsubscribe token
+      const generateToken = () => {
+        return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      };
+
       const subscription = {
         email: email,
-        timestamp: new Date().toISOString(),
         source: source,
-        // IP address will be captured by Power Automate from request headers
-        ipAddress: window.location.hostname // Placeholder - actual IP from Power Automate
+        subscribeDate: new Date().toISOString(),
+        status: 'Active',
+        ipAddress: 'Power-Automate-Capture', // Will be captured by Power Automate from headers
+        unsubscribeToken: generateToken(),
+        notes: `Subscribed via ${source} on ${window.location.pathname}`,
+        // Legacy field for backward compatibility
+        timestamp: new Date().toISOString()
       };
 
       // Check if newsletter is enabled and webhook URL is configured
@@ -81,7 +90,7 @@ export default function EmailSubscription({
         
         // Call success callback if provided
         if (onSuccess) {
-          onSuccess(email);
+          onSuccess(email, subscription.unsubscribeToken);
         }
       } else {
         // Fallback to localStorage if webhook not configured
@@ -100,7 +109,7 @@ export default function EmailSubscription({
             setEmail('');
             
             if (onSuccess) {
-              onSuccess(email);
+              onSuccess(email, subscription.unsubscribeToken);
             }
           }
         }
