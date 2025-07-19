@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.1] - 2025-01-18
+### Fixed
+- Add environment variables to GitHub Actions workflow for email integration
+- Update workflow to pass newsletter webhook secrets to build process
+- Rename files to follow lowercase naming convention
+
+### Changed
+- Consolidate documentation into wiki folder
+- Clean up temporary files and folders
+- Update git configuration for proper commit attribution
+
+### Documentation
+- Add GitHub Secrets setup guide to wiki
+- Remove duplicate documentation files
+- Consolidate all email integration guides
+
+### Security
+- Environment variables now properly configured for production builds
+- Webhook URL no longer hardcoded in any files
+
 ## [2.6.0] - 2025-01-18
 ### Added
 - Microsoft 365 email integration with SharePoint and Power Automate
