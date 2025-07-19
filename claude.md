@@ -92,11 +92,15 @@ public/images/             # Static assets organized by section
 - Smooth scrolling utility for hash navigation
 
 ### File Naming Conventions
+- **STRICT RULE**: ALL files and directories MUST use lowercase naming only
 - **Pages**: `page.jsx` (App Router convention)
 - **Layouts**: `layout.js`
-- **Components**: `componentname.jsx`
+- **Components**: `componentname.jsx` (lowercase only)
+- **Directories**: `emailsubscription`, `smoothscroll` (lowercase only, no capitals)
 - **Styles**: `componentname.module.css` for CSS Modules, `mobile.module.css` for mobile-specific styles
-- **Utilities**: lowercase with hyphens (e.g., `smoothscroll.js`)
+- **Utilities**: lowercase with hyphens (e.g., `smooth-scroll.js`)
+- **Documentation**: `readme.md`, `changelog.md`, `claude.md` (lowercase only)
+- **Wiki files**: lowercase with hyphens (e.g., `github-secrets-setup.md`)
 
 ### Content Organization
 - **Healthcare pages**: Organized by service type (`/care`, `/services`)

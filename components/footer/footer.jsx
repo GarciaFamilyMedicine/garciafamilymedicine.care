@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import EmailSubscription from '../EmailSubscription';
+import EmailSubscription from '../emailsubscription';
 import styles from './footer.module.css';
 
 export default function Footer() {
@@ -20,6 +20,54 @@ export default function Footer() {
   return (
     <footer className={`${styles.footer} ${styles.container}`}>
       <div className={styles.footerContainer}>
+        {/* Comprehensive CTA Section - MOVED TO TOP */}
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <div className={styles.ctaHeader}>
+              <h2 className={styles.ctaTitle}>Ready to Take Control of Your Health?</h2>
+              <p className={styles.ctaDescription}>
+                Experience personalized healthcare with Garcia Family Medicine. From routine care to specialized services, 
+                we're here to support your health journey with compassionate, comprehensive medical care.
+              </p>
+            </div>
+            
+            <div className={styles.ctaActions}>
+              <div className={styles.ctaButtons}>
+                <a href="tel:816-427-5320" className={styles.primaryCtaButton}>
+                  📞 Call Now: (816) 427-5320
+                </a>
+                <a href="sms:8167082719" className={styles.secondaryCtaButton}>
+                  💬 Text: (816) 708-2719
+                </a>
+                <a href="/contact" className={styles.tertiaryCtaButton}>
+                  📅 Schedule Online
+                </a>
+              </div>
+              
+              <div className={styles.ctaFeatures}>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>🏥</span>
+                  <span>Same-Day Appointments</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>💻</span>
+                  <span>Telehealth Available</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>🎖️</span>
+                  <span>Veterans Welcome</span>
+                </div>
+                <div className={styles.feature}>
+                  <span className={styles.featureIcon}>📋</span>
+                  <span>Medicare Accepted</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr className={styles.footerDivider} />
+
         {/* Contact Information */}
         <div className={styles.contactInfoSection}>
           <div className={styles.contactInfoGrid}>
@@ -86,49 +134,38 @@ export default function Footer() {
 
         <hr className={styles.footerDivider} />
 
-        {/* Comprehensive CTA Section */}
-        <div className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <div className={styles.ctaHeader}>
-              <h2 className={styles.ctaTitle}>Ready to Take Control of Your Health?</h2>
-              <p className={styles.ctaDescription}>
-                Experience personalized healthcare with Garcia Family Medicine. From routine care to specialized services, 
-                we're here to support your health journey with compassionate, comprehensive medical care.
-              </p>
-            </div>
-            
-            <div className={styles.ctaActions}>
-              <div className={styles.ctaButtons}>
-                <a href="tel:816-427-5320" className={styles.primaryCtaButton}>
-                  📞 Call Now: (816) 427-5320
+        {/* Partner Logos Section */}
+        <div className={styles.partnerSection}>
+          <h3 className={styles.partnerTitle}>Our Partners & Affiliations</h3>
+          <div className={styles.partnerLogos}>
+            {partnerLogos.map((logo, index) => (
+              logo.href ? (
+                <a 
+                  key={index}
+                  href={logo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.partnerLogoLink}
+                >
+                  <Image 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    width={120} 
+                    height={60}
+                    className={styles.partnerLogo}
+                  />
                 </a>
-                <a href="sms:8167082719" className={styles.secondaryCtaButton}>
-                  💬 Text: (816) 708-2719
-                </a>
-                <a href="/contact" className={styles.tertiaryCtaButton}>
-                  📅 Schedule Online
-                </a>
-              </div>
-              
-              <div className={styles.ctaFeatures}>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>🏥</span>
-                  <span>Same-Day Appointments</span>
-                </div>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>💻</span>
-                  <span>Telehealth Available</span>
-                </div>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>🎖️</span>
-                  <span>Veterans Welcome</span>
-                </div>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>📋</span>
-                  <span>Medicare Accepted</span>
-                </div>
-              </div>
-            </div>
+              ) : (
+                <Image 
+                  key={index}
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  width={120} 
+                  height={60}
+                  className={styles.partnerLogo}
+                />
+              )
+            ))}
           </div>
         </div>
 

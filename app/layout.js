@@ -1,6 +1,6 @@
 import { Sumana } from "next/font/google";
 import "./globals.css";
-import SmoothScrollProvider from '../components/SmoothScrollProvider';
+import SmoothScrollProvider from '../components/smoothscrollprovider';
 
 const sumana = Sumana({ 
   subsets: ["latin"],
