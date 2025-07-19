@@ -1,0 +1,27 @@
+title = "Gitleaks Configuration"
+
+[[rules]]
+id = "powerautomate-webhook"
+description = "Power Automate Webhook URL"
+regex = '''https://[a-zA-Z0-9]+\.environment\.api\.powerplatform\.com[^\s"']+'''
+tags = ["webhook", "powerautomate"]
+
+[[rules]]
+id = "azure-webhook"
+description = "Azure Logic Apps Webhook"
+regex = '''https://[a-zA-Z0-9-]+\.logic\.azure\.com[^\s"']+'''
+tags = ["webhook", "azure"]
+
+[[rules]]
+id = "generic-webhook"
+description = "Generic Webhook URL with Token"
+regex = '''https://[^\s"']+\?.*sig=[^\s"']+'''
+tags = ["webhook", "token"]
+
+[allowlist]
+description = "Allowed patterns"
+paths = [
+  "docs/",
+  "wiki/",
+  "SECURITY_INCIDENT.md"
+]
