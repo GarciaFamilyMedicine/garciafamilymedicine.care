@@ -52,7 +52,9 @@
       "Bash(bash:*)",
       "Bash(gh secret list:*)",
       "Bash(git rm:*)",
-      "Bash(gh secret set:*)"
+      "Bash(gh secret set:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }
