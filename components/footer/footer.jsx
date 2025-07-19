@@ -68,6 +68,43 @@ export default function Footer() {
 
         <hr className={styles.footerDivider} />
 
+        {/* Partner Logos Section - MOVED BELOW CTA */}
+        <div className={styles.partnerSection}>
+          <h3 className={styles.partnerTitle}>Our Partners & Affiliations</h3>
+          <div className={styles.partnerLogos}>
+            {partnerLogos.map((logo, index) => (
+              logo.href ? (
+                <a 
+                  key={index}
+                  href={logo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.partnerLogoLink}
+                >
+                  <Image 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    width={120} 
+                    height={60}
+                    className={styles.partnerLogo}
+                  />
+                </a>
+              ) : (
+                <Image 
+                  key={index}
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  width={120} 
+                  height={60}
+                  className={styles.partnerLogo}
+                />
+              )
+            ))}
+          </div>
+        </div>
+
+        <hr className={styles.footerDivider} />
+
         {/* Contact Information */}
         <div className={styles.contactInfoSection}>
           <div className={styles.contactInfoGrid}>
@@ -129,43 +166,6 @@ export default function Footer() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
-        </div>
-
-        <hr className={styles.footerDivider} />
-
-        {/* Partner Logos Section */}
-        <div className={styles.partnerSection}>
-          <h3 className={styles.partnerTitle}>Our Partners & Affiliations</h3>
-          <div className={styles.partnerLogos}>
-            {partnerLogos.map((logo, index) => (
-              logo.href ? (
-                <a 
-                  key={index}
-                  href={logo.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.partnerLogoLink}
-                >
-                  <Image 
-                    src={logo.src} 
-                    alt={logo.alt} 
-                    width={120} 
-                    height={60}
-                    className={styles.partnerLogo}
-                  />
-                </a>
-              ) : (
-                <Image 
-                  key={index}
-                  src={logo.src} 
-                  alt={logo.alt} 
-                  width={120} 
-                  height={60}
-                  className={styles.partnerLogo}
-                />
-              )
-            ))}
           </div>
         </div>
 
