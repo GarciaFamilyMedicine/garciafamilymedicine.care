@@ -66,6 +66,14 @@ export default function EmailSubscription({
                            webhookUrl !== 'your-webhook-url-here' &&
                            webhookUrl.startsWith('https://');
       
+      // Log configuration for debugging (remove in production)
+      console.log('Newsletter config:', {
+        webhookUrl: webhookUrl ? `${webhookUrl.substring(0, 50)}...` : 'NOT SET',
+        isEnabled,
+        isValidWebhook,
+        env: process.env.NODE_ENV
+      });
+      
       if (isEnabled && isValidWebhook) {
         // Send to Power Automate webhook
         const response = await fetch(webhookUrl, {
@@ -77,7 +85,13 @@ export default function EmailSubscription({
         });
 
         if (!response.ok) {
-          throw new Error('Subscription processing failed');
+          const errorText = await response.text();
+          console.error('Webhook response error:', {
+            status: response.status,
+            statusText: response.statusText,
+            body: errorText
+          });
+          throw new Error(`Subscription processing failed: ${response.status} ${response.statusText}`);
         }
 
         const successMsg = successMessage || 
