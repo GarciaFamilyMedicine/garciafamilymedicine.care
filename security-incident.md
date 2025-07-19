@@ -36,10 +36,11 @@ Request removal of sensitive data from:
 ## Resolution Steps Completed
 1. ✅ Configured webhook URL in Azure Portal via CLI
 2. ✅ Removed hardcoded webhook from code  
-3. ✅ Deleted old Power Automate flow
-4. ✅ Created new flow with fresh webhook URL
-5. ✅ Updated Azure app settings with new webhook
+3. ✅ Created new secure Power Automate flow
+4. ✅ Deleted flow with exposed webhook URL
+5. ✅ Updated Azure app settings with new secure webhook
 6. ✅ Tested new webhook functionality
+7. ✅ Verified newsletter signup working with secure webhook
 
 ## Prevention
 - Always use environment variables for sensitive data
