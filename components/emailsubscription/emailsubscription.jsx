@@ -57,7 +57,10 @@ export default function EmailSubscription({
       };
 
       // Check if newsletter is enabled and webhook URL is configured
-      const webhookUrl = process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL;
+      // TEMPORARY: Hardcode webhook URL until GitHub Actions is fixed
+      const webhookUrl = process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL || 
+        'https://default1b5ab773bfb5457caec39bf1b8da58.4a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/0d229960b40a4832a47984c19dff4ff7/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zg66420fM-JDhOSfpl98GMckrP51tK_3zjhQc2Yhl-w';
+      
       const isEnabled = process.env.NEXT_PUBLIC_NEWSLETTER_ENABLED !== 'false';
       
       // Validate webhook URL is not placeholder
@@ -71,7 +74,8 @@ export default function EmailSubscription({
         webhookUrl: webhookUrl ? `${webhookUrl.substring(0, 50)}...` : 'NOT SET',
         isEnabled,
         isValidWebhook,
-        env: process.env.NODE_ENV
+        env: process.env.NODE_ENV,
+        usingFallback: !process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL
       });
       
       if (isEnabled && isValidWebhook) {
