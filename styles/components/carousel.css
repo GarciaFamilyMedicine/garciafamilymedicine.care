@@ -201,14 +201,62 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .carousel-wrapper {
-    height: 50vh !important;
-    min-height: 300px !important;
-    max-height: 400px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    margin-top: 0 !important;
   }
 
+  /* Create slideshow effect on mobile */
+  .carousel-slide {
+    opacity: 1 !important;
+    transform: translateX(100%);
+    transition: transform 0.6s ease-out, opacity 0.3s ease-out;
+  }
+
+  .carousel-slide.active {
+    transform: translateX(0);
+    opacity: 1 !important;
+  }
+
+  /* Sliding animation for previous slide */
+  .carousel-slide.prev {
+    transform: translateX(-100%);
+    opacity: 1 !important;
+  }
+
+  .carousel-slide-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Make image wider than viewport to enable panning */
   .carousel-slide-image {
-    object-fit: contain !important;
-    object-position: center !important;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    min-width: 150%; /* Make image wider to show panning effect */
+    object-fit: cover !important;
+    object-position: left center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* Pan across the image from left to right */
+  .carousel-slide.active .carousel-slide-image {
+    animation: panLeftToRight 9s linear forwards;
+  }
+
+  @keyframes panLeftToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.33%); /* Move 1/3 of the image width to show the right side */
+    }
   }
   
   .carousel-nav-button {

@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Header from '@/components/header';
-import Footer from '@/components/footer/footer';
+import Image from 'next/image';
 import styles from './page.module.css';
 import mobileStyles from './mobile.module.css';
 
@@ -49,14 +48,22 @@ export default function LandingPage() {
       styles.minHScreen,
       mobileStyles.minHScreen
     )}>
-      <Header />
+      {/* Simple Logo at top */}
+      <div className={styles.landingLogoContainer}>
+        <Image 
+          src="/images/logo.png" 
+          alt="Garcia Family Medicine Logo" 
+          width={120} 
+          height={120}
+          priority
+        />
+      </div>
 
       {/* MAIN BODY */}
       <main className={combineStyles(
         styles.main,
         mobileStyles.main,
-        "flex flex-col items-center flex-grow",
-        "mt-20" // Add margin top for fixed header
+        "flex flex-col items-center flex-grow"
       )}>
         {/* Welcome card */}
         <section className={combineStyles(
@@ -282,8 +289,6 @@ export default function LandingPage() {
           </div>
         </div>
       )}
-
-      <Footer />
     </div>
   );
 }

@@ -4,6 +4,11 @@
   min-height: 100vh;
 }
 
+/* Landing Page Logo */
+.landingLogoContainer {
+  @apply flex justify-center items-center pt-8 pb-4;
+}
+
 /* Header Container - Fixed positioning */
 .headerContainer {
   position: fixed;

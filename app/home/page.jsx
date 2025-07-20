@@ -74,6 +74,7 @@ export default function Home() {
   
   // Carousel states
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(-1);
   const [isPaused, setIsPaused] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedImages, setLoadedImages] = useState(new Set());
@@ -92,11 +93,12 @@ export default function Home() {
     if (isPaused) return;
     
     const interval = setInterval(() => {
+      setPreviousIndex(currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
     }, 10000); // Doubled from 5000ms to 10000ms
     
     return () => clearInterval(interval);
-  }, [isPaused, slides.length]);
+  }, [isPaused, slides.length, currentIndex]);
 
   // Check if first image is loaded
   useEffect(() => {
@@ -114,16 +116,19 @@ export default function Home() {
   }, [loadedImages]);
 
   const goToSlide = useCallback((index) => {
+    setPreviousIndex(currentIndex);
     setCurrentIndex(index);
-  }, []);
+  }, [currentIndex]);
 
   const nextSlide = useCallback(() => {
+    setPreviousIndex(currentIndex);
     setCurrentIndex(prev => (prev + 1) % slides.length);
-  }, []);
+  }, [currentIndex]);
 
   const prevSlide = useCallback(() => {
+    setPreviousIndex(currentIndex);
     setCurrentIndex(prev => (prev - 1 + slides.length) % slides.length);
-  }, []);
+  }, [currentIndex]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -238,6 +243,8 @@ export default function Home() {
               key={`slide-${index}`}
               className={`carousel-slide ${
                 index === currentIndex ? 'active' : ''
+              } ${
+                index === previousIndex ? 'prev' : ''
               }`}
               aria-hidden={index !== currentIndex}
             >
