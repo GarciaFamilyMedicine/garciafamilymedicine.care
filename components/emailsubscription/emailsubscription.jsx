@@ -44,16 +44,69 @@ export default function EmailSubscription({
         return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
       };
 
+      // Gather additional client information
+      const getUserInfo = () => {
+        const info = {
+          // Browser information
+          userAgent: navigator.userAgent || 'Unknown',
+          platform: navigator.platform || 'Unknown',
+          language: navigator.language || 'en-US',
+          languages: navigator.languages ? navigator.languages.join(', ') : navigator.language || 'en-US',
+          
+          // Screen information
+          screenResolution: `${window.screen.width}x${window.screen.height}`,
+          viewportSize: `${window.innerWidth}x${window.innerHeight}`,
+          colorDepth: window.screen.colorDepth || 24,
+          pixelRatio: window.devicePixelRatio || 1,
+          
+          // Time information
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown',
+          timezoneOffset: new Date().getTimezoneOffset(),
+          localTime: new Date().toString(),
+          
+          // Connection information (if available)
+          connectionType: navigator.connection?.effectiveType || 'Unknown',
+          downlink: navigator.connection?.downlink || 'Unknown',
+          
+          // Referrer and location
+          referrer: document.referrer || 'Direct',
+          currentUrl: window.location.href,
+          pathname: window.location.pathname,
+          hostname: window.location.hostname,
+          
+          // Device indicators
+          isMobile: /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent),
+          isTablet: /iPad|Android|Tablet/i.test(navigator.userAgent),
+          vendor: navigator.vendor || 'Unknown'
+        };
+        
+        return info;
+      };
+
+      const userInfo = getUserInfo();
+
       const subscription = {
         email: email,
         source: source,
         subscribeDate: new Date().toISOString(),
         status: 'Active',
-        ipAddress: 'Power-Automate-Capture', // Will be captured by Power Automate from headers
+        ipAddress: 'Client-IP-Pending', // Will be captured by Power Automate from headers
         unsubscribeToken: generateToken(),
         notes: `Subscribed via ${source} on ${window.location.pathname}`,
         // Legacy field for backward compatibility
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        // Additional user information
+        userAgent: userInfo.userAgent,
+        platform: userInfo.platform,
+        language: userInfo.language,
+        screenResolution: userInfo.screenResolution,
+        viewportSize: userInfo.viewportSize,
+        timezone: userInfo.timezone,
+        referrer: userInfo.referrer,
+        isMobile: userInfo.isMobile,
+        deviceInfo: {
+          ...userInfo
+        }
       };
 
       // Check if newsletter is enabled and webhook URL is configured
