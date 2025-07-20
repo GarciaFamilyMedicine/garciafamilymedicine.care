@@ -11,12 +11,11 @@
     @apply px-4 py-10;
   }
   
-  /* Carousel adjustments for mobile - full screen */
+  /* Carousel adjustments for mobile - full screen minus header */
   .carouselWrapper {
-    height: 100vh !important;
-    min-height: 100vh !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    height: calc(100vh - var(--header-height, 80px)) !important;
+    min-height: 400px !important;
+    max-height: calc(100vh - var(--header-height, 80px)) !important;
     box-sizing: border-box !important;
   }
   
@@ -174,10 +173,8 @@
 
 @media (max-width: 480px) {
   .carouselWrapper {
-    height: 40vh !important;
-    min-height: 250px !important;
-    margin-top: 70px !important;
-    padding-top: 0 !important;
+    height: calc(100vh - var(--header-height, 70px)) !important;
+    min-height: 300px !important;
     box-sizing: border-box !important;
   }
   
@@ -228,10 +225,8 @@
   }
   
   .carouselWrapper {
-    height: 35vh !important;
-    min-height: 200px !important;
-    margin-top: 60px !important;
-    padding-top: 0 !important;
+    height: calc(100vh - var(--header-height, 60px)) !important;
+    min-height: 250px !important;
     box-sizing: border-box !important;
   }
   
@@ -256,10 +251,8 @@
 /* Landscape orientation on mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .carouselWrapper {
-    height: 70vh !important;
+    height: calc(100vh - var(--header-height, 50px)) !important;
     min-height: 200px !important;
-    margin-top: 50px !important;
-    padding-top: 0 !important;
     box-sizing: border-box !important;
   }
   

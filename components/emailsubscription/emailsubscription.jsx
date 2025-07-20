@@ -69,14 +69,16 @@ export default function EmailSubscription({
                            webhookUrl !== 'your-webhook-url-here' &&
                            webhookUrl.startsWith('https://');
       
-      // Log configuration for debugging (remove in production)
-      console.log('Newsletter config:', {
-        webhookUrl: webhookUrl ? `${webhookUrl.substring(0, 50)}...` : 'NOT SET',
-        isEnabled,
-        isValidWebhook,
-        env: process.env.NODE_ENV,
-        usingFallback: !process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL
-      });
+      // Log configuration for debugging
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Newsletter config:', {
+          webhookUrl: webhookUrl ? `${webhookUrl.substring(0, 50)}...` : 'NOT SET',
+          isEnabled,
+          isValidWebhook,
+          env: process.env.NODE_ENV,
+          usingFallback: !process.env.NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL
+        });
+      }
       
       if (isEnabled && isValidWebhook) {
         // Send to Power Automate webhook

@@ -59,7 +59,10 @@
       "Bash(git clone:*)",
       "Bash(node:*)",
       "Bash(./update-wiki.sh)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "Bash(git fetch:*)",
+      "Bash(git branch:*)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": []
   }

@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0] - 2025-01-20
+### Added
+- Landing page with faith-based welcome content at root (/)
+- Main site moved to /home route with full carousel
+- Email subscription troubleshooting guide in wiki
+- Production deployment documentation for email setup
+
+### Changed
+- Carousel improvements:
+  - Smooth continuous scrolling from start to finish
+  - Proper height calculation accounting for header
+  - Slower, smoother transitions (15s per slide)
+  - Full viewport display on mobile
+- Email subscription component:
+  - Added hardcoded webhook fallback for resilience
+  - Console logs only in development mode
+  - Better error handling and messages
+- Documentation consolidated to wiki directory
+- Footer reorganized with affiliate logos below CTA
+
+### Fixed
+- Carousel images no longer cut off by header
+- Mobile carousel height properly calculated
+- Email subscriptions working with GitHub Secrets configuration
+- GitHub Actions workflow updated to pass environment variables
+
+### Removed
+- 16 unused files and directories cleaned up:
+  - Old webpack cache files
+  - Unused pelvic health section components
+  - Test email page
+  - Duplicate documentation files
+  - Unused SVG assets
+  - Unused scripts directory
+  - Unused canvas npm dependency
+
 ## [3.0.0] - 2025-01-19
 ### Added
 - Complete Core Medical Services pages:

@@ -3,6 +3,8 @@
 ## Overview
 Garcia Family Medicine website now has a fully automated email newsletter signup system that saves subscriber emails directly to SharePoint without any manual intervention.
 
+> **Having issues?** See the [Email Subscription Troubleshooting Guide](./email-subscription-troubleshooting.md)
+
 ## Architecture
 
 ```
@@ -119,6 +121,38 @@ curl -X GET "{graph_api_url}/sites/{site}/lists/{list}" -H "Authorization: Beare
 3. **Webhook Security**: URL contains signature for authentication
 4. **Data Privacy**: Emails stored only in organization's SharePoint
 
+## Production Deployment Requirements
+
+### GitHub Secrets Configuration
+For email subscriptions to work in production, you MUST configure the following GitHub Secrets:
+
+1. **Navigate to GitHub Repository Settings**
+   - Go to Settings → Secrets and variables → Actions
+   - Click "New repository secret"
+
+2. **Add Required Secrets**
+   ```
+   NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL = [Your Power Automate webhook URL]
+   NEXT_PUBLIC_NEWSLETTER_ENABLED = true
+   ```
+
+3. **Optional Secrets**
+   ```
+   NEXT_PUBLIC_NEWSLETTER_SUCCESS_MESSAGE = "Custom success message"
+   NEXT_PUBLIC_NEWSLETTER_ERROR_MESSAGE = "Custom error message"
+   ```
+
+4. **Verify Deployment**
+   - Push any commit to trigger deployment
+   - Check GitHub Actions for successful build
+   - Test email subscription on live site
+
+### Important Notes
+- The GitHub Actions workflow is already configured to pass these secrets
+- Without secrets, email subscriptions fall back to localStorage only
+- Webhook URL must be the full URL from Power Automate
+- Do NOT wrap the webhook URL in quotes in GitHub Secrets
+
 ## Future Enhancements
 
 1. Add email confirmation workflow
@@ -126,3 +160,8 @@ curl -X GET "{graph_api_url}/sites/{site}/lists/{list}" -H "Authorization: Beare
 3. Add duplicate email checking
 4. Create welcome email automation
 5. Add analytics dashboard
+
+## Related Documentation
+- [Email Subscription Troubleshooting](./email-subscription-troubleshooting.md)
+- [GitHub Secrets Setup](./github-secrets-setup.md)
+- [Power Automate SharePoint Integration](./power-automate-sharepoint-integration.md)

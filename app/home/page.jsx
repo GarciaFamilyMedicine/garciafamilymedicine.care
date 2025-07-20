@@ -95,7 +95,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setPreviousIndex(currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
-    }, 10000); // Doubled from 5000ms to 10000ms
+    }, 15000); // 15 seconds to match the pan animation duration
     
     return () => clearInterval(interval);
   }, [isPaused, slides.length, currentIndex]);

@@ -55,3 +55,5 @@ next-env.d.ts
 *.msi
 flow-definition.json
 PowerPlatformCLI.msi
+.next/
+out/
