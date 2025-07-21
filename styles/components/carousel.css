@@ -81,19 +81,20 @@
 .carousel-slide-image,
 .carousel-slide-image-container img {
   width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
+  height: auto !important;
+  transform: scaleX(1) !important;
+  object-fit: fill !important;
   object-position: center !important;
   display: block !important;
 }
 
-/* Desktop: Display FULL image without cropping */
+/* Desktop: Stretch width to fill viewport */
 @media (min-width: 1024px) {
   .carousel-slide-image,
   .carousel-slide-image-container img {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
+    height: auto !important;
+    object-fit: fill !important;
     object-position: center center;
   }
 }

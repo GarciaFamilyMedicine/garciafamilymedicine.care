@@ -39,8 +39,8 @@ export default function Picture({
         onError={onError}
         style={{ 
           width: '100%', 
-          height: '100%', 
-          objectFit: 'contain',
+          height: 'auto', 
+          objectFit: 'fill',
           objectPosition: 'center'
         }}
       />
