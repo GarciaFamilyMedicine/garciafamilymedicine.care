@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.0] - 2025-01-21
+### Added
+- Enhanced newsletter data collection with 20+ analytics fields:
+  - Device information (platform, browser, screen resolution)
+  - Geographic data (timezone, language)
+  - User behavior (referrer, viewport size)
+  - Connection details (network type, mobile/tablet detection)
+- Power Automate IP extraction documentation
+- SharePoint column requirements documentation
+- Comprehensive .gitignore patterns for sensitive files
+
+### Changed
+- Email subscription component now collects comprehensive user analytics
+- Updated .env.local to use placeholder values for security
+- Sanitized all documentation to remove sensitive IDs and URLs
+- Improved security posture with removed hardcoded credentials
+
+### Fixed
+- Newsletter webhook configuration for production deployment
+- Email subscription data collection in Power Automate
+
+### Security
+- Removed all hardcoded webhook URLs from codebase
+- Sanitized sensitive IDs (tenant, environment, SharePoint list)
+- Cleaned repository of temporary setup files
+- Updated .gitignore to prevent future credential leaks
+
 ## [3.1.0] - 2025-01-20
 ### Added
 - Landing page with faith-based welcome content at root (/)

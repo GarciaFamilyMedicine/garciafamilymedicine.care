@@ -54,6 +54,19 @@ next-env.d.ts
 # Temporary setup files
 *.msi
 flow-definition.json
+flow-current.json
 PowerPlatformCLI.msi
 .next/
 out/
+*-setup.js
+*-setup.ps1
+add-columns.ps1
+update-flow.ps1
+complete-setup.js
+final-setup.js
+test-newsletter.js
+POWER_AUTOMATE_*.md
+POWER_AUTOMATE_*.txt
+SHAREPOINT_*.md
+*webhook*.json
+*token*.json

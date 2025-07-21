@@ -36,7 +36,7 @@ Website Form → EmailSubscription Component → Power Automate Webhook → App-
 ### 4. SharePoint List
 - **Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
 - **List Name**: Newsletter Subscribers
-- **List ID**: 2BC93255-8AC1-41E4-BE25-066CF2941D0D
+- **List ID**: YOUR-LIST-ID
 - **Columns**: Title, Source, Subscribe Date, Status, IP Address, Unsubscribe Token, Notes
 
 ## How It Works

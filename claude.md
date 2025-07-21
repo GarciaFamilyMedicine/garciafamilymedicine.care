@@ -173,7 +173,7 @@ public/images/             # Static assets organized by section
 TOKEN=$(az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv)
 
 # Create flow
-curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/Default-1b5ab773-bfb5-457c-aec3-9bf1b8da584a/flows?api-version=2016-11-01" \
+curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/Default-YOUR-ENVIRONMENT-ID/flows?api-version=2016-11-01" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{...flow definition...}'
@@ -197,10 +197,10 @@ curl -X POST "{flow-uri}/triggers/manual/listCallbackUrl?api-version=2016-11-01"
 4. **Direct connection creation**: OAuth2 consent flow blocks automation
 
 ### Key Environment Details
-- **Tenant ID**: 1b5ab773-bfb5-457c-aec3-9bf1b8da584a
-- **Environment**: Default-1b5ab773-bfb5-457c-aec3-9bf1b8da584a
+- **Tenant ID**: YOUR-TENANT-ID
+- **Environment**: Default-YOUR-ENVIRONMENT-ID
 - **SharePoint Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
-- **SharePoint List ID**: 2BC93255-8AC1-41E4-BE25-066CF2941D0D
+- **SharePoint List ID**: YOUR-LIST-ID
 
 ### Flow Structure That Works
 1. HTTP Request trigger (webhook)
@@ -209,9 +209,9 @@ curl -X POST "{flow-uri}/triggers/manual/listCallbackUrl?api-version=2016-11-01"
 4. SharePoint/Email must be added manually in UI
 
 ### Current Implementation Status
-- **Power Automate Flow**: New secure flow created (ID: 4a534c6c-ede2-4eae-8236-7b0b4c16f4f4)
+- **Power Automate Flow**: New secure flow created (ID: YOUR-FLOW-ID)
 - **Webhook**: Rotated and secured - old exposed webhook deleted
-- **SharePoint List**: Created (ID: 2BC93255-8AC1-41E4-BE25-066CF2941D0D)
+- **SharePoint List**: Created (ID: YOUR-LIST-ID)
 - **Azure App Settings**: Configured with new secure webhook URL
 - **Missing**: SharePoint action (requires manual OAuth authorization)
 
@@ -251,8 +251,8 @@ curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/e
 ### Complete Automated SharePoint Integration (NO Manual Steps)
 
 #### Created Resources:
-- **App Registration**: GarciaNewsletterApp (ID: 53ca6956-0a2d-498a-bbb6-0e025d652905)
-- **Power Automate Flow**: Garcia Newsletter WORKING 2025 (ID: b190d199-043a-46a3-a097-3ba673207999)
+- **App Registration**: GarciaNewsletterApp (ID: YOUR-APP-ID)
+- **Power Automate Flow**: Garcia Newsletter WORKING 2025 (ID: YOUR-FLOW-ID)
 - **Webhook URL**: Active in .env.local and Azure App Settings
 - **Client Secret**: Generated fresh on 2025-07-19 (expires 2027)
 - **Verified Working**: Emails ARE being saved to SharePoint list
@@ -283,5 +283,5 @@ curl -X POST "https://unitedstates.api.flow.microsoft.com/providers/Microsoft.Pr
 #### SharePoint List Details:
 - **Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
 - **List**: Newsletter Subscribers
-- **List ID**: 2BC93255-8AC1-41E4-BE25-066CF2941D0D
+- **List ID**: YOUR-LIST-ID
 - **Verified**: Emails ARE being saved successfully
