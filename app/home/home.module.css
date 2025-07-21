@@ -1,45 +1,34 @@
-/* Carousel that fills viewport */
+/* Carousel that adapts to image content */
 
 .carouselSection {
   position: relative;
   width: 100%;
-  height: calc(100vh - 85px); /* Full viewport minus header */
   background: #f8f9fa;
-  overflow: hidden;
+  /* Remove fixed height - let content determine height */
 }
 
 .carouselContainer {
   position: relative;
   width: 100%;
-  height: 100%;
 }
 
 .carouselSlide {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: none;
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
 }
 
 .carouselSlide.active {
-  opacity: 1;
+  display: block;
 }
 
 .carouselImageWrapper {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .carouselImage {
   width: 100%;
-  height: 100%;
-  object-fit: contain; /* Shows full image without cropping */
-  object-position: center;
+  height: auto;
+  display: block;
+  /* Remove object-fit to use natural image behavior */
 }
