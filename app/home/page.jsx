@@ -7,6 +7,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer/footer';
 import styles from '../page.module.css';
 import mobileStyles from '../mobile.module.css';
+import homeStyles from './home.module.css';
 
 const DEFAULT_URL = 'https://garciafamilymedicine.care/contact';
 
@@ -217,7 +218,7 @@ export default function Home() {
 
       {/* Hero carousel section */}
       <section 
-        className="carousel-wrapper"
+        className={homeStyles.carouselSection}
         style={{ 
           marginTop: headerHeight > 0 ? `${headerHeight}px` : '80px'
         }}
@@ -240,10 +241,8 @@ export default function Home() {
           {slides.map((slide, index) => (
             <div
               key={`slide-${index}`}
-              className={`carousel-slide ${
-                index === currentIndex ? 'active' : ''
-              } ${
-                index === previousIndex ? 'prev' : ''
+              className={`${homeStyles.carouselSlide} ${
+                index === currentIndex ? homeStyles.active : ''
               }`}
               aria-hidden={index !== currentIndex}
             >
@@ -252,17 +251,17 @@ export default function Home() {
                 target={slide.target}
                 rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
                 aria-label={slide.alt}
-                className="carousel-slide-link"
+                style={{ display: 'block' }}
               >
-                <div className="carousel-slide-image-container">
-                  <Picture
-                    src={slide.src}
+                <div className={homeStyles.carouselImageWrapper}>
+                  <img
+                    src={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.jpg`}
                     alt={slide.alt}
-                    className="carousel-slide-image"
-                    priority={index === 0}
+                    className={homeStyles.carouselImage}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     onLoad={() => handleImageLoad(index)}
                     onError={() => {
-                      handleImageLoad(index); // Still mark as "loaded" to prevent infinite loading
+                      handleImageLoad(index);
                     }}
                   />
                 </div>

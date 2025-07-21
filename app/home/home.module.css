@@ -1,0 +1,33 @@
+/* Home page specific carousel styles */
+
+/* Override any global styles */
+.carouselSection {
+  position: relative;
+  width: 100%;
+  background: #f8f9fa;
+}
+
+.carouselSlide {
+  display: none;
+}
+
+.carouselSlide.active {
+  display: block;
+}
+
+.carouselImageWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+/* Ensure images are NEVER cropped */
+.carouselImage {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto !important;
+  display: inline-block !important;
+  object-fit: initial !important;
+  object-position: initial !important;
+  position: static !important;
+  margin: 0 auto !important;
+}
