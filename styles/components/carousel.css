@@ -1,26 +1,19 @@
 /* =========================================================
-   CAROUSEL COMPONENT - Universal solution for ANY image size
+   CAROUSEL - FULL IMAGE DISPLAY - NO CROPPING
    ======================================================= */
 
-/* Carousel Wrapper - Adaptive container */
+/* Carousel Wrapper */
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  left: 0;
-  right: 0;
-  margin-left: 0;
-  margin-right: 0;
-  overflow: hidden;
   background: #f8f9fa;
-  box-sizing: border-box;
+  overflow: visible; /* Allow content to be visible */
 }
 
 /* Carousel Container */
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: inherit;
 }
 
 /* Carousel Slides */
@@ -29,133 +22,58 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
-  z-index: 1;
-  will-change: opacity;
+  pointer-events: none;
 }
 
 .carousel-slide.active {
+  position: relative;
   opacity: 1;
-  z-index: 2;
+  pointer-events: auto;
 }
 
-/* Carousel Links */
+/* Links */
 .carousel-slide-link {
   display: block;
   width: 100%;
-  height: 100%;
-  text-decoration: none;
 }
 
-.carousel-slide-link:hover {
-  transform: scale(1.01);
-}
-
-.carousel-slide-link:focus {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* Image Container - Responsive by default */
+/* Image Container */
 .carousel-slide-image-container {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  line-height: 0;
 }
 
+/* Images - ABSOLUTELY NO CROPPING */
 .carousel-slide-image-container picture {
+  display: inline-block;
   max-width: 100%;
-  max-height: 100%;
-  display: block;
 }
 
-/* Universal Image Rules - Works with ANY image */
 .carousel-slide-image,
 .carousel-slide-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain !important;
-  object-position: center;
+  max-width: 100%;
+  height: auto;
   display: block;
+  margin: 0 auto;
 }
 
-/* Mode Classes - Apply to .carousel-wrapper */
-/* Mode 1: Contain - Shows entire image (default) */
-.carousel-wrapper.mode-contain img {
-  object-fit: contain !important;
+/* Remove any object-fit that might crop */
+.carousel-wrapper img,
+.carousel-wrapper picture {
+  object-fit: unset !important;
+  object-position: unset !important;
 }
 
-/* Mode 2: Cover - Fills space, may crop */
-.carousel-wrapper.mode-cover img {
-  object-fit: cover !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Mode 3: Fill - Stretches to fit exactly */
-.carousel-wrapper.mode-fill img {
-  object-fit: fill !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Mode 4: Scale Down - Never larger than original */
-.carousel-wrapper.mode-scale-down img {
-  object-fit: scale-down !important;
-}
-
-/* Desktop specific adjustments */
-@media (min-width: 1024px) {
-  /* Add any desktop-specific overrides here if needed */
-}
-
-/* Tablet: Show full image */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .carousel-slide-image,
-  .carousel-slide-image-container img {
-    object-fit: contain;
-    object-position: center center;
-  }
-}
-
-/* Loading Indicator */
-.carousel-loading-indicator {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  z-index: 200;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.carousel-loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #e5e7eb;
-  border-top: 4px solid var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* Navigation Arrows */
+/* Navigation Buttons */
 .carousel-nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(29, 83, 159, 0.9);
   color: white;
@@ -166,18 +84,11 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
 }
 
 .carousel-nav-button:hover:not(:disabled) {
   background: var(--primary);
-  border-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-nav-button:focus {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
 }
 
 .carousel-nav-button:disabled {
@@ -193,119 +104,61 @@
   right: 20px;
 }
 
-/* Navigation Dots */
+/* Dots Navigation */
 .carousel-dots-container {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 100;
-  padding: 0;
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
   background: transparent;
-  border-radius: 0;
-  backdrop-filter: none;
-  border: none;
+  margin-top: 10px;
 }
 
 .carousel-dot {
-  width: 14px;
-  height: 14px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.carousel-dot:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.2);
+  margin: 0 5px;
+  transition: all 0.3s ease;
 }
 
 .carousel-dot.active {
-  background: #ffffff;
-  border-color: var(--primary);
-  transform: scale(1.3);
-  box-shadow: 0 0 8px rgba(29, 83, 159, 0.5);
+  background: #1d539f;
+  transform: scale(1.2);
 }
 
-.carousel-dot:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Slide Counter for Screen Readers */
-.carousel-slide-counter {
+/* Loading Indicator */
+.carousel-loading-indicator {
   position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 200;
+}
+
+.carousel-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #1d539f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .carousel-wrapper {
-    position: relative !important;
-    height: calc(100vh - var(--header-height, 80px)) !important;
-    min-height: 400px !important;
-    max-height: calc(100vh - var(--header-height, 80px)) !important;
-  }
-
-  /* Create slideshow effect on mobile */
-  .carousel-slide {
-    opacity: 1 !important;
-    transform: translateX(100%);
-    transition: transform 0.8s ease-in-out, opacity 0.4s ease-out;
-  }
-
-  .carousel-slide.active {
-    transform: translateX(0);
-    opacity: 1 !important;
-  }
-
-  /* Sliding animation for previous slide */
-  .carousel-slide.prev {
-    transform: translateX(-100%);
-    opacity: 1 !important;
-  }
-
-  .carousel-slide-image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  /* Mobile: Show full image */
-  .carousel-slide-image,
-  .carousel-slide-image-container img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: contain !important;
-    object-position: center;
-    position: relative;
-  }
-
-  /* Remove panning animation for contain mode */
-  .carousel-slide.active .carousel-slide-image {
-    animation: none;
-  }
-  
   .carousel-nav-button {
-    width: 44px;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .carousel-nav-button:hover:not(:disabled) {
-    background: rgba(0, 0, 0, 0.8);
-    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
   }
   
   .carousel-prev-button {
@@ -317,119 +170,12 @@
   }
   
   .carousel-dots-container {
-    top: auto;
-    bottom: 12px;
-    padding: 6px 10px;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
   }
   
   .carousel-dot {
     width: 8px;
     height: 8px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: none;
-  }
-
-  .carousel-dot.active {
-    background: #ffffff;
-    border-color: #ffffff;
-    transform: scale(1.2);
-  }
-  
-  .carousel-slide-link:hover {
-    transform: none;
-  }
-  
-  .carousel-loading-indicator {
-    padding: 15px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-wrapper {
-    position: relative !important;
-    height: calc(100vh - var(--header-height, 70px)) !important;
-    min-height: 300px !important;
-    max-height: calc(100vh - var(--header-height, 70px)) !important;
-  }
-
-  .carousel-nav-button {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .carousel-dots-container {
-    bottom: 8px;
-    padding: 4px 8px;
-    gap: 6px;
-  }
-  
-  .carousel-dot {
-    width: 6px;
-    height: 6px;
-  }
-  
-  .carousel-prev-button {
-    left: 8px;
-  }
-  
-  .carousel-next-button {
-    right: 8px;
-  }
-}
-
-@media (max-width: 360px) {
-  .carousel-dots-container {
-    bottom: 4px;
-    padding: 2px 4px;
-    gap: 4px;
-  }
-  
-  .carousel-dot {
-    width: 5px;
-    height: 5px;
-  }
-}
-
-/* Landscape orientation on mobile */
-@media (max-height: 500px) and (orientation: landscape) {
-  .carousel-dots-container {
-    bottom: 6px;
-    padding: 2px 4px;
-  }
-  
-  .carousel-nav-button {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-/* Animations */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .carousel-slide {
-    transition: none;
-  }
-  
-  .carousel-nav-button,
-  .carousel-dot,
-  .carousel-slide-link,
-  .carousel-slide-image {
-    transition: none;
-  }
-  
-  .carousel-loading-spinner {
-    animation: none;
+    margin: 0 3px;
   }
 }

@@ -1,0 +1,90 @@
+/* SIMPLE CAROUSEL - NO CROPPING GUARANTEED */
+
+/* Wrapper - Just a container */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  background: #f8f9fa;
+}
+
+/* Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Slides */
+.carousel-slide {
+  display: none;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+/* Image container */
+.carousel-slide-image-container {
+  width: 100%;
+  text-align: center;
+}
+
+/* IMAGES - NEVER CROP */
+.carousel-slide img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Remove ALL object-fit to prevent cropping */
+.carousel-slide picture,
+.carousel-slide img {
+  object-fit: initial !important;
+}
+
+/* Navigation */
+.carousel-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.carousel-prev-button {
+  left: 20px;
+}
+
+.carousel-next-button {
+  right: 20px;
+}
+
+/* Dots */
+.carousel-dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: rgba(0, 0, 0, 0.8);
+}
