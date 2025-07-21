@@ -8,12 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [3.2.1] - 2025-01-21
+### Added
+- Image optimization with 94-99% size reduction (44MB to ~2MB total)
+- Responsive image loading with WebP format and JPEG fallback
+- Picture component for optimized image delivery
+- Image optimization script using sharp library
+- Dropdown menu viewport overflow protection
+
 ### Fixed
 - Carousel images now display without cutoff
-  - Changed object-fit from cover to contain to show full images
-  - Removed panning animation on mobile for better image display
-  - Updated background color from black to light gray (#f8f8f8)
-  - Images now scale to fit container while maintaining aspect ratio
+  - Changed object-fit to contain to show full images
+  - Images properly fill viewport minus header height
+  - Removed panning animation on mobile for better display
+- Dropdown menus no longer cut off at screen edges
+- Performance dramatically improved with compressed images
+
+### Changed
+- Carousel background changed to black for better visual consistency
+- Added sharp dependency for image processing
 
 ## [3.2.0] - 2025-01-21
 ### Added
