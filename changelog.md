@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.1] - 2025-01-21
+### Fixed
+- Carousel images now display without cutoff
+  - Changed object-fit from cover to contain to show full images
+  - Removed panning animation on mobile for better image display
+  - Updated background color from black to light gray (#f8f8f8)
+  - Images now scale to fit container while maintaining aspect ratio
+
 ## [3.2.0] - 2025-01-21
 ### Added
 - Enhanced newsletter data collection with 20+ analytics fields:
