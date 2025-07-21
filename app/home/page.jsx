@@ -217,11 +217,11 @@ export default function Home() {
 
       {/* Hero carousel section */}
       <section 
-        className="carousel-wrapper"
+        className="carousel-wrapper mode-fill"
         style={{ 
           marginTop: headerHeight > 0 ? `${headerHeight}px` : '80px',
-          height: headerHeight > 0 ? `calc(100vh - ${headerHeight}px)` : 'calc(100vh - 80px)',
-          minHeight: '300px'
+          height: 'auto',
+          minHeight: headerHeight > 0 ? `calc(100vh - ${headerHeight}px)` : 'calc(100vh - 80px)'
         }}
         aria-label="Garcia Family Medicine Services Carousel"
         role="region"

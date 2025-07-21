@@ -1,0 +1,185 @@
+/* =========================================================
+   UNIVERSAL CAROUSEL - Works with ANY image size
+   ======================================================= */
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Carousel Slides */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Carousel Links */
+.carousel-slide-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image Container - The magic happens here */
+.carousel-slide-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Universal Image Styling - Works with ANY size */
+.carousel-slide-image,
+.carousel-slide-image-container img {
+  /* Default: Show full image on all devices */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Option 1: Fill mode (some cropping but fills space) */
+.carousel-wrapper.fill-mode .carousel-slide-image,
+.carousel-wrapper.fill-mode img {
+  object-fit: cover;
+}
+
+/* Option 2: Fit mode (shows entire image, may have bars) */
+.carousel-wrapper.fit-mode .carousel-slide-image,
+.carousel-wrapper.fit-mode img {
+  object-fit: contain;
+}
+
+/* Option 3: Stretch mode (fills space, may distort) */
+.carousel-wrapper.stretch-mode .carousel-slide-image,
+.carousel-wrapper.stretch-mode img {
+  object-fit: fill;
+}
+
+/* Desktop adjustments */
+@media (min-width: 1024px) {
+  /* You can add desktop-specific adjustments here if needed */
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet-specific adjustments */
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  /* Mobile-specific adjustments */
+  .carousel-wrapper {
+    min-height: 300px;
+  }
+}
+
+/* Navigation Controls */
+.carousel-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-nav-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev-button {
+  left: 20px;
+}
+
+.carousel-next-button {
+  right: 20px;
+}
+
+/* Dots Navigation */
+.carousel-dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Loading Indicator */
+.carousel-loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 200;
+}
+
+/* Utility classes for different behaviors */
+.carousel-wrapper.auto-height {
+  height: auto;
+}
+
+.carousel-wrapper.fixed-height {
+  height: 600px;
+}
+
+.carousel-wrapper.viewport-height {
+  height: calc(100vh - var(--header-height, 85px));
+}

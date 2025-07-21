@@ -1,8 +1,8 @@
 /* =========================================================
-   CAROUSEL COMPONENT - Reusable carousel for hero sections
+   CAROUSEL COMPONENT - Universal solution for ANY image size
    ======================================================= */
 
-/* Carousel Wrapper - Full width hero section */
+/* Carousel Wrapper - Adaptive container */
 .carousel-wrapper {
   position: relative;
   width: 100%;
@@ -17,11 +17,10 @@
 
 /* Carousel Container */
 .carousel-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
+  min-height: inherit;
 }
 
 /* Carousel Slides */
@@ -59,44 +58,62 @@
   outline-offset: 2px;
 }
 
-/* Image Container */
+/* Image Container - Responsive by default */
 .carousel-slide-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .carousel-slide-image-container picture {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
 }
 
+/* Universal Image Rules - Works with ANY image */
 .carousel-slide-image,
 .carousel-slide-image-container img {
-  width: 100% !important;
-  height: auto !important;
-  transform: scaleX(1) !important;
-  object-fit: fill !important;
-  object-position: center !important;
-  display: block !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
-/* Desktop: Stretch width to fill viewport */
+/* Mode Classes - Apply to .carousel-wrapper */
+/* Mode 1: Contain - Shows entire image (default) */
+.carousel-wrapper.mode-contain img {
+  object-fit: contain !important;
+}
+
+/* Mode 2: Cover - Fills space, may crop */
+.carousel-wrapper.mode-cover img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Mode 3: Fill - Stretches to fit exactly */
+.carousel-wrapper.mode-fill img {
+  object-fit: fill !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Mode 4: Scale Down - Never larger than original */
+.carousel-wrapper.mode-scale-down img {
+  object-fit: scale-down !important;
+}
+
+/* Desktop specific adjustments */
 @media (min-width: 1024px) {
-  .carousel-slide-image,
-  .carousel-slide-image-container img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: fill !important;
-    object-position: center center;
-  }
+  /* Add any desktop-specific overrides here if needed */
 }
 
 /* Tablet: Show full image */
