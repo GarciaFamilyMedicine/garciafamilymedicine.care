@@ -216,6 +216,7 @@ export default function Home() {
 
       {/* Hero carousel section */}
       <section 
+        id="carousel-section"
         className={homeStyles.carouselSection}
         aria-label="Garcia Family Medicine Services Carousel"
         role="region"
@@ -226,7 +227,7 @@ export default function Home() {
       >
         {/* Loading indicator */}
         {isLoading && (
-          <div className="carousel-loading-indicator">
+          <div className={homeStyles.carouselLoading}>
             <div className="carousel-loading-spinner"></div>
             <p>Loading images...</p>
           </div>
@@ -238,6 +239,10 @@ export default function Home() {
               key={`slide-${index}`}
               className={`${homeStyles.carouselSlide} ${
                 index === currentIndex ? homeStyles.active : ''
+              } ${
+                index === previousIndex ? homeStyles.prev : ''
+              } ${
+                index === (currentIndex + 1) % slides.length ? homeStyles.next : ''
               }`}
               aria-hidden={index !== currentIndex}
             >
@@ -246,19 +251,34 @@ export default function Home() {
                 target={slide.target}
                 rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
                 aria-label={slide.alt}
-                style={{ display: 'block' }}
               >
                 <div className={homeStyles.carouselImageWrapper}>
-                  <img
-                    src={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.jpg`}
-                    alt={slide.alt}
-                    className={homeStyles.carouselImage}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    onLoad={() => handleImageLoad(index)}
-                    onError={() => {
-                      handleImageLoad(index);
-                    }}
-                  />
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.webp`}
+                      type="image/webp"
+                    />
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.jpg`}
+                      type="image/jpeg"
+                    />
+                    <source
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.webp`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.jpg`}
+                      alt={slide.alt}
+                      className={homeStyles.carouselImage}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      onLoad={() => handleImageLoad(index)}
+                      onError={() => {
+                        handleImageLoad(index);
+                      }}
+                    />
+                  </picture>
                 </div>
               </a>
             </div>
@@ -267,7 +287,7 @@ export default function Home() {
 
         {/* Navigation Arrows */}
         <button 
-          className="carousel-nav-button carousel-prev-button"
+          className={`${homeStyles.carouselNavButton} ${homeStyles.carouselPrevButton}`}
           onClick={prevSlide}
           aria-label="Previous slide"
           disabled={isLoading}
@@ -278,7 +298,7 @@ export default function Home() {
         </button>
         
         <button 
-          className="carousel-nav-button carousel-next-button"
+          className={`${homeStyles.carouselNavButton} ${homeStyles.carouselNextButton}`}
           onClick={nextSlide}
           aria-label="Next slide"
           disabled={isLoading}
@@ -288,13 +308,13 @@ export default function Home() {
           </svg>
         </button>
 
-        {/* Dots Navigation */}
-        <div className="carousel-dots-container">
+        {/* Dots Navigation at Top */}
+        <div className={homeStyles.carouselDots}>
           {slides.map((_, index) => (
             <button
               key={`dot-${index}`}
-              className={`carousel-dot ${
-                index === currentIndex ? 'active' : ''
+              className={`${homeStyles.carouselDot} ${
+                index === currentIndex ? homeStyles.active : ''
               }`}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -312,7 +332,9 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
+      <div className={homeStyles.mainContent}>
+        <Footer />
+      </div>
     </div>
   );
 }

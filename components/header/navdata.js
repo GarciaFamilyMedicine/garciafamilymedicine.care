@@ -25,12 +25,12 @@ export const nav_links = [
   },
 
   {
-    label: 'Patient Care Essentials',
+    label: 'Core Medical Services',
     dropdown: {
+      twoColumns: true,
       links: [
         {
-          title: 'Core Medical Services',
-          subtitle: 'Primary healthcare offerings and specialized programs',
+          title: 'All Services',
           items: [
             {
               label: 'CoreLift™ Pelvic Health Program',
@@ -65,25 +65,21 @@ export const nav_links = [
               href: '/care/mens-health'
             },
             {
-              label: 'Pediatric Care',
-              href: '/care/pediatric-care'
+              label: 'Mental Health Services',
+              href: '/care/mental-health'
+            },
+            {
+              label: 'Medicare Services',
+              href: '/care/medicare'
+            },
+            {
+              label: 'Veterans Healthcare',
+              href: '/care/veterans'
+            },
+            {
+              label: 'Telehealth Service',
+              href: '/care/telehealth'
             }
-          ],
-        },
-        {
-          title: 'Specialized Care',
-          subtitle: 'Advanced medical services for specific health needs',
-          items: [
-            { label: 'Faith & Family Medicine™', href: '/care/faith-family-medicine' },
-            { label: 'ClearRoad™ DOT Exams', href: '/care/dot-certifications' },
-            { label: 'ValorView™ IME', href: '/care/independent-medical-examinations' },
-            { label: 'Medicare Services', href: '/care/medicare' },
-            { label: 'Mental Health Services', href: '/care/mental-health' },
-            { label: 'Pain Management Services', href: '/care/pain-management' },
-            { label: 'Pelvic Health', href: '/care/pelvichealth' },
-            { label: 'Telehealth Service', href: '/care/telehealth' },
-            { label: 'Veterans Healthcare', href: '/care/veterans' },
-            { label: 'Weight Management Services', href: '/care/weight-management' }
           ],
         },
       ],
@@ -135,6 +131,6 @@ export const nav_links = [
     },
   },
 
-  { href: '/#faqs', label: 'FAQs' },
+  { href: '/faqs', label: 'FAQs' },
   { href: '/contact', label: 'Contact' },
 ];

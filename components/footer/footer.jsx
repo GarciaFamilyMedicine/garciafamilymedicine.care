@@ -200,18 +200,18 @@ export default function Footer() {
           <Link href="/care/veteran-services" className={styles.navLink}>Veteran Services</Link>
           <Link href="/care/weight-management" className={styles.navLink}>Weight Management</Link>
           
-          <Link href="/#faqs" className={styles.navLink}>FAQs</Link>
+          <Link href="/faqs" className={styles.navLink}>FAQs</Link>
           <Link href="/contact" className={styles.navLink}>Contact</Link>
         </div>
 
         {/* Copyright */}
         <div className={styles.copyrightSection}>
           <div className={styles.legalLinks}>
-            <Link href="/privacy-policy" className={styles.legalLink}>Privacy Policy</Link>
+            <Link href="/privacy" className={styles.legalLink}>Privacy Policy</Link>
             <span className={styles.legalSeparator}>|</span>
-            <Link href="/terms-of-use" className={styles.legalLink}>Terms of Use</Link>
+            <Link href="/terms" className={styles.legalLink}>Terms of Use</Link>
             <span className={styles.legalSeparator}>|</span>
-            <Link href="/terms-of-service" className={styles.legalLink}>Terms of Service</Link>
+            <Link href="/terms" className={styles.legalLink}>Terms of Service</Link>
           </div>
           <p className={styles.copyrightText}>Copyright © {currentYear} Garcia Family Medicine. All Rights Reserved.</p>
         </div>

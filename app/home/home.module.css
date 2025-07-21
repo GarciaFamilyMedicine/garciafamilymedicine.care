@@ -1,34 +1,386 @@
-/* Carousel that adapts to image content */
+/* Reset everything - simple carousel */
+
+/* Home page styles - regular logo size */
 
 .carouselSection {
-  position: relative;
   width: 100%;
-  background: #f8f9fa;
-  /* Remove fixed height - let content determine height */
+  min-height: 100vh;
+  padding-top: 85px; /* Space for fixed header */
+  background: 
+    linear-gradient(135deg, #4a90e2 0%, #5e8fbc 25%, #7bb3db 50%, #a1c4e4 75%, #c3d9eb 100%),
+    radial-gradient(ellipse at top right, rgba(74, 144, 226, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(94, 143, 188, 0.3) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Animated wave texture overlay */
+.carouselSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    /* Moving diagonal stripes */
+    repeating-linear-gradient(
+      100deg,
+      transparent,
+      transparent 350px,
+      rgba(255, 255, 255, 0.03) 350px,
+      rgba(255, 255, 255, 0.03) 400px
+    ),
+    /* Grid pattern */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 350px,
+      rgba(255, 255, 255, 0.02) 350px,
+      rgba(255, 255, 255, 0.02) 400px
+    ),
+    /* Subtle dot pattern */
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 50px 50px;
+  animation: wave 60s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Add glowing animated orbs with mesh gradient */
+.carouselSection::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: 
+    /* Large floating orb */
+    radial-gradient(circle at 70% 40%, rgba(94, 143, 188, 0.3) 0%, transparent 50%),
+    /* Medium floating orb */
+    radial-gradient(circle at 30% 60%, rgba(74, 144, 226, 0.25) 0%, transparent 40%),
+    /* Small accent orbs */
+    radial-gradient(circle at 90% 10%, rgba(123, 179, 219, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 10% 90%, rgba(161, 196, 228, 0.2) 0%, transparent 30%),
+    /* Mesh gradient overlay */
+    conic-gradient(from 180deg at 50% 50%, 
+      rgba(74, 144, 226, 0.1) 0deg,
+      rgba(94, 143, 188, 0.05) 60deg,
+      rgba(123, 179, 219, 0.1) 120deg,
+      rgba(161, 196, 228, 0.05) 180deg,
+      rgba(195, 217, 235, 0.1) 240deg,
+      rgba(94, 143, 188, 0.05) 300deg,
+      rgba(74, 144, 226, 0.1) 360deg
+    );
+  animation: meshFloat 45s ease-in-out infinite;
+  z-index: 0;
+  filter: blur(60px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Animated wave pattern */
+@keyframes wave {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.55); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+/* Animated gradient mesh */
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(50px, -30px) rotate(90deg); }
+  50% { transform: translate(-30px, 50px) rotate(180deg); }
+  75% { transform: translate(-50px, -30px) rotate(270deg); }
+}
+
+/* Animated sparkles */
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  25% { 
+    opacity: 0.3; 
+    transform: scale(0.5) rotate(90deg); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(1) rotate(180deg); 
+  }
+  75% { 
+    opacity: 0.3; 
+    transform: scale(0.5) rotate(270deg); 
+  }
+}
+
+/* Floating particles animation */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(10px) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10vh) translateX(-10px) scale(1);
+  }
+  100% {
+    transform: translateY(0vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, 30px) scale(1.1); }
+  66% { transform: translate(30px, -30px) scale(0.9); }
+}
+
+
 .carouselContainer {
-  position: relative;
   width: 100%;
+  min-height: calc(100vh - 85px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Above background patterns */
+  overflow: hidden; /* Hide slides outside container */
+}
+
+/* Sparkle elements */
+.carouselContainer::before,
+.carouselContainer::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.carouselContainer::before {
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 90%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  opacity: 0;
+  animation: sparkle 4s ease-in-out infinite;
+}
+
+.carouselContainer::after {
+  background-image: 
+    radial-gradient(2px 2px at 80% 80%, white, transparent),
+    radial-gradient(1px 1px at 10% 40%, white, transparent),
+    radial-gradient(2px 2px at 40% 20%, white, transparent),
+    radial-gradient(1px 1px at 70% 60%, white, transparent),
+    radial-gradient(1px 1px at 30% 90%, white, transparent);
+  background-size: 250% 250%;
+  background-position: 50% 50%;
+  opacity: 0;
+  animation: sparkle 5s ease-in-out infinite 2s;
 }
 
 .carouselSlide {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%); /* Start from right */
+  transition: transform 0.8s ease-out, 
+              opacity 0.4s ease-out,
+              visibility 0s linear 0.8s;
 }
 
+/* Current slide - centered and visible */
 .carouselSlide.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 10;
+  transition: transform 0.8s ease-out, 
+              opacity 0.4s ease-out,
+              visibility 0s linear;
+}
+
+/* Previous slide - already slid out left (hidden) */
+.carouselSlide.prev {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.carouselSlide a {
+  display: inline-block;
+  max-width: 100%;
 }
 
 .carouselImageWrapper {
-  width: 100%;
-  display: block;
+  display: inline-block;
+  position: relative;
+  padding: 20px;
 }
 
-.carouselImage {
-  width: 100%;
-  height: auto;
+/* Add floating effect to images */
+.carouselImageWrapper::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: 
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.carouselImageWrapper picture {
   display: block;
-  /* Remove object-fit to use natural image behavior */
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  background: white;
+  transform: translateY(-10px);
+}
+
+.carouselSlide.active .carouselImageWrapper:hover picture {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.6),
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Override global img styles - show full image */
+.carouselImage {
+  display: block;
+  max-width: calc(100vw - 80px) !important; /* Add margins */
+  max-height: calc(100vh - 165px) !important; /* Header + padding */
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 12px;
+}
+
+/* Ensure picture element doesn't constrain */
+.carouselImageWrapper img {
+  max-width: calc(100vw - 80px) !important;
+  max-height: calc(100vh - 165px) !important;
+}
+
+/* Dots at bottom of carousel */
+.carouselDots {
+  position: absolute;
+  bottom: 10px; /* Moved down another 10px */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+}
+
+.carouselDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carouselDot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.carouselDot.active {
+  background: #fff;
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Nav buttons */
+.carouselNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1d539f;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.carouselNavButton:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.carouselPrevButton {
+  left: 20px;
+}
+
+.carouselNextButton {
+  right: 20px;
+}
+
+.carouselLoading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+/* Remove the main content wrapper */
+.mainContent {
+  display: contents;
 }

@@ -43,7 +43,7 @@ export default function Header() {
   // Responsive check and menu collapse on resize
   useEffect(() => {
     function handleResize() {
-      const mobile = window.innerWidth <= 768;
+      const mobile = window.innerWidth <= 1200;
       const wasMobile = isMobile;
       setIsMobile(mobile);
       

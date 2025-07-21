@@ -3,7 +3,7 @@
    ======================================================= */
 
 /* Import component modules */
-@import './components/carousel.css';
+/* @import './components/carousel.css'; -- Disabled, using home.module.css instead */
 
 /* Card component - reusable across pages */
 .card {

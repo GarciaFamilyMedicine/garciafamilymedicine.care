@@ -271,3 +271,20 @@
     animation: none;
   }
 }
+
+/* Copyright section */
+.copyright {
+  background: #032c7c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 100;
+  margin-top: auto;
+}
+
+.copyright p {
+  margin: 0;
+  font-family: 'Argentum Sans', sans-serif;
+}

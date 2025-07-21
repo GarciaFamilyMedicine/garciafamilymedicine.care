@@ -1,5 +1,6 @@
 /* =========================================================
    CAROUSEL - FULL IMAGE DISPLAY - NO CROPPING
+   NOTE: This file is currently disabled - using home.module.css instead
    ======================================================= */
 
 /* Carousel Wrapper */
@@ -106,7 +107,7 @@
 /* Dots Navigation */
 .carousel-dots-container {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;

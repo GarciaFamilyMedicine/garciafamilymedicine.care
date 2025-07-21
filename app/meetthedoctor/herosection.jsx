@@ -114,7 +114,8 @@ export default function HeroSection() {
             styles.heroSubtitle,
             mobileStyles.heroSubtitle
           )}>
-            Where ancient healing wisdom meets modern medicine
+            Theresa "Tess" Garcia, MD, FAAFP, Dipl. ABOM<br />
+            Physician | Medical Director | Garcia Family Medicine
           </p>
 
           <div className={combineStyles(

@@ -44,7 +44,8 @@
 /* Desktop navbar alignment helpers */
 .navextra {
   margin-left: auto;
-  padding-right: 20px;
+  padding-right: 12px;
+  padding-left: 8px;
   display: flex;
   align-items: center;
   justify-content: center;

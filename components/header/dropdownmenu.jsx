@@ -179,12 +179,72 @@ export default function DropdownMenu({
         aria-hidden={isMobile ? !mobileDropdownOpen : !isActive}
         className={`${styles.dropdownmenu} ${
           (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.show : ''
-        }`}
+        } ${link.dropdown?.twoColumns ? styles.twoColumnDropdown : ''}`}
         style={dropdownStyle}
         onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
         onMouseLeave={() => !isMobile && onLeave()}
       >
         <div className={styles.dropdowncontent}>
+          {link.dropdown?.twoColumns ? (
+            /* Two column layout for Core Medical Services */
+            <>
+              <div className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
+                <div className={styles.sectionHeader}>
+                  <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[0].title}</h3>
+                </div>
+                <ul>
+                  {link.dropdown.links[0].items?.map((item, itemIndex) => (
+                    <li key={item.label + '-' + itemIndex}>
+                      <Link
+                        href={item.href}
+                        className={styles.dropdownlink}
+                        onClick={handleLinkClick}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Info section for two column layout */}
+              {link.dropdown.info && (
+                <div className={`${styles.dropdowninfo} ${styles.scrollable}`}>
+                  <div className={styles.dropdowninfocard}>
+                    {link.dropdown.info.askDr && (
+                      <div className={styles.askdr}>
+                        <h4>{link.dropdown.info.askDr.title}</h4>
+                        <p>{link.dropdown.info.askDr.description}</p>
+                        <button 
+                          className={styles.askbutton}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // Add your Ask Dr. Tess action here
+                            window.open('https://forms.office.com/r/R5vkttmxpe', '_blank');
+                          }}
+                        >
+                          {link.dropdown.info.askDr.buttonText}
+                        </button>
+                      </div>
+                    )}
+                    {link.dropdown.info.contact && (
+                      <div className={styles.contactinfo}>
+                        <p>
+                          <strong>Phone:</strong>{' '}
+                          <a href={link.dropdown.info.contact.phone.href}>
+                            {link.dropdown.info.contact.phone.display}
+                          </a>
+                        </p>
+                        <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
+                        <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
           {/* LEFT COLUMN - NEWS */}
           <div className={`${styles.dropdownsection} ${styles.scrollable}`}>
             {isEvents ? (
@@ -212,7 +272,6 @@ export default function DropdownMenu({
                             <div className={styles.newsItem}>
                               <div className={styles.newsTitle}>{post.title}</div>
                               <div className={styles.newsDate}>{formatDate(post.publishedDate)}</div>
-                              <div className={styles.newsCategory}>{post.category}</div>
                             </div>
                           </Link>
                         </li>
@@ -444,6 +503,8 @@ export default function DropdownMenu({
               )
             )}
           </div>
+            </>
+          )}
         </div>
       </div>
     </div>

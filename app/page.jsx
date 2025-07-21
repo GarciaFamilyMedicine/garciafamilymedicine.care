@@ -53,8 +53,8 @@ export default function LandingPage() {
         <Image 
           src="/images/logo.png" 
           alt="Garcia Family Medicine Logo" 
-          width={120} 
-          height={120}
+          width={160} 
+          height={160}
           priority
         />
       </div>
@@ -289,6 +289,14 @@ export default function LandingPage() {
           </div>
         </div>
       )}
+      
+      {/* Copyright section */}
+      <footer className={combineStyles(
+        styles.copyright,
+        mobileStyles.copyright
+      )}>
+        <p>&copy; {new Date().getFullYear()} Garcia Family Medicine. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
