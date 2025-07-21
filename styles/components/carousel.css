@@ -11,17 +11,21 @@
   margin-left: 0;
   margin-right: 0;
   overflow: hidden;
-  background: #f8f8f8;
+  background: #000000;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Carousel Container */
 .carousel-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Carousel Slides */
@@ -65,6 +69,9 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-slide-image {
@@ -73,6 +80,23 @@
   object-fit: contain;
   object-position: center;
   display: block;
+  max-height: 100%;
+}
+
+/* Desktop: Show full image without cutoff */
+@media (min-width: 1024px) {
+  .carousel-slide-image {
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
+/* Tablet: Show full image without cutoff */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .carousel-slide-image {
+    object-fit: contain;
+    object-position: center center;
+  }
 }
 
 /* Loading Indicator */
@@ -232,7 +256,7 @@
     overflow: hidden;
   }
 
-  /* Make image fit properly without cutoff */
+  /* Mobile: Show full image without cutoff */
   .carousel-slide-image {
     width: 100%;
     height: 100%;

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import Picture from '@/components/picture';
 import Header from '@/components/header';
 import Footer from '@/components/footer/footer';
 import styles from '../page.module.css';
@@ -256,11 +257,9 @@ export default function Home() {
                 className="carousel-slide-link"
               >
                 <div className="carousel-slide-image-container">
-                  <Image
+                  <Picture
                     src={slide.src}
                     alt={slide.alt}
-                    width={1920}
-                    height={1080}
                     className="carousel-slide-image"
                     priority={index === 0}
                     onLoad={() => handleImageLoad(index)}

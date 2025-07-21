@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Calendar from '../calendar/calendar';
 import { getRecentPosts, formatDate } from '../blog/blog-data';
@@ -21,12 +21,38 @@ export default function DropdownMenu({
 }) {
   const router = useRouter();
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const [dropdownStyle, setDropdownStyle] = useState({});
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
     setActiveDrop(null);
     onLeave();
   };
+
+  // Adjust dropdown position to prevent viewport overflow
+  useEffect(() => {
+    if (isActive && dropdownRef.current && !isMobile) {
+      const dropdown = dropdownRef.current;
+      const rect = dropdown.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const styles = {};
+
+      // Check if dropdown overflows right edge
+      if (rect.right > viewportWidth - 20) {
+        const overflow = rect.right - (viewportWidth - 20);
+        styles.transform = `translateX(calc(-50% - ${overflow}px)) translateY(0)`;
+      }
+      
+      // Check if dropdown overflows left edge
+      if (rect.left < 20) {
+        const overflow = 20 - rect.left;
+        styles.transform = `translateX(calc(-50% + ${overflow}px)) translateY(0)`;
+      }
+
+      setDropdownStyle(styles);
+    }
+  }, [isActive, isMobile]);
 
   // Add click handler for calendar month title
   const handleCalendarClick = () => {
@@ -148,11 +174,13 @@ export default function DropdownMenu({
       </button>
 
       <div
+        ref={dropdownRef}
         role="menu"
         aria-hidden={isMobile ? !mobileDropdownOpen : !isActive}
         className={`${styles.dropdownmenu} ${
           (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.show : ''
         }`}
+        style={dropdownStyle}
         onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
         onMouseLeave={() => !isMobile && onLeave()}
       >
