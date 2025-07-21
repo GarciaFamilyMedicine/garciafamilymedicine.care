@@ -211,17 +211,12 @@ export default function Home() {
       styles.minHScreen,
       mobileStyles.minHScreen
     )}>
-      {/* Fixed header with ref for measurement */}
-      <div ref={headerRef} className={styles.headerContainer}>
-        <Header />
-      </div>
+      {/* Header */}
+      <Header />
 
       {/* Hero carousel section */}
       <section 
         className={homeStyles.carouselSection}
-        style={{ 
-          marginTop: headerHeight > 0 ? `${headerHeight}px` : '80px'
-        }}
         aria-label="Garcia Family Medicine Services Carousel"
         role="region"
         onMouseEnter={() => setIsPaused(true)}
@@ -237,7 +232,7 @@ export default function Home() {
           </div>
         )}
 
-        <div className="carousel-container">
+        <div className={homeStyles.carouselContainer}>
           {slides.map((slide, index) => (
             <div
               key={`slide-${index}`}

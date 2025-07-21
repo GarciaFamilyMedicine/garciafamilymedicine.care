@@ -1,33 +1,45 @@
-/* Home page specific carousel styles */
+/* Carousel that fills viewport */
 
-/* Override any global styles */
 .carouselSection {
   position: relative;
   width: 100%;
-  background: #f8f9fa;
+  height: calc(100vh - 85px); /* Full viewport minus header */
+  background: #000;
+  overflow: hidden;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .carouselSlide {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .carouselSlide.active {
-  display: block;
+  opacity: 1;
 }
 
 .carouselImageWrapper {
+  position: relative;
   width: 100%;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Ensure images are NEVER cropped */
 .carouselImage {
-  max-width: 100% !important;
-  height: auto !important;
-  width: auto !important;
-  display: inline-block !important;
-  object-fit: initial !important;
-  object-position: initial !important;
-  position: static !important;
-  margin: 0 auto !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This fills the space */
+  object-position: center;
 }
