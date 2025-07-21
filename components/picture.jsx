@@ -11,7 +11,7 @@ export default function Picture({
   const basename = src.replace('/images/homepage/', '').replace('.png', '');
   
   return (
-    <picture className={className}>
+    <picture style={{ width: '100%', height: '100%', display: 'block' }}>
       {/* Mobile WebP */}
       <source
         media="(max-width: 768px)"
@@ -37,6 +37,12 @@ export default function Picture({
         loading={priority ? 'eager' : 'lazy'}
         onLoad={onLoad}
         onError={onError}
+        style={{ 
+          width: '100%', 
+          height: '100%', 
+          objectFit: 'contain',
+          objectPosition: 'center'
+        }}
       />
     </picture>
   );
