@@ -11,7 +11,7 @@
   margin-left: 0;
   margin-right: 0;
   overflow: hidden;
-  background: #000000;
+  background: #f8f8f8;
   box-sizing: border-box;
 }
 
@@ -70,7 +70,7 @@
 .carousel-slide-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
@@ -232,31 +232,19 @@
     overflow: hidden;
   }
 
-  /* Make image wider than viewport to enable panning */
+  /* Make image fit properly without cutoff */
   .carousel-slide-image {
-    width: auto;
+    width: 100%;
     height: 100%;
     max-width: none;
-    min-width: 200%; /* Make image wider to show more panning effect */
-    object-fit: cover !important;
-    object-position: left center;
-    position: absolute;
-    left: 0;
-    top: 0;
+    object-fit: contain !important;
+    object-position: center;
+    position: relative;
   }
 
-  /* Smooth continuous pan across the entire image */
+  /* Remove panning animation for contain mode */
   .carousel-slide.active .carousel-slide-image {
-    animation: smoothPan 15s linear forwards;
-  }
-
-  @keyframes smoothPan {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%); /* Smooth scroll to show entire image */
-    }
+    animation: none;
   }
   
   .carousel-nav-button {
