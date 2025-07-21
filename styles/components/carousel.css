@@ -11,7 +11,7 @@
   margin-left: 0;
   margin-right: 0;
   overflow: hidden;
-  background: #000;
+  background: #f8f9fa;
   box-sizing: border-box;
 }
 
@@ -77,11 +77,9 @@
 /* Universal Image Rules - Works with ANY image */
 .carousel-slide-image,
 .carousel-slide-image-container img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
   object-position: center;
   display: block;
 }

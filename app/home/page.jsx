@@ -217,7 +217,7 @@ export default function Home() {
 
       {/* Hero carousel section */}
       <section 
-        className="carousel-wrapper mode-fill"
+        className="carousel-wrapper mode-contain"
         style={{ 
           marginTop: headerHeight > 0 ? `${headerHeight}px` : '80px',
           height: 'auto',
