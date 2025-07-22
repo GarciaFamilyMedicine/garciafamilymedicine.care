@@ -1,7 +1,7 @@
 /* ================ SOCIAL HASHTAGS SECTION ================ */
 .socialSection {
   padding: 2.5rem;
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   border-radius: 16px;
   border: 1px solid #e2e8f0;
   margin-bottom: 2rem;
@@ -22,7 +22,7 @@
 }
 
 .socialContent > p {
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -44,8 +44,8 @@
 }
 
 .hashtagRow:hover {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
+  background-color: #e5e7eb; /* Darker hover background */
+  border-color: #9ca3af; /* Darker border */
 }
 
 .hashtagText {
@@ -116,7 +116,7 @@
 }
 
 .socialProfiles p {
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   margin-bottom: 1rem;
   font-size: 0.95rem;
 }
@@ -228,7 +228,7 @@
 /* ================ HERO SECTION ================ */
 .heroSection {
   padding: 3rem;
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   border-radius: 16px;
   border: 1px solid #e2e8f0;
 }
@@ -367,7 +367,7 @@
   align-items: center;
   text-align: center;
   padding: 1.5rem;
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   border-radius: 12px;
   border: 1px solid #e2e8f0;
 }
@@ -393,7 +393,7 @@
 .detailLabel {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
@@ -408,7 +408,7 @@
 
 .registrationSection {
   padding: 2rem;
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   border-top: 1px solid #e2e8f0;
   text-align: center;
 }
@@ -430,7 +430,7 @@
 
 .registrationSection .registrationNote {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   margin: 0 0 2rem 0;
   background: none;
   padding: 0;
@@ -571,7 +571,7 @@
 }
 
 .conditionsCard {
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
@@ -603,7 +603,7 @@
 }
 
 .condition span {
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   font-size: 0.85rem;
 }
 
@@ -628,7 +628,7 @@
 
 .scheduleIntro {
   text-align: center;
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   margin-bottom: 2.5rem;
   max-width: 600px;
   margin-left: auto;
@@ -675,14 +675,14 @@
 
 .activityContent p {
   margin: 0;
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
   line-height: 1.5;
 }
 
 /* ================ TESTIMONIALS SECTION ================ */
 .testimonialsSection {
   padding: 3rem;
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   border-radius: 16px;
   border: 1px solid #e2e8f0;
   margin-bottom: 3rem;
@@ -779,7 +779,7 @@
 }
 
 .ctaButtons .primaryButton:hover {
-  background: #f8fafc;
+  background: #e2e8f0; /* Darker background for better contrast */
   color: #16537e;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
 }

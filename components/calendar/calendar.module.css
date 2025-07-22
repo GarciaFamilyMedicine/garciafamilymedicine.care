@@ -117,13 +117,9 @@
 }
 
 .navButton:disabled {
-  color: #ccc;
+  color: #6b7280; /* Darker disabled color for better visibility */
   cursor: not-allowed;
-}
-
-.navButton:disabled {
-  color: #ccc;
-  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* =====================
@@ -143,7 +139,7 @@
    ===================== */
 
 .calendarDay {
-  background: #fafafa;
+  background: #f3f4f6; /* Slightly darker background */
   border: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 12px;
   color: var(--dropdown-link);

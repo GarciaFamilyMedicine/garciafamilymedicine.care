@@ -35,7 +35,7 @@
 /* ================ HERO SECTION ================ */
 .heroSection {
   @apply p-12 mb-12;
-  background: linear-gradient(135deg, #fef7f7 0%, #eff6ff 50%, #fef7f7 100%);
+  background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ff 50%, #f3f4f6 100%); /* Slightly darker background */
   border-radius: var(--border-radius);
   border: 2px solid #e5e7eb;
   position: relative;
@@ -67,7 +67,7 @@
 
 .lead {
   @apply text-[1.1rem] leading-relaxed;
-  color: #374151;
+  color: #1f2937; /* Darker gray for better contrast */
 }
 
 .heroImage {
@@ -92,7 +92,7 @@
 
 .columnLeft, .columnRight {
   @apply p-8;
-  background: #f9fafb;
+  background: #f3f4f6; /* Darker light gray */
   border: 1px solid #e5e7eb;
   border-radius: var(--border-radius);
   position: relative;
@@ -213,7 +213,7 @@
 }
 
 .gridItem p {
-  color: #6b7280;
+  color: #374151; /* Darker gray for better contrast */
 }
 
 /* ================ CALL TO ACTION ================ */
@@ -250,8 +250,8 @@
 }
 
 .ctaContent p {
-  @apply text-[1.1rem] mb-6 opacity-90;
-  color: #e5e7eb;
+  @apply text-[1.1rem] mb-6;
+  color: #ffffff; /* White text for better contrast on gradient background */
 }
 
 .ctaButtons {
