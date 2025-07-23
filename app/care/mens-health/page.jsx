@@ -3,10 +3,14 @@
 import styles from '../service.module.css'
 import { FaMale, FaHeartbeat, FaDumbbell, FaStethoscope, FaShieldAlt, FaUserMd } from 'react-icons/fa'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function MensHealth() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -134,7 +138,7 @@ export default function MensHealth() {
                   <li>Cancer screenings</li>
                   <li>Bone health assessment</li>
                   <li>Cognitive health monitoring</li>
-                  <li>Medicare wellness visits</li>
+                  <li>Senior wellness visits</li>
                 </ul>
               </div>
             </div>
@@ -235,5 +239,7 @@ export default function MensHealth() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

@@ -4,10 +4,14 @@ import styles from '../service.module.css'
 import { FaShieldAlt, FaSyringe, FaUserCheck, FaHeartbeat, FaMicroscope } from 'react-icons/fa'
 import { MdScreenSearchDesktop } from 'react-icons/md'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function PreventiveCare() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -107,7 +111,7 @@ export default function PreventiveCare() {
               <div className={styles.scheduleCard}>
                 <h3>Ages 65+</h3>
                 <ul className={styles.scheduleList}>
-                  <li>Medicare wellness visit: Annually</li>
+                  <li>Senior wellness visit: Annually</li>
                   <li>Shingles vaccine: Once</li>
                   <li>Pneumonia vaccine: As recommended</li>
                   <li>Cognitive assessment: Annually</li>
@@ -171,9 +175,9 @@ export default function PreventiveCare() {
 
         <section className={styles.insuranceSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Insurance Coverage</h2>
+            <h2 className={styles.sectionTitle}>Affordable Cash Pay Options</h2>
             <p className={styles.sectionText}>
-              Most insurance plans, including Medicare, cover preventive services at 100% with no out-of-pocket costs. These typically include:
+              We offer affordable cash pay rates for all preventive services, making essential healthcare accessible to everyone. Our services include:
             </p>
             <ul className={styles.coverageList}>
               <li>Annual wellness visits</li>
@@ -227,5 +231,7 @@ export default function PreventiveCare() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

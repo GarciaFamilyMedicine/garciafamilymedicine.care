@@ -3,10 +3,14 @@
 import styles from '../service.module.css'
 import { FaFemale, FaBaby, FaHeartbeat, FaRibbon, FaUserMd, FaCalendarCheck } from 'react-icons/fa'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function WomensHealth() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -213,5 +217,7 @@ export default function WomensHealth() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

@@ -3,11 +3,15 @@
 import styles from './myclinic365.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaBriefcase, FaHeartbeat, FaClock, FaShieldAlt, FaChartLine, FaUsersMedical } from 'react-icons/fa';
+import { FaBriefcase, FaHeartbeat, FaClock, FaShieldAlt, FaChartLine, FaUserMd } from 'react-icons/fa';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function MyClinic365Page() {
   return (
-    <div className={styles.container}>
+    <>
+      <Header />
+      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>MyClinic365™</h1>
@@ -91,7 +95,7 @@ export default function MyClinic365Page() {
             <p>Data-driven insights for workforce health</p>
           </div>
           <div className={styles.featureCard}>
-            <FaUsersMedical className={styles.featureIcon} />
+            <FaUserMd className={styles.featureIcon} />
             <h3>Care Coordination</h3>
             <p>Seamless integration with existing benefits</p>
           </div>
@@ -278,5 +282,7 @@ export default function MyClinic365Page() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }

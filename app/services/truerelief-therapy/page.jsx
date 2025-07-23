@@ -4,10 +4,14 @@ import styles from './truerelief-therapy.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaCheckCircle, FaShieldAlt, FaHeartbeat, FaClock, FaUserMd, FaChartLine } from 'react-icons/fa';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function TrueReliefTherapyPage() {
   return (
-    <div className={styles.container}>
+    <>
+      <Header />
+      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>TrueRelief™ Therapy</h1>
@@ -228,5 +232,7 @@ export default function TrueReliefTherapyPage() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }

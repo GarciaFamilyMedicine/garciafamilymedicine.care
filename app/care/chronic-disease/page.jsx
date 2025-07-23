@@ -4,11 +4,15 @@ import styles from '../service.module.css'
 import { FaHeartbeat, FaTint, FaLungs, FaBrain, FaUserMd } from 'react-icons/fa'
 import { BiPlusMedical } from 'react-icons/bi'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function ChronicDisease() {
   return (
-    <div className={styles.servicePage}>
-      <div className={styles.hero}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
+        <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Chronic Disease Management</h1>
@@ -197,5 +201,7 @@ export default function ChronicDisease() {
         </section>
       </div>
     </div>
+    <Footer />
+    </>
   )
 }

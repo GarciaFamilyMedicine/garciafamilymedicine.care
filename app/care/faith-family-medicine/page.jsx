@@ -3,10 +3,14 @@
 import styles from '../service.module.css'
 import { FaPray, FaHeart, FaUsers, FaCross, FaHandsHelping, FaBookOpen } from 'react-icons/fa'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function FaithFamilyMedicine() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -48,30 +52,33 @@ export default function FaithFamilyMedicine() {
             <div className={styles.servicesGrid}>
               <div className={styles.serviceCard}>
                 <FaHeart className={styles.serviceIcon} />
-                <h3>Physical Health</h3>
+                <h3>Comprehensive Medical Services</h3>
                 <ul className={styles.serviceList}>
                   <li>Routine physical examinations</li>
-                  <li>Management of chronic conditions</li>
-                  <li>Acute care for illnesses</li>
-                  <li>Preventive screenings</li>
+                  <li>Management of chronic conditions (diabetes, hypertension, heart disease)</li>
+                  <li>Acute care for illnesses and injuries</li>
+                  <li>Women's health services</li>
+                  <li>Pediatric care</li>
+                  <li>Geriatric medicine</li>
+                  <li>Mental health support</li>
                 </ul>
               </div>
               <div className={styles.serviceCard}>
                 <FaUsers className={styles.serviceIcon} />
-                <h3>Family Care</h3>
+                <h3>Family-Centered Care</h3>
                 <ul className={styles.serviceList}>
-                  <li>Pediatric care</li>
-                  <li>Women's health services</li>
-                  <li>Men's health</li>
-                  <li>Geriatric medicine</li>
+                  <li>Care for all ages from newborns to seniors</li>
+                  <li>Preventive care and wellness screenings</li>
+                  <li>Immunizations and health education</li>
+                  <li>Chronic disease management</li>
                 </ul>
               </div>
               <div className={styles.serviceCard}>
                 <FaPray className={styles.serviceIcon} />
                 <h3>Spiritual Support</h3>
                 <ul className={styles.serviceList}>
-                  <li>Prayer with patients</li>
-                  <li>Spiritual counseling</li>
+                  <li>Prayer with patients (when welcomed)</li>
+                  <li>Spiritual and emotional support</li>
                   <li>Faith community collaboration</li>
                   <li>Holistic wellness guidance</li>
                 </ul>
@@ -168,5 +175,7 @@ export default function FaithFamilyMedicine() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

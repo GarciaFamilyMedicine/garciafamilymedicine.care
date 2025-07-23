@@ -128,7 +128,7 @@ export const nav_links = [
             { label: 'Preventive Care', href: '/care/preventive-care' },
             { label: 'Wellness Exams', href: '/care/wellness-exams' },
             { label: 'Chronic Disease', href: '/care/chronic-disease' },
-            { label: 'Medicare Services', href: '/care/medicare' }
+            { label: 'Cash Pay Options', href: '/care/cash-pay' }
           ],
         },
         {

@@ -59,7 +59,7 @@ export default function Footer() {
                 </div>
                 <div className={styles.feature}>
                   <span className={styles.featureIcon}>📋</span>
-                  <span>Medicare Accepted</span>
+                  <span>Affordable Cash Pay Rates</span>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function Footer() {
             <div className={styles.contactInfoItem}>
               <h4 className={styles.contactInfoTitle}>Hours</h4>
               <p className={styles.contactInfoContent}>
-                Mon: CLOSED | Tue-Fri: 11-7 PM | Sat: 12-4PM | Sun: CLOSED
+                Mon: CLOSED | Tue-Fri: 9-5 PM | Weekends & Evenings Available
               </p>
             </div>
 
@@ -199,7 +199,7 @@ export default function Footer() {
           <Link href="/care/family-medicine" className={styles.navLink}>Family Medicine</Link>
           <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
           <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
-          <Link href="/care/medicare" className={styles.navLink}>Medicare Services</Link>
+          <Link href="/care/cash-pay" className={styles.navLink}>Cash Pay Options</Link>
           <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
           <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
           <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>

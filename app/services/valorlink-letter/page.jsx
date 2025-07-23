@@ -4,10 +4,14 @@ import styles from './valorlink-letter.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaMedal, FaFileAlt, FaShieldAlt, FaClock, FaUserMd, FaCheckCircle } from 'react-icons/fa';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function ValorLinkLetterPage() {
   return (
-    <div className={styles.container}>
+    <>
+      <Header />
+      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>ValorLink™ Letter</h1>
@@ -323,5 +327,7 @@ export default function ValorLinkLetterPage() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }

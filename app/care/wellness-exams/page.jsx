@@ -3,10 +3,14 @@
 import styles from '../service.module.css'
 import { FaHeartbeat, FaStethoscope, FaMicroscope, FaClipboardCheck } from 'react-icons/fa'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function WellnessExams() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -92,8 +96,8 @@ export default function WellnessExams() {
                 <p>Comprehensive health screenings, chronic disease prevention, lifestyle counseling, and workplace health requirements.</p>
               </div>
               <div className={styles.benefitCard}>
-                <h3>Medicare Wellness (65+ years)</h3>
-                <p>Annual Medicare wellness visits, cognitive assessments, fall prevention, medication reviews, and preventive care planning.</p>
+                <h3>Senior Wellness (65+ years)</h3>
+                <p>Annual senior wellness visits, cognitive assessments, fall prevention, medication reviews, and preventive care planning - all at affordable cash pay rates.</p>
               </div>
             </div>
           </div>
@@ -141,7 +145,7 @@ export default function WellnessExams() {
               </div>
               <div className={styles.faqItem}>
                 <h3>Is my wellness exam covered by insurance?</h3>
-                <p>Most insurance plans, including Medicare, cover annual wellness exams at no cost to you.</p>
+                <p>We offer affordable cash pay rates for all wellness exams, making preventive care accessible to everyone.</p>
               </div>
               <div className={styles.faqItem}>
                 <h3>How long does a wellness exam take?</h3>
@@ -169,5 +173,7 @@ export default function WellnessExams() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

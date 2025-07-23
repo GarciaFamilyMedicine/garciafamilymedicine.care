@@ -3,10 +3,14 @@
 import styles from '../service.module.css'
 import { FaUsers, FaBaby, FaChild, FaUserGraduate, FaUserTie, FaUserClock } from 'react-icons/fa'
 import Link from 'next/link'
+import Header from '../../../components/header'
+import Footer from '../../../components/footer/footer'
 
 export default function FamilyMedicine() {
   return (
-    <div className={styles.servicePage}>
+    <>
+      <Header />
+      <div className={styles.servicePage}>
       <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -80,7 +84,7 @@ export default function FamilyMedicine() {
                 <FaUserClock className={styles.serviceIcon} />
                 <h3>Senior Care</h3>
                 <ul className={styles.serviceList}>
-                  <li>Medicare wellness visits</li>
+                  <li>Senior wellness visits</li>
                   <li>Medication management</li>
                   <li>Fall prevention</li>
                   <li>Memory assessment</li>
@@ -235,5 +239,7 @@ export default function FamilyMedicine() {
         </section>
       </div>
     </div>
+    <Footer />
+  </>
   )
 }

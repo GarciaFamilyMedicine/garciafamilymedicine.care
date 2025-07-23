@@ -4,10 +4,14 @@ import styles from './carebridge.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaGlobe, FaMobileAlt, FaUserMd, FaClock, FaShieldAlt, FaChartBar } from 'react-icons/fa';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function CareBridgePage() {
   return (
-    <div className={styles.container}>
+    <>
+      <Header />
+      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>CareBridge™</h1>
@@ -305,5 +309,7 @@ export default function CareBridgePage() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }

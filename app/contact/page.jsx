@@ -42,7 +42,7 @@ export default function Contact() {
               <LocationInfo />
             </div>
             <div className={styles.bottomNotice}>
-              <p>We accept Medicare and offer affordable cash-pay rates for uninsured patients.</p>
+              <p>We offer affordable cash-pay rates for all patients.</p>
             </div>
           </section>
         </main>
@@ -71,8 +71,8 @@ const ContactDetails = () => (
       </div>
       <div className={styles.contactTableRow}>
         <span className={styles.contactTableLabel}>Email:</span>
-        <a href="mailto:hello@garciafamilymedicine.care" className={styles.contactTableValue}>
-          hello@garciafamilymedicine.care
+        <a href="mailto:admin@garciafamilymedicine.care" className={styles.contactTableValue}>
+          admin@garciafamilymedicine.care
         </a>
       </div>
     </div>
@@ -89,15 +89,11 @@ const OfficeHours = () => (
       </div>
       <div className={styles.hoursTableRow}>
         <span className={styles.hoursTableDay}>Tuesday - Friday</span>
-        <span className={styles.hoursTableTime}>1:00 PM - 7:00 PM</span>
+        <span className={styles.hoursTableTime}>9:00 AM - 5:00 PM</span>
       </div>
       <div className={styles.hoursTableRow}>
-        <span className={styles.hoursTableDay}>Saturday</span>
-        <span className={styles.hoursTableTime}>1:00 PM - 3:00 PM</span>
-      </div>
-      <div className={styles.hoursTableRow}>
-        <span className={styles.hoursTableDay}>Sunday</span>
-        <span className={`${styles.hoursTableTime} ${styles.closed}`}>Closed</span>
+        <span className={styles.hoursTableDay}>Weekends & Evenings</span>
+        <span className={styles.hoursTableTime}>By Appointment</span>
       </div>
     </div>
   </div>
