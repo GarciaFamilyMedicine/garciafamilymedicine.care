@@ -1,7 +1,7 @@
 'use client'
 
 import styles from '../service.module.css'
-import { FaPray, FaHeart, FaUsers, FaCross, FaHandsHelping, FaBookOpen } from 'react-icons/fa'
+import { FaPray, FaHeart, FaUsers, FaCross, FaHandsHelping, FaBookOpen, FaAppleAlt, FaRunning, FaBrain, FaBed, FaPeopleArrows } from 'react-icons/fa'
 import Link from 'next/link'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer/footer'
@@ -21,17 +21,17 @@ export default function FaithFamilyMedicine() {
 
         <div className={styles.mainContent}>
           <section className={styles.introSection}>
-          <div className={styles.container}>
+            <div className={styles.container}>
             <p className={styles.leadText}>
               At Garcia Family Medicine, we believe that true healing encompasses far more than treating symptoms or diagnosing conditions. Our practice is founded on the understanding that you are a complete person—body, soul, and spirit—and that authentic wellness requires attention to every aspect of your being.
             </p>
             <p className={styles.sectionText}>
               Faith & Family Medicine™ represents our commitment to providing whole-person care that honors not only your physical health but also acknowledges the profound connection between your spiritual well-being and your overall health journey.
             </p>
-          </div>
-        </section>
+            </div>
+          </section>
 
-        <section className={styles.philosophySection}>
+        <section className={styles.servicesSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Medicine as Art and Calling</h2>
             <p className={styles.sectionText}>
@@ -110,7 +110,7 @@ export default function FaithFamilyMedicine() {
           </div>
         </section>
 
-        <section className={styles.prayerSection}>
+        <section className={styles.servicesSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>The Power of Prayer in Healing</h2>
             <p className={styles.sectionText}>
@@ -122,36 +122,66 @@ export default function FaithFamilyMedicine() {
           </div>
         </section>
 
-        <section className={styles.holisticSection}>
+        <section className={styles.servicesSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Holistic Health Assessment</h2>
             <p className={styles.sectionText}>
               This holistic approach includes assessing your nutritional status, exercise habits, sleep patterns, stress levels, and spiritual well-being, providing guidance on healthy lifestyle choices that honor your body as a temple.
             </p>
-            <div className={styles.assessmentGrid}>
-              <div className={styles.assessmentItem}>
+            <div className={styles.servicesGrid}>
+              <div className={styles.serviceCard}>
+                <FaAppleAlt className={styles.serviceIcon} />
                 <h3>Nutritional Guidance</h3>
-                <p>Personalized dietary recommendations that nourish your body</p>
+                <ul className={styles.serviceList}>
+                  <li>Personalized dietary recommendations</li>
+                  <li>Nutritional counseling</li>
+                  <li>Healthy eating plans</li>
+                </ul>
               </div>
-              <div className={styles.assessmentItem}>
+              <div className={styles.serviceCard}>
+                <FaRunning className={styles.serviceIcon} />
                 <h3>Exercise & Movement</h3>
-                <p>Physical activity plans that honor your body's capabilities</p>
+                <ul className={styles.serviceList}>
+                  <li>Personalized fitness plans</li>
+                  <li>Safe exercise recommendations</li>
+                  <li>Movement therapy guidance</li>
+                </ul>
               </div>
-              <div className={styles.assessmentItem}>
+              <div className={styles.serviceCard}>
+                <FaBrain className={styles.serviceIcon} />
                 <h3>Stress Management</h3>
-                <p>Techniques to find peace amidst life's challenges</p>
+                <ul className={styles.serviceList}>
+                  <li>Stress reduction techniques</li>
+                  <li>Mindfulness practices</li>
+                  <li>Coping strategies</li>
+                </ul>
               </div>
-              <div className={styles.assessmentItem}>
+              <div className={styles.serviceCard}>
+                <FaBed className={styles.serviceIcon} />
                 <h3>Sleep Wellness</h3>
-                <p>Strategies for restorative rest and healing</p>
+                <ul className={styles.serviceList}>
+                  <li>Sleep hygiene education</li>
+                  <li>Rest optimization strategies</li>
+                  <li>Healing through proper rest</li>
+                </ul>
               </div>
-              <div className={styles.assessmentItem}>
+              <div className={styles.serviceCard}>
+                <FaPray className={styles.serviceIcon} />
                 <h3>Spiritual Well-being</h3>
-                <p>Support for your faith journey and spiritual growth</p>
+                <ul className={styles.serviceList}>
+                  <li>Faith journey support</li>
+                  <li>Spiritual counseling</li>
+                  <li>Prayer and meditation guidance</li>
+                </ul>
               </div>
-              <div className={styles.assessmentItem}>
+              <div className={styles.serviceCard}>
+                <FaPeopleArrows className={styles.serviceIcon} />
                 <h3>Community Connection</h3>
-                <p>Fostering relationships that support healing</p>
+                <ul className={styles.serviceList}>
+                  <li>Support group referrals</li>
+                  <li>Community resource connections</li>
+                  <li>Faith community integration</li>
+                </ul>
               </div>
             </div>
           </div>
