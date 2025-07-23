@@ -216,8 +216,8 @@ export const nav_links = [
       ],
       info: {
         askDr: {
-          title: 'Partnership Opportunities',
-          description: 'Interested in partnering with Garcia Family Medicine?',
+          title: 'Community Partnerships',
+          description: 'Learn about our community partners and how we work together to serve our patients.',
           buttonText: 'Contact Us',
         },
         contact: {
