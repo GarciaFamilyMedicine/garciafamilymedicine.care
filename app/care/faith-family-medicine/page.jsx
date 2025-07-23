@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '../service.module.css'
+import styles from './page.module.css'
 import { FaPray, FaHeart, FaUsers, FaCross, FaHandsHelping, FaBookOpen, FaAppleAlt, FaRunning, FaBrain, FaBed, FaPeopleArrows } from 'react-icons/fa'
 import Link from 'next/link'
 import Header from '../../../components/header'
