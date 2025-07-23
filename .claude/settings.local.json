@@ -75,7 +75,10 @@
       "Bash(find app/care -name \"*.jsx\" -exec wc -l {} +)",
       "Bash(git add -A)",
       "Bash(git commit -m \"$(cat <<''EOF''\nfix: standardize primary-care page formatting\n\n- Converted primary-care page to use standard service.module.css styles\n- Added hero section with overlay matching other care pages\n- Reorganized content into service cards with icons\n- Added process steps, FAQ section, and approach sections\n- Now consistent with all other Learn/care pages\n\n🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git push origin main)"
+      "Bash(git push origin main)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

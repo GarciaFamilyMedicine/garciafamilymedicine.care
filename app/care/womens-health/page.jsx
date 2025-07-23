@@ -11,13 +11,13 @@ export default function WomensHealth() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Women's Health</h1>
-          <p className={styles.heroSubtitle}>Comprehensive Care for Every Stage of a Woman's Life</p>
+        <div className={styles.hero}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Women's Health</h1>
+            <p className={styles.heroSubtitle}>Comprehensive Care for Every Stage of a Woman's Life</p>
+          </div>
         </div>
-      </div>
 
       <div className={styles.mainContent}>
         <section className={styles.introSection}>

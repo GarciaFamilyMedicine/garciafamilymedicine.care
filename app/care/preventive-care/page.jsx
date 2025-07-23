@@ -12,13 +12,13 @@ export default function PreventiveCare() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Preventive Care</h1>
-          <p className={styles.heroSubtitle}>Stay Healthy with Proactive Medical Care</p>
+        <div className={styles.hero}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Preventive Care</h1>
+            <p className={styles.heroSubtitle}>Stay Healthy with Proactive Medical Care</p>
+          </div>
         </div>
-      </div>
 
       <div className={styles.mainContent}>
         <section className={styles.introSection}>

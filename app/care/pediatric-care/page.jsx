@@ -11,13 +11,13 @@ export default function PediatricCare() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Pediatric Care</h1>
-          <p className={styles.heroSubtitle}>Compassionate Healthcare for Your Growing Child</p>
+        <div className={styles.hero}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Pediatric Care</h1>
+            <p className={styles.heroSubtitle}>Compassionate Healthcare for Your Growing Child</p>
+          </div>
         </div>
-      </div>
 
       <div className={styles.mainContent}>
         <section className={styles.introSection}>

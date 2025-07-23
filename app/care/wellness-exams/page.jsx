@@ -11,13 +11,13 @@ export default function WellnessExams() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Wellness Exams</h1>
-          <p className={styles.heroSubtitle}>Comprehensive Health Assessments for Every Stage of Life</p>
+        <div className={styles.hero}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Wellness Exams</h1>
+            <p className={styles.heroSubtitle}>Comprehensive Health Assessments for Every Stage of Life</p>
+          </div>
         </div>
-      </div>
 
       <div className={styles.mainContent}>
         <section className={styles.introSection}>

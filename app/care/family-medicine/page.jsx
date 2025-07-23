@@ -11,13 +11,13 @@ export default function FamilyMedicine() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Family Medicine</h1>
-          <p className={styles.heroSubtitle}>Comprehensive Healthcare for Every Generation</p>
+        <div className={styles.hero}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Family Medicine</h1>
+            <p className={styles.heroSubtitle}>Comprehensive Healthcare for Every Generation</p>
+          </div>
         </div>
-      </div>
 
       <div className={styles.mainContent}>
         <section className={styles.introSection}>
