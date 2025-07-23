@@ -3,7 +3,9 @@
 .pageWrapper {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Animated Background */
@@ -73,6 +75,7 @@
   position: relative;
   z-index: 1;
   padding-top: 85px;
+  flex: 1 0 auto;
 }
 
 .container {
