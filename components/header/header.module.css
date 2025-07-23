@@ -38,7 +38,7 @@
 
 .topbuttons { 
   display: flex; 
-  gap: 15px; 
+  gap: 8px; 
 }
 
 .topbutton {
@@ -48,8 +48,8 @@
   font-size: 12px;
   cursor: pointer;
   height: var(--top-bar-height);
-  min-width: 80px;
-  padding: 0 8px;
+  min-width: auto;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   justify-content: center;

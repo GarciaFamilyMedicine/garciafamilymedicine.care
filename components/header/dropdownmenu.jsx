@@ -179,7 +179,7 @@ export default function DropdownMenu({
         aria-hidden={isMobile ? !mobileDropdownOpen : !isActive}
         className={`${styles.dropdownmenu} ${
           (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.show : ''
-        } ${link.dropdown?.twoColumns ? styles.twoColumnDropdown : ''}`}
+        } ${link.dropdown?.twoColumns ? styles.twoColumnDropdown : ''} ${link.dropdown?.compactMode ? styles.compactDropdown : ''}`}
         style={dropdownStyle}
         onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
         onMouseLeave={() => !isMobile && onLeave()}
@@ -188,24 +188,34 @@ export default function DropdownMenu({
           {link.dropdown?.twoColumns ? (
             /* Two column layout for Core Medical Services */
             <>
-              <div className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
-                <div className={styles.sectionHeader}>
-                  <h3 className={styles.dropdownsectiontitle}>{link.dropdown.links[0].title}</h3>
+              {link.dropdown.links?.map((column, columnIndex) => (
+                <div key={columnIndex} className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
+                  <div className={styles.sectionHeader}>
+                    <h3 className={styles.dropdownsectiontitle}>{column.title}</h3>
+                    {column.subtitle && (
+                      <p className={styles.sectionSubtitle}>{column.subtitle}</p>
+                    )}
+                  </div>
+                  <ul>
+                    {column.items?.map((item, itemIndex) => (
+                      <li key={item.label + '-' + itemIndex}>
+                        <Link
+                          href={item.href}
+                          className={styles.dropdownlink}
+                          onClick={handleLinkClick}
+                        >
+                          <div className={styles.linkContent}>
+                            <span className={styles.linkLabel}>{item.label}</span>
+                            {item.description && !link.dropdown?.compactMode && (
+                              <span className={styles.linkDescription}>{item.description}</span>
+                            )}
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul>
-                  {link.dropdown.links[0].items?.map((item, itemIndex) => (
-                    <li key={item.label + '-' + itemIndex}>
-                      <Link
-                        href={item.href}
-                        className={styles.dropdownlink}
-                        onClick={handleLinkClick}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              ))}
               {/* Info section for two column layout */}
               {link.dropdown.info && (
                 <div className={`${styles.dropdowninfo} ${styles.scrollable}`}>
@@ -334,7 +344,12 @@ export default function DropdownMenu({
                             className={styles.dropdownlink}
                             onClick={handleLinkClick}
                           >
-                            {item.label}
+                            <div className={styles.linkContent}>
+                              <span className={styles.linkLabel}>{item.label}</span>
+                              {item.description && (
+                                <span className={styles.linkDescription}>{item.description}</span>
+                              )}
+                            </div>
                           </Link>
                         )}
                       </li>
@@ -447,7 +462,12 @@ export default function DropdownMenu({
                             className={styles.dropdownlink}
                             onClick={handleLinkClick}
                           >
-                            {item.label}
+                            <div className={styles.linkContent}>
+                              <span className={styles.linkLabel}>{item.label}</span>
+                              {item.description && (
+                                <span className={styles.linkDescription}>{item.description}</span>
+                              )}
+                            </div>
                           </Link>
                         )}
                       </li>

@@ -173,35 +173,37 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <div className={styles.navLinksGrid}>
+          {/* Quick Links */}
           <Link href="/meetthedoctor" className={styles.navLink}>Meet the Doctor</Link>
           <Link href="/news" className={styles.navLink}>News & Blog</Link>
           <Link href="/events/current" className={styles.navLink}>Current Events</Link>
-          <Link href="/events/past" className={styles.navLink}>Past Events</Link>
-          
-          {/* Core Medical Services */}
-          <Link href="/services/corelift" className={styles.navLink}>CoreLift™ Program</Link>
-          <Link href="/care/primary-care" className={styles.navLink}>Primary Care</Link>
-          <Link href="/care/wellness-exams" className={styles.navLink}>Wellness Exams</Link>
-          <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
-          <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
-          <Link href="/care/family-medicine" className={styles.navLink}>Family Medicine</Link>
-          <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
-          <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
-          <Link href="/care/pediatric-care" className={styles.navLink}>Pediatric Care</Link>
-          
-          {/* Specialized Care */}
-          <Link href="/care/pelvichealth" className={styles.navLink}>Pelvic Health</Link>
-          <Link href="/care/dot-certifications" className={styles.navLink}>DOT Certifications</Link>
-          <Link href="/care/independent-medical-examinations" className={styles.navLink}>Medical Examinations</Link>
-          <Link href="/care/medicare" className={styles.navLink}>Medicare Services</Link>
-          <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>
-          <Link href="/care/pain-management" className={styles.navLink}>Pain Management</Link>
-          <Link href="/care/telehealth" className={styles.navLink}>Telehealth</Link>
-          <Link href="/care/veteran-services" className={styles.navLink}>Veteran Services</Link>
-          <Link href="/care/weight-management" className={styles.navLink}>Weight Management</Link>
-          
           <Link href="/faqs" className={styles.navLink}>FAQs</Link>
           <Link href="/contact" className={styles.navLink}>Contact</Link>
+          
+          {/* Premium Healthcare Services */}
+          <Link href="/care/faith-family-medicine" className={styles.navLink}>Faith & Family Medicine™</Link>
+          <Link href="/services/corelift" className={styles.navLink}>CoreLift™ Program</Link>
+          <Link href="/services/nourish-thrive-journey" className={styles.navLink}>Nourish & Thrive™ Journey</Link>
+          <Link href="/services/truerelief-therapy" className={styles.navLink}>TrueRelief™ Therapy</Link>
+          <Link href="/services/peacewithin-life-coaching" className={styles.navLink}>PeaceWithin™ Life Coaching</Link>
+          
+          {/* Professional Services */}
+          <Link href="/services/clearroad-dot-exams" className={styles.navLink}>ClearRoad™ DOT Exams</Link>
+          <Link href="/services/valorview-ime" className={styles.navLink}>ValorView™ IME</Link>
+          <Link href="/services/valorlink-letter" className={styles.navLink}>ValorLink™ Letters</Link>
+          <Link href="/services/myclinic365" className={styles.navLink}>MyClinic365™</Link>
+          <Link href="/services/carebridge" className={styles.navLink}>CareBridge™</Link>
+          
+          {/* Health Education */}
+          <Link href="/care/primary-care" className={styles.navLink}>Primary Care</Link>
+          <Link href="/care/family-medicine" className={styles.navLink}>Family Medicine</Link>
+          <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
+          <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
+          <Link href="/care/medicare" className={styles.navLink}>Medicare Services</Link>
+          <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
+          <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
+          <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>
+          <Link href="/care/telehealth" className={styles.navLink}>Telehealth</Link>
         </div>
 
         {/* Copyright */}

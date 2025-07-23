@@ -57,7 +57,11 @@
       "Bash(pac:*)",
       "Bash(npx:*)",
       "Bash(start:*)",
-      "Bash(cmd.exe:*)"
+      "Bash(cmd.exe:*)",
+      "Bash(for service in faith-family-medicine clearroad-dot-exams valorview-ime peacewithin-life-coaching nourish-thrive-journey truerelief-therapy myclinic365 carebridge valorlink-letter)",
+      "Bash(do echo \"Checking: $service\")",
+      "Bash(test:*)",
+      "Bash(done)"
     ],
     "deny": []
   }
