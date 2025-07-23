@@ -11,7 +11,7 @@ export default function FaithFamilyMedicine() {
     <>
       <Header />
       <div className={styles.servicePage}>
-      <div className={styles.hero}>
+        <div className={styles.hero}>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Faith & Family Medicine™</h1>
@@ -176,6 +176,6 @@ export default function FaithFamilyMedicine() {
       </div>
     </div>
     <Footer />
-  </>
+    </>
   )
 }
