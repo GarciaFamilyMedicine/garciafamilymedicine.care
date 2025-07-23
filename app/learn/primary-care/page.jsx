@@ -19,21 +19,21 @@ export default function PrimaryCare() {
           </div>
         </div>
 
-        <div className={styles.mainContent}>
-          <section className={styles.introSection}>
-            <div className={styles.container}>
-              <p className={styles.leadText}>
-                At Garcia Family Medicine, we serve as your primary healthcare partner, providing continuous, comprehensive medical care that addresses your immediate health needs while focusing on long-term wellness. Our primary care services form the foundation of your healthcare journey.
-              </p>
-            </div>
-          </section>
+      <div className={styles.mainContent}>
+        <section className={styles.introSection}>
+          <div className={styles.container}>
+            <p className={styles.leadText}>
+              At Garcia Family Medicine, we serve as your primary healthcare partner, providing continuous, comprehensive medical care that addresses your immediate health needs while focusing on long-term wellness. Our primary care services form the foundation of your healthcare journey.
+            </p>
+          </div>
+        </section>
 
-          <section className={styles.servicesSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>What is Primary Care?</h2>
-              <p className={styles.sectionText}>
-                Primary care is your first point of contact for all non-emergency health concerns. Dr. Tess Garcia and our team provide coordinated care that considers your complete health picture, including physical, mental, and emotional well-being. We build lasting relationships with our patients, allowing us to understand your unique health history, lifestyle, and goals.
-              </p>
+        <section className={styles.servicesSection}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>What is Primary Care?</h2>
+            <p className={styles.sectionText}>
+              Primary care is your first point of contact for all non-emergency health concerns. Dr. Tess Garcia and our team provide coordinated care that considers your complete health picture, including physical, mental, and emotional well-being. We build lasting relationships with our patients, allowing us to understand your unique health history, lifestyle, and goals.
+            </p>
               
               <div className={styles.servicesGrid}>
                 <div className={styles.serviceCard}>

@@ -209,7 +209,7 @@ export default function WomensHealth() {
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule Women's Health Visit
               </Link>
-              <Link href="/care/pelvichealth" className={styles.secondaryButton}>
+              <Link href="/learn/pelvichealth" className={styles.secondaryButton}>
                 Learn About Pelvic Health
               </Link>
             </div>

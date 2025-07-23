@@ -378,6 +378,8 @@
   color: var(--dropdown-link);
   margin: 12px 0;
   line-height: 1.4;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .contactinfo p:first-child {
@@ -411,6 +413,31 @@
 }
 
 .contactinfo a:hover {
+  text-decoration: underline;
+}
+
+/* DROPDOWN FOOTER LINKS - Small text links at bottom of menu */
+.dropdownFooterLinks {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerLink {
+  font-size: 12px;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.footerLink:hover {
+  color: var(--hover-blue);
   text-decoration: underline;
 }
 

@@ -231,7 +231,7 @@ export default function MensHealth() {
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule Men's Health Exam
               </Link>
-              <Link href="/care/preventive-care" className={styles.secondaryButton}>
+              <Link href="/learn/preventive-care" className={styles.secondaryButton}>
                 Learn About Prevention
               </Link>
             </div>

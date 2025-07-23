@@ -223,7 +223,7 @@ export default function PreventiveCare() {
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule Preventive Visit
               </Link>
-              <Link href="/care/wellness-exams" className={styles.secondaryButton}>
+              <Link href="/learn/wellness-exams" className={styles.secondaryButton}>
                 Learn About Wellness Exams
               </Link>
             </div>

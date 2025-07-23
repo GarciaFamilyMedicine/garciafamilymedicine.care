@@ -9,20 +9,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` - Start development server (http://localhost:3000)
 - `npm run build` - Build static export for production
 - `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- `npm run lint` - Run ESLint with Next.js core-web-vitals config
 
 ### Testing
 No test framework is currently configured in this project.
 
 ## Architecture Overview
 
-This is a **Next.js 15** application using the **App Router** (`/app` directory) for Garcia Family Medicine's website. The application is configured for **static export** (`output: 'export'`) targeting Azure Static Web Apps deployment.
+This is a **Next.js 15.3.3** application using the **App Router** (`/app` directory) for Garcia Family Medicine's website. The application is configured for **static export** (`output: 'export'`) targeting Azure Static Web Apps deployment.
 
 ### Key Technologies
 - **Framework**: Next.js 15.3.3 with App Router
-- **Styling**: Tailwind CSS v3.4.10 + CSS Modules
+- **Styling**: Tailwind CSS v3.4.10 + CSS Modules hybrid approach
 - **UI Components**: React 19 with React Icons
-- **Charts**: Chart.js with react-chartjs-2
+- **Email Integration**: Power Automate webhooks with SharePoint backend
+- **Deployment**: Azure Static Web Apps with static export
 - **Icons**: Lucide React, React Icons (Font Awesome)
 
 ### Project Structure
@@ -62,8 +63,9 @@ public/images/             # Static assets organized by section
 ### Styling Architecture
 - **Global styles**: `app/globals.css` with Tailwind directives and CSS custom properties
 - **CSS Modules**: Component-specific styles (e.g., `header.module.css`, `mobile.module.css`)
-- **Tailwind config**: Custom breakpoints, colors using CSS variables, and typography plugin
-- **Font loading**: Geist font via Next.js Google Fonts with CSS variables
+- **Tailwind config**: Custom mobile breakpoints (max: 768px), colors using CSS variables, and typography plugin
+- **Font loading**: Sumana font via Next.js Google Fonts with CSS variables
+- **Responsive design**: Mobile-first with separate mobile stylesheets for complex components
 
 ### Component Patterns
 - **Client components**: Most components use `'use client'` directive for interactivity
@@ -72,11 +74,11 @@ public/images/             # Static assets organized by section
 - **Navigation**: Complex header with dropdown menus, flyouts, and mobile hamburger menu
 
 ### Data Management
-- **Static data**: Navigation links and calendar events stored in JavaScript modules
+- **Static data**: Navigation links (`components/header/navdata.js`) and calendar events stored in JavaScript modules
 - **No backend**: Static site with no API routes or server-side functionality
-- **Event system**: Calendar events managed via `calendar-events.js` with recurring event support
+- **Event system**: Calendar events managed via `components/calendar/calendar-events.js` with recurring event support
 - **Blog system**: Static blog posts managed via `components/blog/blog-data.js` with filtering and navigation
-- **Email collection**: Client-side email signup with localStorage fallback for static deployment
+- **Email collection**: Client-side email signup with Power Automate webhook integration and localStorage fallback
 
 ## Development Notes
 
@@ -109,30 +111,20 @@ public/images/             # Static assets organized by section
 - **Images**: Structured by page/section in `/public/images`
 - **Mobile styles**: Separate stylesheets for mobile-specific styling
 
-## Recent Architectural Changes (January 2025)
+## Critical Configuration
 
-### CTA Consolidation
-- **Removed**: Individual CTA sections from all service pages (medicare, mental-health, veterans, etc.)
-- **Added**: Comprehensive CTA section in footer with contact methods and key features
-- **Benefits**: Improved efficiency, consistent messaging, reduced code duplication
+### GitHub Secrets Required for Production
+- `NEXT_PUBLIC_NEWSLETTER_WEBHOOK_URL`
+- `NEXT_PUBLIC_NEWSLETTER_ENABLED`
+- `NEXT_PUBLIC_NEWSLETTER_SUCCESS_MESSAGE`
+- `NEXT_PUBLIC_NEWSLETTER_ERROR_MESSAGE`
 
-### Blog System Integration
-- **Added**: Complete blog system at `/news` with category filtering and featured posts
-- **Dynamic routing**: Individual post pages at `/news/[slug]` with generateStaticParams
-- **Navigation integration**: Recent blog posts displayed in News & Events dropdown
-- **Design**: Professional typography with serif fonts and previous/next navigation
+Without these, email subscriptions fall back to localStorage only.
 
-### Footer Enhancements
-- **CTA section**: Comprehensive call-to-action with phone, text, and online scheduling
-- **Partner logos**: Consolidated all partner logos including gigiSafeHouse into unified section
-- **Navigation**: Updated footer links to include all available pages and Core Medical Service placeholders
-- **Email collection**: Enhanced newsletter signup with proper validation and localStorage
-
-### Navigation Updates
-- **Core Medical Services**: Added placeholders for Primary Care, Wellness Exams, Chronic Disease, etc.
-- **Specialized Care**: Maintained existing structure with proper categorization
-- **Blog integration**: Recent posts dynamically populated in News & Events dropdown
-- **Responsive design**: Improved mobile navigation with better touch targets
+### Environment Variables
+- `.env.local` - Local development configuration
+- All NEXT_PUBLIC_ variables are exposed to the client-side
+- Webhook URL points to Power Automate flow for SharePoint integration
 
 ## Documentation Standards
 
@@ -157,131 +149,19 @@ public/images/             # Static assets organized by section
 - Documentation files should only be created when explicitly requested
 - CHANGELOG.md is critical and must be maintained for all significant changes
 
-## Power Automate Integration Guide
+## Power Automate Integration
 
-### What Works ✅
+### Working Email Integration
+- **Azure CLI + Power Automate API**: Successfully creates flows programmatically
+- **Webhook Integration**: Website forms submit to Power Automate webhooks
+- **SharePoint Backend**: Email subscriptions saved to SharePoint list
+- **OAuth Limitation**: SharePoint connections require manual authorization in Power Automate UI
 
-#### Creating Power Automate Flows via Terminal
-- **Azure CLI with Power Automate API**: Successfully creates flows
-- **Required**: `az login` first to get authentication token
-- **API Endpoint**: `https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/{environment}/flows?api-version=2016-11-01`
-- **Method**: POST with JSON flow definition
-
-#### Example Working Commands:
+### Key Commands
 ```bash
-# Get token
+# Get token and create flow
 TOKEN=$(az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv)
-
-# Create flow
-curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/Default-YOUR-ENVIRONMENT-ID/flows?api-version=2016-11-01" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{...flow definition...}'
-
-# Get webhook URL
-curl -X POST "{flow-uri}/triggers/manual/listCallbackUrl?api-version=2016-11-01" \
-  -H "Authorization: Bearer $TOKEN"
+# Use Power Automate Management API for flow creation
 ```
 
-### What Doesn't Work ❌
-
-#### SharePoint/Email Connections
-- **Cannot create programmatically**: Requires OAuth consent
-- **Manual step required**: User must authorize in Power Automate UI
-- **API limitation**: `$authentication` parameter cannot be provided programmatically
-
-#### Failed Approaches:
-1. **PowerShell modules**: Installation issues in bash environment
-2. **M365 CLI**: Requires interactive setup
-3. **Power Platform CLI**: Needs MSI installation
-4. **Direct connection creation**: OAuth2 consent flow blocks automation
-
-### Key Environment Details
-- **Tenant ID**: YOUR-TENANT-ID
-- **Environment**: Default-YOUR-ENVIRONMENT-ID
-- **SharePoint Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
-- **SharePoint List ID**: YOUR-LIST-ID
-
-### Flow Structure That Works
-1. HTTP Request trigger (webhook)
-2. Data processing actions (Compose, Initialize Variable)
-3. Response action
-4. SharePoint/Email must be added manually in UI
-
-### Current Implementation Status
-- **Power Automate Flow**: New secure flow created (ID: YOUR-FLOW-ID)
-- **Webhook**: Rotated and secured - old exposed webhook deleted
-- **SharePoint List**: Created (ID: YOUR-LIST-ID)
-- **Azure App Settings**: Configured with new secure webhook URL
-- **Missing**: SharePoint action (requires manual OAuth authorization)
-
-### Alternative Approaches Tested
-- **Azure Logic Apps**: Successfully created but requires AD permissions for SharePoint
-- **Direct Graph API**: Requires application registration and admin consent
-- **Power Platform Connectors**: Still require OAuth consent
-
-### Conclusion
-Due to Microsoft security requirements, SharePoint connections CANNOT be fully automated. The manual step is unavoidable but takes only 5 minutes to complete in the Power Automate UI.
-
-## Power Apps CLI Installation Issues
-
-### Installation Methods Attempted
-1. **WinGet**: `winget install Microsoft.PowerAppsCLI` - Installs successfully but pac.exe location unclear
-2. **Direct MSI**: Downloads from Microsoft but installation path not standard
-
-### Known Issues
-- PowerApps CLI 1.0 MSI doesn't follow standard installation patterns
-- No clear documentation on default installation directory
-- Path not automatically added to system PATH
-- May require manual PATH configuration after installation
-
-### Alternative: Use Power Automate Management API
-Instead of Power Apps CLI, use direct API calls with Azure CLI:
-```bash
-# This approach works reliably
-TOKEN=$(az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv)
-curl -X POST "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/{env}/flows?api-version=2016-11-01" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @flow-definition.json
-```
-
-## ✅ WORKING EMAIL INTEGRATION SOLUTION
-
-### Complete Automated SharePoint Integration (NO Manual Steps)
-
-#### Created Resources:
-- **App Registration**: GarciaNewsletterApp (ID: YOUR-APP-ID)
-- **Power Automate Flow**: Garcia Newsletter WORKING 2025 (ID: YOUR-FLOW-ID)
-- **Webhook URL**: Active in .env.local and Azure App Settings
-- **Client Secret**: Generated fresh on 2025-07-19 (expires 2027)
-- **Verified Working**: Emails ARE being saved to SharePoint list
-
-#### How It Works:
-1. Website form submits to webhook
-2. Power Automate flow receives data
-3. Flow gets app-only token using client credentials
-4. Flow writes directly to SharePoint via Graph API
-5. Email saved successfully - verified working!
-
-#### Key Commands:
-```bash
-# Create flow
-TOKEN=$(az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv)
-curl -X POST "https://unitedstates.api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/{env}/flows?api-version=2016-11-01" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d @flow-definition.json
-
-# Get webhook URL
-curl -X POST "https://unitedstates.api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/{env}/flows/{flowId}/triggers/manual/listCallbackUrl?api-version=2016-11-01" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d "{}" | jq -r '.response.value'
-```
-
-#### SharePoint List Details:
-- **Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
-- **List**: Newsletter Subscribers
-- **List ID**: YOUR-LIST-ID
-- **Verified**: Emails ARE being saved successfully
+For detailed Power Automate integration steps, see the [GitHub Wiki](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care/wiki/Power-Automate-SharePoint-Integration).

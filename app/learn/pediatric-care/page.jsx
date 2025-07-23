@@ -240,7 +240,7 @@ export default function PediatricCare() {
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule Pediatric Visit
               </Link>
-              <Link href="/care/family-medicine" className={styles.secondaryButton}>
+              <Link href="/learn/family-medicine" className={styles.secondaryButton}>
                 Learn About Family Care
               </Link>
             </div>

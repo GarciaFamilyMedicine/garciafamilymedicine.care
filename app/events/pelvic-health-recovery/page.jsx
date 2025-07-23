@@ -326,7 +326,7 @@ export default function Page() {
               </a>
               
               <a 
-                href="https://garciafamilymedicine.care/care/pelvichealth/"
+                href="https://garciafamilymedicine.care/learn/pelvichealth/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.columnRight}

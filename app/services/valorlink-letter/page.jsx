@@ -317,7 +317,7 @@ export default function ValorLinkLetterPage() {
             <Link href="/contact" className={styles.ctaPrimary}>
               Start Your Letter Today
             </Link>
-            <Link href="/care/veteran-services" className={styles.ctaSecondary}>
+            <Link href="/learn/veterans" className={styles.ctaSecondary}>
               Explore All Veteran Services
             </Link>
           </div>

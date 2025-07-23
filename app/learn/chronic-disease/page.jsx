@@ -193,7 +193,7 @@ export default function ChronicDisease() {
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule a Consultation
               </Link>
-              <Link href="/care/telehealth" className={styles.secondaryButton}>
+              <Link href="/services/telehealth" className={styles.secondaryButton}>
                 Learn About Telehealth
               </Link>
             </div>

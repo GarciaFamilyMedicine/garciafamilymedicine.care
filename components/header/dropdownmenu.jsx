@@ -155,23 +155,40 @@ export default function DropdownMenu({
       onMouseEnter={() => !isMobile && onEnter(link.label)}
       onMouseLeave={() => !isMobile && onLeave()}
     >
-      <button
-        type="button"
-        className={`${styles.dropdowntoggle} ${
-          (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.active : ''
-        }`}
-        aria-haspopup="true"
-        aria-expanded={isMobile ? mobileDropdownOpen : isActive}
-        onClick={isMobile ? handleMobileToggle : undefined}
-        tabIndex={0}
-      >
-        {link.label}
-        {isMobile && (
-          <span className={`${styles.mobileArrow} ${mobileDropdownOpen ? styles.rotated : ''}`}>
-            ▼
-          </span>
-        )}
-      </button>
+      {link.href ? (
+        <Link 
+          href={link.href}
+          className={`${styles.dropdowntoggle} ${
+            (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.active : ''
+          }`}
+          onClick={handleLinkClick}
+        >
+          {link.label}
+          {isMobile && (
+            <span className={`${styles.mobileArrow} ${mobileDropdownOpen ? styles.rotated : ''}`}>
+              ▼
+            </span>
+          )}
+        </Link>
+      ) : (
+        <button
+          type="button"
+          className={`${styles.dropdowntoggle} ${
+            (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.active : ''
+          }`}
+          aria-haspopup="true"
+          aria-expanded={isMobile ? mobileDropdownOpen : isActive}
+          onClick={isMobile ? handleMobileToggle : undefined}
+          tabIndex={0}
+        >
+          {link.label}
+          {isMobile && (
+            <span className={`${styles.mobileArrow} ${mobileDropdownOpen ? styles.rotated : ''}`}>
+              ▼
+            </span>
+          )}
+        </button>
+      )}
 
       <div
         ref={dropdownRef}
@@ -199,18 +216,35 @@ export default function DropdownMenu({
                   <ul>
                     {column.items?.map((item, itemIndex) => (
                       <li key={item.label + '-' + itemIndex}>
-                        <Link
-                          href={item.href}
-                          className={styles.dropdownlink}
-                          onClick={handleLinkClick}
-                        >
-                          <div className={styles.linkContent}>
-                            <span className={styles.linkLabel}>{item.label}</span>
-                            {item.description && !link.dropdown?.compactMode && (
-                              <span className={styles.linkDescription}>{item.description}</span>
-                            )}
-                          </div>
-                        </Link>
+                        {item.external ? (
+                          <a
+                            href={item.href}
+                            className={styles.dropdownlink}
+                            onClick={handleLinkClick}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div className={styles.linkContent}>
+                              <span className={styles.linkLabel}>{item.label}</span>
+                              {item.description && !link.dropdown?.compactMode && (
+                                <span className={styles.linkDescription}>{item.description}</span>
+                              )}
+                            </div>
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className={styles.dropdownlink}
+                            onClick={handleLinkClick}
+                          >
+                            <div className={styles.linkContent}>
+                              <span className={styles.linkLabel}>{item.label}</span>
+                              {item.description && !link.dropdown?.compactMode && (
+                                <span className={styles.linkDescription}>{item.description}</span>
+                              )}
+                            </div>
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -246,7 +280,30 @@ export default function DropdownMenu({
                           </a>
                         </p>
                         <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
-                        <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
+                        <p>
+                          <strong>Location:</strong>{' '}
+                          <a 
+                            href={link.dropdown.info.contact.location.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.dropdown.info.contact.location.display}
+                          </a>
+                        </p>
+                      </div>
+                    )}
+                    {link.dropdown.footerLinks && (
+                      <div className={styles.dropdownFooterLinks}>
+                        {link.dropdown.footerLinks.map((footerLink, index) => (
+                          <Link
+                            key={index}
+                            href={footerLink.href}
+                            className={styles.footerLink}
+                            onClick={handleLinkClick}
+                          >
+                            {footerLink.label}
+                          </Link>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -494,6 +551,23 @@ export default function DropdownMenu({
                     View Past Highlights
                   </Link>
                 </div>
+                {/* Footer links for News & Events dropdown */}
+                <div className={styles.dropdownFooterLinks}>
+                  <Link
+                    href="/services/telehealth"
+                    className={styles.footerLink}
+                    onClick={handleLinkClick}
+                  >
+                    Telehealth Services
+                  </Link>
+                  <Link
+                    href="/services/cash-pay"
+                    className={styles.footerLink}
+                    onClick={handleLinkClick}
+                  >
+                    Cash Pay Options
+                  </Link>
+                </div>
               </>
             ) : (
               link.dropdown.info && (
@@ -516,7 +590,16 @@ export default function DropdownMenu({
                         </a>
                       </p>
                       <p><strong>Hours:</strong> {link.dropdown.info.contact.hours}</p>
-                      <p><strong>Location:</strong> {link.dropdown.info.contact.location}</p>
+                      <p>
+                        <strong>Location:</strong>{' '}
+                        <a 
+                          href={link.dropdown.info.contact.location.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.dropdown.info.contact.location.display}
+                        </a>
+                      </p>
                     </div>
                   )}
                 </div>

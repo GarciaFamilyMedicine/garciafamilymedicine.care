@@ -19,17 +19,17 @@ export default function FaithFamilyMedicine() {
           </div>
         </div>
 
-        <div className={styles.mainContent}>
-          <section className={styles.introSection}>
-            <div className={styles.container}>
+      <div className={styles.mainContent}>
+        <section className={styles.introSection}>
+          <div className={styles.container}>
             <p className={styles.leadText}>
               At Garcia Family Medicine, we believe that true healing encompasses far more than treating symptoms or diagnosing conditions. Our practice is founded on the understanding that you are a complete person—body, soul, and spirit—and that authentic wellness requires attention to every aspect of your being.
             </p>
             <p className={styles.sectionText}>
               Faith & Family Medicine™ represents our commitment to providing whole-person care that honors not only your physical health but also acknowledges the profound connection between your spiritual well-being and your overall health journey.
             </p>
-            </div>
-          </section>
+          </div>
+        </section>
 
         <section className={styles.servicesSection}>
           <div className={styles.container}>

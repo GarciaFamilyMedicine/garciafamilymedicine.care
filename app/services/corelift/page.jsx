@@ -189,7 +189,7 @@ export default function Page() {
                   <li>FDA-approved HIFEM technology</li>
                   <li>No downtime, fully clothed treatments</li>
                 </ul>
-                <a href="/care/pelvichealth" className={styles.infoLink}>Learn More About Pelvic Health →</a>
+                <a href="/learn/pelvichealth" className={styles.infoLink}>Learn More About Pelvic Health →</a>
               </div>
               
               <div className={styles.columnRight}>
@@ -233,7 +233,7 @@ export default function Page() {
                   <p>Comprehensive evaluation of your pelvic floor function and core strength</p>
                 </a>
                 <a 
-                  href="/care/pelvichealth"
+                  href="/learn/pelvichealth"
                   className={styles.gridItem}
                 >
                   <div className={styles.gridIcon}></div>
@@ -241,7 +241,7 @@ export default function Page() {
                   <p>Customized therapy program based on your specific needs and goals</p>
                 </a>
                 <a 
-                  href="/care/pelvichealth"
+                  href="/learn/pelvichealth"
                   className={styles.gridItem}
                 >
                   <div className={styles.gridIcon}></div>

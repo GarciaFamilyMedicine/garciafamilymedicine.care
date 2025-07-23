@@ -21,6 +21,7 @@ export const nav_links = [
 
   {
     label: 'News & Events',
+    href: '/news-events',
     dropdown: {
       // Will be dynamically populated with news and events
       isDynamic: true,
@@ -30,6 +31,7 @@ export const nav_links = [
 
   {
     label: 'Our Services',
+    href: '/services',
     dropdown: {
       twoColumns: true,
       links: [
@@ -39,7 +41,7 @@ export const nav_links = [
           items: [
             {
               label: 'Faith & Family Medicine™',
-              href: '/care/faith-family-medicine',
+              href: '/services/faith-family-medicine',
               description: 'Whole-person care honoring body, soul, and spirit'
             },
             {
@@ -107,44 +109,58 @@ export const nav_links = [
             display: '816-427-5320',
             href: 'tel:8164275320'
           },
-          hours: 'Mon–Fri: 8 a.m.–7 p.m.',
-          location: '801 NW St. Mary Drive',
+          hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
+          location: {
+            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
+          },
         },
       },
+      footerLinks: [
+        {
+          label: 'Telehealth Services',
+          href: '/services/telehealth'
+        },
+        {
+          label: 'Cash Pay Options',
+          href: '/services/cash-pay'
+        }
+      ],
     },
   },
 
   {
     label: 'Learn',
+    href: '/learn',
     dropdown: {
       twoColumns: true,
-      compactMode: true, // Enable compact mode for this dropdown
+      compactMode: true,
       links: [
         {
-          title: 'Primary Care Topics',
+          title: 'General Health Topics',
+          subtitle: 'Essential health information and wellness education',
           items: [
-            { label: 'Family Medicine', href: '/care/family-medicine' },
-            { label: 'Primary Care', href: '/care/primary-care' },
-            { label: 'Preventive Care', href: '/care/preventive-care' },
-            { label: 'Wellness Exams', href: '/care/wellness-exams' },
-            { label: 'Chronic Disease', href: '/care/chronic-disease' },
-            { label: 'Cash Pay Options', href: '/care/cash-pay' }
+            { label: 'Family Medicine', href: '/learn/family-medicine', description: 'Comprehensive family healthcare basics' },
+            { label: 'Primary Care', href: '/learn/primary-care', description: 'Your first line of healthcare defense' },
+            { label: 'Preventive Care', href: '/learn/preventive-care', description: 'Staying healthy through prevention' },
+            { label: 'Wellness Exams', href: '/learn/wellness-exams', description: 'Annual health check-up importance' },
+            { label: 'Chronic Disease', href: '/learn/chronic-disease', description: 'Managing long-term health conditions' },
+            { label: 'Mental Health', href: '/learn/mental-health', description: 'Understanding mental wellness' },
+            { label: 'Pain Management', href: '/learn/pain-management', description: 'Understanding pain and relief strategies' },
+            { label: 'Weight Management', href: '/learn/weight-management', description: 'Healthy weight and nutrition science' }
           ],
         },
         {
-          title: 'Specialized Topics',
+          title: 'Specialized Care',
+          subtitle: 'Focused health education for specific needs',
           items: [
-            { label: 'Women\'s Health', href: '/care/womens-health' },
-            { label: 'Men\'s Health', href: '/care/mens-health' },
-            { label: 'Pediatric Care', href: '/care/pediatric-care' },
-            { label: 'Mental Health', href: '/care/mental-health' },
-            { label: 'Pelvic Health', href: '/care/pelvichealth' },
-            { label: 'Weight Management', href: '/care/weight-management' },
-            { label: 'Pain Management', href: '/care/pain-management' },
-            { label: 'Veteran Healthcare', href: '/care/veterans' },
-            { label: 'DOT Certifications', href: '/care/dot-certifications' },
-            { label: 'IME Information', href: '/care/independent-medical-examinations' },
-            { label: 'Telehealth', href: '/care/telehealth' }
+            { label: 'Women\'s Health', href: '/learn/womens-health', description: 'Health topics specific to women' },
+            { label: 'Men\'s Health', href: '/learn/mens-health', description: 'Health topics specific to men' },
+            { label: 'Pediatric Care', href: '/learn/pediatric-care', description: 'Children\'s health and development' },
+            { label: 'Pelvic Health', href: '/learn/pelvichealth', description: 'Understanding pelvic floor health' },
+            { label: 'Veteran Healthcare', href: '/learn/veterans', description: 'Health resources for veterans' },
+            { label: 'DOT Certifications', href: '/learn/dot-certifications', description: 'Commercial driver health requirements' },
+            { label: 'IME Information', href: '/learn/independent-medical-examinations', description: 'Understanding medical examinations' }
           ],
         },
       ],
@@ -159,10 +175,73 @@ export const nav_links = [
             display: '816-427-5320',
             href: 'tel:8164275320'
           },
-          hours: 'Mon–Fri: 8 a.m.–7 p.m.',
-          location: '801 NW St. Mary Drive',
+          hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
+          location: {
+            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
+          },
         },
       },
+      footerLinks: [
+        {
+          label: 'Telehealth Services',
+          href: '/services/telehealth'
+        },
+        {
+          label: 'Cash Pay Options',
+          href: '/services/cash-pay'
+        }
+      ],
+    },
+  },
+
+  {
+    label: 'Affiliates',
+    href: '/affiliates',
+    dropdown: {
+      singleColumn: true,
+      links: [
+        {
+          title: 'Our Partners & Affiliates',
+          subtitle: 'Organizations we support and collaborate with',
+          items: [
+            {
+              label: "Gigi's Safe House",
+              href: 'https://gigisafehouse.com',
+              description: 'Supporting survivors of domestic violence and human trafficking',
+              external: true
+            }
+          ],
+        },
+      ],
+      info: {
+        askDr: {
+          title: 'Partnership Opportunities',
+          description: 'Interested in partnering with Garcia Family Medicine?',
+          buttonText: 'Contact Us',
+        },
+        contact: {
+          phone: {
+            display: '816-427-5320',
+            href: 'tel:8164275320'
+          },
+          hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
+          location: {
+            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
+          },
+        },
+      },
+      footerLinks: [
+        {
+          label: 'Telehealth Services',
+          href: '/services/telehealth'
+        },
+        {
+          label: 'Cash Pay Options',
+          href: '/services/cash-pay'
+        }
+      ],
     },
   },
 
