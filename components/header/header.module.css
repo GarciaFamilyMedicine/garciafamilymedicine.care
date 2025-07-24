@@ -3,6 +3,7 @@
    ======================================================== */
 
 .container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --top-bar-bg: #032c7c;
   --primary-blue: #5e8fbc;
   --hover-blue: #1d539f;

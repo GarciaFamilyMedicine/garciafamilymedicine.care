@@ -1,170 +1,286 @@
 'use client';
 
 import styles from './clearroad-dot-exams.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaTruck, FaClock, FaClipboardCheck, FaUserMd, FaHeartbeat, FaCheckCircle } from 'react-icons/fa';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
-import Link from 'next/link';
 
 export default function ClearRoadDOTExamsPage() {
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <div className={styles.container}>
         {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.container}>
-            <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
-                ClearRoad™ DOT Exams
-              </h1>
-              <p className={styles.heroSubtitle}>
-                Keeping America's Drivers Safe and Road-Ready
-              </p>
-              <div className={styles.heroButtons}>
-                <a href="tel:816-427-5320" className={styles.primaryButton}>
-                  Schedule Your DOT Exam
-                </a>
-                <Link href="/contact" className={styles.secondaryButton}>
-                  Contact Us
-                </Link>
-              </div>
+        <section className={styles.heroSection}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>ClearRoad™ DOT Exams</h1>
+            <p className={styles.heroSubtitle}>Keeping America's Drivers Safe and Road-Ready</p>
+            <p className={styles.heroDescription}>
+              Your livelihood depends on your ability to stay on the road. Our ClearRoad™ 
+              DOT Exams provide certified Department of Transportation physicals with speed, 
+              accuracy, and compassion for the vital work you do.
+            </p>
+            <div className={styles.heroButtons}>
+              <a href="tel:816-427-5320" className={styles.primaryButton}>
+                Schedule Your DOT Exam
+              </a>
+              <Link href="#process" className={styles.secondaryButton}>
+                Learn More
+              </Link>
+            </div>
+          </div>
+          <div className={styles.heroImage}>
+            <Image
+              src="/images/services/clearroad-dot-exams/hero.jpg"
+              alt="ClearRoad DOT Exams - Commercial Driver Certification"
+              width={600}
+              height={400}
+              className={styles.image}
+              unoptimized
+            />
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className={styles.statsSection}>
+          <div className={styles.statsGrid}>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>30min</div>
+              <div className={styles.statLabel}>Average Exam Time</div>
+              <div className={styles.statDescription}>Quick and thorough</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>5000+</div>
+              <div className={styles.statLabel}>DOT Exams Completed</div>
+              <div className={styles.statDescription}>Experienced examiners</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>100%</div>
+              <div className={styles.statLabel}>FMCSA Certified</div>
+              <div className={styles.statDescription}>Registry listed</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>Same Day</div>
+              <div className={styles.statLabel}>Certificate Delivery</div>
+              <div className={styles.statDescription}>In most cases</div>
             </div>
           </div>
         </section>
 
-        {/* Introduction Section */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <div className={styles.textContent}>
-              <p className={styles.leadText}>
-                At Garcia Family Medicine, we understand that your livelihood depends on your ability to stay on the road. Whether you're a long-haul trucker crossing state lines, a local delivery driver serving your community, or a bus operator ensuring passengers reach their destinations safely, your Department of Transportation (DOT) physical is more than just a requirement—it's your gateway to continuing the vital work that keeps America moving.
-              </p>
-              <p className={styles.text}>
-                Our ClearRoad™ DOT Exams represent our commitment to providing certified Department of Transportation physicals with three essential pillars: speed, accuracy, and compassion. We don't just check boxes; we ensure you meet all federal requirements while genuinely respecting your time, your health, and the critically important work you do on the road.
-              </p>
+        {/* Features Section */}
+        <section className={styles.benefitsSection}>
+          <h2 className={styles.sectionTitle}>Why Choose ClearRoad™?</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitCard}>
+              <FaClock className={styles.benefitIcon} />
+              <h3>Extended Hours</h3>
+              <p>Early morning and evening appointments to fit your driving schedule.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaClipboardCheck className={styles.benefitIcon} />
+              <h3>Same-Day Certificates</h3>
+              <p>Get your DOT medical certificate immediately after examination in most cases.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaTruck className={styles.benefitIcon} />
+              <h3>Driver-Focused</h3>
+              <p>We understand the unique challenges and needs of professional drivers.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaUserMd className={styles.benefitIcon} />
+              <h3>FMCSA Certified</h3>
+              <p>All examiners listed on the National Registry with direct access.</p>
             </div>
           </div>
         </section>
 
-        {/* Understanding Drivers Section */}
-        <section className={`${styles.section} ${styles.bgLight}`}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>We Understand Your Unique Challenges</h2>
-            <div className={styles.textContent}>
-              <p className={styles.text}>
-                Dr. Tess Garcia and our certified medical examiners understand the unique challenges faced by commercial drivers. We know that your schedule isn't typical—you might be passing through town at unusual hours, working against tight delivery deadlines, or managing multiple routes that don't always align with traditional medical office hours. You might be dealing with the stress of maintaining your Commercial Driver's License (CDL) while managing health concerns, family responsibilities, and the demanding nature of your profession.
-              </p>
-              <p className={styles.text}>
-                We've built our ClearRoad™ DOT Exam program specifically with these realities in mind. Dr. Tess and our certified medical examiners aren't just healthcare providers—they're advocates for the men and women who dedicate their careers to transportation, logistics, and keeping essential goods flowing across our nation.
-              </p>
+        {/* Process Section */}
+        <section id="process" className={styles.processSection}>
+          <h2 className={styles.sectionTitle}>Streamlined DOT Exam Process</h2>
+          <div className={styles.processSteps}>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>1</div>
+              <h3>Quick Scheduling</h3>
+              <p>Call or book online for same-week appointments, including early/late hours</p>
             </div>
-          </div>
-        </section>
-
-        {/* Features Grid */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Streamlined DOT Exam Process</h2>
-            <div className={styles.featuresGrid}>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>⏱️</div>
-                <h3>Extended Hours</h3>
-                <p>Early morning and evening appointments to accommodate your driving schedule</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>📋</div>
-                <h3>Same-Day Certificates</h3>
-                <p>In most cases, receive your DOT medical certificate immediately after examination</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>🏆</div>
-                <h3>FMCSA Certified</h3>
-                <p>All examiners listed on the FMCSA National Registry with direct access</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>🔬</div>
-                <h3>Complete Testing</h3>
-                <p>All federally mandated components including vision, hearing, and cardiovascular evaluation</p>
-              </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>2</div>
+              <h3>Thorough Examination</h3>
+              <p>Complete DOT physical including vision, hearing, and cardiovascular assessment</p>
+            </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>3</div>
+              <h3>Health Guidance</h3>
+              <p>Personalized advice for managing conditions that affect certification</p>
+            </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>4</div>
+              <h3>Certificate Issued</h3>
+              <p>Receive your DOT medical certificate immediately in most cases</p>
             </div>
           </div>
         </section>
 
         {/* Comprehensive Exam Section */}
-        <section className={`${styles.section} ${styles.bgLight}`}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Your ClearRoad™ DOT Exam Includes</h2>
-            <div className={styles.twoColumn}>
-              <div className={styles.column}>
-                <ul className={styles.checkList}>
-                  <li>Complete medical history review</li>
-                  <li>Vision and hearing testing using calibrated equipment</li>
-                  <li>Cardiovascular evaluation with thorough blood pressure assessment</li>
-                  <li>Comprehensive physical examination of your overall condition</li>
-                  <li>Laboratory testing when indicated by federal guidelines</li>
-                </ul>
-              </div>
-              <div className={styles.column}>
-                <div className={styles.infoBox}>
-                  <h3>Certified Medical Examiners</h3>
-                  <p>Dr. Tess and our medical team are certified DOT medical examiners listed on the FMCSA National Registry. This certification represents extensive training in the specific health standards required for commercial driving and ongoing education about regulatory updates and medical guidelines.</p>
-                </div>
-              </div>
+        <section className={styles.sampleSection}>
+          <div className={styles.sampleContent}>
+            <div className={styles.sampleText}>
+              <h2>Your ClearRoad™ DOT Exam Includes</h2>
+              <p>
+                Our thorough examination meets all FMCSA requirements while respecting 
+                your time and the importance of your work on America's roads.
+              </p>
+              <ul className={styles.includedList}>
+                <li>Complete medical history review</li>
+                <li>Vision testing (must meet 20/40 requirement)</li>
+                <li>Hearing assessment using calibrated equipment</li>
+                <li>Blood pressure and cardiovascular evaluation</li>
+                <li>Physical examination of all body systems</li>
+                <li>Urinalysis when required by guidelines</li>
+                <li>Review of medications and health conditions</li>
+              </ul>
+              <Link href="/contact" className={styles.sampleButton}>
+                Schedule Your Exam Today
+              </Link>
+            </div>
+            <div className={styles.sampleImage}>
+              <Image
+                src="/images/services/dot-exam-process.jpg"
+                alt="DOT Physical Examination Process"
+                width={500}
+                height={400}
+                className={styles.image}
+                unoptimized
+              />
             </div>
           </div>
         </section>
 
         {/* Health Conditions Support */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Managing Health Conditions</h2>
-            <div className={styles.textContent}>
-              <p className={styles.text}>
-                We recognize that DOT physicals can be stressful, especially if you have ongoing health conditions or concerns about meeting medical standards. Many drivers worry about losing their CDL due to health issues, and we approach these concerns with sensitivity and practical problem-solving.
-              </p>
-              <p className={styles.text}>
-                If you have diabetes, hypertension, sleep apnea, or other conditions requiring special attention during DOT certification, our medical team works with you to ensure proper documentation and develop management strategies that support both your health and your ability to continue driving safely.
-              </p>
+        <section className={styles.conditionsSection}>
+          <h2 className={styles.sectionTitle}>Supporting Drivers with Health Conditions</h2>
+          <div className={styles.conditionsGrid}>
+            <div className={styles.conditionCategory}>
+              <h3>Cardiovascular</h3>
+              <ul>
+                <li><FaHeartbeat /> High blood pressure management</li>
+                <li><FaHeartbeat /> Heart disease monitoring</li>
+                <li><FaHeartbeat /> Medication compliance</li>
+                <li><FaHeartbeat /> Cardiac clearance support</li>
+              </ul>
             </div>
-            <div className={styles.conditionsGrid}>
-              <div className={styles.conditionCard}>
-                <h4>Diabetes Management</h4>
-                <p>Guidance on meeting FMCSA standards for blood sugar control</p>
-              </div>
-              <div className={styles.conditionCard}>
-                <h4>Blood Pressure Control</h4>
-                <p>Strategies to maintain certification-compliant levels</p>
-              </div>
-              <div className={styles.conditionCard}>
-                <h4>Sleep Apnea</h4>
-                <p>Documentation and compliance support for CPAP users</p>
-              </div>
+            <div className={styles.conditionCategory}>
+              <h3>Diabetes</h3>
+              <ul>
+                <li><FaCheckCircle /> A1C optimization strategies</li>
+                <li><FaCheckCircle /> Insulin management guidance</li>
+                <li><FaCheckCircle /> Blood sugar monitoring</li>
+                <li><FaCheckCircle /> FMCSA compliance help</li>
+              </ul>
+            </div>
+            <div className={styles.conditionCategory}>
+              <h3>Sleep Disorders</h3>
+              <ul>
+                <li><FaUserMd /> Sleep apnea screening</li>
+                <li><FaUserMd /> CPAP compliance tracking</li>
+                <li><FaUserMd /> Documentation assistance</li>
+                <li><FaUserMd /> Treatment coordination</li>
+              </ul>
+            </div>
+            <div className={styles.conditionCategory}>
+              <h3>Other Conditions</h3>
+              <ul>
+                <li><FaClipboardCheck /> Vision correction</li>
+                <li><FaClipboardCheck /> Hearing aid support</li>
+                <li><FaClipboardCheck /> Seizure disorders</li>
+                <li><FaClipboardCheck /> Mental health care</li>
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* Respect for Drivers */}
-        <section className={`${styles.section} ${styles.bgAccent}`}>
-          <div className={styles.container}>
-            <div className={styles.testimonialBox}>
-              <h2 className={styles.testimonialTitle}>We Respect Your Essential Work</h2>
+        {/* Testimonial Section */}
+        <section className={styles.testimonialSection}>
+          <h2 className={styles.sectionTitle}>What Drivers Say About ClearRoad™</h2>
+          <div className={styles.testimonialGrid}>
+            <div className={styles.testimonialCard}>
               <p className={styles.testimonialText}>
-                At Garcia Family Medicine, we have profound respect for professional drivers and the essential role you play in our economy and daily lives. From delivering life-saving medical supplies to ensuring grocery store shelves stay stocked, from transporting students safely to school to moving freight that supports countless businesses—your work matters, and we never forget that.
+                "Finally found a clinic that understands truckers. They got me in early 
+                morning before my run, and I had my certificate in hand within an hour."
               </p>
+              <div className={styles.testimonialAuthor}>- Robert K., OTR Driver</div>
+            </div>
+            <div className={styles.testimonialCard}>
               <p className={styles.testimonialText}>
-                This respect influences every aspect of our ClearRoad™ service, as we approach your DOT physical with the seriousness and care that reflects the importance of your profession.
+                "Dr. Tess helped me manage my blood pressure so I could keep my CDL. 
+                She really cares about keeping us healthy and on the road."
               </p>
+              <div className={styles.testimonialAuthor}>- Maria S., Bus Operator</div>
+            </div>
+            <div className={styles.testimonialCard}>
+              <p className={styles.testimonialText}>
+                "They understand the stress of DOT physicals. Made the whole process 
+                smooth and helped with my sleep apnea documentation."
+              </p>
+              <div className={styles.testimonialAuthor}>- James T., Local Delivery</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section className={styles.pricingSection}>
+          <h2 className={styles.sectionTitle}>Transparent DOT Exam Pricing</h2>
+          <div className={styles.pricingCards}>
+            <div className={styles.pricingCard}>
+              <h3>Standard DOT Physical</h3>
+              <div className={styles.price}>$95</div>
+              <ul>
+                <li>Complete FMCSA physical exam</li>
+                <li>Same-day certificate</li>
+                <li>2-year certification (if eligible)</li>
+                <li>Electronic filing</li>
+              </ul>
+              <Link href="/contact" className={styles.pricingButton}>
+                Schedule Now
+              </Link>
+            </div>
+            <div className={styles.pricingCard} data-featured="true">
+              <div className={styles.popularTag}>Most Popular</div>
+              <h3>DOT Physical + Health Plan</h3>
+              <div className={styles.price}>$145</div>
+              <ul>
+                <li>Everything in Standard</li>
+                <li>Personalized health guidance</li>
+                <li>Condition management plan</li>
+                <li>Follow-up support</li>
+              </ul>
+              <Link href="/contact" className={styles.pricingButton}>
+                Schedule Now
+              </Link>
+            </div>
+            <div className={styles.pricingCard}>
+              <h3>Express DOT Service</h3>
+              <div className={styles.price}>$125</div>
+              <ul>
+                <li>Priority scheduling</li>
+                <li>Expedited processing</li>
+                <li>Walk-ins welcome</li>
+                <li>Extended hours available</li>
+              </ul>
+              <Link href="/contact" className={styles.pricingButton}>
+                Schedule Now
+              </Link>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <h2 className={styles.ctaTitle}>Ready to Get Back on the Road?</h2>
-            <p className={styles.ctaSubtitle}>
-              Schedule your DOT physical today and experience the ClearRoad™ difference
-            </p>
+          <div className={styles.ctaContent}>
+            <h2>Ready to Get Back on the Road?</h2>
+            <p>Schedule your DOT physical today and experience the ClearRoad™ difference</p>
             <div className={styles.ctaButtons}>
               <a href="tel:816-427-5320" className={styles.ctaPrimary}>
                 Call Now: 816-427-5320
@@ -173,9 +289,12 @@ export default function ClearRoadDOTExamsPage() {
                 Schedule Online
               </Link>
             </div>
+            <p className={styles.ctaNote}>
+              <FaTruck /> Keeping America's Drivers Road-Ready Since 2010
+            </p>
           </div>
         </section>
-      </main>
+      </div>
       <Footer />
     </>
   );

@@ -199,7 +199,7 @@ For critical fixes that bypass normal checks:
 - [ ] **API documentation** current
 
 ## 🔗 Related Documentation
-- [Changelog Automation](../development/changelog-automation.md)
-- [Getting Started](../development/getting-started.md)
-- [Coding Standards](../development/coding-standards.md)
-- [Azure Deployment Guide](azure-setup.md)
+- [Changelog Automation](./changelog-automation.md)
+- [Getting Started](./getting-started.md)
+- [Coding Standards](./coding-standards.md)
+- [Post-Deployment Checklist](./post-deployment-checklist.md)

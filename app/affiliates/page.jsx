@@ -4,7 +4,7 @@ import styles from '../learn/service.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 import Link from 'next/link';
-import { FaHandsHelping, FaHeart, FaUsers, FaShieldAlt, FaHandshake, FaCommunity } from 'react-icons/fa';
+import { FaHandsHelping, FaHeart, FaUsers, FaShieldAlt, FaHandshake, FaUserFriends } from 'react-icons/fa';
 
 export default function AffiliatesMainPage() {
   return (
@@ -93,7 +93,7 @@ export default function AffiliatesMainPage() {
                   <p>Organizations providing crisis intervention, safety planning, and emergency assistance</p>
                 </div>
                 <div className={styles.serviceCard}>
-                  <FaCommunity className={styles.serviceIcon} />
+                  <FaUserFriends className={styles.serviceIcon} />
                   <h3>Community Health</h3>
                   <p>Public health organizations working to improve population health and prevent disease</p>
                 </div>

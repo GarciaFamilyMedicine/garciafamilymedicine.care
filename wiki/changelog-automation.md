@@ -281,8 +281,8 @@ echo "Add to CHANGELOG.md manually and delete temp file"
 - **Quarterly**: Review changelog format and effectiveness
 
 ## 🔗 Related Documentation
-- [Getting Started](getting-started.md)
-- [Coding Standards](coding-standards.md)
-- [Project Structure](../architecture/project-structure.md)
+- [Getting Started](./getting-started.md)
+- [Coding Standards](./coding-standards.md)
+- [Architecture Overview](./architecture-overview.md)
 - [Keep a Changelog](https://keepachangelog.com/)
 - [Semantic Versioning](https://semver.org/)

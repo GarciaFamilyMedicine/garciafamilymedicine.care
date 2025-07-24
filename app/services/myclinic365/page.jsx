@@ -31,7 +31,7 @@ export default function MyClinic365Page() {
         </div>
         <div className={styles.heroImage}>
           <Image
-            src="/images/services/myclinic365-hero.jpg"
+            src="/images/services/myclinic365/hero.jpg"
             alt="MyClinic365 - Workplace Healthcare Platform"
             width={600}
             height={400}

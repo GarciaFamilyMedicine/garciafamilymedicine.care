@@ -2,11 +2,66 @@
 
 .minHScreen {
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(29, 83, 159, 0.95) 0%, rgba(39, 92, 171, 0.85) 50%, rgba(55, 114, 197, 0.75) 100%);
 }
 
 /* Landing Page Logo */
 .landingLogoContainer {
   @apply flex justify-center items-center pt-8 pb-4;
+  position: relative;
+  z-index: 10;
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Hero Background Elements */
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+}
+
+.meshPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: meshMove 20s ease-in-out infinite;
+}
+
+.floatingElements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floatingDot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
+  animation: 
+    float var(--float-duration) ease-in-out infinite var(--float-delay),
+    orbit var(--orbit-duration) linear infinite,
+    pulse var(--pulse-duration) ease-in-out infinite var(--pulse-delay);
+  will-change: transform, opacity;
 }
 
 /* Header Container - Fixed positioning */
@@ -21,6 +76,8 @@
 
 .main {
   @apply flex flex-col items-center flex-grow px-4 py-12;
+  position: relative;
+  z-index: 10;
 }
 
 @media (min-width: 640px) {
@@ -29,14 +86,40 @@
   }
 }
 
-/* Welcome Card */
+/* Welcome Card - Glassmorphism with high contrast */
 .mainWelcomeCard {
-  @apply bg-white/60 backdrop-blur-lg p-8 rounded-lg shadow-md max-w-5xl w-full text-center;
+  @apply p-8 rounded-lg max-w-5xl w-full text-center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeInUp 1s ease-out;
+}
+
+.mainWelcomeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .mainWelcomeH1 {
-  @apply text-[#1d539f] text-3xl font-bold mb-4;
+  @apply text-3xl font-bold mb-4;
   font-family: 'Sumana', serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* High contrast gradient text effect */
+.titleGradient {
+  background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 @media (min-width: 640px) {
@@ -46,8 +129,11 @@
 }
 
 .mainWelcomeH2 {
-  @apply text-[#1d539f] text-xl font-semibold mb-4;
+  @apply text-xl font-semibold mb-6;
   font-family: 'Sumana', serif;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: 640px) {
@@ -57,107 +143,239 @@
 }
 
 .mainWelcomeP {
-  @apply text-gray-600 text-lg text-justify leading-relaxed mb-4 indent-5;
+  @apply text-lg text-justify leading-relaxed mb-6 indent-5;
   font-family: 'Argentum Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .mainWelcomeStrong {
   @apply font-bold;
+  color: #ffd54f;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .readMoreButton {
-  @apply text-gray-600 text-sm bg-transparent border-none cursor-pointer transition-all duration-200;
+  @apply text-sm cursor-pointer transition-all duration-300;
   font-family: 'Argentum Sans', sans-serif;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .readMoreButton:hover {
-  @apply underline;
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.readMoreButton::after {
+  content: '▼';
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.readMoreButton[aria-expanded="true"]::after {
+  transform: rotate(180deg);
 }
 
 /* Care Section */
 .careSection {
-  @apply transition-all duration-300;
+  @apply mt-6 overflow-hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.careSection.expanded {
+  max-height: 2000px;
+  opacity: 1;
+  padding-top: 1.5rem;
 }
 
 .careSectionH3 {
-  @apply text-[#1d539f] text-xl font-bold mb-4;
+  @apply text-xl font-bold mb-4;
   font-family: 'Sumana', serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .careSectionP {
-  @apply text-gray-600 text-base text-justify leading-relaxed mb-4 indent-5;
+  @apply text-base text-justify leading-relaxed mb-4 indent-5;
   font-family: 'Argentum Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .careSectionUl {
-  @apply list-disc pl-6 text-gray-600 text-base mb-4 text-justify;
+  @apply list-disc pl-6 text-base mb-4 text-justify;
   font-family: 'Argentum Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .careSectionLi {
   @apply mb-2;
 }
 
-/* Comments Section */
+/* Comments Section - Glassmorphism with high contrast */
 .commentsSection {
-  @apply bg-white/60 backdrop-blur-lg p-6 rounded-lg shadow-md max-w-5xl w-full text-center mt-6;
+  @apply p-6 rounded-lg max-w-5xl w-full text-center mt-6;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.commentsSection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .commentsSectionH3 {
-  @apply text-[#1d539f] text-xl font-bold mb-4;
+  @apply text-xl font-bold mb-4;
   font-family: 'Sumana', serif;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .commentsSectionP {
-  @apply text-gray-600 text-base leading-relaxed mb-4 indent-5;
+  @apply text-base leading-relaxed mb-4 indent-5;
   font-family: 'Argentum Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Buttons */
+/* Call Button - High contrast gradient */
 .callButton {
-  @apply inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-semibold no-underline transition-all duration-300;
+  @apply inline-flex items-center gap-2 text-white font-bold no-underline transition-all duration-300;
   font-family: 'Argentum Sans', sans-serif;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-size: 1.125rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.callButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff5252 0%, #ff6b6b 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 9999px;
 }
 
 .callButton:hover {
-  @apply from-[#1d539f] to-[#275cab];
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.callButton:hover::before {
+  opacity: 1;
 }
 
 .askButton {
-  @apply inline-block px-5 py-2 bg-gradient-to-r from-[#275cab] to-[#1d539f] text-white rounded-md font-semibold border-none cursor-pointer transition-all duration-300;
+  @apply inline-flex items-center gap-2 font-semibold border-none cursor-pointer transition-all duration-300;
   font-family: 'Argentum Sans', sans-serif;
+  color: #1d539f;
+  background: white;
+  border-radius: 9999px;
+  padding: 0.875rem 1.75rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  font-weight: 700;
+}
+
+.askButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f5f5f5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 9999px;
 }
 
 .askButton:hover {
-  @apply from-[#1d539f] to-[#275cab];
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: #f5f5f5;
+  color: #1d539f;
+}
+
+.askButton:hover::before {
+  opacity: 1;
 }
 
 /* Links */
 .textLink {
-  @apply text-[#275cab] font-semibold no-underline transition-all duration-200;
+  @apply font-semibold no-underline transition-all duration-300;
+  color: #ffd54f;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .textLink:hover {
-  @apply underline;
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-/* Popup */
+/* Popup - Professional overlay */
 .popup {
-  @apply fixed inset-0 bg-black/70 flex justify-center items-center transition-opacity duration-300;
+  @apply fixed inset-0 flex justify-center items-center transition-opacity duration-300;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
   z-index: 2147483647;
 }
 
 .popupContent {
-  @apply bg-white/90 backdrop-blur-lg p-4 rounded-lg shadow-lg w-[90%] max-w-3xl max-h-[90vh] overflow-hidden relative;
+  @apply p-6 rounded-xl w-[90%] max-w-3xl max-h-[90vh] overflow-hidden relative;
+  background: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  animation: fadeInScale 0.3s ease-out;
 }
 
 .close {
-  @apply absolute top-2 right-4 text-[#1d539f] text-2xl font-semibold cursor-pointer transition-colors duration-200;
+  @apply absolute top-4 right-4 text-2xl font-bold cursor-pointer transition-all duration-200;
   font-family: 'Argentum Sans', sans-serif;
+  color: #424242;
+  background: #f5f5f5;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .close:hover {
-  @apply text-[#275cab];
+  background: #e0e0e0;
+  transform: rotate(90deg);
 }
 
 .iframe {
@@ -287,4 +505,82 @@
 .copyright p {
   margin: 0;
   font-family: 'Argentum Sans', sans-serif;
+}
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ======================================================= */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeInDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeInScale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes meshMove {
+  0%, 100% { 
+    transform: translateX(0) translateY(0); 
+  }
+  25% { 
+    transform: translateX(20px) translateY(-20px); 
+  }
+  50% { 
+    transform: translateX(-20px) translateY(20px); 
+  }
+  75% { 
+    transform: translateX(20px) translateY(20px); 
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: translateX(var(--orbit-radius)) translateY(0) scale(var(--pulse-intensity));
+  }
+  to {
+    transform: translateX(var(--orbit-radius)) translateY(0) scale(var(--pulse-intensity)) rotate(calc(360deg * var(--orbit-direction)));
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: var(--pulse-intensity);
+  }
+  50% {
+    opacity: 1;
+  }
 }

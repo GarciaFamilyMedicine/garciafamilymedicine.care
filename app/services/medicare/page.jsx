@@ -1,6 +1,9 @@
 'use client';
 
-import styles from './page.module.css';
+import styles from './medicare.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaStethoscope, FaHeartbeat, FaUserMd, FaShieldAlt, FaPrescriptionBottleAlt, FaCalendarCheck } from 'react-icons/fa';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
 
@@ -8,213 +11,254 @@ export default function MedicarePage() {
   return (
     <>
       <Header />
-      <main className={styles.main}>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.container}>
-            <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
-                Medicare Services
-              </h1>
-              <p className={styles.heroSubtitle}>
-                Comprehensive Medicare-covered services with personalized care for seniors at Garcia Family Medicine
-              </p>
-              <div className={styles.heroButtons}>
-                <a href="tel:816-427-5320" className={styles.primaryButton}>
-                  Schedule Visit: 816-427-5320
-                </a>
-                <a href="#services" className={styles.secondaryButton}>
-                  Medicare Services
-                </a>
-              </div>
-            </div>
-            <div className={styles.heroImage}>
-              <div className={styles.certificationBadge}>
-                <div className={styles.badgeIcon}>🏥</div>
-                <div className={styles.badgeText}>
-                  <span>Medicare</span>
-                  <span>Provider</span>
-                </div>
-              </div>
-            </div>
+      <div className={styles.container}>
+      <section className={styles.heroSection}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Medicare Services</h1>
+          <p className={styles.heroSubtitle}>Your Trusted Medicare Provider</p>
+          <p className={styles.heroDescription}>
+            Comprehensive Medicare-covered services with personalized care for seniors. 
+            Experience healthcare that understands your needs and respects your journey.
+          </p>
+          <div className={styles.heroButtons}>
+            <Link href="/contact" className={styles.primaryButton}>
+              Schedule Medicare Visit
+            </Link>
+            <Link href="#benefits" className={styles.secondaryButton}>
+              View Coverage Options
+            </Link>
           </div>
-        </section>
+        </div>
+        <div className={styles.heroImage}>
+          <Image
+            src="/images/services/medicare/hero.jpg"
+            alt="Medicare Services - Senior Healthcare"
+            width={600}
+            height={400}
+            className={styles.image}
+            unoptimized
+          />
+        </div>
+      </section>
 
-        {/* Quick Info Section */}
-        <section className={styles.quickInfo}>
-          <div className={styles.container}>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>✅</div>
-                <h3>Medicare Accepted</h3>
-                <p>All Medicare plans welcome</p>
-              </div>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>👨‍⚕️</div>
-                <h3>Senior Care</h3>
-                <p>Specialized elderly medicine</p>
-              </div>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>📋</div>
-                <h3>Annual Wellness</h3>
-                <p>Free yearly visits covered</p>
-              </div>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>💊</div>
-                <h3>Medication Reviews</h3>
-                <p>Comprehensive drug management</p>
-              </div>
-            </div>
+      <section className={styles.statsSection}>
+        <div className={styles.statsGrid}>
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>100%</div>
+            <div className={styles.statLabel}>Medicare Accepted</div>
+            <div className={styles.statDescription}>All Medicare plans welcome</div>
           </div>
-        </section>
-
-        {/* Services Section */}
-        <section id="services" className={styles.section}>
-          <div className={styles.container}>
-            <div className={styles.sectionHeader}>
-              <h2>Medicare-Covered Services</h2>
-              <p>Comprehensive healthcare services covered by Medicare at Garcia Family Medicine</p>
-            </div>
-            <div className={styles.servicesGrid}>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>🩺</div>
-                <h3>Annual Wellness Visits</h3>
-                <p>Comprehensive yearly health assessments</p>
-                <ul>
-                  <li>Personalized prevention plan</li>
-                  <li>Health risk assessments</li>
-                  <li>Cognitive assessment</li>
-                  <li>Advanced care planning</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>🔬</div>
-                <h3>Preventive Screenings</h3>
-                <p>Medicare-covered preventive health screenings</p>
-                <ul>
-                  <li>Cancer screenings (mammogram, colonoscopy)</li>
-                  <li>Cardiovascular screenings</li>
-                  <li>Diabetes testing</li>
-                  <li>Bone density scans</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>💉</div>
-                <h3>Immunizations</h3>
-                <p>Essential vaccines covered by Medicare</p>
-                <ul>
-                  <li>Annual flu shots</li>
-                  <li>Pneumonia vaccines</li>
-                  <li>COVID-19 vaccinations</li>
-                  <li>Shingles prevention</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>🧠</div>
-                <h3>Chronic Disease Management</h3>
-                <p>Ongoing care for chronic conditions</p>
-                <ul>
-                  <li>Diabetes management</li>
-                  <li>Hypertension monitoring</li>
-                  <li>Heart disease care</li>
-                  <li>Arthritis treatment</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>🏠</div>
-                <h3>Care Coordination</h3>
-                <p>Comprehensive care management services</p>
-                <ul>
-                  <li>Specialist referrals</li>
-                  <li>Hospital follow-up</li>
-                  <li>Medication reconciliation</li>
-                  <li>Care transitions</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>📱</div>
-                <h3>Telehealth Services</h3>
-                <p>Medicare-covered virtual care options</p>
-                <ul>
-                  <li>Virtual consultations</li>
-                  <li>Medication management</li>
-                  <li>Follow-up appointments</li>
-                  <li>Mental health support</li>
-                </ul>
-              </div>
-            </div>
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>65+</div>
+            <div className={styles.statLabel}>Specialized Care</div>
+            <div className={styles.statDescription}>Expert senior healthcare</div>
           </div>
-        </section>
-
-        {/* Medicare Benefits Section */}
-        <section className={styles.benefitsSection}>
-          <div className={styles.container}>
-            <h2>Understanding Your Medicare Benefits</h2>
-            <div className={styles.benefitsGrid}>
-              <div className={styles.benefitCard}>
-                <div className={styles.benefitNumber}>A</div>
-                <h3>Medicare Part A</h3>
-                <p>Hospital insurance covering inpatient care, skilled nursing, hospice, and some home health services</p>
-              </div>
-              <div className={styles.benefitCard}>
-                <div className={styles.benefitNumber}>B</div>
-                <h3>Medicare Part B</h3>
-                <p>Medical insurance covering doctor visits, outpatient care, preventive services, and medical equipment</p>
-              </div>
-              <div className={styles.benefitCard}>
-                <div className={styles.benefitNumber}>C</div>
-                <h3>Medicare Part C</h3>
-                <p>Medicare Advantage plans that combine Parts A and B, often including prescription drug coverage</p>
-              </div>
-              <div className={styles.benefitCard}>
-                <div className={styles.benefitNumber}>D</div>
-                <h3>Medicare Part D</h3>
-                <p>Prescription drug coverage to help lower medication costs and protect against higher costs in the future</p>
-              </div>
-            </div>
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>$0</div>
+            <div className={styles.statLabel}>Annual Wellness</div>
+            <div className={styles.statDescription}>Free yearly check-ups</div>
           </div>
-        </section>
-
-        {/* Senior Care Section */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <div className={styles.seniorCareContent}>
-              <h2>Specialized Senior Care</h2>
-              <p>At Garcia Family Medicine, we understand the unique healthcare needs of seniors and provide specialized care tailored to Medicare patients:</p>
-              <div className={styles.careGrid}>
-                <div className={styles.careCategory}>
-                  <h4>Comprehensive Geriatric Care</h4>
-                  <ul>
-                    <li>Age-specific health assessments</li>
-                    <li>Fall prevention programs</li>
-                    <li>Cognitive health monitoring</li>
-                    <li>Medication safety reviews</li>
-                  </ul>
-                </div>
-                <div className={styles.careCategory}>
-                  <h4>Chronic Condition Management</h4>
-                  <ul>
-                    <li>Diabetes care and education</li>
-                    <li>Blood pressure management</li>
-                    <li>Heart disease monitoring</li>
-                    <li>Arthritis pain management</li>
-                  </ul>
-                </div>
-                <div className={styles.careCategory}>
-                  <h4>Preventive Care Focus</h4>
-                  <ul>
-                    <li>Cancer screening coordination</li>
-                    <li>Bone health assessments</li>
-                    <li>Vision and hearing checks</li>
-                    <li>Nutrition counseling</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div className={styles.statCard}>
+            <div className={styles.statNumber}>24/7</div>
+            <div className={styles.statLabel}>Support Access</div>
+            <div className={styles.statDescription}>Always here for you</div>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </main>
+      <section id="benefits" className={styles.benefitsSection}>
+        <h2 className={styles.sectionTitle}>Understanding Your Medicare Coverage</h2>
+        <div className={styles.benefitsGrid}>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitIcon}>
+              <div className={styles.partLetter}>A</div>
+            </div>
+            <h3>Medicare Part A</h3>
+            <p>Hospital insurance covering:</p>
+            <ul>
+              <li>Inpatient hospital care</li>
+              <li>Skilled nursing facility care</li>
+              <li>Hospice care</li>
+              <li>Home health services</li>
+            </ul>
+          </div>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitIcon}>
+              <div className={styles.partLetter}>B</div>
+            </div>
+            <h3>Medicare Part B</h3>
+            <p>Medical insurance covering:</p>
+            <ul>
+              <li>Doctor visits</li>
+              <li>Preventive services</li>
+              <li>Outpatient care</li>
+              <li>Medical equipment</li>
+            </ul>
+          </div>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitIcon}>
+              <div className={styles.partLetter}>C</div>
+            </div>
+            <h3>Medicare Advantage</h3>
+            <p>Alternative coverage including:</p>
+            <ul>
+              <li>Parts A & B benefits</li>
+              <li>Often includes Part D</li>
+              <li>Additional benefits</li>
+              <li>Network-based care</li>
+            </ul>
+          </div>
+          <div className={styles.benefitCard}>
+            <div className={styles.benefitIcon}>
+              <div className={styles.partLetter}>D</div>
+            </div>
+            <h3>Prescription Coverage</h3>
+            <p>Medication benefits including:</p>
+            <ul>
+              <li>Prescription drugs</li>
+              <li>Formulary coverage</li>
+              <li>Mail-order options</li>
+              <li>Cost protection</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.servicesSection}>
+        <h2 className={styles.sectionTitle}>Medicare-Covered Services</h2>
+        <div className={styles.servicesGrid}>
+          <div className={styles.serviceCard}>
+            <FaCalendarCheck className={styles.serviceIcon} />
+            <h3>Annual Wellness Visits</h3>
+            <p>Comprehensive yearly health assessments at no cost to you</p>
+            <ul>
+              <li>Personalized prevention plan</li>
+              <li>Health risk assessment</li>
+              <li>Cognitive screening</li>
+              <li>Advanced care planning</li>
+            </ul>
+          </div>
+          <div className={styles.serviceCard}>
+            <FaStethoscope className={styles.serviceIcon} />
+            <h3>Preventive Screenings</h3>
+            <p>Essential health screenings covered by Medicare</p>
+            <ul>
+              <li>Cancer screenings</li>
+              <li>Cardiovascular tests</li>
+              <li>Diabetes screening</li>
+              <li>Bone density scans</li>
+            </ul>
+          </div>
+          <div className={styles.serviceCard}>
+            <FaShieldAlt className={styles.serviceIcon} />
+            <h3>Immunizations</h3>
+            <p>Important vaccines to keep you healthy</p>
+            <ul>
+              <li>Annual flu shots</li>
+              <li>Pneumonia vaccines</li>
+              <li>COVID-19 vaccines</li>
+              <li>Shingles prevention</li>
+            </ul>
+          </div>
+          <div className={styles.serviceCard}>
+            <FaHeartbeat className={styles.serviceIcon} />
+            <h3>Chronic Care Management</h3>
+            <p>Ongoing support for chronic conditions</p>
+            <ul>
+              <li>Diabetes management</li>
+              <li>Heart disease care</li>
+              <li>Hypertension control</li>
+              <li>Arthritis treatment</li>
+            </ul>
+          </div>
+          <div className={styles.serviceCard}>
+            <FaPrescriptionBottleAlt className={styles.serviceIcon} />
+            <h3>Medication Management</h3>
+            <p>Comprehensive medication reviews and optimization</p>
+            <ul>
+              <li>Drug interaction checks</li>
+              <li>Dosage optimization</li>
+              <li>Generic alternatives</li>
+              <li>Adherence support</li>
+            </ul>
+          </div>
+          <div className={styles.serviceCard}>
+            <FaUserMd className={styles.serviceIcon} />
+            <h3>Care Coordination</h3>
+            <p>Seamless healthcare management</p>
+            <ul>
+              <li>Specialist referrals</li>
+              <li>Hospital follow-up</li>
+              <li>Test result tracking</li>
+              <li>Care transitions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.whyChooseSection}>
+        <h2 className={styles.sectionTitle}>Why Choose Garcia Family Medicine for Medicare</h2>
+        <div className={styles.whyChooseGrid}>
+          <div className={styles.whyChooseCard}>
+            <h3>Senior-Focused Care</h3>
+            <p>Specialized expertise in geriatric medicine with understanding of age-related health concerns</p>
+          </div>
+          <div className={styles.whyChooseCard}>
+            <h3>Extended Appointments</h3>
+            <p>Longer visit times to address all your concerns without feeling rushed</p>
+          </div>
+          <div className={styles.whyChooseCard}>
+            <h3>Simplified Billing</h3>
+            <p>We handle Medicare paperwork and billing, making healthcare hassle-free</p>
+          </div>
+          <div className={styles.whyChooseCard}>
+            <h3>Comprehensive Care</h3>
+            <p>From prevention to chronic disease management, we're your healthcare home</p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.processSection}>
+        <h2 className={styles.sectionTitle}>Getting Started with Medicare Services</h2>
+        <div className={styles.processSteps}>
+          <div className={styles.processStep}>
+            <div className={styles.stepNumber}>1</div>
+            <h3>Verify Coverage</h3>
+            <p>We'll confirm your Medicare coverage and explain your benefits</p>
+          </div>
+          <div className={styles.processStep}>
+            <div className={styles.stepNumber}>2</div>
+            <h3>Schedule Visit</h3>
+            <p>Book your appointment for a comprehensive health assessment</p>
+          </div>
+          <div className={styles.processStep}>
+            <div className={styles.stepNumber}>3</div>
+            <h3>Personalized Plan</h3>
+            <p>Develop a customized care plan based on your needs</p>
+          </div>
+          <div className={styles.processStep}>
+            <div className={styles.stepNumber}>4</div>
+            <h3>Ongoing Support</h3>
+            <p>Regular follow-ups and 24/7 access to care when needed</p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaContent}>
+          <h2>Ready to Experience Better Medicare Care?</h2>
+          <p>Join our growing community of seniors who trust Garcia Family Medicine for their healthcare needs.</p>
+          <div className={styles.ctaButtons}>
+            <Link href="/contact" className={styles.primaryButton}>
+              Schedule Your Medicare Visit
+            </Link>
+            <a href="tel:816-427-5320" className={styles.secondaryButton}>
+              Call: 816-427-5320
+            </a>
+          </div>
+        </div>
+      </section>
+      </div>
       <Footer />
     </>
   );

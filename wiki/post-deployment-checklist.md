@@ -9,7 +9,7 @@ The email integration will not work until these are added:
 - [ ] Add `NEXT_PUBLIC_NEWSLETTER_SUCCESS_MESSAGE` secret
 - [ ] Add `NEXT_PUBLIC_NEWSLETTER_ERROR_MESSAGE` secret
 
-See: [GitHub Secrets Setup Guide](./GitHub-Secrets-Setup.md)
+See: [GitHub Secrets Setup Guide](./github-secrets-setup.md)
 
 ### 2. Verify Deployment
 - [ ] Check GitHub Actions tab for successful build

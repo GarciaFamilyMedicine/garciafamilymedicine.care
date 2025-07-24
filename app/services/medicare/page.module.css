@@ -19,6 +19,10 @@
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero::before {

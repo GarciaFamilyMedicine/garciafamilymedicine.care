@@ -433,7 +433,15 @@ fix_carousel                  ❌ Incorrect
 ```
 
 ## 🔗 Related Documentation
-- [Mobile Development Guidelines](mobile-development.md)
-- [Testing Guidelines](testing.md)
-- [Component Documentation](../components/)
-- [Architecture Overview](../architecture/project-structure.md)
+- [Mobile Development Guidelines](./mobile-development.md)
+- [Architecture Overview](./architecture-overview.md)
+- [Development Guide](./development-guide.md)
+- [Getting Started](./getting-started.md)
+
+---
+
+## 📚 Quick Links
+
+**[← Architecture Overview](./architecture-overview.md)** | **[Home](./home.md)** | **[Mobile Development →](./mobile-development.md)**
+
+**Related Pages**: [Email Integration](./email-integration.md) | [Pre-Deployment Checklist](./pre-deployment-checklist.md) | [HIPAA Compliance](./hipaa-compliance.md)

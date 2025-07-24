@@ -548,4 +548,12 @@ module.exports = {
 
 ---
 
-**Next Steps:** Review [Component Documentation](Component-Documentation) for detailed component usage guidelines.
+**Next Steps:** Review [Coding Standards](./coding-standards.md) for code quality guidelines.
+
+---
+
+## 📚 Quick Links
+
+**[← Development Guide](./development-guide.md)** | **[Home](./home.md)** | **[Coding Standards →](./coding-standards.md)**
+
+**Related Pages**: [Getting Started](./getting-started.md) | [Mobile Development](./mobile-development.md) | [Email Integration](./email-integration.md)

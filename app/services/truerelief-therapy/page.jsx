@@ -31,7 +31,7 @@ export default function TrueReliefTherapyPage() {
         </div>
         <div className={styles.heroImage}>
           <Image
-            src="/images/services/truerelief-hero.jpg"
+            src="/images/services/truerelief-therapy/hero.jpg"
             alt="TrueRelief Therapy - Non-Opioid Pain Management"
             width={600}
             height={400}

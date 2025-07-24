@@ -207,10 +207,9 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 
 After getting started:
 
-1. **Read the [Development Guide](Development-Guide)** - Detailed workflow and best practices
-2. **Review [Architecture Overview](Architecture-Overview)** - Understand the system design
-3. **Check [Component Documentation](Component-Documentation)** - Learn about available components
-4. **Follow [Code Standards](Code-Standards)** - Maintain code quality
+1. **Read the [Development Guide](./development-guide.md)** - Detailed workflow and best practices
+2. **Review [Architecture Overview](./architecture-overview.md)** - Understand the system design
+3. **Follow [Coding Standards](./coding-standards.md)** - Maintain code quality
 
 ## ❓ Common Issues
 
@@ -243,11 +242,19 @@ gh auth login
 
 ## 🆘 Need Help?
 
-- **Troubleshooting**: See [Troubleshooting Guide](Troubleshooting)
-- **Component Issues**: Check [Component Documentation](Component-Documentation)  
-- **Build Problems**: Review [Deployment Guide](Deployment-Guide)
-- **Code Questions**: Follow [Code Standards](Code-Standards)
+- **Email Issues**: See [Email Subscription Troubleshooting](./email-subscription-troubleshooting.md)
+- **Architecture**: Check [Architecture Overview](./architecture-overview.md)  
+- **Build Problems**: Review [Pre-Deployment Checklist](./pre-deployment-checklist.md)
+- **Code Questions**: Follow [Coding Standards](./coding-standards.md)
 
 ---
 
-**Ready to start developing?** Follow the [Development Guide](Development-Guide) for detailed workflow instructions.
+**Ready to start developing?** Follow the [Development Guide](./development-guide.md) for detailed workflow instructions.
+
+---
+
+## 📚 Quick Links
+
+**[← Home](./home.md)** | **[Development Guide →](./development-guide.md)**
+
+**Related Pages**: [Architecture Overview](./architecture-overview.md) | [Coding Standards](./coding-standards.md) | [Mobile Development](./mobile-development.md)

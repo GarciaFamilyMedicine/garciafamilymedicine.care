@@ -3,6 +3,7 @@
 import styles from './page.module.css'
 import { FaPray, FaHeart, FaUsers, FaCross, FaHandsHelping, FaBookOpen, FaAppleAlt, FaRunning, FaBrain, FaBed, FaPeopleArrows } from 'react-icons/fa'
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from '../../../components/header'
 import Footer from '../../../components/footer/footer'
 
@@ -10,190 +11,17 @@ export default function FaithFamilyMedicine() {
   return (
     <>
       <Header />
-      <div className={styles.servicePage}>
-        <div className={styles.hero}>
-          <div className={styles.heroOverlay}></div>
+      <div className={styles.container}>
+        <section className={styles.heroSection}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>Faith & Family Medicine™</h1>
             <p className={styles.heroSubtitle}>Whole-Person Care That Honors Your Body, Soul, and Spirit</p>
-          </div>
-        </div>
-
-      <div className={styles.mainContent}>
-        <section className={styles.introSection}>
-          <div className={styles.container}>
-            <p className={styles.leadText}>
-              At Garcia Family Medicine, we believe that true healing encompasses far more than treating symptoms or diagnosing conditions. Our practice is founded on the understanding that you are a complete person—body, soul, and spirit—and that authentic wellness requires attention to every aspect of your being.
+            <p className={styles.heroDescription}>
+              Experience healthcare that treats you as a complete person—body, soul, and spirit. 
+              Our practice integrates medical excellence with spiritual compassion, providing 
+              comprehensive family medicine services in a faith-centered environment.
             </p>
-            <p className={styles.sectionText}>
-              Faith & Family Medicine™ represents our commitment to providing whole-person care that honors not only your physical health but also acknowledges the profound connection between your spiritual well-being and your overall health journey.
-            </p>
-          </div>
-        </section>
-
-        <section className={styles.servicesSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Medicine as Art and Calling</h2>
-            <p className={styles.sectionText}>
-              Medicine, at its most profound level, is both an art and a calling. At Garcia Family Medicine, we recognize that every patient who walks through our doors carries not just physical ailments, but also hopes, fears, dreams, and faith. Our approach to healthcare integrates the highest standards of medical excellence with the timeless principles of compassion, prayer, and spiritual support that have guided healers for millennia.
-            </p>
-            <p className={styles.sectionText}>
-              Dr. Tess Garcia and our dedicated medical team understand that when you're facing illness, injury, or health concerns, you're not just seeking medical treatment—you're seeking hope, understanding, and a sense of peace during uncertain times. Our Faith & Family Medicine™ model acknowledges that healing is a collaborative process between patient, physician, and the divine source of all healing. We treat each patient with the reverence and dignity that reflects our belief that every person is fearfully and wonderfully made.
-            </p>
-          </div>
-        </section>
-
-        <section className={styles.servicesSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Comprehensive Family Medicine Services</h2>
-            <p className={styles.sectionText}>
-              Our comprehensive family medicine services cover patients of all ages, from newborns to seniors. We provide preventive care, acute illness treatment, chronic disease management, wellness screenings, immunizations, and health education—all delivered with the personalized attention and compassionate care that defines our practice.
-            </p>
-            <div className={styles.servicesGrid}>
-              <div className={styles.serviceCard}>
-                <FaHeart className={styles.serviceIcon} />
-                <h3>Comprehensive Medical Services</h3>
-                <ul className={styles.serviceList}>
-                  <li>Routine physical examinations</li>
-                  <li>Management of chronic conditions (diabetes, hypertension, heart disease)</li>
-                  <li>Acute care for illnesses and injuries</li>
-                  <li>Women's health services</li>
-                  <li>Pediatric care</li>
-                  <li>Geriatric medicine</li>
-                  <li>Mental health support</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaUsers className={styles.serviceIcon} />
-                <h3>Family-Centered Care</h3>
-                <ul className={styles.serviceList}>
-                  <li>Care for all ages from newborns to seniors</li>
-                  <li>Preventive care and wellness screenings</li>
-                  <li>Immunizations and health education</li>
-                  <li>Chronic disease management</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaPray className={styles.serviceIcon} />
-                <h3>Spiritual Support</h3>
-                <ul className={styles.serviceList}>
-                  <li>Prayer with patients (when welcomed)</li>
-                  <li>Spiritual and emotional support</li>
-                  <li>Faith community collaboration</li>
-                  <li>Holistic wellness guidance</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.approachSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Our Unique Approach</h2>
-            <div className={styles.benefitsGrid}>
-              <div className={styles.benefitCard}>
-                <FaHandsHelping className={styles.benefitIcon} />
-                <h3>Quality Time</h3>
-                <p>What sets Garcia Family Medicine apart is our commitment to spending quality time with each patient. In an era of rushed medical appointments and impersonal healthcare experiences, we prioritize building genuine relationships with our patients and their families.</p>
-              </div>
-              <div className={styles.benefitCard}>
-                <FaCross className={styles.benefitIcon} />
-                <h3>Partnership in Healing</h3>
-                <p>We're not just your healthcare providers—we're your partners in health and healing. Our team is trained not only in medical excellence but also in providing spiritual and emotional support during difficult times.</p>
-              </div>
-              <div className={styles.benefitCard}>
-                <FaBookOpen className={styles.benefitIcon} />
-                <h3>Understanding Your Journey</h3>
-                <p>We believe that understanding your unique circumstances, challenges, and faith journey enables us to provide more effective, personalized care that addresses your complete well-being.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.servicesSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>The Power of Prayer in Healing</h2>
-            <p className={styles.sectionText}>
-              Prayer is an integral part of our practice, offered respectfully to those who welcome it. We believe in the power of prayer to bring comfort, peace, and healing, and we're honored when patients invite us to pray with them during appointments or procedures. Our approach is always respectful of individual beliefs and preferences, ensuring that every patient feels comfortable and valued regardless of their faith background.
-            </p>
-            <p className={styles.sectionText}>
-              We recognize that many patients find strength, hope, and healing through their faith communities. We work collaboratively with patients' spiritual advisors, chaplains, and faith leaders when appropriate, understanding that spiritual support often enhances medical treatment and promotes faster, more complete healing.
-            </p>
-          </div>
-        </section>
-
-        <section className={styles.servicesSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Holistic Health Assessment</h2>
-            <p className={styles.sectionText}>
-              This holistic approach includes assessing your nutritional status, exercise habits, sleep patterns, stress levels, and spiritual well-being, providing guidance on healthy lifestyle choices that honor your body as a temple.
-            </p>
-            <div className={styles.servicesGrid}>
-              <div className={styles.serviceCard}>
-                <FaAppleAlt className={styles.serviceIcon} />
-                <h3>Nutritional Guidance</h3>
-                <ul className={styles.serviceList}>
-                  <li>Personalized dietary recommendations</li>
-                  <li>Nutritional counseling</li>
-                  <li>Healthy eating plans</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaRunning className={styles.serviceIcon} />
-                <h3>Exercise & Movement</h3>
-                <ul className={styles.serviceList}>
-                  <li>Personalized fitness plans</li>
-                  <li>Safe exercise recommendations</li>
-                  <li>Movement therapy guidance</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaBrain className={styles.serviceIcon} />
-                <h3>Stress Management</h3>
-                <ul className={styles.serviceList}>
-                  <li>Stress reduction techniques</li>
-                  <li>Mindfulness practices</li>
-                  <li>Coping strategies</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaBed className={styles.serviceIcon} />
-                <h3>Sleep Wellness</h3>
-                <ul className={styles.serviceList}>
-                  <li>Sleep hygiene education</li>
-                  <li>Rest optimization strategies</li>
-                  <li>Healing through proper rest</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaPray className={styles.serviceIcon} />
-                <h3>Spiritual Well-being</h3>
-                <ul className={styles.serviceList}>
-                  <li>Faith journey support</li>
-                  <li>Spiritual counseling</li>
-                  <li>Prayer and meditation guidance</li>
-                </ul>
-              </div>
-              <div className={styles.serviceCard}>
-                <FaPeopleArrows className={styles.serviceIcon} />
-                <h3>Community Connection</h3>
-                <ul className={styles.serviceList}>
-                  <li>Support group referrals</li>
-                  <li>Community resource connections</li>
-                  <li>Faith community integration</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.teamSection}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Experience Compassionate, Faith-Centered Care</h2>
-            <p className={styles.sectionText}>
-              Join a healthcare practice that honors your complete well-being—body, soul, and spirit. Dr. Tess Garcia and our dedicated team are here to walk alongside you on your health journey, providing medical excellence integrated with spiritual compassion.
-            </p>
-            <div className={styles.ctaButtons}>
+            <div className={styles.heroButtons}>
               <Link href="/contact" className={styles.primaryButton}>
                 Schedule Your Visit
               </Link>
@@ -202,8 +30,157 @@ export default function FaithFamilyMedicine() {
               </Link>
             </div>
           </div>
+          <div className={styles.heroImage}>
+            <Image
+              src="/images/services/faith-family-medicine/hero.jpg"
+              alt="Faith & Family Medicine - Whole Person Healthcare"
+              width={600}
+              height={400}
+              className={styles.image}
+              unoptimized
+            />
+          </div>
         </section>
-        </div>
+
+        <section className={styles.statsSection}>
+          <div className={styles.statsGrid}>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>25+</div>
+              <div className={styles.statLabel}>Years Experience</div>
+              <div className={styles.statDescription}>Serving families with excellence</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>98%</div>
+              <div className={styles.statLabel}>Patient Satisfaction</div>
+              <div className={styles.statDescription}>Rated by our community</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>All Ages</div>
+              <div className={styles.statLabel}>Family Care</div>
+              <div className={styles.statDescription}>Newborns to seniors</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>24/7</div>
+              <div className={styles.statLabel}>Prayer Support</div>
+              <div className={styles.statDescription}>Spiritual care available</div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.featuresSection}>
+          <h2 className={styles.sectionTitle}>Comprehensive Family Medicine Services</h2>
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <FaHeart className={styles.featureIcon} />
+              <h3>Primary Care</h3>
+              <p>Comprehensive medical care for all ages with a personal touch</p>
+            </div>
+            <div className={styles.featureCard}>
+              <FaUsers className={styles.featureIcon} />
+              <h3>Family-Centered</h3>
+              <p>Care that considers your whole family's health journey</p>
+            </div>
+            <div className={styles.featureCard}>
+              <FaPray className={styles.featureIcon} />
+              <h3>Faith Integration</h3>
+              <p>Spiritual support and prayer when welcomed</p>
+            </div>
+            <div className={styles.featureCard}>
+              <FaHandsHelping className={styles.featureIcon} />
+              <h3>Compassionate Care</h3>
+              <p>Quality time and genuine relationships with patients</p>
+            </div>
+            <div className={styles.featureCard}>
+              <FaCross className={styles.featureIcon} />
+              <h3>Holistic Wellness</h3>
+              <p>Addressing body, mind, and spirit for complete health</p>
+            </div>
+            <div className={styles.featureCard}>
+              <FaBookOpen className={styles.featureIcon} />
+              <h3>Health Education</h3>
+              <p>Empowering you with knowledge for better health</p>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.servicesSection}>
+          <h2 className={styles.sectionTitle}>Our Services</h2>
+          <div className={styles.servicesGrid}>
+            <div className={styles.serviceCategory}>
+              <h3>Primary Care</h3>
+              <ul>
+                <li>Annual physicals</li>
+                <li>Acute illness treatment</li>
+                <li>Chronic disease management</li>
+                <li>Preventive screenings</li>
+              </ul>
+            </div>
+            <div className={styles.serviceCategory}>
+              <h3>Women's Health</h3>
+              <ul>
+                <li>Well-woman exams</li>
+                <li>Family planning</li>
+                <li>Prenatal care</li>
+                <li>Menopause management</li>
+              </ul>
+            </div>
+            <div className={styles.serviceCategory}>
+              <h3>Pediatric Care</h3>
+              <ul>
+                <li>Well-child visits</li>
+                <li>Immunizations</li>
+                <li>School physicals</li>
+                <li>Developmental screening</li>
+              </ul>
+            </div>
+            <div className={styles.serviceCategory}>
+              <h3>Senior Care</h3>
+              <ul>
+                <li>Medicare wellness visits</li>
+                <li>Memory screening</li>
+                <li>Fall risk assessment</li>
+                <li>Medication management</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.philosophySection}>
+          <div className={styles.philosophyContent}>
+            <h2 className={styles.sectionTitle}>Our Philosophy of Care</h2>
+            <p className={styles.philosophyText}>
+              At Garcia Family Medicine, we believe that true healing encompasses far more than treating 
+              symptoms or diagnosing conditions. Our practice is founded on the understanding that you are 
+              a complete person—body, soul, and spirit—and that authentic wellness requires attention to 
+              every aspect of your being.
+            </p>
+            <p className={styles.philosophyText}>
+              We integrate the highest standards of medical excellence with the timeless principles of 
+              compassion, prayer, and spiritual support. Our approach acknowledges that healing is a 
+              collaborative process between patient, physician, and the divine source of all healing.
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h2>Experience Compassionate, Faith-Centered Care</h2>
+            <p>
+              Join a healthcare practice that honors your complete well-being—body, soul, and spirit.
+            </p>
+            <div className={styles.ctaButtons}>
+              <Link href="/contact" className={styles.ctaPrimary}>
+                Schedule Your Visit
+              </Link>
+              <Link href="/meetthedoctor" className={styles.ctaSecondary}>
+                Meet Dr. Garcia
+              </Link>
+            </div>
+            <p className={styles.ctaNote}>
+              <small>Same-day appointments available. All faiths welcome.</small>
+            </p>
+          </div>
+        </section>
       </div>
       <Footer />
     </>

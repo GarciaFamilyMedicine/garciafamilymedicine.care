@@ -31,7 +31,7 @@ export default function CareBridgePage() {
         </div>
         <div className={styles.heroImage}>
           <Image
-            src="/images/services/carebridge-hero.jpg"
+            src="/images/services/carebridge/hero.jpg"
             alt="CareBridge - 24/7 Healthcare Platform"
             width={600}
             height={400}

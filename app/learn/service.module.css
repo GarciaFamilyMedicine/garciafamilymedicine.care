@@ -33,6 +33,10 @@
   position: relative;
   overflow: hidden;
   margin-top: 60px;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .heroOverlay {

@@ -536,7 +536,7 @@ const trackMobileInteraction = (action, element) => {
 - **WebPageTest** - Mobile network simulation
 
 ## 🔗 Related Documentation
-- [Coding Standards](coding-standards.md)
-- [Responsive Design Architecture](../architecture/responsive-design.md)
-- [Component Testing](testing.md)
-- [Performance Guidelines](../architecture/performance.md)
+- [Coding Standards](./coding-standards.md)
+- [Architecture Overview](./architecture-overview.md)
+- [Development Guide](./development-guide.md)
+- [Getting Started](./getting-started.md)

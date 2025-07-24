@@ -6,9 +6,27 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import mobileStyles from './mobile.module.css';
 
+// Floating dots configuration
+const generateFloatingDots = () => {
+  return Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    floatDuration: `${15 + Math.random() * 15}s`,
+    floatDelay: `${Math.random() * 5}s`,
+    orbitDuration: `${20 + Math.random() * 20}s`,
+    orbitRadius: `${50 + Math.random() * 100}px`,
+    orbitDirection: Math.random() > 0.5 ? 1 : -1,
+    pulseDuration: `${3 + Math.random() * 2}s`,
+    pulseDelay: `${Math.random() * 3}s`,
+    pulseIntensity: 0.5 + Math.random() * 0.5,
+  }));
+};
+
 export default function LandingPage() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [floatingDots] = useState(generateFloatingDots);
 
   // Close popup when clicking overlay
   useEffect(() => {
@@ -48,6 +66,32 @@ export default function LandingPage() {
       styles.minHScreen,
       mobileStyles.minHScreen
     )}>
+      {/* Hero Background Elements */}
+      <div className={styles.heroBackground}>
+        <div className={styles.gradientOverlay} />
+        <div className={styles.meshPattern} />
+        <div className={styles.floatingElements}>
+          {floatingDots.map((dot) => (
+            <div
+              key={dot.id}
+              className={styles.floatingDot}
+              style={{
+                left: dot.left,
+                top: dot.top,
+                '--float-duration': dot.floatDuration,
+                '--float-delay': dot.floatDelay,
+                '--orbit-duration': dot.orbitDuration,
+                '--orbit-radius': dot.orbitRadius,
+                '--orbit-direction': dot.orbitDirection,
+                '--pulse-duration': dot.pulseDuration,
+                '--pulse-delay': dot.pulseDelay,
+                '--pulse-intensity': dot.pulseIntensity,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
       {/* Simple Logo at top */}
       <div className={styles.landingLogoContainer}>
         <Image 
@@ -74,7 +118,7 @@ export default function LandingPage() {
             styles.mainWelcomeH1,
             mobileStyles.mainWelcomeH1
           )}>
-            Welcome to Garcia Family Medicine
+            Welcome to <span className={styles.titleGradient}>Garcia Family Medicine</span>
           </h1>
           
           <h2 className={combineStyles(
@@ -115,16 +159,14 @@ export default function LandingPage() {
             className={combineStyles(
               styles.careSection,
               mobileStyles.careSection,
-              isExpanded ? mobileStyles.expanded : '',
-              'transition-all duration-300',
-              isExpanded ? 'max-h-[2000px] pt-2' : 'max-h-0 overflow-hidden'
+              isExpanded ? styles.expanded : ''
             )}
           >
             <h3 className={combineStyles(
               styles.careSectionH3,
               mobileStyles.careSectionH3
             )}>
-              Garcia Family Medicine: Where Love Meets Exceptional Care!
+              <span className={styles.titleGradient}>Garcia Family Medicine:</span> Where Love Meets Exceptional Care!
             </h3>
             <p className={combineStyles(
               styles.careSectionP,
@@ -167,7 +209,7 @@ export default function LandingPage() {
               styles.careSectionH3,
               mobileStyles.careSectionH3
             )}>
-              Trust in Us – Call Today!
+              <span className={styles.titleGradient}>Trust in Us</span> – Call Today!
             </h3>
             <p className={combineStyles(
               styles.careSectionP,

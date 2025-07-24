@@ -5,30 +5,34 @@
 ## 🚀 Quick Navigation
 
 ### 📖 **Getting Started**
-- **[Getting Started](Getting-Started)** - Setup and development environment
-- **[Development Guide](Development-Guide)** - Workflow and coding practices
-- **[Installation Guide](Installation-Guide)** - Detailed setup instructions
+- **[Getting Started](./getting-started.md)** - Setup and development environment
+- **[Development Guide](./development-guide.md)** - Workflow and coding practices
 
 ### 🏗️ **Architecture & Design**
-- **[Architecture Overview](Architecture-Overview)** - System design and technology stack
-- **[Component Documentation](Component-Documentation)** - React component library
-- **[Styling Guide](Styling-Guide)** - CSS architecture and design system
+- **[Architecture Overview](./architecture-overview.md)** - System design and technology stack
 
 ### 🛠️ **Development**
-- **[Code Standards](Code-Standards)** - Coding best practices and conventions
-- **[Mobile Development](Mobile-Development)** - Mobile-first development guidelines
-- **[Accessibility Guide](Accessibility-Guide)** - WCAG compliance and inclusive design
+- **[Coding Standards](./coding-standards.md)** - Coding best practices and conventions
+- **[Mobile Development](./mobile-development.md)** - Mobile-first development guidelines
 
 ### 🚀 **Deployment & Operations**
-- **[Deployment Guide](Deployment-Guide)** - Azure Static Web Apps deployment
-- **[Email Integration](Email-Integration)** - Newsletter signup with SharePoint
-- **[Troubleshooting](Troubleshooting)** - Common issues and solutions
-- **[Performance Optimization](Performance-Optimization)** - Speed and optimization tips
+- **[Pre-Deployment Checklist](./pre-deployment-checklist.md)** - Pre-deployment verification
+- **[Post-Deployment Checklist](./post-deployment-checklist.md)** - Post-deployment verification
+- **[Email Integration](./email-integration.md)** - Newsletter signup with SharePoint
+- **[Email Subscription Troubleshooting](./email-subscription-troubleshooting.md)** - Email issues and solutions
+- **[GitHub Secrets Setup](./github-secrets-setup.md)** - Environment configuration
+- **[Production Webhook Setup](./production-webhook-setup.md)** - Webhook configuration
+
+### 📧 **Power Automate & Integration**
+- **[Power Automate SharePoint Integration](./power-automate-sharepoint-integration.md)** - Complete integration guide
+- **[Power Automate IP Capture](./power-automate-ip-capture.md)** - IP tracking configuration
+- **[Webhook Rotation Guide](./webhook-rotation-guide.md)** - Webhook management
+- **[Reusable Integration Guide](./reusable-integration-guide.md)** - Integration patterns
 
 ### 📚 **Reference**
-- **[Changelog](Changelog)** - Project history and version tracking
-- **[Claude Code Guide](Claude-Code-Guide)** - AI-assisted development guidelines
-- **[API Reference](API-Reference)** - Component APIs and utilities
+- **[Changelog Automation](./changelog-automation.md)** - Automated changelog generation
+- **[HIPAA Compliance](./hipaa-compliance.md)** - Healthcare compliance guidelines
+- **[Newsletter Data Collection](./newsletter-data-collection.md)** - Data collection best practices
 
 ## 🏥 **About the Project**
 
@@ -80,14 +84,14 @@ Visit `http://localhost:3000` to see the website in action.
 
 ### 🤝 **Contributing**
 
-We use a feature branch workflow where each developer works on their own feature branch created from `main`. See the [Development Guide](Development-Guide) for detailed contribution guidelines.
+We use a feature branch workflow where each developer works on their own feature branch created from `main`. See the [Development Guide](./development-guide.md) for detailed contribution guidelines.
 
 ### 📞 **Support**
 
 For technical questions or support:
-- Check the [Troubleshooting](Troubleshooting) guide
-- Review [Component Documentation](Component-Documentation)
-- See [Code Standards](Code-Standards) for best practices
+- Check the [Email Subscription Troubleshooting](./email-subscription-troubleshooting.md) guide
+- Review [Architecture Overview](./architecture-overview.md)
+- See [Coding Standards](./coding-standards.md) for best practices
 
 ---
 

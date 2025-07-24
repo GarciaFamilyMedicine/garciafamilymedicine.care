@@ -165,3 +165,11 @@ For email subscriptions to work in production, you MUST configure the following 
 - [Email Subscription Troubleshooting](./email-subscription-troubleshooting.md)
 - [GitHub Secrets Setup](./github-secrets-setup.md)
 - [Power Automate SharePoint Integration](./power-automate-sharepoint-integration.md)
+
+---
+
+## 📚 Quick Links
+
+**[← Home](./home.md)** | **[Email Troubleshooting →](./email-subscription-troubleshooting.md)**
+
+**Related Pages**: [Power Automate Integration](./power-automate-sharepoint-integration.md) | [Production Webhook Setup](./production-webhook-setup.md) | [Webhook Rotation Guide](./webhook-rotation-guide.md)

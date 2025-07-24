@@ -1,184 +1,278 @@
 'use client';
 
 import styles from './valorview-ime.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaBalanceScale, FaUserShield, FaClipboardCheck, FaClock, FaAward, FaMedal } from 'react-icons/fa';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
-import Link from 'next/link';
 
 export default function ValorViewIMEPage() {
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <div className={styles.container}>
         {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.container}>
-            <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
-                ValorView™ Independent Medical Examinations
-              </h1>
-              <p className={styles.heroSubtitle}>
-                Fair, Respectful Exams That Honor Your Service
-              </p>
-              <div className={styles.heroButtons}>
-                <a href="tel:816-427-5320" className={styles.primaryButton}>
-                  Schedule Your IME
-                </a>
-                <Link href="/contact" className={styles.secondaryButton}>
-                  Learn More
-                </Link>
-              </div>
+        <section className={styles.heroSection}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>ValorView™ IME</h1>
+            <p className={styles.heroSubtitle}>Independent Medical Examinations That Honor Your Service</p>
+            <p className={styles.heroDescription}>
+              Your service deserves respect. Whether you're a veteran, first responder, 
+              or injured worker, our IME program treats you with the dignity you've earned 
+              while providing thorough, objective medical evaluations.
+            </p>
+            <div className={styles.heroButtons}>
+              <a href="tel:816-427-5320" className={styles.primaryButton}>
+                Schedule Your IME
+              </a>
+              <Link href="#process" className={styles.secondaryButton}>
+                Learn Our Process
+              </Link>
+            </div>
+          </div>
+          <div className={styles.heroImage}>
+            <Image
+              src="/images/services/valorview-ime/hero.jpg"
+              alt="ValorView IME - Independent Medical Examinations"
+              width={600}
+              height={400}
+              className={styles.image}
+              unoptimized
+            />
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className={styles.statsSection}>
+          <div className={styles.statsGrid}>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>20+</div>
+              <div className={styles.statLabel}>Years Experience</div>
+              <div className={styles.statDescription}>In comprehensive evaluations</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>5000+</div>
+              <div className={styles.statLabel}>IMEs Completed</div>
+              <div className={styles.statDescription}>For veterans and workers</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>48-72hr</div>
+              <div className={styles.statLabel}>Report Turnaround</div>
+              <div className={styles.statDescription}>Without compromising quality</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>100%</div>
+              <div className={styles.statLabel}>Trauma-Informed</div>
+              <div className={styles.statDescription}>Respectful approach</div>
             </div>
           </div>
         </section>
 
-        {/* Introduction Section */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <div className={styles.textContent}>
-              <p className={styles.leadText}>
-                Your service deserves our respect. At Garcia Family Medicine, we understand that seeking an Independent Medical Examination (IME) can feel overwhelming, especially when you're already dealing with health challenges or workplace injuries. Whether you're a veteran who dedicated years to protecting our freedom, a first responder who put your life on the line for community safety, or a hardworking individual injured on the job, you deserve an examination process that treats you with the dignity and respect you've earned.
-              </p>
-              <p className={styles.text}>
-                Our ValorView™ IME program was specifically designed with one principle in mind: those who have served others deserve to be served with excellence, compassion, and unwavering professionalism. We recognize that behind every IME request is a real person with a real story, real struggles, and real hopes for the future. That's why we've created a completely different kind of IME experience—one that honors your service while protecting your interests.
-              </p>
+        {/* Features Section */}
+        <section className={styles.benefitsSection}>
+          <h2 className={styles.sectionTitle}>Why Choose ValorView™?</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitCard}>
+              <FaUserShield className={styles.benefitIcon} />
+              <h3>Zero Judgment</h3>
+              <p>Your service has proven your character. We provide objective evaluations without questioning your integrity.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaBalanceScale className={styles.benefitIcon} />
+              <h3>Fair & Objective</h3>
+              <p>Comprehensive evaluations that consider all aspects of your condition and its impact on your life.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaClipboardCheck className={styles.benefitIcon} />
+              <h3>Detailed Reports</h3>
+              <p>Thorough documentation that clearly explains findings in language accessible to all parties.</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <FaMedal className={styles.benefitIcon} />
+              <h3>Service-Focused</h3>
+              <p>Special expertise in service-related injuries, toxic exposures, and occupational health.</p>
             </div>
           </div>
         </section>
 
-        {/* Experience Section */}
-        <section className={`${styles.section} ${styles.bgLight}`}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Experience That Understands Your Journey</h2>
-            <div className={styles.textContent}>
-              <p className={styles.text}>
-                Dr. Tess Garcia and our entire medical team bring decades of experience in comprehensive healthcare, with specialized understanding of service-related injuries, occupational health challenges, and the unique medical needs of our veteran and working communities. We're not just conducting examinations; we're providing a bridge between your past service and your future wellbeing.
+        {/* Process Section */}
+        <section id="process" className={styles.processSection}>
+          <h2 className={styles.sectionTitle}>Our Thorough Examination Process</h2>
+          <div className={styles.processSteps}>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>1</div>
+              <h3>In-Depth Consultation</h3>
+              <p>Personal review of your service history and medical records in a safe, respectful environment</p>
+            </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>2</div>
+              <h3>Document Review</h3>
+              <p>Thorough analysis of all medical documentation to establish patterns and connections</p>
+            </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>3</div>
+              <h3>Physical Examination</h3>
+              <p>Comprehensive assessment focused on your specific condition and service relationship</p>
+            </div>
+            <div className={styles.processStep}>
+              <div className={styles.stepNumber}>4</div>
+              <h3>Detailed Report</h3>
+              <p>Clear, comprehensive documentation with medical opinions and supporting evidence</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Types Section */}
+        <section className={styles.sampleSection}>
+          <div className={styles.sampleContent}>
+            <div className={styles.sampleText}>
+              <h2>Honoring All Forms of Service</h2>
+              <p>
+                We recognize that service takes many forms. Whether you wore a military 
+                uniform, carried a badge, or worked in any profession demanding physical 
+                sacrifice, your service matters to us.
               </p>
-              <p className={styles.text}>
-                Our practice has always been built on the foundation of treating every patient as family. When you walk through our doors for a ValorView™ IME, you're not just another case number or file to process. You're a valued member of our community who deserves the highest standard of medical evaluation, delivered with genuine care and understanding.
-              </p>
+              <ul className={styles.includedList}>
+                <li>Military veterans from all branches</li>
+                <li>Police officers and law enforcement</li>
+                <li>Firefighters and EMS personnel</li>
+                <li>Construction and industrial workers</li>
+                <li>Healthcare and essential workers</li>
+                <li>Transportation and logistics professionals</li>
+              </ul>
+              <Link href="/contact" className={styles.sampleButton}>
+                Schedule Your Respectful IME
+              </Link>
+            </div>
+            <div className={styles.sampleImage}>
+              <Image
+                src="/images/services/ime-consultation.jpg"
+                alt="Respectful IME Consultation"
+                width={500}
+                height={400}
+                className={styles.image}
+                unoptimized
+              />
             </div>
           </div>
         </section>
 
-        {/* What Makes Us Different */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>What Makes ValorView™ Different</h2>
-            <div className={styles.featuresGrid}>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>🤝</div>
-                <h3>Zero Judgment, Maximum Respect</h3>
-                <p>We believe your service has already proven your character. Our role is to provide thorough, objective evaluations without questioning your integrity.</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>👥</div>
-                <h3>Trauma-Informed Care</h3>
-                <p>Every team member is trained to understand the unique challenges faced by service members and workers.</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>📋</div>
-                <h3>Comprehensive Evaluations</h3>
-                <p>We consider not just immediate injuries but how they impact your overall quality of life and future medical needs.</p>
-              </div>
-              <div className={styles.featureCard}>
-                <div className={styles.featureIcon}>⚡</div>
-                <h3>Rapid Turnaround</h3>
-                <p>Detailed reports typically delivered within 48-72 hours without compromising quality or accuracy.</p>
-              </div>
+        {/* Conditions Section */}
+        <section className={styles.conditionsSection}>
+          <h2 className={styles.sectionTitle}>Understanding Complex Service-Related Conditions</h2>
+          <div className={styles.conditionsGrid}>
+            <div className={styles.conditionCategory}>
+              <h3>Physical Injuries</h3>
+              <ul>
+                <li><FaClipboardCheck /> Combat & training injuries</li>
+                <li><FaClipboardCheck /> Musculoskeletal conditions</li>
+                <li><FaClipboardCheck /> Traumatic brain injury</li>
+                <li><FaClipboardCheck /> Chronic pain syndromes</li>
+                <li><FaClipboardCheck /> Hearing loss/tinnitus</li>
+              </ul>
+            </div>
+            <div className={styles.conditionCategory}>
+              <h3>Toxic Exposures</h3>
+              <ul>
+                <li><FaAward /> Agent Orange effects</li>
+                <li><FaAward /> Burn pit exposure</li>
+                <li><FaAward /> Gulf War syndrome</li>
+                <li><FaAward /> Asbestos & chemicals</li>
+                <li><FaAward /> Contaminated water</li>
+              </ul>
+            </div>
+            <div className={styles.conditionCategory}>
+              <h3>Mental Health</h3>
+              <ul>
+                <li><FaUserShield /> PTSD evaluation</li>
+                <li><FaUserShield /> Depression assessment</li>
+                <li><FaUserShield /> Anxiety disorders</li>
+                <li><FaUserShield /> MST-related conditions</li>
+                <li><FaUserShield /> Adjustment disorders</li>
+              </ul>
+            </div>
+            <div className={styles.conditionCategory}>
+              <h3>Occupational</h3>
+              <ul>
+                <li><FaBalanceScale /> Workplace injuries</li>
+                <li><FaBalanceScale /> Repetitive strain</li>
+                <li><FaBalanceScale /> Industrial accidents</li>
+                <li><FaBalanceScale /> Chemical exposure</li>
+                <li><FaBalanceScale /> Disability claims</li>
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* Examination Process */}
-        <section className={`${styles.section} ${styles.bgLight}`}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Our Thorough Examination Process</h2>
-            <div className={styles.processSteps}>
-              <div className={styles.processStep}>
-                <div className={styles.stepNumber}>1</div>
-                <div className={styles.stepContent}>
-                  <h3>In-Depth Consultation</h3>
-                  <p>Dr. Tess personally reviews your military service history, deployment records, and available service medical records. We create a safe space for you to share details about your service that may be difficult to discuss.</p>
-                </div>
-              </div>
-              <div className={styles.processStep}>
-                <div className={styles.stepNumber}>2</div>
-                <div className={styles.stepContent}>
-                  <h3>Comprehensive Document Review</h3>
-                  <p>Every piece of relevant medical documentation is personally reviewed by Dr. Tess, including service medical records, VA treatment records, and specialist reports. Nothing is overlooked in establishing patterns and connections.</p>
-                </div>
-              </div>
-              <div className={styles.processStep}>
-                <div className={styles.stepNumber}>3</div>
-                <div className={styles.stepContent}>
-                  <h3>Thorough Physical Examination</h3>
-                  <p>A comprehensive medical assessment focused on your specific condition and its relationship to your service. This examination goes beyond typical visits to gather all necessary clinical evidence.</p>
-                </div>
-              </div>
-              <div className={styles.processStep}>
-                <div className={styles.stepNumber}>4</div>
-                <div className={styles.stepContent}>
-                  <h3>Detailed Report Preparation</h3>
-                  <p>Every ValorView™ IME report includes detailed service history analysis, comprehensive medical opinions, supporting evidence, and clear language accessible to rating specialists and appeals boards.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Service Recognition */}
-        <section className={`${styles.section} ${styles.bgAccent}`}>
-          <div className={styles.container}>
-            <div className={styles.testimonialBox}>
-              <h2 className={styles.testimonialTitle}>Honoring All Forms of Service</h2>
+        {/* Testimonial Section */}
+        <section className={styles.testimonialSection}>
+          <h2 className={styles.sectionTitle}>Voices of Those We've Served</h2>
+          <div className={styles.testimonialGrid}>
+            <div className={styles.testimonialCard}>
               <p className={styles.testimonialText}>
-                At Garcia Family Medicine, we recognize that service takes many forms. Whether you wore a military uniform, carried a badge, fought fires, provided emergency medical care, or worked in any profession that demanded physical sacrifice, your service matters to us.
+                "Finally, an IME that treated me like a human being, not just a case 
+                number. Dr. Tess understood my service and really listened."
               </p>
+              <div className={styles.testimonialAuthor}>- SGT Michael H., Army Veteran</div>
+            </div>
+            <div className={styles.testimonialCard}>
               <p className={styles.testimonialText}>
-                Many of our patients have given their best years to serving others, often at significant personal cost to their health and wellbeing. We see our ValorView™ IME program as our opportunity to serve those who have served others.
+                "The respect shown during my examination made all the difference. They 
+                understood the complexities of my workplace injury."
               </p>
+              <div className={styles.testimonialAuthor}>- John D., Construction Worker</div>
+            </div>
+            <div className={styles.testimonialCard}>
+              <p className={styles.testimonialText}>
+                "Thorough, professional, and compassionate. The report was detailed and 
+                helped me get the benefits I deserved after 20 years of service."
+              </p>
+              <div className={styles.testimonialAuthor}>- Officer Sarah R., Police</div>
             </div>
           </div>
         </section>
 
-        {/* Complex Conditions */}
-        <section className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Understanding Complex Service-Related Conditions</h2>
-            <div className={styles.textContent}>
-              <p className={styles.text}>
-                We understand that many service-related injuries and occupational health issues are complex, involving multiple body systems and often developing over time. Our comprehensive approach ensures that nothing is overlooked and that your examination truly reflects your current medical reality.
+        {/* FAQ Section */}
+        <section className={styles.faqSection}>
+          <h2 className={styles.sectionTitle}>Common Questions About IMEs</h2>
+          <div className={styles.faqGrid}>
+            <div className={styles.faqItem}>
+              <h3>What should I bring to my IME?</h3>
+              <p>
+                Bring all relevant medical records, service documentation, current medications 
+                list, and any correspondence related to your claim or case.
               </p>
             </div>
-            <div className={styles.conditionsGrid}>
-              <div className={styles.conditionCard}>
-                <h4>Physical Injuries</h4>
-                <p>From training accidents to combat injuries, we understand the lasting impact of physical trauma</p>
-              </div>
-              <div className={styles.conditionCard}>
-                <h4>Toxic Exposures</h4>
-                <p>Expertise in evaluating health effects from hazardous materials and environmental exposures</p>
-              </div>
-              <div className={styles.conditionCard}>
-                <h4>Psychological Trauma</h4>
-                <p>Sensitive, professional assessment of PTSD and other service-related mental health conditions</p>
-              </div>
-              <div className={styles.conditionCard}>
-                <h4>Chronic Conditions</h4>
-                <p>Understanding how service can cause or aggravate ongoing health conditions</p>
-              </div>
+            <div className={styles.faqItem}>
+              <h3>How long does the examination take?</h3>
+              <p>
+                Plan for 2-3 hours to ensure thorough evaluation. We never rush our examinations 
+                as completeness is crucial for accurate assessment.
+              </p>
+            </div>
+            <div className={styles.faqItem}>
+              <h3>When will I receive the report?</h3>
+              <p>
+                Reports are typically completed within 48-72 hours and sent to the requesting 
+                party. You may request a copy through proper channels.
+              </p>
+            </div>
+            <div className={styles.faqItem}>
+              <h3>Is the examination confidential?</h3>
+              <p>
+                While IME reports are shared with requesting parties, all examinations are 
+                conducted with strict professionalism and respect for your privacy.
+              </p>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className={styles.ctaSection}>
-          <div className={styles.container}>
-            <h2 className={styles.ctaTitle}>Your Service Deserves Recognition</h2>
-            <p className={styles.ctaSubtitle}>
-              Schedule your ValorView™ IME and experience healthcare that honors your contribution
-            </p>
+          <div className={styles.ctaContent}>
+            <h2>Your Service Deserves Recognition</h2>
+            <p>Schedule your ValorView™ IME and experience healthcare that honors your contribution</p>
             <div className={styles.ctaButtons}>
               <a href="tel:816-427-5320" className={styles.ctaPrimary}>
                 Call Now: 816-427-5320
@@ -187,9 +281,12 @@ export default function ValorViewIMEPage() {
                 Request Information
               </Link>
             </div>
+            <p className={styles.ctaNote}>
+              <FaMedal /> Serving Those Who Served Others
+            </p>
           </div>
         </section>
-      </main>
+      </div>
       <Footer />
     </>
   );

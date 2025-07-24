@@ -153,7 +153,6 @@ export default function DOTCertificationsPage() {
         </div>
       </div>
 
-      </main>
       <Footer />
     </>
   );
