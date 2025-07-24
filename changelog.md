@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.2] - 2025-01-24
+### Security
+- Removed exposed Azure AD App IDs, Flow IDs, and SharePoint URLs from documentation
+- Replaced all sensitive IDs with placeholder values in wiki files
+- Created comprehensive email integration rotation guide for credential rotation
+- Fixed security vulnerability where production IDs were committed to version control
+
+### Added
+- Email integration rotation guide with step-by-step instructions
+- Placeholder templates for all sensitive configuration values
+
+### Changed
+- Updated power-automate-sharepoint-integration.md to use placeholder values
+- Updated email-integration.md to remove exposed IDs
+- Updated webhook-rotation-guide.md to remove flow ID
+- All documentation now uses generic examples instead of production values
+
 ## [3.2.1] - 2025-01-21
 ### Added
 - Image optimization with 94-99% size reduction (44MB to ~2MB total)

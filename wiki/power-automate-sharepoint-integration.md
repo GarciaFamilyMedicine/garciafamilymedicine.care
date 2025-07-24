@@ -24,8 +24,10 @@ We successfully automated the entire SharePoint integration process without requ
 ### 1. Create Azure AD App Registration
 
 ```bash
-# Create the app
-APP_ID="53ca6956-0a2d-498a-bbb6-0e025d652905"  # Use existing or create new
+# Create the app registration first
+APP_NAME="YourOrg-EmailIntegration"
+APP_RESPONSE=$(az ad app create --display-name "$APP_NAME")
+APP_ID=$(echo $APP_RESPONSE | jq -r '.appId')
 
 # Generate client secret
 CLIENT_SECRET=$(az ad app credential reset --id $APP_ID --years 2 --query password -o tsv)
@@ -45,7 +47,7 @@ az ad app permission admin-consent --id $APP_ID
 # Get site ID
 TOKEN=$(az account get-access-token --resource 'https://graph.microsoft.com' --query accessToken -o tsv)
 SITE_INFO=$(curl -s -H "Authorization: Bearer $TOKEN" \
-  "https://graph.microsoft.com/v1.0/sites/yourtenant.sharepoint.com:/sites/marketing:")
+  "https://graph.microsoft.com/v1.0/sites/yourtenant.sharepoint.com:/sites/yoursite:")
 SITE_ID=$(echo $SITE_INFO | jq -r '.id')
 
 # Get list columns (important for field mapping)
@@ -179,7 +181,7 @@ SharePoint has internal column names that differ from display names:
 ### 2. Site ID Format
 The site ID must be in the correct format:
 ```
-tenant.sharepoint.com,GUID1,GUID2
+yourtenant.sharepoint.com,SITE-GUID-1,SITE-GUID-2
 ```
 
 ### 3. App Permissions

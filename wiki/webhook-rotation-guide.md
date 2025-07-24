@@ -10,7 +10,7 @@ Since the webhook URL was exposed in Git history, you should rotate it for secur
 
 2. **Find Your Flow**
    - Navigate to "My flows"
-   - Find the newsletter signup flow (ID: ecb3dbc92616416ba209fd546a09b200)
+   - Find the newsletter signup flow
 
 3. **Regenerate Webhook**
    - Edit the flow

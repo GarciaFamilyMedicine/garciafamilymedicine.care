@@ -23,20 +23,20 @@ Website Form → EmailSubscription Component → Power Automate Webhook → App-
 
 ### 2. Power Automate Flow
 - **Name**: Garcia Newsletter FINAL WORKING
-- **Flow ID**: c3dd0e28-c63b-4c29-be2e-04086f616de5
+- **Flow ID**: YOUR-FLOW-ID-HERE
 - **Type**: HTTP Request trigger
 - **Authentication**: App-only (no manual OAuth required)
 
 ### 3. Azure AD App Registration
 - **Name**: GarciaNewsletterApp
-- **App ID**: 53ca6956-0a2d-498a-bbb6-0e025d652905
+- **App ID**: YOUR-APP-ID-HERE
 - **Permissions**: Microsoft Graph - Sites.ReadWrite.All
 - **Client Secret**: Stored in flow (secure)
 
 ### 4. SharePoint List
-- **Site**: https://garciafamilymedicine.sharepoint.com/sites/marketing
+- **Site**: https://yourtenant.sharepoint.com/sites/yoursite
 - **List Name**: Newsletter Subscribers
-- **List ID**: YOUR-LIST-ID
+- **List ID**: YOUR-LIST-ID-HERE
 - **Columns**: Title, Source, Subscribe Date, Status, IP Address, Unsubscribe Token, Notes
 
 ## How It Works
@@ -108,10 +108,10 @@ curl -X GET "https://graph.microsoft.com/v1.0/sites/{site}/lists/{list}/items?ex
 ```bash
 # Check flow status
 az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv
-curl -X GET "{flow_api_url}/flows/{flowId}" -H "Authorization: Bearer {token}"
+curl -X GET "{flow_api_url}/flows/YOUR-FLOW-ID" -H "Authorization: Bearer {token}"
 
 # Test SharePoint access
-curl -X GET "{graph_api_url}/sites/{site}/lists/{list}" -H "Authorization: Bearer {token}"
+curl -X GET "{graph_api_url}/sites/YOUR-SITE-ID/lists/YOUR-LIST-ID" -H "Authorization: Bearer {token}"
 ```
 
 ## Security Considerations
