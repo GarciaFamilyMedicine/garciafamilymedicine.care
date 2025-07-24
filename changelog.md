@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.3] - 2025-01-24
+### Added
+- Telehealth Services and Cash Pay Options to main services navigation dropdown
+- Rounded corners and hover effects to nourish-thrive-journey hero image
+- Mobile-responsive header spacing to prevent content cutoff on service pages
+- Professional dropdown info sections with consistent formatting across all menus
+
+### Fixed
+- Homepage color scheme changed from yellow to proper red/blue gradient branding
+- React hydration mismatch error by moving floating dots generation to client-side
+- Header menu fonts restored to site's custom typography (removed system font override)
+- Mobile header cutoff issues with proper margin adjustments (60px to 80px on mobile)
+- Affiliates dropdown info section to match format of other navigation dropdowns
+- Service page layouts standardized to use consistent styling and structure
+
+### Changed
+- Removed all CTA sections from service pages (footer provides unified CTA)
+- Removed pricing information from all service pages for consultation-focused approach
+- Telehealth page converted to standard service layout using service.module.css
+- Cash Pay page restructured with standard service page format and organization
+- Navigation structure improved with better distribution of services across dropdown columns
+
+### Removed
+- Redundant call-to-action sections from 13 service pages
+- Pricing sections and dollar amounts from ValorLink, CareB ridge, ClearRoad, MyClinic365, Medicare, and Cash Pay pages
+- Custom CSS files for telehealth and cash-pay in favor of standardized service styling
+- System font override that was conflicting with site's custom font hierarchy
+
 ## [3.2.2] - 2025-01-24
 ### Security
 - Removed exposed Azure AD App IDs, Flow IDs, and SharePoint URLs from documentation
