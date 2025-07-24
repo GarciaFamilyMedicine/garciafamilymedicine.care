@@ -602,6 +602,20 @@ export default function DropdownMenu({
                       </p>
                     </div>
                   )}
+                  {link.dropdown.footerLinks && (
+                    <div className={styles.dropdownFooterLinks}>
+                      {link.dropdown.footerLinks.map((footerLink, index) => (
+                        <Link
+                          key={index}
+                          href={footerLink.href}
+                          className={styles.footerLink}
+                          onClick={handleLinkClick}
+                        >
+                          {footerLink.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )
             )}

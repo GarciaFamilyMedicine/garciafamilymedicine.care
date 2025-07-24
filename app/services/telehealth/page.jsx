@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '../service.module.css';
+import styles from './telehealth.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaHeartbeat } from 'react-icons/fa';
@@ -13,36 +13,39 @@ export default function TelehealthPage() {
       <Header />
       <div className={styles.container}>
       <section className={styles.heroSection}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Telehealth Services</h1>
-          <p className={styles.heroSubtitle}>Healthcare Without Boundaries</p>
-          <p className={styles.heroDescription}>
-            Experience the future of healthcare with our comprehensive telehealth services. 
-            Get quality medical care from the comfort of your home, office, or anywhere you have an internet connection.
-          </p>
-          <div className={styles.heroButtons}>
-            <Link href="/contact" className={styles.primaryButton}>
-              Schedule Virtual Visit
-            </Link>
-            <Link href="#how-it-works" className={styles.secondaryButton}>
-              How It Works
-            </Link>
+        <div className={styles.container}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Telehealth Services</h1>
+            <p className={styles.heroSubtitle}>Healthcare Without Boundaries</p>
+            <p className={styles.heroDescription}>
+              Experience the future of healthcare with our comprehensive telehealth services. 
+              Get quality medical care from the comfort of your home, office, or anywhere you have an internet connection.
+            </p>
+            <div className={styles.heroButtons}>
+              <Link href="/contact" className={styles.primaryButton}>
+                Schedule Virtual Visit
+              </Link>
+              <Link href="#how-it-works" className={styles.secondaryButton}>
+                How It Works
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className={styles.heroImage}>
-          <Image
-            src="/images/services/telehealth/hero.jpg"
-            alt="Telehealth Services - Virtual Healthcare"
-            width={600}
-            height={400}
-            className={styles.image}
-            unoptimized
-          />
+          <div className={styles.heroImage}>
+            <Image
+              src="/images/services/telehealth/hero.jpg"
+              alt="Telehealth Services - Virtual Healthcare"
+              width={600}
+              height={400}
+              className={styles.image}
+              unoptimized
+            />
+          </div>
         </div>
       </section>
 
       <section className={styles.statsSection}>
-        <div className={styles.statsGrid}>
+        <div className={styles.container}>
+          <div className={styles.statsGrid}>
           <div className={styles.statCard}>
             <div className={styles.statNumber}>24/7</div>
             <div className={styles.statLabel}>Access to Care</div>
@@ -63,13 +66,15 @@ export default function TelehealthPage() {
             <div className={styles.statLabel}>HIPAA Compliant</div>
             <div className={styles.statDescription}>Secure & confidential</div>
           </div>
+          </div>
         </div>
       </section>
 
       <section id="services" className={styles.servicesSection}>
-        <h2 className={styles.sectionTitle}>Virtual Healthcare Services</h2>
-        <p className={styles.sectionSubtitle}>Comprehensive medical care delivered through secure telehealth technology</p>
-        <div className={styles.servicesGrid}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Virtual Healthcare Services</h2>
+          <p className={styles.sectionSubtitle}>Comprehensive medical care delivered through secure telehealth technology</p>
+          <div className={styles.servicesGrid}>
           <div className={styles.serviceCard}>
             <FaUserMd className={styles.serviceIcon} />
             <h3>Virtual Consultations</h3>
@@ -136,10 +141,12 @@ export default function TelehealthPage() {
               <li>Second opinions</li>
             </ul>
           </div>
+          </div>
         </div>
       </section>
 
       <section id="how-it-works" className={styles.processSection}>
+        <div className={styles.container}>
         <h2 className={styles.sectionTitle}>How Telehealth Works</h2>
         <div className={styles.processSteps}>
           <div className={styles.processStep}>
@@ -163,9 +170,11 @@ export default function TelehealthPage() {
             <p>Receive treatment recommendations, prescriptions, and follow-up instructions</p>
           </div>
         </div>
+        </div>
       </section>
 
       <section className={styles.benefitsSection}>
+        <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Benefits of Virtual Care</h2>
         <div className={styles.benefitsGrid}>
           <div className={styles.benefitCard}>
@@ -193,9 +202,11 @@ export default function TelehealthPage() {
             <p>Maintain regular appointments even when traveling or relocating.</p>
           </div>
         </div>
+        </div>
       </section>
 
       <section className={styles.requirementsSection}>
+        <div className={styles.container}>
         <h2 className={styles.sectionTitle}>What You Need for Your Virtual Visit</h2>
         <div className={styles.requirementsGrid}>
           <div className={styles.requirementCard}>
@@ -219,9 +230,11 @@ export default function TelehealthPage() {
             <p>Have your medications, symptoms, and questions ready</p>
           </div>
         </div>
+        </div>
       </section>
 
       <section className={styles.insuranceSection}>
+        <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Insurance & Payment</h2>
         <div className={styles.insuranceContent}>
           <div className={styles.insuranceInfo}>
@@ -243,6 +256,7 @@ export default function TelehealthPage() {
               Learn About Cash Pay Options →
             </Link>
           </div>
+        </div>
         </div>
       </section>
 

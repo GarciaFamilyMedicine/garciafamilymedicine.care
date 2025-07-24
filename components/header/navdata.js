@@ -33,7 +33,6 @@ export const nav_links = [
     label: 'Our Services',
     href: '/services',
     dropdown: {
-      twoColumns: true,
       links: [
         {
           title: 'Premium Healthcare Services',
@@ -63,16 +62,6 @@ export const nav_links = [
               label: 'PeaceWithin™ Life Coaching',
               href: '/services/peacewithin-life-coaching',
               description: 'Trauma-informed healing'
-            },
-            {
-              label: 'Telehealth Services',
-              href: '/services/telehealth',
-              description: 'Virtual healthcare consultations'
-            },
-            {
-              label: 'Cash Pay Options',
-              href: '/services/cash-pay',
-              description: 'Transparent healthcare pricing'
             }
           ],
         },
@@ -121,7 +110,7 @@ export const nav_links = [
           },
           hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
           location: {
-            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            display: '801 NW St. Mary Drive, Suite 209, Blue Springs, MO',
             href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
           },
         },
@@ -143,7 +132,6 @@ export const nav_links = [
     label: 'Learn',
     href: '/learn',
     dropdown: {
-      twoColumns: true,
       compactMode: true,
       links: [
         {
@@ -187,7 +175,7 @@ export const nav_links = [
           },
           hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
           location: {
-            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            display: '801 NW St. Mary Drive, Suite 209, Blue Springs, MO',
             href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
           },
         },
@@ -209,14 +197,13 @@ export const nav_links = [
     label: 'Affiliates',
     href: '/affiliates',
     dropdown: {
-      singleColumn: true,
       links: [
         {
           title: 'Our Partners & Affiliates',
           subtitle: 'Organizations we support and collaborate with',
           items: [
             {
-              label: "Gigi's Safe House",
+              label: "gigiSafeHOUSE",
               href: 'https://gigisafehouse.com',
               description: 'Supporting survivors of domestic violence and human trafficking',
               external: true
@@ -237,7 +224,7 @@ export const nav_links = [
           },
           hours: 'Tue-Fri: 9-5 PM | Mon: CLOSED',
           location: {
-            display: '801 NW St. Mary Drive, Blue Springs, MO',
+            display: '801 NW St. Mary Drive, Suite 209, Blue Springs, MO',
             href: 'https://www.google.com/maps/dir/?api=1&destination=801+NW+St+Mary+Dr+Suite+209,+Blue+Springs,+MO+64014'
           },
         },
