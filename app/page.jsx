@@ -26,7 +26,12 @@ const generateFloatingDots = () => {
 export default function LandingPage() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [floatingDots] = useState(generateFloatingDots);
+  const [floatingDots, setFloatingDots] = useState([]);
+
+  // Generate floating dots on client only to avoid hydration mismatch
+  useEffect(() => {
+    setFloatingDots(generateFloatingDots());
+  }, []);
 
   // Close popup when clicking overlay
   useEffect(() => {

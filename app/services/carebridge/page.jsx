@@ -215,54 +215,6 @@ export default function CareBridgePage() {
         </div>
       </section>
 
-      <section className={styles.pricingSection}>
-        <h2 className={styles.sectionTitle}>Simple, Transparent Pricing</h2>
-        <div className={styles.pricingGrid}>
-          <div className={styles.pricingCard}>
-            <h3>Individual</h3>
-            <div className={styles.price}>$29<span>/month</span></div>
-            <ul>
-              <li>Unlimited virtual visits</li>
-              <li>24/7 urgent care access</li>
-              <li>Prescription management</li>
-              <li>Health record storage</li>
-              <li>Mobile app access</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Get Started
-            </Link>
-          </div>
-          <div className={styles.pricingCard} data-featured="true">
-            <div className={styles.popularBadge}>Most Popular</div>
-            <h3>Family</h3>
-            <div className={styles.price}>$49<span>/month</span></div>
-            <ul>
-              <li>Everything in Individual</li>
-              <li>Up to 6 family members</li>
-              <li>Pediatric specialists</li>
-              <li>Family health dashboard</li>
-              <li>Priority support</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Get Started
-            </Link>
-          </div>
-          <div className={styles.pricingCard}>
-            <h3>Enterprise</h3>
-            <div className={styles.price}>Custom</div>
-            <ul>
-              <li>Unlimited employees</li>
-              <li>Dedicated account manager</li>
-              <li>Custom integrations</li>
-              <li>Analytics dashboard</li>
-              <li>On-site health events</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Contact Sales
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <section className={styles.testimonialSection}>
         <h2 className={styles.sectionTitle}>What Our Users Say</h2>
@@ -291,23 +243,6 @@ export default function CareBridgePage() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Experience Healthcare Without Limits?</h2>
-          <p>Join thousands who've made the switch to smarter healthcare</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.ctaPrimary}>
-              Start Your Free Trial
-            </Link>
-            <Link href="#features" className={styles.ctaSecondary}>
-              Schedule a Demo
-            </Link>
-          </div>
-          <p className={styles.ctaNote}>
-            <small>No credit card required. 14-day free trial for all new users.</small>
-          </p>
-        </div>
-      </section>
     </div>
     <Footer />
     </>

@@ -202,6 +202,14 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .container {
+    --header-height: 80px;
+  }
+  
+  .mainContent {
+    margin-top: 80px;
+  }
+  
   .heroTitle {
     font-size: 2rem;
   }

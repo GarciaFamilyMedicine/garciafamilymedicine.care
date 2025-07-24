@@ -217,20 +217,6 @@ export default function TrueReliefTherapyPage() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Live Pain-Free?</h2>
-          <p>Take the first step toward lasting relief without opioids</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.ctaPrimary}>
-              Schedule Your Consultation
-            </Link>
-            <Link href="/services" className={styles.ctaSecondary}>
-              Explore All Services
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
     <Footer />
     </>

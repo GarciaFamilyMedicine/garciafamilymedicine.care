@@ -229,71 +229,7 @@ export default function ClearRoadDOTExamsPage() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className={styles.pricingSection}>
-          <h2 className={styles.sectionTitle}>Transparent DOT Exam Pricing</h2>
-          <div className={styles.pricingCards}>
-            <div className={styles.pricingCard}>
-              <h3>Standard DOT Physical</h3>
-              <div className={styles.price}>$95</div>
-              <ul>
-                <li>Complete FMCSA physical exam</li>
-                <li>Same-day certificate</li>
-                <li>2-year certification (if eligible)</li>
-                <li>Electronic filing</li>
-              </ul>
-              <Link href="/contact" className={styles.pricingButton}>
-                Schedule Now
-              </Link>
-            </div>
-            <div className={styles.pricingCard} data-featured="true">
-              <div className={styles.popularTag}>Most Popular</div>
-              <h3>DOT Physical + Health Plan</h3>
-              <div className={styles.price}>$145</div>
-              <ul>
-                <li>Everything in Standard</li>
-                <li>Personalized health guidance</li>
-                <li>Condition management plan</li>
-                <li>Follow-up support</li>
-              </ul>
-              <Link href="/contact" className={styles.pricingButton}>
-                Schedule Now
-              </Link>
-            </div>
-            <div className={styles.pricingCard}>
-              <h3>Express DOT Service</h3>
-              <div className={styles.price}>$125</div>
-              <ul>
-                <li>Priority scheduling</li>
-                <li>Expedited processing</li>
-                <li>Walk-ins welcome</li>
-                <li>Extended hours available</li>
-              </ul>
-              <Link href="/contact" className={styles.pricingButton}>
-                Schedule Now
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Ready to Get Back on the Road?</h2>
-            <p>Schedule your DOT physical today and experience the ClearRoad™ difference</p>
-            <div className={styles.ctaButtons}>
-              <a href="tel:816-427-5320" className={styles.ctaPrimary}>
-                Call Now: 816-427-5320
-              </a>
-              <Link href="/contact" className={styles.ctaSecondary}>
-                Schedule Online
-              </Link>
-            </div>
-            <p className={styles.ctaNote}>
-              <FaTruck /> Keeping America's Drivers Road-Ready Since 2010
-            </p>
-          </div>
-        </section>
       </div>
       <Footer />
     </>

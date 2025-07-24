@@ -259,36 +259,6 @@ export default function Page() {
               </div>
             </section>
             
-            {/* ===== CALL TO ACTION ===== */}
-            <section className={styles.ctaSection}>
-              <div className={styles.ctaContent}>
-                <h2>Ready to Start Your CoreLift Journey?</h2>
-                <p>
-                  Take the first step towards better pelvic health. Schedule your consultation 
-                  today and discover how CoreLift can help you regain strength and confidence.
-                </p>
-                <div className={styles.ctaButtons}>
-                  <a 
-                    href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/s/JXViZb_ifkCITve3oXJP-Q2?ismsaljsauthenabled"
-                    className={styles.primaryButton}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Schedule Pre-Screening with Dr. Gigi
-                  </a>
-                  <a 
-                    href="/events/pelvic-health-recovery"
-                    className={styles.secondaryButton}
-                  >
-                    Join Recovery Workshop
-                  </a>
-                </div>
-                <div className={styles.contactOptions}>
-                  <p className={styles.phoneNumber}>Call us at: <a href="tel:816-427-5320"><strong>816-427-5320</strong></a></p>
-                  <p className={styles.altOption}>Can't book online? Call for assistance or questions</p>
-                </div>
-              </div>
-            </section>
 
             {/* ===== COMMUNITY & SOCIAL ===== */}
             <section className={styles.communitySection}>

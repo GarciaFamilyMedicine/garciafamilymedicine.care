@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './telehealth.module.css';
+import styles from '../service.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaHeartbeat } from 'react-icons/fa';
@@ -246,20 +246,6 @@ export default function TelehealthPage() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Experience Convenient Virtual Care?</h2>
-          <p>Schedule your telehealth appointment today and discover healthcare that fits your lifestyle.</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.primaryButton}>
-              Book Virtual Visit
-            </Link>
-            <a href="tel:816-427-5320" className={styles.secondaryButton}>
-              Call: 816-427-5320
-            </a>
-          </div>
-        </div>
-      </section>
       </div>
       <Footer />
     </>

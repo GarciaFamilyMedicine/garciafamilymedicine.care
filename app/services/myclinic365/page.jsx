@@ -107,7 +107,7 @@ export default function MyClinic365Page() {
           <div className={styles.benefitsContent}>
             <h2>Benefits for Employers</h2>
             <ul className={styles.benefitsList}>
-              <li>Reduce healthcare costs by up to 30%</li>
+              <li>Optimize healthcare utilization and outcomes</li>
               <li>Decrease absenteeism and presenteeism</li>
               <li>Improve employee retention and recruitment</li>
               <li>Enhance workplace productivity</li>
@@ -209,34 +209,6 @@ export default function MyClinic365Page() {
         </div>
       </section>
 
-      <section className={styles.calculatorSection}>
-        <h2 className={styles.sectionTitle}>ROI Calculator</h2>
-        <div className={styles.calculatorCard}>
-          <p className={styles.calculatorText}>
-            See how much your company could save with MyClinic365™
-          </p>
-          <div className={styles.calculatorExample}>
-            <div className={styles.calculatorRow}>
-              <span>For a company with 500 employees:</span>
-            </div>
-            <div className={styles.calculatorRow}>
-              <span>Average annual healthcare savings:</span>
-              <strong>$450,000</strong>
-            </div>
-            <div className={styles.calculatorRow}>
-              <span>Productivity gains from reduced sick days:</span>
-              <strong>$280,000</strong>
-            </div>
-            <div className={styles.calculatorRow}>
-              <span>Total estimated annual benefit:</span>
-              <strong className={styles.totalSavings}>$730,000</strong>
-            </div>
-          </div>
-          <Link href="/contact" className={styles.calculatorButton}>
-            Get Your Custom ROI Report
-          </Link>
-        </div>
-      </section>
 
       <section className={styles.successSection}>
         <h2 className={styles.sectionTitle}>Success Stories</h2>
@@ -244,7 +216,7 @@ export default function MyClinic365Page() {
           <div className={styles.successCard}>
             <div className={styles.successQuote}>
               "MyClinic365 transformed our workplace culture. Employee satisfaction 
-              scores increased by 35% and we've saved over $500K in healthcare costs."
+              scores increased by 35% and we've seen significant improvements in overall employee health outcomes."
             </div>
             <div className={styles.successAuthor}>
               <strong>Jennifer Martinez</strong>
@@ -264,23 +236,6 @@ export default function MyClinic365Page() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Transform Your Workplace Health?</h2>
-          <p>Join forward-thinking companies prioritizing employee wellness</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.ctaPrimary}>
-              Schedule Executive Briefing
-            </Link>
-            <Link href="/services" className={styles.ctaSecondary}>
-              Download Info Pack
-            </Link>
-          </div>
-          <p className={styles.ctaNote}>
-            <small>No commitment required. Free consultation for qualified businesses.</small>
-          </p>
-        </div>
-      </section>
     </div>
     <Footer />
     </>

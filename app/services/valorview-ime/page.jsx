@@ -268,24 +268,6 @@ export default function ValorViewIMEPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Your Service Deserves Recognition</h2>
-            <p>Schedule your ValorView™ IME and experience healthcare that honors your contribution</p>
-            <div className={styles.ctaButtons}>
-              <a href="tel:816-427-5320" className={styles.ctaPrimary}>
-                Call Now: 816-427-5320
-              </a>
-              <Link href="/contact" className={styles.ctaSecondary}>
-                Request Information
-              </Link>
-            </div>
-            <p className={styles.ctaNote}>
-              <FaMedal /> Serving Those Who Served Others
-            </p>
-          </div>
-        </section>
       </div>
       <Footer />
     </>

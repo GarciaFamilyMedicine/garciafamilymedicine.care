@@ -88,7 +88,7 @@ export default function ValorLinkLetterPage() {
           <div className={styles.benefitCard}>
             <FaShieldAlt className={styles.benefitIcon} />
             <h3>Guaranteed Quality</h3>
-            <p>If your letter doesn't meet VA standards, we'll revise it at no additional cost.</p>
+            <p>If your letter doesn't meet VA standards, we'll work with you to ensure it meets all requirements.</p>
           </div>
         </div>
       </section>
@@ -199,54 +199,6 @@ export default function ValorLinkLetterPage() {
         </div>
       </section>
 
-      <section className={styles.pricingSection}>
-        <h2 className={styles.sectionTitle}>Transparent Pricing</h2>
-        <div className={styles.pricingCards}>
-          <div className={styles.pricingCard}>
-            <h3>Standard Letter</h3>
-            <div className={styles.price}>$495</div>
-            <ul>
-              <li>Single condition nexus letter</li>
-              <li>5-7 day turnaround</li>
-              <li>One revision included</li>
-              <li>Digital delivery</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Get Started
-            </Link>
-          </div>
-          <div className={styles.pricingCard} data-featured="true">
-            <div className={styles.popularTag}>Most Popular</div>
-            <h3>Multiple Conditions</h3>
-            <div className={styles.price}>$395<span>/each</span></div>
-            <ul>
-              <li>2+ condition letters</li>
-              <li>Bundled discount pricing</li>
-              <li>Coordinated medical rationale</li>
-              <li>Priority processing</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Get Started
-            </Link>
-          </div>
-          <div className={styles.pricingCard}>
-            <h3>Expedited Service</h3>
-            <div className={styles.price}>$695</div>
-            <ul>
-              <li>48-hour turnaround</li>
-              <li>Weekend processing available</li>
-              <li>Direct physician contact</li>
-              <li>Unlimited revisions</li>
-            </ul>
-            <Link href="/contact" className={styles.pricingButton}>
-              Get Started
-            </Link>
-          </div>
-        </div>
-        <p className={styles.pricingNote}>
-          <small>Payment plans available. We accept VA disability back pay assignments.</small>
-        </p>
-      </section>
 
       <section className={styles.testimonialSection}>
         <h2 className={styles.sectionTitle}>Veteran Success Stories</h2>
@@ -309,23 +261,6 @@ export default function ValorLinkLetterPage() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Strengthen Your VA Claim?</h2>
-          <p>Join thousands of veterans who've successfully used ValorLink™ letters</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.ctaPrimary}>
-              Start Your Letter Today
-            </Link>
-            <Link href="/learn/veterans" className={styles.ctaSecondary}>
-              Explore All Veteran Services
-            </Link>
-          </div>
-          <p className={styles.ctaNote}>
-            <FaShieldAlt /> 100% Satisfaction Guaranteed
-          </p>
-        </div>
-      </section>
     </div>
     <Footer />
     </>

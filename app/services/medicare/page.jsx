@@ -54,9 +54,9 @@ export default function MedicarePage() {
             <div className={styles.statDescription}>Expert senior healthcare</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statNumber}>$0</div>
-            <div className={styles.statLabel}>Annual Wellness</div>
-            <div className={styles.statDescription}>Free yearly check-ups</div>
+            <div className={styles.statNumber}>100%</div>
+            <div className={styles.statLabel}>Coverage Available</div>
+            <div className={styles.statDescription}>Medicare annual wellness visits</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statNumber}>24/7</div>
@@ -118,7 +118,7 @@ export default function MedicarePage() {
               <li>Prescription drugs</li>
               <li>Formulary coverage</li>
               <li>Mail-order options</li>
-              <li>Cost protection</li>
+              <li>Coverage protection</li>
             </ul>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function MedicarePage() {
           <div className={styles.serviceCard}>
             <FaCalendarCheck className={styles.serviceIcon} />
             <h3>Annual Wellness Visits</h3>
-            <p>Comprehensive yearly health assessments at no cost to you</p>
+            <p>Comprehensive yearly health assessments covered by Medicare benefits</p>
             <ul>
               <li>Personalized prevention plan</li>
               <li>Health risk assessment</li>
@@ -244,20 +244,6 @@ export default function MedicarePage() {
         </div>
       </section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Ready to Experience Better Medicare Care?</h2>
-          <p>Join our growing community of seniors who trust Garcia Family Medicine for their healthcare needs.</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/contact" className={styles.primaryButton}>
-              Schedule Your Medicare Visit
-            </Link>
-            <a href="tel:816-427-5320" className={styles.secondaryButton}>
-              Call: 816-427-5320
-            </a>
-          </div>
-        </div>
-      </section>
       </div>
       <Footer />
     </>

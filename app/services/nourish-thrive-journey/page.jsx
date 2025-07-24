@@ -201,26 +201,6 @@ export default function NourishThriveJourneyPage() {
           </div>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Begin Your Transformation Today</h2>
-            <p>
-              You deserve to feel whole, healthy, and at peace in your own body.
-              Take the first step on your journey to lasting wellness.
-            </p>
-            <div className={styles.ctaButtons}>
-              <Link href="/contact" className={styles.ctaPrimary}>
-                Schedule Your Consultation
-              </Link>
-              <Link href="/services" className={styles.ctaSecondary}>
-                Learn More About Our Services
-              </Link>
-            </div>
-            <p className={styles.ctaNote}>
-              <small>Flexible payment plans available. Most insurance accepted.</small>
-            </p>
-          </div>
-        </section>
       </div>
       <Footer />
     </>

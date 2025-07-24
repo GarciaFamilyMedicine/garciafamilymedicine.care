@@ -63,6 +63,16 @@ export const nav_links = [
               label: 'PeaceWithin™ Life Coaching',
               href: '/services/peacewithin-life-coaching',
               description: 'Trauma-informed healing'
+            },
+            {
+              label: 'Telehealth Services',
+              href: '/services/telehealth',
+              description: 'Virtual healthcare consultations'
+            },
+            {
+              label: 'Cash Pay Options',
+              href: '/services/cash-pay',
+              description: 'Transparent healthcare pricing'
             }
           ],
         },
@@ -216,9 +226,9 @@ export const nav_links = [
       ],
       info: {
         askDr: {
-          title: 'Community Partnerships',
-          description: 'Learn about our community partners and how we work together to serve our patients.',
-          buttonText: 'Contact Us',
+          title: 'Community Partners',
+          description: 'Learn about our partnerships and how we support our community together.',
+          buttonText: 'Get Involved',
         },
         contact: {
           phone: {

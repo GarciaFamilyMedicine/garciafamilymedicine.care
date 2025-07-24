@@ -236,24 +236,6 @@ export default function PeaceWithinLifeCoachingPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Your Healing Journey Starts Today</h2>
-            <p>Take the first step toward peace, healing, and personal growth</p>
-            <div className={styles.ctaButtons}>
-              <a href="tel:816-427-5320" className={styles.ctaPrimary}>
-                Schedule Your Session
-              </a>
-              <Link href="/contact" className={styles.ctaSecondary}>
-                Learn More About Coaching
-              </Link>
-            </div>
-            <p className={styles.ctaNote}>
-              <FaUserShield /> 100% Confidential & Judgment-Free
-            </p>
-          </div>
-        </section>
       </div>
       <Footer />
     </>

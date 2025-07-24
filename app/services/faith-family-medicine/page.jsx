@@ -162,25 +162,6 @@ export default function FaithFamilyMedicine() {
           </div>
         </section>
 
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Experience Compassionate, Faith-Centered Care</h2>
-            <p>
-              Join a healthcare practice that honors your complete well-being—body, soul, and spirit.
-            </p>
-            <div className={styles.ctaButtons}>
-              <Link href="/contact" className={styles.ctaPrimary}>
-                Schedule Your Visit
-              </Link>
-              <Link href="/meetthedoctor" className={styles.ctaSecondary}>
-                Meet Dr. Garcia
-              </Link>
-            </div>
-            <p className={styles.ctaNote}>
-              <small>Same-day appointments available. All faiths welcome.</small>
-            </p>
-          </div>
-        </section>
       </div>
       <Footer />
     </>
