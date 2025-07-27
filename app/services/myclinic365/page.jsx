@@ -29,16 +29,6 @@ export default function MyClinic365Page() {
             </Link>
           </div>
         </div>
-        <div className={styles.heroImage}>
-          <Image
-            src="/images/services/myclinic365/hero.jpg"
-            alt="MyClinic365 - Workplace Healthcare Platform"
-            width={600}
-            height={400}
-            className={styles.image}
-            unoptimized
-          />
-        </div>
       </section>
 
       <section className={styles.statsSection}>
