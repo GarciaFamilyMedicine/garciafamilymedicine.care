@@ -32,7 +32,7 @@ export default function ValorLinkLetterPage() {
         </div>
         <div className={styles.heroImage}>
           <Image
-            src="/images/services/valorlink-letter/hero.jpg"
+            src="/images/services/valorview-ime/hero.jpg"
             alt="ValorLink Letter - Nexus Letters for Veterans"
             width={600}
             height={400}

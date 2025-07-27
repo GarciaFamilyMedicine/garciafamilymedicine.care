@@ -33,7 +33,7 @@ export default function ValorViewIMEPage() {
           </div>
           <div className={styles.heroImage}>
             <Image
-              src="/images/services/valorview-ime/hero.jpg"
+              src="/images/services/valorlink-letter/hero.jpg"
               alt="ValorView IME - Independent Medical Examinations"
               width={600}
               height={400}

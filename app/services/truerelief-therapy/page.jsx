@@ -122,28 +122,28 @@ export default function TrueReliefTherapyPage() {
         <h2 className={styles.sectionTitle}>Our Treatment Modalities</h2>
         <div className={styles.therapiesGrid}>
           <div className={styles.therapyCard}>
-            <h3>Regenerative Medicine</h3>
-            <p>Advanced biologics to promote natural healing and tissue repair</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
           <div className={styles.therapyCard}>
-            <h3>Neuromodulation</h3>
-            <p>Innovative techniques to reset pain signaling pathways</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
           <div className={styles.therapyCard}>
-            <h3>Physical Rehabilitation</h3>
-            <p>Targeted exercises and manual therapy for functional improvement</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
           <div className={styles.therapyCard}>
-            <h3>Mind-Body Integration</h3>
-            <p>Psychological strategies to manage pain perception and stress</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
           <div className={styles.therapyCard}>
-            <h3>Nutritional Optimization</h3>
-            <p>Anti-inflammatory protocols to support healing from within</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
           <div className={styles.therapyCard}>
-            <h3>Alternative Therapies</h3>
-            <p>Acupuncture, massage, and other complementary approaches</p>
+            <h3>Coming Soon</h3>
+            <p>Details about our treatment modalities will be available soon.</p>
           </div>
         </div>
       </section>

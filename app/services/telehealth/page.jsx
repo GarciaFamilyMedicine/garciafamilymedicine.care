@@ -260,6 +260,24 @@ export default function TelehealthPage() {
         </div>
       </section>
 
+        {/* CTA Section */}
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h2>Ready to Experience Virtual Healthcare?</h2>
+            <p>Join thousands of patients who've discovered the convenience of telehealth.</p>
+            <div className={styles.ctaButtons}>
+              <Link href="/contact" className={styles.ctaPrimary}>
+                Schedule Virtual Visit
+              </Link>
+              <a href="tel:816-427-5320" className={styles.ctaSecondary}>
+                Call 816-427-5320
+              </a>
+            </div>
+            <p className={styles.ctaNote}>
+              Same-day appointments available • Most insurance accepted
+            </p>
+          </div>
+        </section>
       </div>
       <Footer />
     </>
