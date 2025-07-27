@@ -197,7 +197,7 @@ export const nav_links = [
     label: 'Affiliates',
     href: '/affiliates',
     dropdown: {
-      twoColumns: true,
+      threeColumns: true,
       links: [
         {
           title: 'Our Partners & Affiliates',

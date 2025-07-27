@@ -75,6 +75,12 @@
   padding: 20px;
 }
 
+/* Override grid for three column layout */
+.dropdownmenu.threeColumnDropdown {
+  display: block;
+  padding: 20px;
+}
+
 .dropdownmenu.show {
   opacity: 1;
   visibility: visible;
@@ -118,6 +124,24 @@
 .twoColumnSection li {
   margin: 0;
   padding: 0;
+}
+
+/* Three column layout for Affiliates */
+.threeColumnDropdown {
+  width: 960px;
+  max-width: calc(100vw - 40px);
+}
+
+.threeColumnDropdown .dropdowncontent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  width: 100%;
+}
+
+.threeColumnDropdown .dropdowninfo {
+  grid-column: span 1;
+  min-width: 280px;
 }
 
 .dropdownsection {

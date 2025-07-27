@@ -196,13 +196,13 @@ export default function DropdownMenu({
         aria-hidden={isMobile ? !mobileDropdownOpen : !isActive}
         className={`${styles.dropdownmenu} ${
           (isActive && !isMobile) || (mobileDropdownOpen && isMobile) ? styles.show : ''
-        } ${link.dropdown?.twoColumns ? styles.twoColumnDropdown : ''} ${link.dropdown?.compactMode ? styles.compactDropdown : ''}`}
+        } ${link.dropdown?.twoColumns ? styles.twoColumnDropdown : ''} ${link.dropdown?.threeColumns ? styles.threeColumnDropdown : ''} ${link.dropdown?.compactMode ? styles.compactDropdown : ''}`}
         style={dropdownStyle}
         onMouseEnter={() => !isMobile && clearTimeout(timerRef.current)}
         onMouseLeave={() => !isMobile && onLeave()}
       >
         <div className={styles.dropdowncontent}>
-          {link.dropdown?.twoColumns ? (
+          {link.dropdown?.twoColumns || link.dropdown?.threeColumns ? (
             /* Two column layout for Core Medical Services */
             <>
               {link.dropdown.links?.map((column, columnIndex) => (

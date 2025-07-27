@@ -226,22 +226,6 @@ export default function CashPayPage() {
             </div>
           </div>
         </section>
-
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaContent}>
-            <h2>Ready for Transparent, Affordable Healthcare?</h2>
-            <p>Join thousands who've discovered the benefits of cash pay medicine.</p>
-            <div className={styles.ctaButtons}>
-              <Link href="/contact" className={styles.ctaPrimary}>
-                Schedule Consultation
-              </Link>
-              <a href="tel:816-427-5320" className={styles.ctaSecondary}>
-                Call 816-427-5320
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
       <Footer />
     </>

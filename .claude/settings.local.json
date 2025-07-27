@@ -14,7 +14,10 @@
       "Bash(git push:*)",
       "Bash(npm run deploy:*)",
       "Bash(npm run:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(for dir in */)",
+      "Bash(do echo \"=== $dir%/ ===\")",
+      "Bash(done)"
     ],
     "deny": []
   }
