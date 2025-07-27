@@ -5,17 +5,16 @@
 
 /* Hero Section */
 .heroSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
-  align-items: center;
+  text-align: center;
 }
 
 .heroContent {
-  animation: fadeInLeft 0.8s ease-out;
+  animation: fadeIn 0.8s ease-out;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .heroTitle {
@@ -44,6 +43,8 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .primaryButton {
