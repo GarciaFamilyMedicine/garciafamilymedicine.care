@@ -123,6 +123,10 @@ export const nav_links = [
         {
           label: 'Cash Pay Options',
           href: '/services/cash-pay'
+        },
+        {
+          label: 'Payment Plans',
+          href: '/services/payment-plans'
         }
       ],
     },
@@ -188,6 +192,10 @@ export const nav_links = [
         {
           label: 'Cash Pay Options',
           href: '/services/cash-pay'
+        },
+        {
+          label: 'Payment Plans',
+          href: '/services/payment-plans'
         }
       ],
     },
@@ -238,6 +246,10 @@ export const nav_links = [
         {
           label: 'Cash Pay Options',
           href: '/services/cash-pay'
+        },
+        {
+          label: 'Payment Plans',
+          href: '/services/payment-plans'
         }
       ],
     },

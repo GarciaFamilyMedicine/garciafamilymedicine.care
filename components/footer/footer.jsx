@@ -200,6 +200,7 @@ export default function Footer() {
           <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
           <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
           <Link href="/care/cash-pay" className={styles.navLink}>Cash Pay Options</Link>
+          <Link href="/services/payment-plans" className={styles.navLink}>Payment Plans</Link>
           <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
           <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
           <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>
