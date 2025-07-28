@@ -218,11 +218,27 @@ export default function CashPayPage() {
             </div>
             <div className={styles.faqItem}>
               <h3>How do payment plans work?</h3>
-              <p>We offer interest-free payment plans for larger medical expenses. Simply discuss with our billing team to set up a plan that fits your budget.</p>
+              <p>We offer interest-free payment plans for larger medical expenses. <Link href="/services/payment-plans" className={styles.learnMoreLink}>Learn more about our flexible payment options</Link> or discuss with our billing team to set up a plan that fits your budget.</p>
             </div>
             <div className={styles.faqItem}>
               <h3>Is membership worth it?</h3>
               <p>If you visit the doctor 2+ times per year, membership saves money while providing unlimited access and enhanced care.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Payment Plans CTA Section */}
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h2>Need More Flexible Payment Options?</h2>
+            <p>In addition to our cash pay rates, we offer flexible payment plans to make healthcare affordable for everyone. Choose from 3 to 12-month terms with zero interest.</p>
+            <div className={styles.ctaButtons}>
+              <Link href="/services/payment-plans" className={styles.ctaPrimary}>
+                Explore Payment Plans
+              </Link>
+              <Link href="tel:8164275320" className={styles.ctaSecondary}>
+                Call (816) 427-5320
+              </Link>
             </div>
           </div>
         </section>

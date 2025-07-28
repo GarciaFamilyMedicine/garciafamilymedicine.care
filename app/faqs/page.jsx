@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Do you accept insurance?",
-    answer: "We operate on a Direct Primary Care model, which means we don't bill insurance for primary care services. However, we can provide documentation for you to submit to your insurance for potential reimbursement. We recommend keeping insurance for emergencies, hospitalizations, and specialist care.",
+    answer: "We operate on a Direct Primary Care model, which means we don't bill insurance for primary care services. However, we can provide documentation for you to submit to your insurance for potential reimbursement. We recommend keeping insurance for emergencies, hospitalizations, and specialist care. We offer affordable cash pay options and flexible payment plans for all services.",
     category: "billing"
   },
   {
@@ -53,12 +53,17 @@ const faqs = [
   },
   {
     question: "How much does membership cost?",
-    answer: "Our membership fees vary based on age and family size. Individual adult memberships start at an affordable monthly rate. We offer discounts for families and children. Contact us for specific pricing tailored to your needs.",
+    answer: "Our membership fees vary based on age and family size. Individual adult memberships start at an affordable monthly rate. We offer discounts for families and children. Contact us for specific pricing tailored to your needs. We also offer flexible payment plans to make healthcare accessible for everyone.",
     category: "billing"
   },
   {
     question: "Can I use my HSA/FSA for membership fees?",
     answer: "Yes! Direct Primary Care membership fees are typically eligible expenses for Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA). We can provide the necessary documentation for reimbursement.",
+    category: "billing"
+  },
+  {
+    question: "Do you offer payment plans?",
+    answer: "Yes! We offer flexible payment plans with zero interest to make healthcare affordable for everyone. Choose from 3, 6, 9, or 12-month payment terms. We also partner with Cherry financing for extended payment options with instant approval. Learn more at our Payment Plans page or call 816-427-5320.",
     category: "billing"
   },
   {
