@@ -271,6 +271,23 @@ export default function DropdownMenu({
                         </button>
                       </div>
                     )}
+                    {link.dropdown.info.quickLinks && (
+                      <div className={styles.quickLinks}>
+                        <h4>Quick Links</h4>
+                        <div className={styles.quickLinksGrid}>
+                          {link.dropdown.info.quickLinks.map((quickLink, index) => (
+                            <Link
+                              key={index}
+                              href={quickLink.href}
+                              className={styles.quickLink}
+                              onClick={handleLinkClick}
+                            >
+                              {quickLink.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     {link.dropdown.info.contact && (
                       <div className={styles.contactinfo}>
                         <p>
@@ -586,6 +603,23 @@ export default function DropdownMenu({
                       <button className={styles.askbutton}>
                         {link.dropdown.info.askDr.buttonText}
                       </button>
+                    </div>
+                  )}
+                  {link.dropdown.info.quickLinks && (
+                    <div className={styles.quickLinks}>
+                      <h4>Quick Links</h4>
+                      <div className={styles.quickLinksGrid}>
+                        {link.dropdown.info.quickLinks.map((quickLink, index) => (
+                          <Link
+                            key={index}
+                            href={quickLink.href}
+                            className={styles.quickLink}
+                            onClick={handleLinkClick}
+                          >
+                            {quickLink.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                   {link.dropdown.info.contact && (

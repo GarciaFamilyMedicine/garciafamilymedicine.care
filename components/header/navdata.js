@@ -103,6 +103,20 @@ export const nav_links = [
           description: 'Book an appointment for any of our medical services.',
           buttonText: 'Schedule Now',
         },
+        quickLinks: [
+          {
+            label: '💻 Telehealth Services',
+            href: '/services/telehealth'
+          },
+          {
+            label: '💵 Cash Pay Options',
+            href: '/services/cash-pay'
+          },
+          {
+            label: '💳 Payment Plans',
+            href: '/services/payment-plans'
+          }
+        ],
         contact: {
           phone: {
             display: '816-427-5320',
@@ -172,6 +186,20 @@ export const nav_links = [
           description: 'Educational content only. For medical services, see Our Services.',
           buttonText: 'Ask a Question',
         },
+        quickLinks: [
+          {
+            label: '💻 Telehealth Services',
+            href: '/services/telehealth'
+          },
+          {
+            label: '💵 Cash Pay Options',
+            href: '/services/cash-pay'
+          },
+          {
+            label: '💳 Payment Plans',
+            href: '/services/payment-plans'
+          }
+        ],
         contact: {
           phone: {
             display: '816-427-5320',
@@ -226,6 +254,20 @@ export const nav_links = [
           description: 'Learn about our partnerships and how we support our community together.',
           buttonText: 'Get Involved',
         },
+        quickLinks: [
+          {
+            label: '💻 Telehealth Services',
+            href: '/services/telehealth'
+          },
+          {
+            label: '💵 Cash Pay Options',
+            href: '/services/cash-pay'
+          },
+          {
+            label: '💳 Payment Plans',
+            href: '/services/payment-plans'
+          }
+        ],
         contact: {
           phone: {
             display: '816-427-5320',
