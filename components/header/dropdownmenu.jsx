@@ -567,6 +567,13 @@ export default function DropdownMenu({
                   >
                     Cash Pay Options
                   </Link>
+                  <Link
+                    href="/services/payment-plans"
+                    className={styles.footerLink}
+                    onClick={handleLinkClick}
+                  >
+                    Payment Plans
+                  </Link>
                 </div>
               </>
             ) : (

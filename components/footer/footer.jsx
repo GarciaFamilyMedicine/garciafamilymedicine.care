@@ -49,18 +49,22 @@ export default function Footer() {
                   <span className={styles.featureIcon}>🏥</span>
                   <span>Same-Day Appointments</span>
                 </div>
-                <div className={styles.feature}>
+                <Link href="/services/telehealth" className={styles.feature}>
                   <span className={styles.featureIcon}>💻</span>
                   <span>Telehealth Available</span>
-                </div>
-                <div className={styles.feature}>
+                </Link>
+                <Link href="/learn/veterans" className={styles.feature}>
                   <span className={styles.featureIcon}>🎖️</span>
                   <span>Veterans Welcome</span>
-                </div>
-                <div className={styles.feature}>
+                </Link>
+                <Link href="/services/cash-pay" className={styles.feature}>
                   <span className={styles.featureIcon}>📋</span>
                   <span>Affordable Cash Pay Rates</span>
-                </div>
+                </Link>
+                <Link href="/services/payment-plans" className={styles.feature}>
+                  <span className={styles.featureIcon}>💳</span>
+                  <span>Flexible Payment Plans</span>
+                </Link>
               </div>
             </div>
           </div>
