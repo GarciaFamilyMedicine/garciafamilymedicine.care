@@ -38,6 +38,17 @@
   .testimonialGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .rsvpVisualContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .rsvpImageContainer {
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }
 
 /* Mobile tablet breakpoint */
