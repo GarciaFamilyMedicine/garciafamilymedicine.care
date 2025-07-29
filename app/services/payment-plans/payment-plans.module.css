@@ -29,6 +29,46 @@
   }
 }
 
+/* Cherry Widget Color Overrides */
+.cherryWidget :global(.cherry-hero) {
+  background-color: #0066cc !important;
+}
+
+.cherryWidget :global(.cherry-button),
+.cherryWidget :global(.cherry-btn),
+.cherryWidget :global(.btn-primary),
+.cherryWidget :global([style*="background-color: rgb(0, 195, 125)"]) {
+  background-color: #0066cc !important;
+  border-color: #0066cc !important;
+}
+
+.cherryWidget :global(.cherry-button:hover),
+.cherryWidget :global(.cherry-btn:hover),
+.cherryWidget :global(.btn-primary:hover) {
+  background-color: #0052a3 !important;
+  border-color: #0052a3 !important;
+}
+
+.cherryWidget :global([style*="color: rgb(0, 195, 125)"]) {
+  color: #0066cc !important;
+}
+
+.cherryWidget :global(.cherry-text-primary),
+.cherryWidget :global(.text-primary) {
+  color: #0066cc !important;
+}
+
+.cherryWidget :global(.cherry-bg-primary),
+.cherryWidget :global(.bg-primary) {
+  background-color: #0066cc !important;
+}
+
+/* Override any inline styles with green color */
+.cherryWidget :global([style*="#00c37d"]) {
+  background-color: #0066cc !important;
+  color: #0066cc !important;
+}
+
 /* Hero Section */
 .heroSection {
   display: grid;
