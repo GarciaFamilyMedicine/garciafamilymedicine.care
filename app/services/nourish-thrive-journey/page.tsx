@@ -8,27 +8,27 @@ export default function NourishThrive() {
   // Array of images for the carousel
   const carouselImages = [
     {
-      src: "/images/nourish-thrive/medical-supervision.jpg",
+      src: "/images/nourish-thrive-journey/medical-supervision.jpg",
       alt: "Medically supervised weight management consultation at Garcia Family Medicine Blue Springs",
       caption: "Medically Supervised Weight Management"
     },
     {
-      src: "/images/nourish-thrive/healthy-transformation.jpg",
+      src: "/images/nourish-thrive-journey/healthy-transformation.jpg",
       alt: "Transform your relationship with food through healthy lifestyle changes",
       caption: "Transform Your Relationship with Food"
     },
     {
-      src: "/images/nourish-thrive/progress-tracking.jpg", 
+      src: "/images/nourish-thrive-journey/progress-tracking.jpg", 
       alt: "Track your journey to better health with professional medical support",
       caption: "Track Your Journey to Better Health"
     },
     {
-      src: "/images/nourish-thrive/care-team.jpg",
+      src: "/images/nourish-thrive-journey/care-team.jpg",
       alt: "Complete care team supporting your weight management journey at Garcia Family Medicine",
       caption: "Your Complete Care Team"
     },
     {
-      src: "/images/nourish-thrive/lifelong-wellness.jpg",
+      src: "/images/nourish-thrive-journey/lifelong-wellness.jpg",
       alt: "12-month program leading to lifelong wellness and sustainable weight management",
       caption: "12 Months to Lifelong Wellness"
     }
