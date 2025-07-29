@@ -747,6 +747,214 @@
   transform: translateY(-2px);
 }
 
+/* ================ LEAD CAPTURE SECTION ================ */
+.leadCaptureSection {
+  padding: 3rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.leadCaptureContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .leadCaptureContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.leadCaptureContent h2 {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  color: #16537e;
+  margin-bottom: 1rem;
+}
+
+.leadCaptureContent p {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitsList li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  color: #1f2937;
+}
+
+.benefitsList li::before {
+  content: "✓";
+  color: #16a085;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* ================ PRICING & FINANCING INFO ================ */
+.pricingInfo {
+  background: #f0fdf4;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  border-left: 4px solid #16a085;
+}
+
+.pricingInfo h3 {
+  color: #16537e;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.roiText {
+  color: #16a085;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.financingInfo {
+  background: #fef3c7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0 2rem 0;
+  border-left: 4px solid #f59e0b;
+}
+
+.financingInfo h4 {
+  color: #92400e;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+}
+
+.financingInfo p {
+  color: #78350f;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.financingOptions {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.financingOptions li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  color: #78350f;
+  font-size: 0.95rem;
+}
+
+.financingOptions li::before {
+  content: "💰";
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+}
+
+.financingButton {
+  display: inline-block;
+  background: #f59e0b;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.financingButton:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.leadCaptureForm {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.consultationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #16537e;
+}
+
+.formGroup input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #16537e 0%, #0f3460 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(21, 83, 126, 0.3);
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  color: #64748b;
+  text-align: center;
+  margin: 0;
+}
+
 /* ================ RESPONSIVE DESIGN ================ */
 @media (max-width: 992px) {
   .heroContent {
@@ -801,7 +1009,8 @@
   .columnLeft,
   .columnRight,
   .fullWidthSection,
-  .ctaSection {
+  .ctaSection,
+  .leadCaptureSection {
     padding: 2rem;
   }
   
@@ -850,7 +1059,8 @@
   .columnLeft,
   .columnRight,
   .fullWidthSection,
-  .ctaSection {
+  .ctaSection,
+  .leadCaptureSection {
     padding: 1.5rem;
   }
   

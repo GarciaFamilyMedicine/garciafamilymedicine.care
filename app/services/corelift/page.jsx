@@ -260,6 +260,131 @@ export default function Page() {
             </section>
             
 
+            {/* ===== LEAD CAPTURE SECTION ===== */}
+            <section className={styles.leadCaptureSection}>
+              <div className={styles.leadCaptureContainer}>
+                <div className={styles.leadCaptureContent}>
+                  <h2>Schedule Your CoreLift Consultation</h2>
+                  <p>Take the first step toward pelvic health confidence</p>
+                  <ul className={styles.benefitsList}>
+                    <li>Free initial consultation with certified specialist</li>
+                    <li>Personalized treatment plan assessment</li>
+                    <li>Learn about Emsella technology benefits</li>
+                    <li>Review financing and payment options</li>
+                  </ul>
+                  <div className={styles.pricingInfo}>
+                    <h3>Investment: $2,000</h3>
+                    <p className={styles.roiText}>
+                      Complete treatment package - cash pay only<br/>
+                      <strong>We do not file insurance claims for this service</strong>
+                    </p>
+                  </div>
+                  <div className={styles.financingInfo}>
+                    <h4>💳 0% Financing Available</h4>
+                    <p>
+                      Start your healing today with no interest! We partner with <strong>Cherry</strong> 
+                      to offer 24-month 0% financing for qualified applicants.
+                    </p>
+                    <ul className={styles.financingOptions}>
+                      <li>24-month 0% financing - just $83/month</li>
+                      <li>Quick approval process (usually under 60 seconds)</li>
+                      <li>No prepayment penalties</li>
+                      <li>Soft credit check won't affect your credit score</li>
+                    </ul>
+                    <a 
+                      href="#cherry-financing" 
+                      className={styles.financingButton}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open('https://patient.cherry.com/garcia-family-medicine', '_blank');
+                      }}
+                    >
+                      Check Financing Options →
+                    </a>
+                  </div>
+                </div>
+                <div className={styles.leadCaptureForm}>
+                  <form className={styles.consultationForm} action="/api/lead-capture" method="POST">
+                    <input type="hidden" name="service" value="corelift" />
+                    <input type="hidden" name="source" value="service-page" />
+                    
+                    <div className={styles.formGroup}>
+                      <label htmlFor="fullName">Full Name *</label>
+                      <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName" 
+                        required 
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+                    
+                    <div className={styles.formGroup}>
+                      <label htmlFor="email">Email Address *</label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="Enter your email address"
+                      />
+                    </div>
+                    
+                    <div className={styles.formGroup}>
+                      <label htmlFor="phone">Phone Number *</label>
+                      <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        required 
+                        placeholder="(555) 123-4567"
+                      />
+                    </div>
+                    
+                    <div className={styles.formGroup}>
+                      <label htmlFor="condition">Primary Concern</label>
+                      <select id="condition" name="condition">
+                        <option value="">Select your primary concern</option>
+                        <option value="urinary-incontinence">Urinary Incontinence</option>
+                        <option value="pelvic-pain">Pelvic Pain</option>
+                        <option value="core-weakness">Core Weakness</option>
+                        <option value="postpartum-recovery">Postpartum Recovery</option>
+                        <option value="erectile-dysfunction">Erectile Dysfunction</option>
+                        <option value="other">Other/Prefer to discuss</option>
+                      </select>
+                    </div>
+                    
+                    <div className={styles.formGroup}>
+                      <label htmlFor="timeframe">Preferred Appointment Time</label>
+                      <select id="timeframe" name="timeframe">
+                        <option value="">Select preferred time</option>
+                        <option value="morning">Morning (8am-12pm)</option>
+                        <option value="afternoon">Afternoon (12pm-5pm)</option>
+                        <option value="evening">Evening (5pm-7pm)</option>
+                        <option value="flexible">Flexible</option>
+                      </select>
+                    </div>
+                    
+                    <div className={styles.formGroup}>
+                      <label>
+                        <input type="checkbox" name="consent" required />
+                        I consent to receive communications about CoreLift services via email and phone. 
+                        Message and data rates may apply.
+                      </label>
+                    </div>
+                    
+                    <button type="submit" className={styles.submitButton}>
+                      Schedule My Consultation
+                    </button>
+                    
+                    <p className={styles.disclaimer}>
+                      HIPAA-compliant. Your information is secure and confidential.
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </section>
+
             {/* ===== COMMUNITY & SOCIAL ===== */}
             <section className={styles.communitySection}>
               <div className={styles.communityContent}>
