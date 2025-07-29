@@ -203,18 +203,22 @@ export default function DropdownMenu({
       >
         <div className={styles.dropdowncontent}>
           {link.dropdown?.twoColumns || link.dropdown?.threeColumns ? (
-            /* Two column layout for Core Medical Services */
+            /* Two/Three column layout */
             <>
-              {link.dropdown.links?.map((column, columnIndex) => (
-                <div key={columnIndex} className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
-                  <div className={styles.sectionHeader}>
-                    <h3 className={styles.dropdownsectiontitle}>{column.title}</h3>
-                    {column.subtitle && (
-                      <p className={styles.sectionSubtitle}>{column.subtitle}</p>
-                    )}
-                  </div>
-                  <ul>
-                    {column.items?.map((item, itemIndex) => (
+              {link.dropdown.links?.map((column, columnIndex) => 
+                column === null ? (
+                  // Render empty column for three-column layout
+                  <div key={columnIndex} className={`${styles.dropdownsection} ${styles.emptyColumn}`}></div>
+                ) : (
+                  <div key={columnIndex} className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
+                    <div className={styles.sectionHeader}>
+                      <h3 className={styles.dropdownsectiontitle}>{column.title}</h3>
+                      {column.subtitle && (
+                        <p className={styles.sectionSubtitle}>{column.subtitle}</p>
+                      )}
+                    </div>
+                    <ul>
+                      {column.items?.map((item, itemIndex) => (
                       <li key={item.label + '-' + itemIndex}>
                         {item.external ? (
                           <a
@@ -249,8 +253,9 @@ export default function DropdownMenu({
                     ))}
                   </ul>
                 </div>
-              ))}
-              {/* Info section for two column layout */}
+                )
+              )}
+              {/* Info section for two/three column layout */}
               {link.dropdown.info && (
                 <div className={`${styles.dropdowninfo} ${styles.scrollable}`}>
                   <div className={styles.dropdowninfocard}>
@@ -567,6 +572,13 @@ export default function DropdownMenu({
                   >
                     Cash Pay Options
                   </Link>
+                  <Link
+                    href="/services/payment-plans"
+                    className={styles.footerLink}
+                    onClick={handleLinkClick}
+                  >
+                    Payment Plans
+                  </Link>
                 </div>
               </>
             ) : (
@@ -579,6 +591,23 @@ export default function DropdownMenu({
                       <button className={styles.askbutton}>
                         {link.dropdown.info.askDr.buttonText}
                       </button>
+                    </div>
+                  )}
+                  {link.dropdown.info.quickLinks && (
+                    <div className={styles.quickLinks}>
+                      <h4>Quick Links</h4>
+                      <div className={styles.quickLinksGrid}>
+                        {link.dropdown.info.quickLinks.map((quickLink, index) => (
+                          <Link
+                            key={index}
+                            href={quickLink.href}
+                            className={styles.quickLink}
+                            onClick={handleLinkClick}
+                          >
+                            {quickLink.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                   {link.dropdown.info.contact && (

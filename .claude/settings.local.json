@@ -18,6 +18,7 @@
       "Bash(for dir in */)",
       "Bash(do echo \"=== $dir%/ ===\")",
       "Bash(done)",
+<<<<<<< HEAD
       "Bash(ren:*)",
       "Bash(taskkill:*)",
       "Bash(npx kill-port:*)",
@@ -25,6 +26,11 @@
       "Bash(curl:*)",
       "Bash(npm install)",
       "Bash(git checkout:*)"
+=======
+      "Bash(mkdir:*)",
+      "Bash(gh pr:*)",
+      "Bash(git fetch:*)"
+>>>>>>> 92341652dd3bd69f0d4e9e857e43b3b67843f32e
     ],
     "deny": []
   }

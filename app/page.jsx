@@ -243,7 +243,7 @@ export default function LandingPage() {
                 styles.careSectionLi,
                 mobileStyles.careSectionLi
               )}>
-                <strong>Affordable Blessings:</strong> Transparent pricing that brings peace to your wallet and soul.
+                <strong>Affordable Blessings:</strong> Transparent pricing with <a href="/services/cash-pay" className={styles.textLink}>cash pay options</a> and <a href="/services/payment-plans" className={styles.textLink}>flexible payment plans</a> that bring peace to your wallet and soul.
               </li>
             </ul>
             <p className={combineStyles(

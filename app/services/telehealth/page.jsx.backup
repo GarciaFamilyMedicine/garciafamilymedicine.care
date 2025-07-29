@@ -11,7 +11,6 @@ export default function TelehealthPage() {
   return (
     <>
       <Header />
-      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.container}>
           <div className={styles.heroContent}>
@@ -250,15 +249,20 @@ export default function TelehealthPage() {
             </ul>
           </div>
           <div className={styles.paymentInfo}>
-            <h3>Affordable Cash Pay Options</h3>
-            <p>No insurance? No problem! We offer competitive cash pay rates for all virtual visits.</p>
-            <Link href="/services/cash-pay" className={styles.learnMoreLink}>
-              Learn About Cash Pay Options →
-            </Link>
+            <h3>Affordable Payment Options</h3>
+            <p>No insurance? No problem! We offer competitive cash pay rates and flexible payment plans for all virtual visits.</p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link href="/services/cash-pay" className={styles.learnMoreLink}>
+                Cash Pay Options →
+              </Link>
+              <Link href="/services/payment-plans" className={styles.learnMoreLink}>
+                Payment Plans →
+              </Link>
+            </div>
           </div>
         </div>
+        </div>
       </section>
-      </div>
       <Footer />
     </>
   );

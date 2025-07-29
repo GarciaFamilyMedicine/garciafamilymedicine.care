@@ -45,22 +45,22 @@ export default function Footer() {
               </div>
               
               <div className={styles.ctaFeatures}>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>🏥</span>
-                  <span>Same-Day Appointments</span>
-                </div>
-                <div className={styles.feature}>
+                <Link href="/services/telehealth" className={styles.feature}>
                   <span className={styles.featureIcon}>💻</span>
                   <span>Telehealth Available</span>
-                </div>
-                <div className={styles.feature}>
+                </Link>
+                <Link href="/learn/veterans" className={styles.feature}>
                   <span className={styles.featureIcon}>🎖️</span>
                   <span>Veterans Welcome</span>
-                </div>
-                <div className={styles.feature}>
+                </Link>
+                <Link href="/services/cash-pay" className={styles.feature}>
                   <span className={styles.featureIcon}>📋</span>
                   <span>Affordable Cash Pay Rates</span>
-                </div>
+                </Link>
+                <Link href="/services/payment-plans" className={styles.feature}>
+                  <span className={styles.featureIcon}>💳</span>
+                  <span>Flexible Payment Plans</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -200,6 +200,7 @@ export default function Footer() {
           <Link href="/care/preventive-care" className={styles.navLink}>Preventive Care</Link>
           <Link href="/care/chronic-disease" className={styles.navLink}>Chronic Disease</Link>
           <Link href="/care/cash-pay" className={styles.navLink}>Cash Pay Options</Link>
+          <Link href="/services/payment-plans" className={styles.navLink}>Payment Plans</Link>
           <Link href="/care/womens-health" className={styles.navLink}>Women's Health</Link>
           <Link href="/care/mens-health" className={styles.navLink}>Men's Health</Link>
           <Link href="/care/mental-health" className={styles.navLink}>Mental Health</Link>

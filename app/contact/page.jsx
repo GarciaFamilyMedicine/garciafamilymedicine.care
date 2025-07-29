@@ -125,8 +125,11 @@ export default function Contact() {
               <div className={styles.infoCard}>
                 <FaShieldAlt className={styles.infoIcon} />
                 <h3>Insurance & Payment</h3>
-                <p>We accept most major insurance plans and offer affordable cash-pay options for uninsured patients.</p>
-                <a href="/services/cash-pay" className={styles.learnMoreLink}>Learn about our pricing →</a>
+                <p>We accept most major insurance plans and offer affordable cash-pay options and flexible payment plans for all patients.</p>
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                  <a href="/services/cash-pay" className={styles.learnMoreLink}>Cash Pay Options →</a>
+                  <a href="/services/payment-plans" className={styles.learnMoreLink}>Payment Plans →</a>
+                </div>
               </div>
               
               <div className={styles.infoCard}>
@@ -150,7 +153,7 @@ export default function Contact() {
                 <FaDollarSign className={styles.ctaIcon} />
                 <div>
                   <h3>Affordable Healthcare for Everyone</h3>
-                  <p>We believe quality healthcare should be accessible. Ask about our cash-pay rates and payment plans.</p>
+                  <p>We believe quality healthcare should be accessible. Learn about our cash-pay rates and flexible payment plans.</p>
                 </div>
               </div>
               <a href="tel:+18164275320" className={styles.ctaButton}>
