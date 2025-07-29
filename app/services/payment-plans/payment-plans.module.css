@@ -1,6 +1,32 @@
 .container {
   min-height: 100vh;
   background: linear-gradient(to bottom, #fff, #f0f9ff);
+  padding-top: 85px; /* Header height: 25px top bar + 60px navbar */
+  position: relative;
+}
+
+/* Cherry widget wrapper */
+.cherryWidget {
+  width: 100%;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Ensure Cherry widget sections have proper spacing */
+.cherryWidget > div {
+  width: 100%;
+}
+
+/* Mobile responsive padding */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 70px; /* Smaller header on mobile */
+  }
+  
+  .cherryWidget {
+    padding: 10px;
+  }
 }
 
 /* Hero Section */

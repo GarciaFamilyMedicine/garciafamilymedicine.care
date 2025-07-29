@@ -38,8 +38,8 @@ export default function PaymentPlansPage() {
                   name: "Garcia Family Medicine LLC",
                 },
                 styles: {
-                  primaryColor: '#00c37d',
-                  secondaryColor: '#00c37d10',
+                  primaryColor: '#0066cc',
+                  secondaryColor: '#0066cc10',
                   fontFamily: 'Open Sans',
                 },
               },
@@ -50,7 +50,9 @@ export default function PaymentPlansPage() {
       />
       <div className={styles.container}>
         {/* Cherry Widget Container */}
-        <div id="all"></div>
+        <div className={styles.cherryWidget}>
+          <div id="all"></div>
+        </div>
       </div>
       <Footer />
     </>
