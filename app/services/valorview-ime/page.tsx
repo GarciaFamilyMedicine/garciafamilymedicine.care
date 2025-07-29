@@ -125,36 +125,42 @@ export default function ValorViewIME() {
             
             {/* Image Carousel */}
             <div className="relative">
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-2xl ring-4 ring-blue-200 hover:ring-blue-400 transition-all duration-300">
                 <a 
                   href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block group"
                 >
                   <img 
                     src={carouselImages[currentImageIndex].src}
                     alt={carouselImages[currentImageIndex].alt}
-                    className="w-full h-80 object-cover cursor-pointer"
+                    className="w-full aspect-square object-cover cursor-pointer transform group-hover:scale-105 transition-transform duration-300 filter hover:brightness-110 hover:contrast-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                      <p className="text-blue-900 font-semibold text-sm">{carouselImages[currentImageIndex].caption}</p>
+                    </div>
+                  </div>
                 </a>
                 
                 {/* Navigation Arrows */}
                 {carouselImages.length > 1 && (
                   <>
                     <button 
-                      className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-white/20"
                       onClick={goToPrevious}
                       aria-label="Previous image"
                     >
-                      &#8249;
+                      <span className="text-xl font-bold">‹</span>
                     </button>
                     <button 
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-white/20"
                       onClick={goToNext}
                       aria-label="Next image"
                     >
-                      &#8250;
+                      <span className="text-xl font-bold">›</span>
                     </button>
                   </>
                 )}
@@ -162,12 +168,14 @@ export default function ValorViewIME() {
               
               {/* Dot Indicators */}
               {carouselImages.length > 1 && (
-                <div className="flex justify-center mt-4 space-x-2">
+                <div className="flex justify-center mt-6 space-x-3">
                   {carouselImages.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentImageIndex ? 'bg-blue-600' : 'bg-gray-300'
+                      className={`w-4 h-4 rounded-full transition-all duration-300 transform hover:scale-125 ${
+                        index === currentImageIndex 
+                          ? 'bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg ring-2 ring-blue-300 ring-offset-2' 
+                          : 'bg-gray-300 hover:bg-blue-400 shadow-md'
                       }`}
                       onClick={() => goToSlide(index)}
                       aria-label={`Go to image ${index + 1}`}
@@ -347,6 +355,23 @@ export default function ValorViewIME() {
               <div>
                 <h2 className="text-3xl font-bold mb-6">Schedule Your ValorView™ IME Evaluation</h2>
                 <p className="text-xl mb-6">Take the first step toward securing your VA disability benefits</p>
+                
+                {/* Vertical RSVP Image in Left Panel */}
+                <div className="text-center mb-8">
+                  <div className="relative inline-block mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <img src="/images/rsvp-booking.png" alt="Book Your ValorView IME" className="relative max-w-48 max-h-48 mx-auto drop-shadow-2xl transform hover:scale-110 transition-transform duration-300 rounded-2xl border-4 border-white shadow-2xl object-contain" />
+                  </div>
+                  <button 
+                    type="button"
+                    onClick={() => window.open('https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/', '_blank')}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-8 rounded-lg font-bold text-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    📋 RESERVE YOUR SPOT NOW
+                  </button>
+                  <p className="text-white mt-4 text-lg font-semibold">Only 2 evaluation spots remaining this month!</p>
+                </div>
+                
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
                     <span className="text-blue-200 mr-2 mt-1">✓</span>
@@ -400,6 +425,10 @@ export default function ValorViewIME() {
               </div>
               
               <div className="bg-white p-8 rounded-lg text-gray-800">
+                {/* Horizontal RSVP Image Above Form */}
+                <div className="text-center mb-8">
+                  <img src="/images/rsvp-booking-horizontal.png" alt="RSVP for ValorView IME Evaluation" className="w-full max-w-md mx-auto rounded-lg shadow-lg border-2 border-blue-200 hover:border-blue-400 transition-colors duration-300" />
+                </div>
                 <form className="space-y-6">
                   <input type="hidden" name="service" value="valorview-ime" />
                   <input type="hidden" name="source" value="service-page" />
@@ -507,9 +536,10 @@ export default function ValorViewIME() {
                   
                   <button 
                     type="submit" 
-                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
                   >
-                    Book My Evaluation
+                    <img src="/images/rsvp-booking.png" alt="RSVP" className="w-6 h-6 opacity-80" />
+                    <span>📋 RESERVE MY EVALUATION SPOT</span>
                   </button>
                   
                   <p className="text-center text-sm text-gray-500">

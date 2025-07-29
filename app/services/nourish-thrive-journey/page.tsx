@@ -124,36 +124,42 @@ export default function NourishThrive() {
             
             {/* Image Carousel */}
             <div className="relative">
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-2xl ring-4 ring-green-200 hover:ring-green-400 transition-all duration-300">
                 <a 
                   href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block group"
                 >
                   <img 
                     src={carouselImages[currentImageIndex].src}
                     alt={carouselImages[currentImageIndex].alt}
-                    className="w-full h-80 object-cover cursor-pointer"
+                    className="w-full aspect-square object-cover cursor-pointer transform group-hover:scale-105 transition-transform duration-300 filter hover:brightness-110 hover:contrast-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                      <p className="text-green-900 font-semibold text-sm">{carouselImages[currentImageIndex].caption}</p>
+                    </div>
+                  </div>
                 </a>
                 
                 {/* Navigation Arrows */}
                 {carouselImages.length > 1 && (
                   <>
                     <button 
-                      className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-green-600 to-green-700 text-white p-3 rounded-full hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-white/20"
                       onClick={goToPrevious}
                       aria-label="Previous image"
                     >
-                      &#8249;
+                      <span className="text-xl font-bold">‹</span>
                     </button>
                     <button 
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-green-600 to-green-700 text-white p-3 rounded-full hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-white/20"
                       onClick={goToNext}
                       aria-label="Next image"
                     >
-                      &#8250;
+                      <span className="text-xl font-bold">›</span>
                     </button>
                   </>
                 )}
@@ -161,12 +167,14 @@ export default function NourishThrive() {
               
               {/* Dot Indicators */}
               {carouselImages.length > 1 && (
-                <div className="flex justify-center mt-4 space-x-2">
+                <div className="flex justify-center mt-6 space-x-3">
                   {carouselImages.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentImageIndex ? 'bg-green-600' : 'bg-gray-300'
+                      className={`w-4 h-4 rounded-full transition-all duration-300 transform hover:scale-125 ${
+                        index === currentImageIndex 
+                          ? 'bg-gradient-to-r from-green-500 to-green-700 shadow-lg ring-2 ring-green-300 ring-offset-2' 
+                          : 'bg-gray-300 hover:bg-green-400 shadow-md'
                       }`}
                       onClick={() => goToSlide(index)}
                       aria-label={`Go to image ${index + 1}`}
@@ -402,6 +410,20 @@ export default function NourishThrive() {
               </div>
               
               <div className="bg-white p-8 rounded-lg text-gray-800">
+                <div className="text-center mb-8">
+                  <div className="relative inline-block mb-8">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <img src="/images/rsvp-booking.png" alt="Book Your Nourish & Thrive Journey" className="relative max-w-48 max-h-48 mx-auto drop-shadow-2xl transform hover:scale-110 transition-transform duration-300 rounded-2xl border-4 border-white shadow-2xl object-contain" />
+                  </div>
+                  <button 
+                    type="button"
+                    onClick={() => window.open('https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/', '_blank')}
+                    className="bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-8 rounded-lg font-bold text-xl hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    🌟 RESERVE YOUR SPOT NOW
+                  </button>
+                  <p className="text-gray-600 mt-4 text-lg font-semibold">Only 5 transformation spots remaining this month!</p>
+                </div>
                 <form className="space-y-6">
                   <input type="hidden" name="service" value="nourish-thrive" />
                   <input type="hidden" name="source" value="service-page" />
@@ -512,9 +534,10 @@ export default function NourishThrive() {
                   
                   <button 
                     type="submit" 
-                    className="w-full bg-green-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors"
+                    className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
                   >
-                    Schedule My Consultation
+                    <img src="/images/rsvp-booking.png" alt="RSVP" className="w-6 h-6 opacity-80" />
+                    <span>🌟 RESERVE MY TRANSFORMATION SPOT</span>
                   </button>
                   
                   <p className="text-center text-sm text-gray-500">

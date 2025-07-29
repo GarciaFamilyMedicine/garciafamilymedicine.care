@@ -62,55 +62,84 @@ export default function CoreLift() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Page Header */}
-      <div className="bg-purple-50 py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-            CoreLift™ Pelvic Health Program
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600">
-            Revolutionary FDA-approved Emsella technology for comprehensive pelvic floor strengthening and core restoration
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-fuchsia-50 to-purple-100 relative overflow-hidden">
+      {/* 3D Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-fuchsia-300 to-pink-300 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-300 to-violet-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-pink-300 to-rose-300 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      {/* 3D Page Header */}
+      <div className="relative bg-gradient-to-r from-white/80 via-fuchsia-50/80 to-pink-50/80 backdrop-blur-lg py-16 sm:py-20 border-b-4 border-gradient-to-r from-fuchsia-300 to-purple-300 shadow-2xl">
+        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-200/20 via-pink-200/20 to-purple-200/20 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 sm:px-6 max-w-4xl text-center relative z-10">
+          <div className="transform perspective-1000">
+            <h1 className="text-5xl sm:text-6xl font-black bg-gradient-to-r from-fuchsia-600 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-6 tracking-tight leading-tight drop-shadow-2xl transform hover:scale-105 transition-transform duration-500" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
+              <span className="text-5xl sm:text-6xl font-bold">Brunch & Bubbly</span>
+              <br />
+              <span className="text-5xl sm:text-6xl font-light italic">CoreLift™</span>
+              <br />
+              <span className="text-5xl sm:text-6xl font-black">Confidence</span>
+            </h1>
+          </div>
+          <div className="bg-white/20 backdrop-blur-lg rounded-2xl p-6 shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-300">
+            <p className="text-xl sm:text-2xl text-gray-800 font-medium leading-relaxed" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
+              An exclusive wellness experience combining revolutionary<br />
+              FDA-approved Emsella technology with luxurious self-care<br />
+              for complete pelvic floor confidence
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl py-12">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl py-16 relative z-10">
         {/* Hero Section */}
         <section className="mb-16">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-                Restore Your Core Strength with CoreLift™
+              <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-fuchsia-600 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-8 leading-tight drop-shadow-lg transform hover:scale-105 transition-transform duration-300" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
+                Elevate Your Confidence
+                <br />
+                <span className="text-3xl sm:text-4xl font-light italic">with Brunch & Bubbly</span>
+                <br />
+                <span className="text-2xl sm:text-3xl font-medium">CoreLift™</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our comprehensive CoreLift™ program combines revolutionary Emsella technology 
-                with personalized pelvic health therapy. Experience the equivalent of 11,000 
-                Kegel exercises per 28-minute session with 95% patient satisfaction rates.
-              </p>
-              <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-6 rounded-lg border-l-4 border-yellow-400 mb-6 text-white shadow-lg">
-                <h3 className="text-2xl font-bold text-yellow-300 mb-2">🚨 URGENT: Last 3 Treatment Packages This Month! 🚨</h3>
+              <div className="bg-white/60 backdrop-blur-lg rounded-xl p-6 mb-8 border border-white/40 shadow-xl transform hover:scale-105 transition-all duration-300">
+                <p className="text-xl text-gray-800 leading-relaxed font-medium" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
+                  Indulge in the ultimate wellness experience! Our exclusive Brunch & Bubbly CoreLift™ Confidence 
+                  program combines revolutionary Emsella technology with luxurious amenities. Enjoy mimosas, gourmet 
+                  brunch, and the equivalent of 11,000 Kegel exercises per 28-minute session with 95% satisfaction rates.
+                </p>
+              </div>
+              <div className="bg-gradient-to-r from-fuchsia-600 via-pink-600 to-purple-700 p-6 rounded-lg border-l-4 border-yellow-400 mb-6 text-white shadow-2xl border-2 border-yellow-300">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent to-yellow-300"></div>
+                  <div className="px-4 text-yellow-300 font-light text-sm tracking-widest">EXCLUSIVE OFFER</div>
+                  <div className="flex-1 h-px bg-gradient-to-l from-transparent to-yellow-300"></div>
+                </div>
+                <h3 className="text-2xl font-bold text-yellow-300 mb-2">Last 3 Brunch & Bubbly Experiences</h3>
                 <p className="text-purple-100 mb-3">
-                  <strong className="text-yellow-300">SAVE $600 + Get EXCLUSIVE Bonus Package!</strong> Book by midnight <strong>August 1st</strong> and receive:
+                  <strong className="text-yellow-300">SAVE $600 + Get LUXURY Brunch Package!</strong> Book by midnight <strong>August 1st</strong> and receive:
                 </p>
                 <ul className="text-purple-100 mb-4 space-y-1">
-                  <li>✅ <strong>FREE pelvic floor assessment</strong> ($200 value)</li>
-                  <li>✅ <strong>FREE take-home exercise program</strong> ($150 value)</li>
-                  <li>✅ <strong>FREE 90-day follow-up support</strong> ($250 value)</li>
-                  <li>✅ <strong>PRIORITY scheduling guarantee</strong> (priceless!)</li>
+                  <li>• <strong>Premium mimosa & champagne service</strong> ($150 value)</li>
+                  <li>• <strong>Gourmet brunch catering</strong> ($200 value)</li>
+                  <li>• <strong>Luxurious spa amenities</strong> ($150 value)</li>
+                  <li>• <strong>VIP concierge treatment experience</strong> (priceless!)</li>
                 </ul>
                 <div className="bg-yellow-400 text-purple-900 p-3 rounded-lg mb-4">
-                  <p className="font-bold">🔥 FLASH SALE: Regular $2,000 → Now $1,400 (Save $600!)</p>
+                  <p className="font-bold">FLASH SALE: Regular $2,000 → Now $1,400 (Save $600!)</p>
                   <p className="text-sm">Or just <strong>$58/month</strong> with 0% financing!</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/" 
-                    className="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors inline-flex items-center justify-center"
+                    className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-6 py-3 rounded-lg font-bold hover:from-fuchsia-700 hover:to-pink-700 transition-all duration-200 inline-flex items-center justify-center shadow-lg transform hover:scale-105"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎯 Book Now - Save $600!
+                    Reserve Your Experience
                   </a>
                   <a 
                     href="tel:+18163470570" 
@@ -124,36 +153,42 @@ export default function CoreLift() {
             
             {/* Image Carousel */}
             <div className="relative">
-              <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <div className="relative overflow-hidden rounded-xl shadow-2xl ring-4 ring-purple-200 hover:ring-purple-400 transition-all duration-300">
                 <a 
                   href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block group"
                 >
                   <img 
                     src={carouselImages[currentImageIndex].src}
                     alt={carouselImages[currentImageIndex].alt}
-                    className="w-full h-80 object-cover cursor-pointer"
+                    className="w-full aspect-square object-cover cursor-pointer transform group-hover:scale-105 transition-transform duration-300 filter hover:brightness-110 hover:contrast-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                      <p className="text-purple-900 font-semibold text-sm">{carouselImages[currentImageIndex].caption}</p>
+                    </div>
+                  </div>
                 </a>
                 
                 {/* Navigation Arrows */}
                 {carouselImages.length > 1 && (
                   <>
                     <button 
-                      className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white p-3 rounded-full hover:from-fuchsia-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-yellow-300"
                       onClick={goToPrevious}
                       aria-label="Previous image"
                     >
-                      &#8249;
+                      <span className="text-xl font-bold">‹</span>
                     </button>
                     <button 
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white p-3 rounded-full hover:from-fuchsia-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 border-2 border-yellow-300"
                       onClick={goToNext}
                       aria-label="Next image"
                     >
-                      &#8250;
+                      <span className="text-xl font-bold">›</span>
                     </button>
                   </>
                 )}
@@ -161,12 +196,14 @@ export default function CoreLift() {
               
               {/* Dot Indicators */}
               {carouselImages.length > 1 && (
-                <div className="flex justify-center mt-4 space-x-2">
+                <div className="flex justify-center mt-6 space-x-3">
                   {carouselImages.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentImageIndex ? 'bg-purple-600' : 'bg-gray-300'
+                      className={`w-4 h-4 rounded-full transition-all duration-300 transform hover:scale-125 ${
+                        index === currentImageIndex 
+                          ? 'bg-gradient-to-r from-fuchsia-500 to-pink-600 shadow-lg ring-2 ring-fuchsia-300 ring-offset-2' 
+                          : 'bg-gray-300 hover:bg-fuchsia-400 shadow-md'
                       }`}
                       onClick={() => goToSlide(index)}
                       aria-label={`Go to image ${index + 1}`}
@@ -181,12 +218,11 @@ export default function CoreLift() {
         {/* Two Column Content */}
         <section className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16">
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">What is CoreLift™?</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">What is Brunch & Bubbly CoreLift™ Confidence?</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              CoreLift™ is our comprehensive pelvic health program that combines FDA-approved 
-              Emsella technology with personalized therapy protocols. Using High-Intensity 
-              Focused Electromagnetic (HIFEM) energy, each session delivers thousands of 
-              supramaximal pelvic floor muscle contractions.
+              Brunch & Bubbly CoreLift™ Confidence is our exclusive luxury wellness experience that combines 
+              FDA-approved Emsella technology with premium hospitality. Enjoy mimosas, gourmet brunch, spa amenities, 
+              and personalized therapy protocols while receiving High-Intensity Focused Electromagnetic (HIFEM) treatments.
             </p>
             <ul className="space-y-3 text-gray-600 mb-6">
               <li className="flex items-start">
@@ -258,7 +294,7 @@ export default function CoreLift() {
         {/* Process Section */}
         <section className="mb-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our CoreLift™ Process</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Brunch & Bubbly CoreLift™ Experience</h2>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto">
               We follow a systematic, evidence-based approach to ensure optimal results 
               for your pelvic health. Each step is designed to build upon the previous one, 
@@ -268,24 +304,40 @@ export default function CoreLift() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-4">📋</div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Initial Assessment</h4>
-              <p className="text-gray-600">Comprehensive evaluation of pelvic floor function and core strength</p>
+              <div className="w-16 h-16 bg-gradient-to-r from-fuchsia-500 to-pink-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-fuchsia-500 to-pink-500 rounded-full"></div>
+                </div>
+              </div>
+              <h4 className="text-xl font-bold text-gray-800 mb-3">VIP Welcome & Assessment</h4>
+              <p className="text-gray-600">Champagne greeting with comprehensive pelvic floor evaluation in luxury setting</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-4">💜</div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Treatment Plan</h4>
-              <p className="text-gray-600">Customized 6-session program based on your specific needs and goals</p>
+              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"></div>
+                </div>
+              </div>
+              <h4 className="text-xl font-bold text-gray-800 mb-3">Gourmet Brunch Experience</h4>
+              <p className="text-gray-600">Chef-prepared brunch with mimosas while developing your personalized treatment plan</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-4">⚡</div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Emsella Therapy</h4>
-              <p className="text-gray-600">28-minute sessions using HIFEM technology for deep muscle strengthening</p>
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full"></div>
+                </div>
+              </div>
+              <h4 className="text-xl font-bold text-gray-800 mb-3">Luxury Emsella Sessions</h4>
+              <p className="text-gray-600">28-minute HIFEM treatments in spa-like environment with refreshments</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-4">🎯</div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">Results & Maintenance</h4>
-              <p className="text-gray-600">Ongoing support and maintenance recommendations for lasting results</p>
+              <div className="w-16 h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+                </div>
+              </div>
+              <h4 className="text-xl font-bold text-gray-800 mb-3">Confidence Celebration</h4>
+              <p className="text-gray-600">Toast your transformation with champagne and personalized wellness plan</p>
             </div>
           </div>
         </section>
@@ -349,8 +401,8 @@ export default function CoreLift() {
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Start Your CoreLift™ Journey</h2>
-                <p className="text-xl mb-6">Transform your pelvic health with our revolutionary 6-session program</p>
+                <h2 className="text-3xl font-bold mb-6">Start Your Brunch & Bubbly CoreLift™ Experience</h2>
+                <p className="text-xl mb-6">Indulge in luxury while transforming your pelvic health with our exclusive 6-session program</p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
                     <span className="text-purple-200 mr-2 mt-1">✓</span>
@@ -403,8 +455,38 @@ export default function CoreLift() {
                 </div>
               </div>
               
-              <div className="bg-white p-8 rounded-lg text-gray-800">
-                <form className="space-y-6">
+              <div className="bg-gradient-to-br from-white/80 via-fuchsia-50/80 to-purple-50/80 backdrop-blur-xl p-12 rounded-3xl text-gray-800 border-4 border-white/50 shadow-2xl transform hover:scale-102 transition-all duration-500 perspective-1000">
+                <div className="text-center mb-12">
+                  <div className="relative inline-block mb-12 transform perspective-1000 hover:rotate-y-12 transition-transform duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-400 to-pink-500 rounded-3xl blur-3xl opacity-80 animate-pulse scale-110 shadow-2xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-3xl blur-2xl opacity-60 animate-pulse scale-125 shadow-xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-violet-500 rounded-3xl blur-xl opacity-50 animate-pulse scale-105 shadow-lg"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 rounded-3xl shadow-inner"></div>
+                    <img src="/images/corelift-brunch.png" alt="Brunch & Bubbly CoreLift Experience" className="relative max-w-96 max-h-96 mx-auto drop-shadow-2xl transform hover:scale-110 hover:rotate-3 transition-all duration-500 rounded-3xl border-8 border-white/50 shadow-2xl object-contain bg-gradient-to-br from-white via-fuchsia-50 to-pink-50 p-6" />
+                  </div>
+                  <div className="bg-gradient-to-r from-fuchsia-600/90 via-pink-600/90 to-purple-700/90 backdrop-blur-lg text-white p-10 rounded-3xl shadow-2xl mb-8 border-4 border-yellow-300/80 transform hover:scale-105 transition-all duration-300">
+                    <div className="flex items-center justify-center mb-8">
+                      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-yellow-300/50 to-white/70"></div>
+                      <div className="px-8 text-yellow-200 font-light text-lg tracking-widest" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>PREMIUM</div>
+                      <div className="flex-1 h-px bg-gradient-to-l from-transparent via-yellow-300/50 to-white/70"></div>
+                    </div>
+                    <h2 className="text-5xl sm:text-6xl font-black bg-gradient-to-r from-yellow-200 via-white to-yellow-200 bg-clip-text text-transparent mb-6 leading-tight tracking-tight drop-shadow-lg" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>EXCLUSIVE LUXURY EXPERIENCE</h2>
+                    <p className="text-2xl font-bold text-yellow-200 mb-8 tracking-wide drop-shadow-lg" style={{fontFamily: 'Inter, system-ui, sans-serif'}}>Last 3 luxury experiences remaining this month!</p>
+                    <button 
+                      type="button"
+                      onClick={() => window.open('https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/', '_blank')}
+                      className="bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 text-purple-900 py-8 px-16 rounded-2xl font-black text-3xl hover:from-yellow-300 hover:via-orange-300 hover:to-pink-300 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 hover:scale-110 border-4 border-white animate-pulse perspective-1000" style={{fontFamily: 'Inter, system-ui, sans-serif'}}
+                    >
+                      RESERVE YOUR EXPERIENCE
+                      <br />
+                      <span className="text-2xl font-bold">$1,400</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-bold text-center mb-4 text-gray-700">Or fill out the form below for more information:</h3>
+                </div>
+                <form className="space-y-6 mt-8">
                   <input type="hidden" name="service" value="corelift" />
                   <input type="hidden" name="source" value="service-page" />
                   
@@ -509,9 +591,10 @@ export default function CoreLift() {
                   
                   <button 
                     type="submit" 
-                    className="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-purple-700 transition-colors"
+                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
                   >
-                    Schedule My Consultation
+                    <img src="/images/rsvp-booking.png" alt="RSVP" className="w-6 h-6 opacity-80" />
+                    <span>🥂 RESERVE MY LUXURY EXPERIENCE</span>
                   </button>
                   
                   <p className="text-center text-sm text-gray-500">
