@@ -169,10 +169,12 @@ export default function Header() {
         } else {
           // For Patient Care Essentials and other structured dropdowns
           if (link.dropdown.links) {
-            sections = link.dropdown.links.map(section => ({
-              title: section.title,
-              items: section.items || []
-            }));
+            sections = link.dropdown.links
+              .filter(section => section !== null) // Filter out null values
+              .map(section => ({
+                title: section.title,
+                items: section.items || []
+              }));
             
             // Special reordering for Patient Care Essentials - Core Medical first
             if (link.label === 'Patient Care Essentials') {
@@ -181,7 +183,7 @@ export default function Header() {
             
             // Also flatten for backward compatibility
             link.dropdown.links.forEach(section => {
-              if (section.items) {
+              if (section && section.items) { // Check section is not null
                 allItems.push(...section.items);
               }
             });

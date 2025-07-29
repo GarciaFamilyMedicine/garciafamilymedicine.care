@@ -21,7 +21,7 @@ export const nav_links = [
 
   {
     label: 'News & Events',
-    href: '/news-events',
+    href: '/news',
     dropdown: {
       // Will be dynamically populated with news and events
       isDynamic: true,
@@ -219,6 +219,7 @@ export const nav_links = [
             }
           ],
         },
+        null, // Empty second column to push info to third column
       ],
       info: {
         askDr: {

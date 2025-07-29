@@ -205,7 +205,7 @@ export default function DropdownMenu({
           {link.dropdown?.twoColumns || link.dropdown?.threeColumns ? (
             /* Two column layout for Core Medical Services */
             <>
-              {link.dropdown.links?.map((column, columnIndex) => (
+              {link.dropdown.links?.filter(column => column !== null).map((column, columnIndex) => (
                 <div key={columnIndex} className={`${styles.dropdownsection} ${styles.twoColumnSection} ${styles.scrollable}`}>
                   <div className={styles.sectionHeader}>
                     <h3 className={styles.dropdownsectiontitle}>{column.title}</h3>

@@ -45,10 +45,6 @@ export default function Footer() {
               </div>
               
               <div className={styles.ctaFeatures}>
-                <div className={styles.feature}>
-                  <span className={styles.featureIcon}>🏥</span>
-                  <span>Same-Day Appointments</span>
-                </div>
                 <Link href="/services/telehealth" className={styles.feature}>
                   <span className={styles.featureIcon}>💻</span>
                   <span>Telehealth Available</span>
