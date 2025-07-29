@@ -11,7 +11,6 @@ export default function TelehealthPage() {
   return (
     <>
       <Header />
-      <div className={styles.container}>
       <section className={styles.heroSection}>
         <div className={styles.container}>
           <div className={styles.heroContent}>
@@ -262,8 +261,8 @@ export default function TelehealthPage() {
             </div>
           </div>
         </div>
+        </div>
       </section>
-      </div>
       <Footer />
     </>
   );

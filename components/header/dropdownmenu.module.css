@@ -144,6 +144,11 @@
   min-width: 280px;
 }
 
+.emptyColumn {
+  /* Empty column for spacing in three-column layout */
+  visibility: hidden;
+}
+
 .dropdownsection {
   display: flex;
   flex-direction: column;

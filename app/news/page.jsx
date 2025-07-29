@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import styles from './page.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 import { blogPosts, getFeaturedPosts, getRecentPosts, getAllCategories, formatDate, getReadingTime } from '../../components/blog/blog-data';
 import Link from 'next/link';
 import EmailSubscription from '../../components/emailsubscription/emailsubscription';
+import { rawEvents } from '../../components/calendar/calendar-events';
+import { getMonthTheme } from '../../components/calendar/monthly-themes';
 
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -25,6 +27,56 @@ export default function NewsPage() {
   const heroPost = featuredPosts[0];
   const secondaryFeatured = featuredPosts.slice(1, 3);
 
+  // Process upcoming events
+  const upcomingEvents = useMemo(() => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    // Process all events from calendar-events.js
+    const allEvents = rawEvents.map(([month, day, year, name, href, isUpcoming, isFeatured]) => {
+      const eventDate = new Date(year, month - 1, day); // month-1 because calendar uses 1-12, Date uses 0-11
+      
+      return {
+        name,
+        href: href || null,
+        date: eventDate,
+        isFeatured: isFeatured || false,
+        formattedDate: eventDate.toLocaleDateString('en-US', {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+        shortDate: eventDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+        timeUntil: getTimeUntilEvent(eventDate),
+        isUpcoming: eventDate >= today
+      };
+    });
+
+    // Filter for upcoming events only and sort chronologically
+    return allEvents
+      .filter(event => event.isUpcoming)
+      .sort((a, b) => a.date - b.date)
+      .slice(0, 3); // Show only the next 3 events
+  }, []);
+
+  // Helper function to calculate time until event
+  function getTimeUntilEvent(eventDate) {
+    const now = new Date();
+    const diffTime = eventDate - now;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) return "Today";
+    if (diffDays === 1) return "Tomorrow";
+    if (diffDays < 7) return `In ${diffDays} days`;
+    if (diffDays < 30) return `In ${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) !== 1 ? 's' : ''}`;
+    return `In ${Math.floor(diffDays / 30)} month${Math.floor(diffDays / 30) !== 1 ? 's' : ''}`;
+  }
+
   return (
     <>
       <Header />
@@ -33,6 +85,10 @@ export default function NewsPage() {
         <section className={styles.magazineHero}>
           <div className={styles.heroOverlay}></div>
           <div className={styles.heroContainer}>
+            <div className={styles.pageTitle}>
+              <h1>News & Events</h1>
+              <p>Stay informed with the latest health updates and upcoming community events</p>
+            </div>
             <div className={styles.heroGrid}>
               {/* Main Featured Article */}
               {heroPost && (
@@ -114,6 +170,56 @@ export default function NewsPage() {
             </div>
           </div>
         </section>
+
+        {/* Upcoming Events Section */}
+        {upcomingEvents.length > 0 && (
+          <section className={styles.eventsSection}>
+            <div className={styles.container}>
+              <div className={styles.eventsHeader}>
+                <h2 className={styles.eventsTitle}>
+                  <span className={styles.eventIcon}>📅</span>
+                  Upcoming Events
+                </h2>
+                <Link href="/events/current" className={styles.viewAllEvents}>
+                  View All Events
+                  <span className={styles.arrow}>→</span>
+                </Link>
+              </div>
+              
+              <div className={styles.eventsGrid}>
+                {upcomingEvents.map((event, index) => (
+                  <div key={index} className={styles.eventCard}>
+                    <div className={styles.eventDate}>
+                      <div className={styles.eventDateNumber}>
+                        {new Date(event.date).getDate()}
+                      </div>
+                      <div className={styles.eventDateMonth}>
+                        {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                      </div>
+                    </div>
+                    
+                    <div className={styles.eventDetails}>
+                      <h3 className={styles.eventName}>
+                        {event.href ? (
+                          <Link href={event.href}>{event.name}</Link>
+                        ) : (
+                          event.name
+                        )}
+                      </h3>
+                      
+                      <div className={styles.eventMeta}>
+                        <span className={styles.eventTime}>{event.timeUntil}</span>
+                        {event.isFeatured && (
+                          <span className={styles.eventFeatured}>Featured</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Category Filter - Enhanced */}
         <section className={styles.filterSection}>
