@@ -9,6 +9,8 @@ import Link from 'next/link';
 import EmailSubscription from '../../components/emailsubscription/emailsubscription';
 import { rawEvents } from '../../components/calendar/calendar-events';
 import { getMonthTheme } from '../../components/calendar/monthly-themes';
+import Calendar from '../../components/calendar/calendar';
+import { FaCalendarAlt, FaNewspaper, FaClock, FaArrowRight, FaFilter, FaThLarge, FaList } from 'react-icons/fa';
 
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -81,241 +83,252 @@ export default function NewsPage() {
     <>
       <Header />
       <main className={styles.main}>
-        {/* Magazine-Style Hero */}
-        <section className={styles.magazineHero}>
-          <div className={styles.heroOverlay}></div>
-          <div className={styles.heroContainer}>
-            <div className={styles.pageTitle}>
-              <h1>News & Events</h1>
-              <p>Stay informed with the latest health updates and upcoming community events</p>
+        {/* Premium HUD Header */}
+        <section className={styles.hudHeader}>
+          <div className={styles.hudOverlay}></div>
+          <div className={styles.hudContainer}>
+            <div className={styles.hudTitle}>
+              <FaNewspaper className={styles.hudIcon} />
+              <h1>News & Events Portal</h1>
+              <p>Your Health Information Hub</p>
             </div>
-            <div className={styles.heroGrid}>
-              {/* Main Featured Article */}
-              {heroPost && (
-                <article className={styles.heroFeature}>
-                  <div className={styles.heroImageWrapper}>
-                    <div className={styles.heroImage}>
-                      <div className={styles.placeholderImage}>
-                        <span className={styles.imageIcon}>📰</span>
-                      </div>
-                    </div>
-                    <div className={styles.heroCategoryBadge}>{heroPost.category}</div>
-                  </div>
-                  <div className={styles.heroContent}>
-                    <h1 className={styles.heroArticleTitle}>
-                      <Link href={`/news/${heroPost.slug}`}>
-                        {heroPost.title}
-                      </Link>
-                    </h1>
-                    <p className={styles.heroExcerpt}>{heroPost.excerpt}</p>
-                    <div className={styles.heroMeta}>
-                      <div className={styles.authorInfo}>
-                        <div className={styles.authorAvatar}>
-                          <span>{heroPost.author.charAt(0)}</span>
-                        </div>
-                        <div>
-                          <span className={styles.authorName}>{heroPost.author}</span>
-                          <span className={styles.publishDate}>{formatDate(heroPost.publishedDate)}</span>
-                        </div>
-                      </div>
-                      <Link href={`/news/${heroPost.slug}`} className={styles.heroReadMore}>
-                        Read Article
-                        <span className={styles.arrow}>→</span>
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              )}
-
-              {/* Secondary Featured Articles */}
-              <div className={styles.secondaryFeatures}>
-                {secondaryFeatured.map(post => (
-                  <article key={post.id} className={styles.secondaryCard}>
-                    <div className={styles.secondaryImage}>
-                      <div className={styles.placeholderImageSmall}>
-                        <span>📄</span>
-                      </div>
-                      <div className={styles.secondaryCategoryBadge}>{post.category}</div>
-                    </div>
-                    <div className={styles.secondaryContent}>
-                      <h3 className={styles.secondaryTitle}>
-                        <Link href={`/news/${post.slug}`}>
-                          {post.title}
-                        </Link>
-                      </h3>
-                      <div className={styles.secondaryMeta}>
-                        <span>{post.author}</span>
-                        <span className={styles.dot}>•</span>
-                        <span>{getReadingTime(post.content)}</span>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+            <div className={styles.hudStats}>
+              <div className={styles.statCard}>
+                <span className={styles.statNumber}>{blogPosts.length}</span>
+                <span className={styles.statLabel}>Articles</span>
+              </div>
+              <div className={styles.statCard}>
+                <span className={styles.statNumber}>{upcomingEvents.length}</span>
+                <span className={styles.statLabel}>Upcoming Events</span>
+              </div>
+              <div className={styles.statCard}>
+                <span className={styles.statNumber}>{categories.length - 1}</span>
+                <span className={styles.statLabel}>Categories</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Trending Topics Bar */}
-        <section className={styles.trendingBar}>
-          <div className={styles.container}>
-            <div className={styles.trendingContent}>
-              <span className={styles.trendingLabel}>🔥 Trending Topics:</span>
-              <div className={styles.trendingTags}>
-                <span className={styles.trendingTag}>#HealthyLiving</span>
-                <span className={styles.trendingTag}>#PreventiveCare</span>
-                <span className={styles.trendingTag}>#WomensHealth</span>
-                <span className={styles.trendingTag}>#MentalWellness</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Upcoming Events Section */}
-        {upcomingEvents.length > 0 && (
-          <section className={styles.eventsSection}>
-            <div className={styles.container}>
-              <div className={styles.eventsHeader}>
-                <h2 className={styles.eventsTitle}>
-                  <span className={styles.eventIcon}>📅</span>
-                  Upcoming Events
-                </h2>
-                <Link href="/events/current" className={styles.viewAllEvents}>
-                  View All Events
-                  <span className={styles.arrow}>→</span>
+        {/* Premium Portal Dashboard */}
+        <section className={styles.portalDashboard}>
+          <div className={styles.portalContainer}>
+            {/* Left Sidebar - Calendar & Quick Links */}
+            <aside className={styles.portalSidebar}>
+              {/* Calendar Widget */}
+              <div className={styles.calendarWidget}>
+                <div className={styles.widgetHeader}>
+                  <FaCalendarAlt className={styles.widgetIcon} />
+                  <h3>Event Calendar</h3>
+                </div>
+                <div className={styles.calendarWrapper}>
+                  <Calendar />
+                </div>
+                <Link href="/events/current" className={styles.viewAllLink}>
+                  View All Events <FaArrowRight />
                 </Link>
               </div>
-              
-              <div className={styles.eventsGrid}>
-                {upcomingEvents.map((event, index) => (
-                  <div key={index} className={styles.eventCard}>
-                    <div className={styles.eventDate}>
-                      <div className={styles.eventDateNumber}>
-                        {new Date(event.date).getDate()}
-                      </div>
-                      <div className={styles.eventDateMonth}>
-                        {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
-                      </div>
-                    </div>
-                    
-                    <div className={styles.eventDetails}>
-                      <h3 className={styles.eventName}>
-                        {event.href ? (
-                          <Link href={event.href}>{event.name}</Link>
-                        ) : (
-                          event.name
-                        )}
-                      </h3>
-                      
-                      <div className={styles.eventMeta}>
-                        <span className={styles.eventTime}>{event.timeUntil}</span>
-                        {event.isFeatured && (
-                          <span className={styles.eventFeatured}>Featured</span>
-                        )}
-                      </div>
+
+              {/* Quick Stats */}
+              <div className={styles.quickStats}>
+                <h3>Quick Stats</h3>
+                <div className={styles.statsList}>
+                  <div className={styles.statItem}>
+                    <span className={styles.statIcon}>📅</span>
+                    <div>
+                      <span className={styles.statValue}>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}</span>
+                      <span className={styles.statDesc}>Today's Date</span>
                     </div>
                   </div>
-                ))}
+                  <div className={styles.statItem}>
+                    <span className={styles.statIcon}>🔥</span>
+                    <div>
+                      <span className={styles.statValue}>{featuredPosts.length}</span>
+                      <span className={styles.statDesc}>Featured Articles</span>
+                    </div>
+                  </div>
+                  <div className={styles.statItem}>
+                    <span className={styles.statIcon}>⏰</span>
+                    <div>
+                      <span className={styles.statValue}>{upcomingEvents[0]?.timeUntil || 'No events'}</span>
+                      <span className={styles.statDesc}>Next Event</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
-        )}
+            </aside>
 
-        {/* Category Filter - Enhanced */}
-        <section className={styles.filterSection}>
-          <div className={styles.container}>
-            <div className={styles.filterHeader}>
-              <h2 className={styles.filterTitle}>Explore Topics</h2>
-              <p className={styles.filterSubtitle}>Filter articles by category</p>
-            </div>
-            <div className={styles.categoryGrid}>
-              {categories.map(category => (
-                <button
-                  key={category}
-                  className={`${styles.categoryCard} ${selectedCategory === category ? styles.activeCategory : ''}`}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  <span className={styles.categoryIcon}>
-                    {category === 'All' && '📚'}
-                    {category === 'Health Tips' && '💡'}
-                    {category === 'Practice News' && '🏥'}
-                    {category === 'Community' && '👥'}
-                    {category === 'Medical Updates' && '🔬'}
-                  </span>
-                  <span className={styles.categoryName}>{category}</span>
-                  <span className={styles.categoryCount}>
-                    {category === 'All' 
-                      ? blogPosts.length 
-                      : blogPosts.filter(p => p.category === category).length}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+            {/* Main Content Area */}
+            <div className={styles.portalMain}>
+              {/* Events Strip */}
+              {upcomingEvents.length > 0 && (
+                <div className={styles.eventsStrip}>
+                  <div className={styles.stripHeader}>
+                    <h2><FaCalendarAlt /> Upcoming Events</h2>
+                    <span className={styles.liveIndicator}>
+                      <span className={styles.liveDot}></span>
+                      LIVE
+                    </span>
+                  </div>
+                  <div className={styles.eventsScroll}>
+                    {upcomingEvents.map((event, index) => (
+                      <div key={index} className={styles.eventChip}>
+                        <div className={styles.eventChipDate}>
+                          <span className={styles.dateDay}>{new Date(event.date).getDate()}</span>
+                          <span className={styles.dateMonth}>{new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}</span>
+                        </div>
+                        <div className={styles.eventChipInfo}>
+                          <h4>
+                            {event.href ? (
+                              <Link href={event.href}>{event.name}</Link>
+                            ) : (
+                              event.name
+                            )}
+                          </h4>
+                          <span className={styles.eventChipTime}>
+                            <FaClock /> {event.timeUntil}
+                          </span>
+                        </div>
+                        {event.isFeatured && (
+                          <span className={styles.featuredBadge}>Featured</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-        {/* All Posts - Card Mosaic Layout */}
-        <section className={styles.allPosts}>
-          <div className={styles.container}>
-            <div className={styles.postsHeader}>
-              <h2 className={styles.postsTitle}>
-                {selectedCategory === 'All' ? 'Latest Articles' : `${selectedCategory}`}
-              </h2>
-              <div className={styles.viewOptions}>
-                <button className={styles.viewOption}>
-                  <span>📊</span> Grid View
-                </button>
-                <button className={styles.viewOption}>
-                  <span>📝</span> List View
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.postsMosaic}>
-              {sortedPosts.map((post, index) => (
-                <article 
-                  key={post.id} 
-                  className={`${styles.mosaicCard} ${index % 5 === 0 ? styles.largeCard : ''}`}
-                >
-                  <Link href={`/news/${post.slug}`} className={styles.cardLink}>
-                    <div className={styles.cardImageWrapper}>
-                      <div className={styles.cardImage}>
-                        <div className={styles.placeholderCardImage}>
-                          <span>{index % 2 === 0 ? '🏥' : '💊'}</span>
+              {/* Featured News Grid */}
+              <div className={styles.featuredSection}>
+                <h2 className={styles.sectionTitle}>
+                  <FaNewspaper /> Featured Stories
+                </h2>
+                <div className={styles.featuredGrid}>
+                  {heroPost && (
+                    <article className={styles.mainFeature}>
+                      <div className={styles.featureImage}>
+                        <div className={styles.imagePlaceholder}>
+                          <FaNewspaper />
+                        </div>
+                        <span className={styles.categoryTag}>{heroPost.category}</span>
+                      </div>
+                      <div className={styles.featureContent}>
+                        <h3>
+                          <Link href={`/news/${heroPost.slug}`}>
+                            {heroPost.title}
+                          </Link>
+                        </h3>
+                        <p>{heroPost.excerpt}</p>
+                        <div className={styles.featureMeta}>
+                          <span>{heroPost.author}</span>
+                          <span>{formatDate(heroPost.publishedDate)}</span>
                         </div>
                       </div>
-                      <div className={styles.cardOverlay}>
-                        <span className={styles.readMoreIcon}>→</span>
+                    </article>
+                  )}
+                  
+                  <div className={styles.secondaryGrid}>
+                    {secondaryFeatured.map(post => (
+                      <article key={post.id} className={styles.secondaryFeature}>
+                        <div className={styles.secondaryImage}>
+                          <FaNewspaper />
+                        </div>
+                        <div className={styles.secondaryInfo}>
+                          <span className={styles.miniCategory}>{post.category}</span>
+                          <h4>
+                            <Link href={`/news/${post.slug}`}>
+                              {post.title}
+                            </Link>
+                          </h4>
+                          <span className={styles.readTime}>{getReadingTime(post.content)}</span>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Category Filter Bar */}
+              <div className={styles.filterBar}>
+                <div className={styles.filterHeader}>
+                  <FaFilter className={styles.filterIcon} />
+                  <h3>Filter by Category</h3>
+                </div>
+                <div className={styles.categoryTabs}>
+                  {categories.map(category => (
+                    <button
+                      key={category}
+                      className={`${styles.categoryTab} ${selectedCategory === category ? styles.activeTab : ''}`}
+                      onClick={() => setSelectedCategory(category)}
+                    >
+                      <span className={styles.tabName}>{category}</span>
+                      <span className={styles.tabCount}>
+                        {category === 'All' 
+                          ? blogPosts.length 
+                          : blogPosts.filter(p => p.category === category).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Articles Grid */}
+              <div className={styles.articlesSection}>
+                <div className={styles.articlesHeader}>
+                  <h2>
+                    {selectedCategory === 'All' ? 'All Articles' : `${selectedCategory}`}
+                  </h2>
+                  <div className={styles.viewToggle}>
+                    <button className={`${styles.viewBtn} ${styles.active}`}>
+                      <FaThLarge />
+                    </button>
+                    <button className={styles.viewBtn}>
+                      <FaList />
+                    </button>
+                  </div>
+                </div>
+                
+                <div className={styles.articlesGrid}>
+                  {sortedPosts.map((post, index) => (
+                    <article key={post.id} className={styles.articleCard}>
+                      <div className={styles.articleImage}>
+                        <div className={styles.imagePlaceholder}>
+                          {index % 2 === 0 ? '🏥' : '💊'}
+                        </div>
+                        <span className={styles.articleCategory}>{post.category}</span>
                       </div>
-                    </div>
-                    <div className={styles.cardContent}>
-                      <div className={styles.cardCategory}>{post.category}</div>
-                      <h3 className={styles.cardTitle}>{post.title}</h3>
-                      <p className={styles.cardExcerpt}>{post.excerpt}</p>
-                      <div className={styles.cardFooter}>
-                        <div className={styles.cardAuthor}>
-                          <div className={styles.miniAvatar}>
-                            {post.author.charAt(0)}
+                      <div className={styles.articleContent}>
+                        <h3>
+                          <Link href={`/news/${post.slug}`}>
+                            {post.title}
+                          </Link>
+                        </h3>
+                        <p>{post.excerpt}</p>
+                        <div className={styles.articleMeta}>
+                          <div className={styles.authorInfo}>
+                            <span className={styles.authorAvatar}>
+                              {post.author.charAt(0)}
+                            </span>
+                            <span>{post.author}</span>
                           </div>
-                          <span>{post.author}</span>
+                          <span className={styles.articleDate}>
+                            {formatDate(post.publishedDate)}
+                          </span>
                         </div>
-                        <span className={styles.cardDate}>{formatDate(post.publishedDate)}</span>
                       </div>
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
+                    </article>
+                  ))}
+                </div>
 
-            {/* Load More Button */}
-            {sortedPosts.length > 6 && (
-              <div className={styles.loadMoreWrapper}>
-                <button className={styles.loadMoreButton}>
-                  Load More Articles
-                  <span className={styles.loadMoreIcon}>↓</span>
-                </button>
+                {/* Load More */}
+                {sortedPosts.length > 6 && (
+                  <div className={styles.loadMoreSection}>
+                    <button className={styles.loadMoreBtn}>
+                      Load More Articles
+                    </button>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </section>
 
