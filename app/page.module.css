@@ -7,12 +7,33 @@
   background: linear-gradient(135deg, rgba(29, 83, 159, 0.95) 0%, rgba(39, 92, 171, 0.85) 50%, rgba(55, 114, 197, 0.75) 100%);
 }
 
-/* Landing Page Logo */
-.landingLogoContainer {
-  @apply flex justify-center items-center pt-8 pb-4;
+/* Landing Page Header */
+.landingHeader {
+  background: #3871c7;
+  border-bottom: 3px solid #2d5ba0;
   position: relative;
   z-index: 10;
+  box-shadow: 
+    0 4px 15px rgba(56, 113, 199, 0.3),
+    0 0 0 1px rgba(56, 113, 199, 0.4);
   animation: fadeInDown 1s ease-out;
+}
+
+.landingHeader::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2d5ba0, #3871c7, #4a7dd1, #3871c7, #2d5ba0);
+}
+
+/* Landing Page Logo */
+.landingLogoContainer {
+  @apply flex justify-center items-center py-6;
+  position: relative;
+  z-index: 11;
 }
 
 /* Hero Background Elements */
@@ -587,7 +608,7 @@
 
 /* ================ RSVP VISUAL SECTION ================ */
 .rsvpVisualSection {
-  margin: 2rem auto;
+  margin: -2rem auto 2rem;
   padding: 2.5rem;
   background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
   border-radius: 16px;

@@ -100,16 +100,18 @@ export default function LandingPage() {
         </div>
       </div>
       
-      {/* Simple Logo at top */}
-      <div className={styles.landingLogoContainer}>
-        <Image 
-          src="/images/logo.png" 
-          alt="Garcia Family Medicine Logo" 
-          width={160} 
-          height={160}
-          priority
-        />
-      </div>
+      {/* Header with Logo */}
+      <header className={styles.landingHeader}>
+        <div className={styles.landingLogoContainer}>
+          <Image 
+            src="/images/logo.png" 
+            alt="Garcia Family Medicine Logo" 
+            width={160} 
+            height={160}
+            priority
+          />
+        </div>
+      </header>
 
       {/* MAIN BODY */}
       <main className={combineStyles(
