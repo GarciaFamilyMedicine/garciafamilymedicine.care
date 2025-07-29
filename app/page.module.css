@@ -34,6 +34,42 @@
   @apply flex justify-center items-center py-6;
   position: relative;
   z-index: 11;
+  overflow: hidden;
+}
+
+.logoWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flyingLogo {
+  animation: hawkFlyIn 2s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes hawkFlyIn {
+  0% {
+    transform: translateX(-200vw) translateY(50px) rotate(-15deg) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50px) translateY(-20px) rotate(5deg) scale(1.1);
+  }
+  70% {
+    transform: translateX(20px) translateY(10px) rotate(-2deg) scale(1.05);
+  }
+  85% {
+    transform: translateX(-5px) translateY(-5px) rotate(1deg) scale(1.02);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Hero Background Elements */
