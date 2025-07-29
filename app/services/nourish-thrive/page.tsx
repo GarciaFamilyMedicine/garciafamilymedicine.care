@@ -369,7 +369,7 @@ export default function NourishThrive() {
                     <strong>Most patients see significant results within the first month!</strong>
                   </p>
                   <div className="mt-6">
-                    <h4 className="text-lg font-bold mb-2">💳 0% Financing Available</h4>
+                    <h4 className="text-lg font-bold mb-2">💳 0% Financing Available - 24 Months</h4>
                     <p className="text-green-100 mb-4">
                       Start your transformation with no interest! We partner with <strong>Cherry</strong> 
                       to offer 24-month 0% financing for qualified applicants.

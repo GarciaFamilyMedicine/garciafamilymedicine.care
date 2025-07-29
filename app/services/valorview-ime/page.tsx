@@ -367,13 +367,13 @@ export default function ValorViewIME() {
                     <strong>Your evaluation pays for itself in just 3 months!</strong>
                   </p>
                   <div className="mt-6">
-                    <h4 className="text-lg font-bold mb-2">💳 Flexible Financing Available</h4>
+                    <h4 className="text-lg font-bold mb-2">💳 0% Financing Available - 24 Months</h4>
                     <p className="text-blue-100 mb-4">
                       Don&apos;t let cost delay your benefits. We partner with <strong>Cherry</strong> 
-                      to offer flexible payment plans with competitive rates.
+                      to offer 24-month 0% financing for qualified applicants.
                     </p>
                     <ul className="space-y-2 text-blue-100 text-sm mb-4">
-                      <li>• Monthly payment plans as low as $150/month</li>
+                      <li>• 24-month 0% financing - just $354/month</li>
                       <li>• Quick approval process (usually under 60 seconds)</li>
                       <li>• No prepayment penalties</li>
                       <li>• Soft credit check won&apos;t affect your credit score</li>

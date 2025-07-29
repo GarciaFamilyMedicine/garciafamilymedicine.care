@@ -371,13 +371,13 @@ export default function CoreLift() {
                     <strong>Most patients see significant improvement after just 3 sessions!</strong>
                   </p>
                   <div className="mt-6">
-                    <h4 className="text-lg font-bold mb-2">💳 Flexible Financing Available</h4>
+                    <h4 className="text-lg font-bold mb-2">💳 0% Financing Available - 24 Months</h4>
                     <p className="text-purple-100 mb-4">
-                      Start your transformation today! We partner with <strong>Cherry</strong> 
-                      to offer monthly payment plans with competitive rates.
+                      Start your transformation today with zero interest! We partner with <strong>Cherry</strong> 
+                      to offer 24-month 0% financing for qualified applicants.
                     </p>
                     <ul className="space-y-2 text-purple-100 text-sm mb-4">
-                      <li>• Monthly payment plans as low as $100/month</li>
+                      <li>• 24-month 0% financing - just $83/month</li>
                       <li>• Quick approval process (usually under 60 seconds)</li>
                       <li>• No prepayment penalties</li>
                       <li>• Soft credit check won't affect your credit score</li>
