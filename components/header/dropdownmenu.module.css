@@ -401,49 +401,6 @@
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
 }
 
-/* QUICK LINKS STYLING */
-.quickLinks {
-  margin-bottom: 16px;
-  padding: 16px;
-  background: rgba(0, 102, 204, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 102, 204, 0.1);
-}
-
-.quickLinks h4 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--main-blue);
-}
-
-.quickLinksGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.quickLink {
-  display: flex;
-  align-items: center;
-  padding: 8px 12px;
-  background: white;
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--text-primary);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.quickLink:hover {
-  background: var(--main-blue);
-  color: white;
-  transform: translateX(4px);
-  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
-}
-
 /* UPDATED CONTACT INFO STYLING - IMPROVED DESIGN */
 .contactinfo {
   background: rgba(var(--hover-blue-rgb, 29, 83, 159), 0.02);
