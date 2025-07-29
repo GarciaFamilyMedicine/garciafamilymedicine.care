@@ -20,12 +20,15 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "24.1.0",
+    "@types/react": "19.1.8",
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
     "postcss": "^8.4.47",
     "sharp": "^0.34.3",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.10",
+    "typescript": "5.8.3"
   },
   "description": "Garcia Family Medicine website - Next.js application with React 19 and Tailwind CSS for compassionate healthcare services in Blue Springs, Missouri",
   "main": "next.config.mjs",
