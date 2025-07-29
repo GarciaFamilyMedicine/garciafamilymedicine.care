@@ -295,37 +295,6 @@ export default function NewsPage() {
           </div>
         </section>
 
-        {/* Newsletter Signup - Enhanced */}
-        <section className={styles.newsletterSection}>
-          <div className={styles.newsletterBackground}>
-            <div className={styles.newsletterPattern}></div>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.newsletterCard}>
-              <div className={styles.newsletterIcon}>📬</div>
-              <h2 className={styles.newsletterTitle}>Stay Informed, Stay Healthy</h2>
-              <p className={styles.newsletterText}>
-                Get the latest health tips, practice updates, and wellness insights delivered to your inbox every week.
-              </p>
-              <EmailSubscription 
-                source="blog_newsletter"
-                buttonText="Subscribe Now"
-                placeholder="Enter your email"
-                showLabels={false}
-                customStyles={{
-                  form: styles.newsletterForm,
-                  input: styles.newsletterInput,
-                  button: styles.newsletterButton,
-                  message: styles.newsletterMessage
-                }}
-              />
-              <p className={styles.newsletterNote}>
-                <span className={styles.lockIcon}>🔒</span>
-                Your privacy is our priority. Unsubscribe anytime.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
