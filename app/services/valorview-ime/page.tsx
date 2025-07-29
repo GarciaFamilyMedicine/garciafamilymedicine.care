@@ -89,12 +89,21 @@ export default function ValorViewIME() {
                 95% success rate, our ValorView™ IME service helps veterans secure the disability 
                 ratings they deserve.
               </p>
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500 mb-6">
-                <h3 className="text-xl font-bold text-blue-800 mb-2">⭐ Limited Availability This Month ⭐</h3>
-                <p className="text-blue-700 mb-4">
-                  Only <strong>5 evaluation spots remaining</strong> for {new Date().toLocaleDateString('en-US', { month: 'long' })}. 
-                  Each evaluation includes comprehensive records review, examination, and Nexus Letter preparation.
+              <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-lg border-l-4 border-yellow-400 mb-6 text-white shadow-lg">
+                <h3 className="text-2xl font-bold text-yellow-300 mb-2">🚨 URGENT: Only 2 Evaluation Spots Left This Month! 🚨</h3>
+                <p className="text-blue-100 mb-3">
+                  <strong className="text-yellow-300">SAVE $1,500 + Get PRIORITY Processing!</strong> Book by midnight <strong>August 1st</strong> and receive:
                 </p>
+                <ul className="text-blue-100 mb-4 space-y-1">
+                  <li>✅ <strong>48-hour report turnaround</strong> (normally 7-10 days)</li>
+                  <li>✅ <strong>FREE comprehensive records analysis</strong> ($500 value)</li>
+                  <li>✅ <strong>FREE attorney coordination</strong> ($1,000 value)</li>
+                  <li>✅ <strong>Guaranteed approval or full refund</strong></li>
+                </ul>
+                <div className="bg-yellow-400 text-blue-900 p-3 rounded-lg mb-4">
+                  <p className="font-bold">🔥 FLASH SALE: Regular $8,500 → Now $7,000 (Save $1,500!)</p>
+                  <p className="text-sm">Or just <strong>$292/month</strong> with 0% financing!</p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/"

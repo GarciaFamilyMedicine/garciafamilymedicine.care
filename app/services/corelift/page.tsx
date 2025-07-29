@@ -88,12 +88,21 @@ export default function CoreLift() {
                 with personalized pelvic health therapy. Experience the equivalent of 11,000 
                 Kegel exercises per 28-minute session with 95% patient satisfaction rates.
               </p>
-              <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500 mb-6">
-                <h3 className="text-xl font-bold text-purple-800 mb-2">💜 Limited Summer Special: 6-Session Package 💜</h3>
-                <p className="text-purple-700 mb-4">
-                  Complete your pelvic floor transformation with our <strong>6-session CoreLift™ program</strong>. 
-                  Book by <strong>August 15th, 2025</strong> and save $500 on your package.
+              <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-6 rounded-lg border-l-4 border-yellow-400 mb-6 text-white shadow-lg">
+                <h3 className="text-2xl font-bold text-yellow-300 mb-2">🚨 URGENT: Last 3 Treatment Packages This Month! 🚨</h3>
+                <p className="text-purple-100 mb-3">
+                  <strong className="text-yellow-300">SAVE $600 + Get EXCLUSIVE Bonus Package!</strong> Book by midnight <strong>August 1st</strong> and receive:
                 </p>
+                <ul className="text-purple-100 mb-4 space-y-1">
+                  <li>✅ <strong>FREE pelvic floor assessment</strong> ($200 value)</li>
+                  <li>✅ <strong>FREE take-home exercise program</strong> ($150 value)</li>
+                  <li>✅ <strong>FREE 90-day follow-up support</strong> ($250 value)</li>
+                  <li>✅ <strong>PRIORITY scheduling guarantee</strong> (priceless!)</li>
+                </ul>
+                <div className="bg-yellow-400 text-purple-900 p-3 rounded-lg mb-4">
+                  <p className="font-bold">🔥 FLASH SALE: Regular $2,000 → Now $1,400 (Save $600!)</p>
+                  <p className="text-sm">Or just <strong>$58/month</strong> with 0% financing!</p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/" 
@@ -101,13 +110,13 @@ export default function CoreLift() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎯 Book Consultation - $2,000 Program
+                    🎯 Book Now - Save $600!
                   </a>
                   <a 
                     href="tel:+18163470570" 
                     className="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors inline-flex items-center justify-center"
                   >
-                    📞 Call (816) 347-0570
+                    📞 Call: (816) 347-0570
                   </a>
                 </div>
               </div>
@@ -365,10 +374,10 @@ export default function CoreLift() {
                   </li>
                 </ul>
                 <div className="bg-purple-700 p-6 rounded-lg">
-                  <h3 className="text-2xl font-bold mb-2">Investment: $2,000</h3>
+                  <h3 className="text-2xl font-bold mb-2">🔥 FLASH SALE: $1,400 (Save $600!)</h3>
                   <p className="text-purple-100 mb-4">
                     Complete 6-session program with assessment and follow-up<br/>
-                    <strong>Most patients see significant improvement after just 3 sessions!</strong>
+                    <strong>Plus FREE bonus package worth $600 when you book today!</strong>
                   </p>
                   <div className="mt-6">
                     <h4 className="text-lg font-bold mb-2">💳 0% Financing Available - 24 Months</h4>
@@ -377,7 +386,7 @@ export default function CoreLift() {
                       to offer 24-month 0% financing for qualified applicants.
                     </p>
                     <ul className="space-y-2 text-purple-100 text-sm mb-4">
-                      <li>• 24-month 0% financing - just $83/month</li>
+                      <li>• 24-month 0% financing - just <strong>$58/month</strong> (was $83/month)</li>
                       <li>• Quick approval process (usually under 60 seconds)</li>
                       <li>• No prepayment penalties</li>
                       <li>• Soft credit check won't affect your credit score</li>

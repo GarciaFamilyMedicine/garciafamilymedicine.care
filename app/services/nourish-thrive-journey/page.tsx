@@ -88,12 +88,21 @@ export default function NourishThrive() {
                 with personalized nutrition coaching and lifestyle support. Experience sustainable 
                 weight loss under medical supervision with our comprehensive approach.
               </p>
-              <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500 mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">🌟 New Patient Special: 50% Off Initial Consultation! 🌟</h3>
-                <p className="text-green-700 mb-4">
-                  Start your transformation journey with our comprehensive weight assessment and 
-                  personalized plan development. Limited time offer through <strong>August 15th, 2025</strong>.
+              <div className="bg-gradient-to-r from-green-600 to-green-800 p-6 rounded-lg border-l-4 border-yellow-400 mb-6 text-white shadow-lg">
+                <h3 className="text-2xl font-bold text-yellow-300 mb-2">🚨 FLASH SALE: Only 5 Spots Left This Month! 🚨</h3>
+                <p className="text-green-100 mb-3">
+                  <strong className="text-yellow-300">SAVE $1,800 + Get FREE Bonus Package!</strong> Book by midnight <strong>August 1st</strong> and receive:
                 </p>
+                <ul className="text-green-100 mb-4 space-y-1">
+                  <li>✅ <strong>FREE 3-month meal delivery service</strong> ($600 value)</li>
+                  <li>✅ <strong>FREE body composition tracking device</strong> ($300 value)</li>
+                  <li>✅ <strong>FREE nutrition coaching sessions</strong> ($900 value)</li>
+                  <li>✅ <strong>FREE first month of medications</strong> ($300 savings)</li>
+                </ul>
+                <div className="bg-yellow-400 text-green-900 p-3 rounded-lg mb-4">
+                  <p className="font-bold">🔥 MEGA SALE: Regular $300/month → Now $225/month (Save $75 monthly!)</p>
+                  <p className="text-sm">Or just <strong>$112/month</strong> with 0% financing!</p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a 
                     href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/" 
@@ -101,13 +110,13 @@ export default function NourishThrive() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎯 Book Consultation
+                    🎯 Book Now - Save $1,800!
                   </a>
                   <a 
                     href="tel:+18163470570" 
                     className="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors inline-flex items-center justify-center"
                   >
-                    📞 Call (816) 347-0570
+                    📞 Call: (816) 347-0570
                   </a>
                 </div>
               </div>
@@ -363,10 +372,10 @@ export default function NourishThrive() {
                   </li>
                 </ul>
                 <div className="bg-green-700 p-6 rounded-lg">
-                  <h3 className="text-2xl font-bold mb-2">Investment: $300/month</h3>
+                  <h3 className="text-2xl font-bold mb-2">🔥 FLASH SALE: $225/month (Save $900/year!)</h3>
                   <p className="text-green-100 mb-4">
                     12-month comprehensive program includes medications, consultations, and coaching<br/>
-                    <strong>Most patients see significant results within the first month!</strong>
+                    <strong>Plus FREE bonus package worth $1,800 when you book today!</strong>
                   </p>
                   <div className="mt-6">
                     <h4 className="text-lg font-bold mb-2">💳 0% Financing Available - 24 Months</h4>
@@ -375,7 +384,7 @@ export default function NourishThrive() {
                       to offer 24-month 0% financing for qualified applicants.
                     </p>
                     <ul className="space-y-2 text-green-100 text-sm mb-4">
-                      <li>• 24-month 0% financing - just $150/month</li>
+                      <li>• 24-month 0% financing - just <strong>$112/month</strong> (was $150/month)</li>
                       <li>• Quick approval process (usually under 60 seconds)</li>
                       <li>• No prepayment penalties</li>
                       <li>• Soft credit check won&apos;t affect your credit score</li>
