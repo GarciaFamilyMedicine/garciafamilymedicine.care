@@ -12,6 +12,10 @@ export default function Page() {
   
   const carouselImages = [
     {
+      src: "/images/events/pelvic-health-recovery/brunch-bubbly-corelift.png",
+      alt: "Brunch, Bubbly & CoreLift Confidence - Sip, Strengthen, Smile at Garcia Family Medicine"
+    },
+    {
       src: "/images/events/pelvic-health-recovery/event-01.png",
       alt: "CoreLift Pelvic Health Recovery Workshop at Garcia Family Medicine"
     },
@@ -68,6 +72,9 @@ export default function Page() {
       <div className={styles.pageContainer}>
         <main className={styles.mainContent}>
           <div className={styles.pageHeader}>
+            <div className={styles.urgencyBanner}>
+              <span className={styles.urgencyText}>⏰ ONLY 8 SPOTS LEFT! FILLING FAST!</span>
+            </div>
             <h1>
               <a 
                 href={rsvpFormUrl}
@@ -75,12 +82,12 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className={styles.inlineLink}
               >
-                CoreLift™ Pelvic Health Recovery Workshop
+                Brunch, Bubbly & CoreLift™ Confidence
               </a>
             </h1>
-            <p className={styles.subtitle}>Educational Workshop & $2,000 Treatment Giveaway</p>
+            <p className={styles.subtitle}>Sip • Strengthen • Smile | Exclusive Brunch Event & $2,000 Treatment Giveaway</p>
             <div className={styles.eventBadge}>
-              July 31st, 2025 •{' '}
+              <span className={styles.urgentDate}>THIS THURSDAY • July 31st, 2025</span> •{' '}
               <a 
                 href="https://maps.app.goo.gl/J5KWPCvSxd2X51Au5"
                 target="_blank"
@@ -90,12 +97,16 @@ export default function Page() {
                 Blue Springs, MO
               </a>
             </div>
+            <div className={styles.countdownBanner}>
+              <span className={styles.countdownText}>⚡ RSVP DEADLINE: TONIGHT AT MIDNIGHT! ⚡</span>
+            </div>
           </div>
           
           <div className={styles.contentArea}>
             <section className={styles.heroSection}>
               <div className={styles.heroContent}>
                 <div className={styles.heroText}>
+                  <div className={styles.limitedSeating}>🔥 FINAL CALL - ONLY 13 SEATS REMAINING! 🔥</div>
                   <h2>Win a Complete CoreLift™ Pelvic Health Recovery Package</h2>
                   <a 
                     href={rsvpFormUrl}
@@ -105,17 +116,19 @@ export default function Page() {
                   >
                     <div className={styles.valueHighlight}>
                       <span className={styles.valueAmount}>$2,000</span>
-                      <span className={styles.valueLabel}>Giveaway Entry</span>
+                      <span className={styles.valueLabel}>LIVE Drawing THIS Thursday!</span>
                     </div>
                   </a>
                   <p className={styles.lead}>
-                    Join us for an exclusive educational workshop on pelvic health using revolutionary 
-                    Emsella technology. Learn about breakthrough HIFEM treatments and enter to win 
-                    a complete CoreLift™ recovery package that can restore your confidence and quality of life.
+                    🥂 <strong>Join us for an intimate brunch experience</strong> featuring mimosas, gourmet bites, and exclusive education on revolutionary 
+                    CoreLift™ pelvic health treatments. Learn about breakthrough Emsella technology while enjoying a sophisticated brunch atmosphere 
+                    and enter to win a complete recovery package that can restore your confidence and quality of life.
                   </p>
-                  <div className={styles.registrationNote}>
-                    <strong>Registration Required:</strong> You must be present to win. 
-                    Winner announced LIVE at 6:30 PM during our closing ceremony.
+                  <div className={styles.urgentRegistration}>
+                    <div className={styles.deadlineWarning}>⚠️ RSVP CLOSES TONIGHT AT MIDNIGHT!</div>
+                    <div className={styles.mustAttend}>
+                      <strong>Must be present to win!</strong> Winner announced LIVE at 6:30 PM during our champagne toast ceremony.
+                    </div>
                   </div>
                 </div>
                 <div className={styles.heroImage}>
@@ -179,8 +192,11 @@ export default function Page() {
             <section className={styles.eventDetailsSection}>
               <div className={styles.eventCard}>
                 <div className={styles.eventHeader}>
-                  <h3>Workshop Information</h3>
-                  <div className={styles.eventStatus}>Free Admission</div>
+                  <h3>🥂 Exclusive Brunch Event Details</h3>
+                  <div className={styles.eventStatus}>
+                    <span className={styles.freeAdmission}>Free Admission</span>
+                    <span className={styles.limitedSpots}>ONLY 13 SPOTS LEFT!</span>
+                  </div>
                 </div>
                 
                 <div className={styles.eventDetails}>
@@ -239,15 +255,16 @@ export default function Page() {
                 </div>
                 
                 <div className={styles.registrationSection}>
-                  <h4>Multiple Ways to Register</h4>
+                  <h4>🚨 URGENT: Secure Your Spot Before Midnight Tonight!</h4>
+                  <div className={styles.urgentRsvp}>⏰ Registration closes in HOURS!</div>
                   <div className={styles.registrationButtons}>
                     <a 
                       href={rsvpFormUrl}
-                      className={styles.primaryButton}
+                      className={`${styles.primaryButton} ${styles.urgentButton}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      🎫 Register on RSVP Form
+                      🔥 CLAIM YOUR SPOT NOW - ONLY 13 LEFT!
                     </a>
                     <a 
                       href="https://www.facebook.com/events/2727449114115945"
@@ -261,20 +278,20 @@ export default function Page() {
                       href="tel:816-427-5320"
                       className={styles.secondaryButton}
                     >
-                      📞 Call to Register
+                      📞 Call NOW to Reserve
                     </a>
                   </div>
                   <p className={styles.registrationNote}>
-                    Free workshop registration •{' '}
+                    <span className={styles.urgentText}>⚡ FINAL HOURS TO REGISTER! ⚡</span> •{' '}
                     <a 
                       href={rsvpFormUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.inlineLink}
                     >
-                      Click here to enter $2,000 giveaway
+                      Enter $2,000 giveaway before it's too late!
                     </a>{' '}
-                    • Limited seating available
+                    • <span className={styles.seatWarning}>Only 13 brunch seats remaining!</span>
                   </p>
                   
                   <div className={styles.separatorLine}></div>
@@ -283,7 +300,7 @@ export default function Page() {
                     <h4>Ready to Start CoreLift™ Treatment Now?</h4>
                     <p className={styles.prescreeningText}>
                       Don't wait for the event! Schedule your private consultation 
-                      and comprehensive pelvic health assessment with Dr. Gigi Garcia today.
+                      and comprehensive pelvic health assessment with Gigi Garcia (Outreach Care Director) for prescreening today.
                     </p>
                     <a 
                       href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/s/JXViZb_ifkCITve3oXJP-Q2?ismsaljsauthenabled"
@@ -291,9 +308,42 @@ export default function Page() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Schedule Pre-Screening with Dr. Gigi
+                      Schedule Pre-Screening with Gigi Garcia
                     </a>
                   </div>
+                </div>
+              </div>
+            </section>
+            
+            <section className={styles.rsvpVisualSection}>
+              <div className={styles.rsvpVisualContent}>
+                <div className={styles.rsvpImageContainer}>
+                  <a 
+                    href={rsvpFormUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image 
+                      src="/images/events/pelvic-health-recovery/rsvp-registration-cta.png"
+                      alt="RSVP Registration Call-to-Action - Secure Your Spot for Brunch, Bubbly & CoreLift Confidence Event"
+                      width={600}
+                      height={400}
+                      className={styles.rsvpImage}
+                      priority
+                    />
+                  </a>
+                </div>
+                <div className={styles.rsvpUrgentText}>
+                  <h3>🚨 FINAL HOURS TO REGISTER! 🚨</h3>
+                  <p>Don't miss your chance to win $2,000 in CoreLift™ treatments and enjoy an exclusive brunch experience!</p>
+                  <a 
+                    href={rsvpFormUrl}
+                    className={`${styles.primaryButton} ${styles.urgentRsvpButton}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    REGISTER NOW - 13 SPOTS LEFT!
+                  </a>
                 </div>
               </div>
             </section>
@@ -369,18 +419,18 @@ export default function Page() {
             </section>
             
             <section className={styles.scheduleSection}>
-              <h2>Workshop Schedule</h2>
+              <h2>🥂 Brunch, Bubbly & CoreLift™ Schedule</h2>
               <p className={styles.scheduleIntro}>
-                Join us for a comprehensive day of education, live demonstrations, and personalized consultations 
-                with our CoreLift™ pelvic health specialists.
+                Join us for an intimate brunch experience combining gourmet cuisine, champagne, education, and live demonstrations 
+                with our CoreLift™ pelvic health specialists. <span className={styles.urgentSchedule}>Limited to just 13 guests for personalized attention!</span>
               </p>
               
               <div className={styles.timeline}>
                 <div className={styles.timelineItem}>
                   <div className={styles.timeSlot}>11:00 AM - 12:00 PM</div>
                   <div className={styles.activityContent}>
-                    <h4>Registration & Welcome</h4>
-                    <p>Check-in, meet our medical team, refreshments, and introduction to pelvic health fundamentals</p>
+                    <h4>🍾 Welcome Brunch & Mimosas</h4>
+                    <p>Champagne welcome, gourmet brunch buffet, meet Gigi Garcia (Outreach Care Director) and our team, networking with fellow guests</p>
                   </div>
                 </div>
                 
@@ -388,7 +438,7 @@ export default function Page() {
                   <div className={styles.timeSlot}>12:00 PM - 2:00 PM</div>
                   <div className={styles.activityContent}>
                     <h4>CoreLift™ Technology Demonstration</h4>
-                    <p>Live Emsella treatment demonstration and comprehensive Q&A session with Dr. Gigi Garcia</p>
+                    <p>Live Emsella treatment demonstration and comprehensive Q&A session with our medical team</p>
                   </div>
                 </div>
                 
@@ -468,31 +518,35 @@ export default function Page() {
 
             <section className={styles.ctaSection}>
               <div className={styles.ctaContent}>
-                <h2>Secure Your Workshop Spot Today</h2>
+                <div className={styles.finalUrgency}>🚨 LAST CHANCE - DEADLINE TONIGHT! 🚨</div>
+                <h2>⏰ Don't Miss Out - Only 13 Brunch Spots Remain!</h2>
                 <p>
-                  Don't miss this exclusive opportunity to learn about breakthrough CoreLift™ pelvic health treatments 
-                  and potentially win $2,000 in Emsella therapy. Limited seating available.
+                  <strong>THIS IS YOUR FINAL OPPORTUNITY</strong> to join this exclusive brunch experience and learn about breakthrough CoreLift™ pelvic health treatments 
+                  while potentially winning $2,000 in Emsella therapy. <span className={styles.urgentClose}>Registration closes at MIDNIGHT tonight!</span>
                 </p>
                 <div className={styles.ctaButtons}>
                   <a 
                     href={rsvpFormUrl}
-                    className={styles.primaryButton}
+                    className={`${styles.primaryButton} ${styles.flashingButton}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🎁 RSVP & Enter Giveaway
+                    🔥 SECURE YOUR SPOT BEFORE MIDNIGHT!
                   </a>
                   <a 
-                    href="https://outlook.office.com/book/GarciaFamilyMedicine@garciafamilymedicine.care/s/JXViZb_ifkCITve3oXJP-Q2?ismsaljsauthenabled"
-                    className={styles.secondaryButton}
+                    href="tel:816-427-5320"
+                    className={`${styles.secondaryButton} ${styles.urgentCall}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Book Pre-Screening Now
+                    📞 CALL NOW - TIME RUNNING OUT!
                   </a>
                 </div>
+                <div className={styles.countdownWarning}>
+                  ⚠️ ONCE THE 13 BRUNCH SPOTS ARE GONE, THEY'RE GONE FOREVER! ⚠️
+                </div>
                 <div className={styles.contactInfo}>
-                  <p>Questions? Call us at <a href="tel:816-427-5320"><strong>816-427-5320</strong></a></p>
+                  <p>Urgent questions? Call NOW: <a href="tel:816-427-5320"><strong>816-427-5320</strong></a></p>
                   <p>
                     <a 
                       href="https://maps.app.goo.gl/J5KWPCvSxd2X51Au5"

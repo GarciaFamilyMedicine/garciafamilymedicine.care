@@ -7,12 +7,69 @@
   background: linear-gradient(135deg, rgba(29, 83, 159, 0.95) 0%, rgba(39, 92, 171, 0.85) 50%, rgba(55, 114, 197, 0.75) 100%);
 }
 
-/* Landing Page Logo */
-.landingLogoContainer {
-  @apply flex justify-center items-center pt-8 pb-4;
+/* Landing Page Header */
+.landingHeader {
+  background: #3871c7;
+  border-bottom: 3px solid #2d5ba0;
   position: relative;
   z-index: 10;
+  box-shadow: 
+    0 4px 15px rgba(56, 113, 199, 0.3),
+    0 0 0 1px rgba(56, 113, 199, 0.4);
   animation: fadeInDown 1s ease-out;
+}
+
+.landingHeader::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2d5ba0, #3871c7, #4a7dd1, #3871c7, #2d5ba0);
+}
+
+/* Landing Page Logo */
+.landingLogoContainer {
+  @apply flex justify-center items-center py-6;
+  position: relative;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.logoWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flyingLogo {
+  animation: hawkFlyIn 2s ease-out forwards;
+  transform-origin: center;
+}
+
+@keyframes hawkFlyIn {
+  0% {
+    transform: translateX(-200vw) translateY(50px) rotate(-15deg) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50px) translateY(-20px) rotate(5deg) scale(1.1);
+  }
+  70% {
+    transform: translateX(20px) translateY(10px) rotate(-2deg) scale(1.05);
+  }
+  85% {
+    transform: translateX(-5px) translateY(-5px) rotate(1deg) scale(1.02);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Hero Background Elements */
@@ -582,5 +639,188 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+/* ================ RSVP VISUAL SECTION ================ */
+.rsvpVisualSection {
+  margin: -2rem auto 2rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
+  border-radius: 16px;
+  border: 3px solid #dc2626;
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  z-index: 10;
+  box-shadow: 
+    0 4px 15px rgba(220, 38, 38, 0.3),
+    0 0 0 1px rgba(251, 191, 36, 0.5);
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+.rsvpVisualSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #dc2626, #fbbf24, #dc2626);
+  border-radius: 16px 16px 0 0;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { 
+    box-shadow: 
+      0 4px 15px rgba(220, 38, 38, 0.3),
+      0 0 0 1px rgba(251, 191, 36, 0.5);
+  }
+  50% { 
+    box-shadow: 
+      0 6px 20px rgba(220, 38, 38, 0.4),
+      0 0 0 2px rgba(251, 191, 36, 0.7);
+  }
+}
+
+.rsvpVisualContent {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rsvpImageContainer {
+  flex: 1;
+  max-width: 700px;
+}
+
+.rsvpImageContainer a {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.rsvpImageContainer a:hover {
+  transform: scale(1.05);
+}
+
+.rsvpImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.rsvpUrgentText {
+  flex: 1;
+  text-align: center;
+}
+
+.rsvpUrgentText h3 {
+  font-size: 2rem;
+  color: #dc2626;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: gentleTextPulse 4s ease-in-out infinite;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes gentleTextPulse {
+  0%, 100% { 
+    transform: scale(1);
+    color: #dc2626;
+  }
+  50% { 
+    transform: scale(1.02);
+    color: #ef4444;
+  }
+}
+
+.rsvpUrgentText p {
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.urgentRsvpButton {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  animation: gentleButtonGlow 3s ease-in-out infinite alternate;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid #fbbf24;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  position: relative;
+}
+
+
+@keyframes gentleButtonGlow {
+  from { 
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+  to { 
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+  }
+}
+
+.urgentRsvpButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+}
+
+.primaryButton {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #16537e 0%, #0f3460 100%);
+  color: white;
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 83, 126, 0.3);
+}
+
+/* Mobile responsive for RSVP section */
+@media (max-width: 768px) {
+  .rsvpVisualContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .rsvpImageContainer {
+    max-width: 100%;
+  }
+  
+  .rsvpUrgentText h3 {
+    font-size: 1.5rem;
+  }
+  
+  .rsvpUrgentText p {
+    font-size: 1rem;
+  }
+  
+  .urgentRsvpButton {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
   }
 }

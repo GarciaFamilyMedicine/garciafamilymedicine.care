@@ -28,6 +28,9 @@ export default function LandingPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [floatingDots, setFloatingDots] = useState([]);
 
+  // RSVP Form URL for pelvic health event
+  const rsvpFormUrl = "https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl";
+
   // Generate floating dots on client only to avoid hydration mismatch
   useEffect(() => {
     setFloatingDots(generateFloatingDots());
@@ -97,16 +100,21 @@ export default function LandingPage() {
         </div>
       </div>
       
-      {/* Simple Logo at top */}
-      <div className={styles.landingLogoContainer}>
-        <Image 
-          src="/images/logo.png" 
-          alt="Garcia Family Medicine Logo" 
-          width={160} 
-          height={160}
-          priority
-        />
-      </div>
+      {/* Header with Logo */}
+      <header className={styles.landingHeader}>
+        <div className={styles.landingLogoContainer}>
+          <div className={styles.logoWrapper}>
+            <Image 
+              src="/images/logo.png" 
+              alt="Garcia Family Medicine Logo" 
+              width={160} 
+              height={160}
+              priority
+              className={styles.flyingLogo}
+            />
+          </div>
+        </div>
+      </header>
 
       {/* MAIN BODY */}
       <main className={combineStyles(
@@ -114,6 +122,40 @@ export default function LandingPage() {
         mobileStyles.main,
         "flex flex-col items-center flex-grow"
       )}>
+        {/* URGENT RSVP SECTION */}
+        <section className={styles.rsvpVisualSection}>
+          <div className={styles.rsvpVisualContent}>
+            <div className={styles.rsvpImageContainer}>
+              <a 
+                href={rsvpFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image 
+                  src="/images/events/pelvic-health-recovery/rsvp-registration-cta.png"
+                  alt="RSVP Registration Call-to-Action - Secure Your Spot for Brunch, Bubbly & CoreLift Confidence Event"
+                  width={1200}
+                  height={800}
+                  className={styles.rsvpImage}
+                  priority
+                />
+              </a>
+            </div>
+            <div className={styles.rsvpUrgentText}>
+              <h3>🚨 FINAL HOURS TO REGISTER! 🚨</h3>
+              <p>Don't miss your chance to win $2,000 in CoreLift™ treatments and enjoy an exclusive brunch experience!</p>
+              <a 
+                href={rsvpFormUrl}
+                className={`${styles.primaryButton} ${styles.urgentRsvpButton}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                REGISTER NOW - 13 SPOTS LEFT!
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Welcome card */}
         <section className={combineStyles(
           styles.mainWelcomeCard,
