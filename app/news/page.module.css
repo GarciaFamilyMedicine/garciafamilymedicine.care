@@ -1,64 +1,18 @@
 /* Modern Medical Portal - Bold Design with Theme Support */
 
-/* CSS Variables for Theming */
-:root {
-  /* Light Theme (Default) - Improved readability */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f0f2f5;
-  --text-primary: #1a1a1a;
-  --text-secondary: #333333;
-  --text-tertiary: #5a5a5a;
-  --border-color: #d1d5db;
-  --accent-primary: #0066cc;
-  --accent-secondary: #0052a3;
-  --accent-light: #e6f2ff;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Dark Theme */
-[data-theme="dark"] {
-  --bg-primary: #0f1114;
-  --bg-secondary: #1a1d23;
-  --bg-tertiary: #252932;
-  --text-primary: #ffffff;
-  --text-secondary: #a0aec0;
-  --text-tertiary: #718096;
-  --border-color: #2d3748;
-  --accent-primary: #4299e1;
-  --accent-secondary: #3182ce;
-  --accent-light: #1a365d;
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-/* High Contrast Theme */
-[data-theme="contrast"] {
-  --bg-primary: #000000;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #000000;
-  --text-primary: #ffffff;
-  --text-secondary: #ffffff;
-  --text-tertiary: #ffffff;
-  --border-color: #ffffff;
-  --accent-primary: #ffff00;
-  --accent-secondary: #ffd700;
-  --accent-light: #333333;
-  --card-shadow: 0 0 0 2px #ffffff;
-  --card-hover-shadow: 0 0 0 4px #ffffff;
-}
+/* Using default light theme colors directly since CSS modules don't support :root */
+/* For theming support, these values would need to be managed via JavaScript/React context */
 
 .main {
   min-height: 100vh;
-  background: var(--bg-primary);
+  background: #ffffff;
   transition: background-color 0.3s ease;
 }
 
 /* Page Header - Clean Design */
 .pageHeader {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  background: #f8f9fa;
+  border-bottom: 1px solid #d1d5db;
   padding: 60px 0 40px;
   position: relative;
   overflow: hidden;
@@ -71,7 +25,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, transparent 100%);
+  background: linear-gradient(135deg, #0066cc 0%, transparent 100%);
   opacity: 0.03;
 }
 
@@ -92,31 +46,31 @@
 }
 
 .breadcrumb a {
-  color: var(--accent-primary);
+  color: #0066cc;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .breadcrumb a:hover {
-  color: var(--accent-secondary);
+  color: #0052a3;
   transform: translateX(-2px);
 }
 
 .breadcrumbIcon {
   font-size: 0.75rem;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
 }
 
 .breadcrumb span {
-  color: var(--text-secondary);
+  color: #333333;
   font-weight: 500;
 }
 
 .pageTitle {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #1a1a1a;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
   line-height: 1.3;
@@ -124,7 +78,7 @@
 
 .pageSubtitle {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #333333;
   max-width: 800px;
   line-height: 1.8;
   font-weight: 400;
@@ -134,7 +88,7 @@
 /* Content Section */
 .contentSection {
   padding: 60px 0 80px;
-  background: var(--bg-primary);
+  background: #ffffff;
 }
 
 .contentContainer {
@@ -147,11 +101,11 @@
 .tabNavigation {
   display: flex;
   gap: 16px;
-  background: var(--bg-secondary);
+  background: #f8f9fa;
   padding: 8px;
   border-radius: 12px;
   margin-bottom: 40px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .tabButton {
@@ -161,7 +115,7 @@
   padding: 16px 24px;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #333333;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -173,13 +127,13 @@
 }
 
 .tabButton:hover {
-  color: var(--text-primary);
-  background: var(--bg-tertiary);
+  color: #1a1a1a;
+  background: #f0f2f5;
 }
 
 .tabButton.active {
   color: white;
-  background: var(--accent-primary);
+  background: #0066cc;
   box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
@@ -189,7 +143,7 @@
 
 /* Alert Banner - Bold */
 .alertBanner {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
   border-radius: 12px;
   padding: 24px;
   display: flex;
@@ -250,23 +204,23 @@
 
 /* Featured Article - Bold Card */
 .featuredArticle {
-  background: var(--bg-secondary);
+  background: #f8f9fa;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 48px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db;
 }
 
 .featuredArticle:hover {
-  box-shadow: var(--card-hover-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-4px);
 }
 
 .featuredImage {
   height: 400px;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
   position: relative;
   display: flex;
   align-items: center;
@@ -291,7 +245,7 @@
   top: 24px;
   left: 24px;
   background: rgba(255, 255, 255, 0.95);
-  color: var(--accent-primary);
+  color: #0066cc;
   padding: 8px 20px;
   border-radius: 24px;
   font-size: 0.875rem;
@@ -314,18 +268,18 @@
 }
 
 .featuredTitle a {
-  color: var(--text-primary);
+  color: #1a1a1a;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .featuredTitle a:hover {
-  color: var(--accent-primary);
+  color: #0066cc;
 }
 
 .featuredExcerpt {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #333333;
   line-height: 1.8;
   margin-bottom: 24px;
   font-weight: 400;
@@ -338,13 +292,13 @@
   align-items: center;
   gap: 24px;
   font-size: 0.875rem;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
   font-weight: 500;
 }
 
 .author {
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #333333;
 }
 
 /* Recent Articles */
@@ -355,7 +309,7 @@
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #1a1a1a;
   margin-bottom: 28px;
   display: flex;
   align-items: center;
@@ -370,35 +324,35 @@
 }
 
 .articleCard {
-  background: var(--bg-secondary);
+  background: #f8f9fa;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d5db;
 }
 
 .articleCard:hover {
-  box-shadow: var(--card-hover-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-4px);
 }
 
 .cardImage {
   height: 200px;
-  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(135deg, #f0f2f5 0%, #f8f9fa 100%);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
 }
 
 .categoryLabel {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: var(--accent-primary);
+  background: #0066cc;
   color: white;
   padding: 6px 16px;
   border-radius: 20px;
@@ -421,18 +375,18 @@
 }
 
 .cardTitle a {
-  color: var(--text-primary);
+  color: #1a1a1a;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .cardTitle a:hover {
-  color: var(--accent-primary);
+  color: #0066cc;
 }
 
 .cardExcerpt {
   font-size: 0.9375rem;
-  color: var(--text-secondary);
+  color: #333333;
   line-height: 1.75;
   margin-bottom: 20px;
   display: -webkit-box;
@@ -446,7 +400,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.8125rem;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
   font-weight: 500;
 }
 
@@ -457,7 +411,7 @@
 }
 
 .loadMoreButton {
-  background: var(--accent-primary);
+  background: #0066cc;
   color: white;
   border: none;
   padding: 16px 48px;
@@ -470,7 +424,7 @@
 }
 
 .loadMoreButton:hover {
-  background: var(--accent-secondary);
+  background: #0052a3;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
 }
@@ -479,7 +433,7 @@
 .eventsSection {
   margin-top: 48px;
   padding-top: 48px;
-  border-top: 2px solid var(--border-color);
+  border-top: 2px solid #d1d5db;
 }
 
 .eventsList {
@@ -491,20 +445,20 @@
   display: flex;
   gap: 24px;
   padding: 24px;
-  background: var(--bg-secondary);
+  background: #f8f9fa;
   border-radius: 12px;
   transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d5db;
 }
 
 .eventItem:hover {
-  box-shadow: var(--card-hover-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateX(4px);
 }
 
 .eventDate {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
   color: white;
   border-radius: 12px;
   padding: 16px;
@@ -541,13 +495,13 @@
 }
 
 .eventTitle a {
-  color: var(--text-primary);
+  color: #1a1a1a;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .eventTitle a:hover {
-  color: var(--accent-primary);
+  color: #0066cc;
 }
 
 .eventMeta {
@@ -555,7 +509,7 @@
   align-items: center;
   gap: 20px;
   font-size: 0.9375rem;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
 }
 
 .featured {
@@ -576,18 +530,18 @@
 }
 
 .sidebarWidget {
-  background: var(--bg-secondary);
+  background: #f8f9fa;
   border-radius: 12px;
   padding: 28px;
   margin-bottom: 28px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d5db;
 }
 
 .widgetTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #1a1a1a;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -595,11 +549,11 @@
 }
 
 .calendarContainer {
-  background: var(--bg-primary);
+  background: #ffffff;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db;
 }
 
 .widgetLink {
@@ -608,7 +562,7 @@
   justify-content: center;
   gap: 8px;
   color: white;
-  background: var(--accent-primary);
+  background: #0066cc;
   text-decoration: none;
   font-weight: 600;
   padding: 14px;
@@ -618,7 +572,7 @@
 }
 
 .widgetLink:hover {
-  background: var(--accent-secondary);
+  background: #0052a3;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
@@ -638,19 +592,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--text-secondary);
+  color: #333333;
   text-decoration: none;
   padding: 12px 16px;
-  background: var(--bg-primary);
+  background: #ffffff;
   border-radius: 8px;
   transition: all 0.2s ease;
   font-weight: 500;
-  border: 1px solid var(--border-color);
+  border: 1px solid #d1d5db;
 }
 
 .quickLinks a:hover {
-  color: var(--accent-primary);
-  background: var(--accent-light);
+  color: #0066cc;
+  background: #e6f2ff;
   transform: translateX(4px);
 }
 
@@ -662,8 +616,8 @@
 }
 
 .categoryItem {
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
+  background: #ffffff;
+  border: 2px solid #d1d5db;
   border-radius: 8px;
   padding: 14px 20px;
   display: flex;
@@ -673,30 +627,30 @@
   transition: all 0.2s ease;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #333333;
 }
 
 .categoryItem:hover {
-  border-color: var(--accent-primary);
-  color: var(--text-primary);
+  border-color: #0066cc;
+  color: #1a1a1a;
   transform: translateX(4px);
 }
 
 .categoryItem.active {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
+  background: #0066cc;
+  border-color: #0066cc;
   color: white;
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 .count {
-  background: var(--bg-tertiary);
+  background: #f0f2f5;
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--text-tertiary);
+  color: #5a5a5a;
 }
 
 .categoryItem.active .count {

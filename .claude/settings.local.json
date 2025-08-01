@@ -1,36 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git pull:*)",
-      "Bash(mv:*)",
-      "Bash(npm run dev:*)",
-      "Bash(git stash:*)",
-      "Bash(git add:*)",
-      "Bash(find:*)",
-      "Bash(ls:*)",
-      "Bash(grep:*)",
-      "Bash(rm:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(npm run deploy:*)",
-      "Bash(npm run:*)",
-      "Bash(cat:*)",
-      "Bash(for dir in */)",
-      "Bash(do echo \"=== $dir%/ ===\")",
-      "Bash(done)",
-<<<<<<< HEAD
-      "Bash(ren:*)",
-      "Bash(taskkill:*)",
-      "Bash(npx kill-port:*)",
-      "Bash(tasklist:*)",
-      "Bash(curl:*)",
-      "Bash(npm install)",
-      "Bash(git checkout:*)"
-=======
-      "Bash(mkdir:*)",
-      "Bash(gh pr:*)",
-      "Bash(git fetch:*)"
->>>>>>> 92341652dd3bd69f0d4e9e857e43b3b67843f32e
+      "Bash(gh workflow view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(cp:*)",
+      "Bash(node:*)",
+      "Bash(npm install:*)"
     ],
     "deny": []
   }

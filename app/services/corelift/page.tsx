@@ -353,10 +353,10 @@ export default function CoreLift() {
                   <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">Life Changing</span>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "After two pregnancies, I was struggling with incontinence that 
+                  &ldquo;After two pregnancies, I was struggling with incontinence that 
                   affected my confidence. CoreLift completely changed my life! After 
                   just 3 sessions, I noticed significant improvement. Now I can 
-                  laugh, sneeze, and exercise without worry."
+                  laugh, sneeze, and exercise without worry.&rdquo;
                 </p>
                 <div className="text-gray-800 font-semibold">
                   <strong>Maria L.</strong>, Blue Springs, MO
@@ -369,9 +369,9 @@ export default function CoreLift() {
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">95% Improvement</span>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "As a 45-year-old man dealing with ED, I was hesitant about treatment. 
+                  &ldquo;As a 45-year-old man dealing with ED, I was hesitant about treatment. 
                   CoreLift was completely non-invasive and comfortable. My intimacy 
-                  issues are 95% resolved, and my confidence is back."
+                  issues are 95% resolved, and my confidence is back.&rdquo;
                 </p>
                 <div className="text-gray-800 font-semibold">
                   <strong>David M.</strong>, Independence, MO
@@ -384,9 +384,9 @@ export default function CoreLift() {
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Core Strength Restored</span>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "After my third baby, my core felt completely disconnected. 
+                  &ldquo;After my third baby, my core felt completely disconnected. 
                   CoreLift not only helped with bladder control but gave me back 
-                  my abdominal strength. I feel like myself again!"
+                  my abdominal strength. I feel like myself again!&rdquo;
                 </p>
                 <div className="text-gray-800 font-semibold">
                   <strong>Jennifer K.</strong>, Kansas City, MO
@@ -441,7 +441,7 @@ export default function CoreLift() {
                       <li>• 24-month 0% financing - just <strong>$58/month</strong> (was $83/month)</li>
                       <li>• Quick approval process (usually under 60 seconds)</li>
                       <li>• No prepayment penalties</li>
-                      <li>• Soft credit check won't affect your credit score</li>
+                      <li>• Soft credit check won&apos;t affect your credit score</li>
                     </ul>
                     <a 
                       href="https://patient.cherry.com/garcia-family-medicine" 
@@ -616,7 +616,7 @@ export default function CoreLift() {
                 <p className="text-gray-600">
                   CoreLift™ uses HIFEM (High-Intensity Focused Electromagnetic) technology 
                   to induce thousands of supramaximal pelvic floor muscle contractions in 
-                  a single 28-minute session. This strengthens muscles beyond what's 
+                  a single 28-minute session. This strengthens muscles beyond what&apos;s 
                   possible with voluntary exercise.
                 </p>
               </div>
@@ -633,7 +633,7 @@ export default function CoreLift() {
                 <p className="text-gray-600">
                   Yes! We partner with <strong>Cherry</strong> to offer flexible financing with 
                   monthly payments as low as $100/month. Quick approval (usually under 60 seconds), 
-                  no prepayment penalties, and soft credit checks that won't affect your credit score.
+                  no prepayment penalties, and soft credit checks that won&apos;t affect your credit score.
                 </p>
               </div>
             </div>
@@ -659,7 +659,7 @@ export default function CoreLift() {
                 <p className="text-gray-600">
                   Absolutely! CoreLift™ is highly effective for men experiencing erectile 
                   dysfunction, urinary incontinence, or pelvic floor weakness. Our program 
-                  is designed to address both men's and women's intimate health concerns.
+                  is designed to address both men&apos;s and women&apos;s intimate health concerns.
                 </p>
               </div>
             </div>
