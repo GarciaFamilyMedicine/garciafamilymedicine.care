@@ -6,7 +6,8 @@
       "Bash(gh run view:*)",
       "Bash(cp:*)",
       "Bash(node:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git restore:*)"
     ],
     "deny": []
   }
