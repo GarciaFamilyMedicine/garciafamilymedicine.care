@@ -1,39 +1,174 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 import styles from './page.module.css';
 import mobileStyles from './mobile.module.css';
+import homeStyles from './home.module.css';
 
-// Floating dots configuration
-const generateFloatingDots = () => {
-  return Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    floatDuration: `${15 + Math.random() * 15}s`,
-    floatDelay: `${Math.random() * 5}s`,
-    orbitDuration: `${20 + Math.random() * 20}s`,
-    orbitRadius: `${50 + Math.random() * 100}px`,
-    orbitDirection: Math.random() > 0.5 ? 1 : -1,
-    pulseDuration: `${3 + Math.random() * 2}s`,
-    pulseDelay: `${Math.random() * 3}s`,
-    pulseIntensity: 0.5 + Math.random() * 0.5,
-  }));
-};
+const DEFAULT_URL = 'https://garciafamilymedicine.care/contact';
 
-export default function LandingPage() {
+const slides = [
+  {
+    src: '/images/homepage/homepage-banner-01.png',
+    alt: 'CoreLift Pelvic Health Recovery - 11,000 Kegels in 28 Minutes',
+    href: 'tel:816-427-5320',
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-02.png',
+    alt: 'Mental Health Support - Compassionate Counseling',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-03.png',
+    alt: 'Pelvic Health Treatment - Emsella Chair',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-04.png',
+    alt: 'Direct Primary Care Membership - No Insurance Hassles',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-05.png',
+    alt: 'Weight Management Program - Healthy Lifestyle',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-06.png',
+    alt: 'Veteran Services - Caring for Those Who Served',
+    href: 'https://garciafamilymedicine.care/veterans',
+    target: '_blank'
+  },
+  {
+    src: '/images/homepage/homepage-banner-07.png',
+    alt: 'Healthcare Services - Garcia Family Medicine',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-08.png',
+    alt: 'Family Care Services - Compassionate Healthcare',
+    href: DEFAULT_URL,
+    target: '_self'
+  },
+  {
+    src: '/images/homepage/homepage-banner-09.png',
+    alt: 'Medical Services - Professional Healthcare',
+    href: DEFAULT_URL,
+    target: '_self'
+  }
+];
+
+export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [floatingDots, setFloatingDots] = useState([]);
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  
+  // Carousel states
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(-1);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState(new Set());
 
-  // RSVP Form URL for pelvic health event
-  const rsvpFormUrl = "https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl";
+  // Handle image loading
+  const handleImageLoad = useCallback((index) => {
+    setLoadedImages(prev => {
+      const newSet = new Set(prev);
+      newSet.add(index);
+      return newSet;
+    });
+  }, []);
 
-  // Generate floating dots on client only to avoid hydration mismatch
+  // Auto-rotation with pause control
   useEffect(() => {
-    setFloatingDots(generateFloatingDots());
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      setPreviousIndex(currentIndex);
+      setCurrentIndex(prev => (prev + 1) % slides.length);
+    }, 15000); // 15 seconds to match the pan animation duration
+    
+    return () => clearInterval(interval);
+  }, [isPaused, slides.length, currentIndex]);
+
+  // Check if first image is loaded
+  useEffect(() => {
+    // Hide loading after first image loads OR after 3 seconds timeout
+    if (loadedImages.has(0) || loadedImages.size > 0) {
+      setIsLoading(false);
+    }
+    
+    // Failsafe timeout to hide loading
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    
+    return () => clearTimeout(timeout);
+  }, [loadedImages]);
+
+  const goToSlide = useCallback((index) => {
+    setPreviousIndex(currentIndex);
+    setCurrentIndex(index);
+  }, [currentIndex]);
+
+  const nextSlide = useCallback(() => {
+    setPreviousIndex(currentIndex);
+    setCurrentIndex(prev => (prev + 1) % slides.length);
+  }, [currentIndex]);
+
+  const prevSlide = useCallback(() => {
+    setPreviousIndex(currentIndex);
+    setCurrentIndex(prev => (prev - 1 + slides.length) % slides.length);
+  }, [currentIndex]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide]);
+
+  // Measure header height after component mounts and on resize
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        setHeaderHeight(height);
+        // Also set CSS custom property for use in other components
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+      }
+    };
+
+    // Initial measurement with a small delay to ensure header is rendered
+    const timeoutId = setTimeout(updateHeaderHeight, 100);
+
+    // Re-measure on window resize
+    const handleResize = () => {
+      updateHeaderHeight();
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Close popup when clicking overlay
@@ -74,318 +209,130 @@ export default function LandingPage() {
       styles.minHScreen,
       mobileStyles.minHScreen
     )}>
-      {/* Hero Background Elements */}
-      <div className={styles.heroBackground}>
-        <div className={styles.gradientOverlay} />
-        <div className={styles.meshPattern} />
-        <div className={styles.floatingElements}>
-          {floatingDots.map((dot) => (
+      {/* Header */}
+      <Header />
+
+      {/* Hero carousel section */}
+      <section 
+        id="carousel-section"
+        className={homeStyles.carouselSection}
+        aria-label="Garcia Family Medicine Services Carousel"
+        role="region"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+      >
+        {/* Loading indicator */}
+        {isLoading && (
+          <div className={homeStyles.carouselLoading}>
+            <div className="carousel-loading-spinner"></div>
+            <p>Loading images...</p>
+          </div>
+        )}
+
+        <div className={homeStyles.carouselContainer}>
+          {slides.map((slide, index) => (
             <div
-              key={dot.id}
-              className={styles.floatingDot}
-              style={{
-                left: dot.left,
-                top: dot.top,
-                '--float-duration': dot.floatDuration,
-                '--float-delay': dot.floatDelay,
-                '--orbit-duration': dot.orbitDuration,
-                '--orbit-radius': dot.orbitRadius,
-                '--orbit-direction': dot.orbitDirection,
-                '--pulse-duration': dot.pulseDuration,
-                '--pulse-delay': dot.pulseDelay,
-                '--pulse-intensity': dot.pulseIntensity,
-              }}
+              key={`slide-${index}`}
+              className={`${homeStyles.carouselSlide} ${
+                index === currentIndex ? homeStyles.active : ''
+              } ${
+                index === previousIndex ? homeStyles.prev : ''
+              } ${
+                index === (currentIndex + 1) % slides.length ? homeStyles.next : ''
+              }`}
+              aria-hidden={index !== currentIndex}
+            >
+              <a
+                href={slide.href}
+                target={slide.target}
+                rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
+                aria-label={slide.alt}
+              >
+                <div className={homeStyles.carouselImageWrapper}>
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.webp`}
+                      type="image/webp"
+                    />
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.jpg`}
+                      type="image/jpeg"
+                    />
+                    <source
+                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.webp`}
+                      type="image/webp"
+                    />
+                    <img
+                      src={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.jpg`}
+                      alt={slide.alt}
+                      className={homeStyles.carouselImage}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      onLoad={() => handleImageLoad(index)}
+                      onError={() => {
+                        handleImageLoad(index);
+                      }}
+                    />
+                  </picture>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button 
+          className={`${homeStyles.carouselNavButton} ${homeStyles.carouselPrevButton}`}
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          disabled={isLoading}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        
+        <button 
+          className={`${homeStyles.carouselNavButton} ${homeStyles.carouselNextButton}`}
+          onClick={nextSlide}
+          aria-label="Next slide"
+          disabled={isLoading}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+
+        {/* Dots Navigation at Top */}
+        <div className={homeStyles.carouselDots}>
+          {slides.map((_, index) => (
+            <button
+              key={`dot-${index}`}
+              className={`${homeStyles.carouselDot} ${
+                index === currentIndex ? homeStyles.active : ''
+              }`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex}
+              disabled={isLoading}
             />
           ))}
         </div>
+
+        {/* Slide counter for accessibility */}
+        <div className="carousel-slide-counter" aria-live="polite">
+          <span className="sr-only">
+            Slide {currentIndex + 1} of {slides.length}
+          </span>
+        </div>
+      </section>
+
+      <div className={homeStyles.mainContent}>
+        <Footer />
       </div>
-      
-      {/* Header with Logo */}
-      <header className={styles.landingHeader}>
-        <div className={styles.landingLogoContainer}>
-          <div className={styles.logoWrapper}>
-            <Image 
-              src="/images/logo.png" 
-              alt="Garcia Family Medicine Logo" 
-              width={160} 
-              height={160}
-              priority
-              className={styles.flyingLogo}
-            />
-          </div>
-        </div>
-      </header>
-
-      {/* MAIN BODY */}
-      <main className={combineStyles(
-        styles.main,
-        mobileStyles.main,
-        "flex flex-col items-center flex-grow"
-      )}>
-        {/* URGENT RSVP SECTION */}
-        <section className={styles.rsvpVisualSection}>
-          <div className={styles.rsvpVisualContent}>
-            <div className={styles.rsvpImageContainer}>
-              <a 
-                href={rsvpFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image 
-                  src="/images/events/pelvic-health-recovery/rsvp-registration-cta.png"
-                  alt="RSVP Registration Call-to-Action - Secure Your Spot for Brunch, Bubbly & CoreLift Confidence Event"
-                  width={1200}
-                  height={800}
-                  className={styles.rsvpImage}
-                  priority
-                />
-              </a>
-            </div>
-            <div className={styles.rsvpUrgentText}>
-              <h3>🚨 FINAL HOURS TO REGISTER! 🚨</h3>
-              <p>Don't miss your chance to win $2,000 in CoreLift™ treatments and enjoy an exclusive brunch experience!</p>
-              <a 
-                href={rsvpFormUrl}
-                className={`${styles.primaryButton} ${styles.urgentRsvpButton}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                REGISTER NOW - 13 SPOTS LEFT!
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Welcome card */}
-        <section className={combineStyles(
-          styles.mainWelcomeCard,
-          mobileStyles.mainWelcomeCard
-        )}>
-          <h1 className={combineStyles(
-            styles.mainWelcomeH1,
-            mobileStyles.mainWelcomeH1
-          )}>
-            Welcome to <span className={styles.titleGradient}>Garcia Family Medicine</span>
-          </h1>
-          
-          <h2 className={combineStyles(
-            styles.mainWelcomeH2,
-            mobileStyles.mainWelcomeH2
-          )}>
-            Compassionate Healthcare Overflowing with Love in Blue Springs, MO!
-          </h2>
-
-          <p className={combineStyles(
-            styles.mainWelcomeP,
-            mobileStyles.mainWelcomeP
-          )}>
-            Step into a healthcare experience rooted in trust, integrity, and the boundless love of God! At&nbsp;
-            <strong className={styles.mainWelcomeStrong}>Garcia Family Medicine</strong>, we're passionately committed to making healthcare in Blue Springs, MO,&nbsp;
-            <strong className={styles.mainWelcomeStrong}>simple, affordable, and deeply personal—</strong>because you're more than a patient, you're family.
-            We've stepped away from the traditional insurance system to deliver&nbsp;
-            <strong className={styles.mainWelcomeStrong}>high‑quality primary care</strong> and mental‑health support that's cost‑effective, compassionate,
-            and free of long waits or hidden fees. Serving Blue Springs, Independence, Lee's Summit, and the greater
-            Kansas City metro area, we're here to wrap you in care that reflects God's grace and goodness.
-          </p>
-
-          <button
-            id="readMoreButton"
-            className={combineStyles(
-              styles.readMoreButton,
-              mobileStyles.readMoreButton
-            )}
-            onClick={() => setIsExpanded(!isExpanded)}
-            aria-expanded={isExpanded}
-            aria-controls="moreContent"
-          >
-            {isExpanded ? 'Read Less' : 'Read More'}
-          </button>
-
-          <div
-            id="moreContent"
-            className={combineStyles(
-              styles.careSection,
-              mobileStyles.careSection,
-              isExpanded ? styles.expanded : ''
-            )}
-          >
-            <h3 className={combineStyles(
-              styles.careSectionH3,
-              mobileStyles.careSectionH3
-            )}>
-              <span className={styles.titleGradient}>Garcia Family Medicine:</span> Where Love Meets Exceptional Care!
-            </h3>
-            <p className={combineStyles(
-              styles.careSectionP,
-              mobileStyles.careSectionP
-            )}>
-              At <strong>Garcia Family Medicine</strong>, we're different—and that difference shines with purpose.
-              Guided by faith and a heart for healing, we prioritize your mental and physical well‑being above all else.
-              By leaving behind the complexities of insurance, we offer:
-            </p>
-            <ul className={combineStyles(
-              styles.careSectionUl,
-              mobileStyles.careSectionUl
-            )}>
-              <li className={combineStyles(
-                styles.careSectionLi,
-                mobileStyles.careSectionLi
-              )}>
-                <strong>Loving Care:</strong> From preventive checkups to managing chronic conditions like diabetes or hypertension, plus mental health support filled with empathy.
-              </li>
-              <li className={combineStyles(
-                styles.careSectionLi,
-                mobileStyles.careSectionLi
-              )}>
-                <strong>Heavenly Convenience:</strong> Quick, easy appointments that honor your time and needs.
-              </li>
-              <li className={combineStyles(
-                styles.careSectionLi,
-                mobileStyles.careSectionLi
-              )}>
-                <strong>Affordable Blessings:</strong> Transparent pricing with <a href="/services/cash-pay" className={styles.textLink}>cash pay options</a> and <a href="/services/payment-plans" className={styles.textLink}>flexible payment plans</a> that bring peace to your wallet and soul.
-              </li>
-            </ul>
-            <p className={combineStyles(
-              styles.careSectionP,
-              mobileStyles.careSectionP
-            )}>
-              Located in Blue Springs, MO, we extend our warm, trustworthy embrace to Independence, Lee's Summit, and the entire Kansas City metro area. With integrity at our core, we're here to provide family medicine that feels like a hug from above—because your health is a sacred gift, and we cherish it!
-            </p>
-            <h3 className={combineStyles(
-              styles.careSectionH3,
-              mobileStyles.careSectionH3
-            )}>
-              <span className={styles.titleGradient}>Trust in Us</span> – Call Today!
-            </h3>
-            <p className={combineStyles(
-              styles.careSectionP,
-              mobileStyles.careSectionP
-            )}>
-              Ready to experience healthcare infused with compassion and the love of God? At Garcia Family Medicine, we're more than a practice—we're a ministry of wellness, serving Blue Springs, MO, and beyond with unwavering dedication. Whether you need a routine visit, ongoing care, or a kind ear for your mental health journey, our team is here to lift you up with trust and tenderness.
-            </p>
-            <p className={combineStyles(
-              styles.careSectionP,
-              mobileStyles.careSectionP
-            )}>
-              Pick up the phone and call&nbsp;
-              <a href="tel:816-427-5320" className={styles.textLink}>816‑427‑5320</a>&nbsp;now—let us welcome you into our family! Join the countless patients in Blue Springs, Independence, Lee's Summit, and the Kansas City metro area who've found healing and hope with us. Dial&nbsp;
-              <a href="tel:816-427-5320" className={styles.textLink}>816‑427‑5320</a>&nbsp;today and discover the joy of <strong>compassionate, faith‑filled healthcare</strong> that's as reliable as it is remarkable. Your well‑being is our calling—let's start this journey together!
-            </p>
-            <a
-              href="tel:816-427-5320"
-              className={combineStyles(
-                styles.callButton,
-                mobileStyles.callButton
-              )}
-            >
-              Call Now: 816‑427‑5320
-            </a>
-          </div>
-        </section>
-
-        {/* Ask-Dr-Tess */}
-        <section className={combineStyles(
-          styles.commentsSection,
-          mobileStyles.commentsSection
-        )}>
-          <h3 className={combineStyles(
-            styles.commentsSectionH3,
-            mobileStyles.commentsSectionH3
-          )}>
-            Got burning questions too tricky, awkward, or unknown to voice?
-          </h3>
-          <p className={combineStyles(
-            styles.commentsSectionP,
-            mobileStyles.commentsSectionP
-          )}>
-            Dr. Tess is here for you! Submit your questions through our secure form for a judgment‑free response, or call&nbsp;
-            <a href="tel:816-427-5320" className={styles.textLink}>816‑427‑5320</a>&nbsp;for a personal chat.
-          </p>
-          <button
-            onClick={() => setIsPopupOpen(true)}
-            className={combineStyles(
-              styles.askButton,
-              mobileStyles.askButton
-            )}
-            aria-haspopup="dialog"
-          >
-            Ask Dr. Tess
-          </button>
-        </section>
-
-        {/* Enter Main Site Button */}
-        <section className={combineStyles(
-          styles.commentsSection,
-          mobileStyles.commentsSection,
-          "mt-6"
-        )}>
-          <h3 className={combineStyles(
-            styles.commentsSectionH3,
-            mobileStyles.commentsSectionH3
-          )}>
-            Ready to explore our full range of services?
-          </h3>
-          <Link
-            href="/services"
-            className={combineStyles(
-              styles.callButton,
-              mobileStyles.callButton,
-              "inline-block mt-4"
-            )}
-          >
-            Enter Main Site
-          </Link>
-        </section>
-      </main>
-
-      {/* Popup */}
-      {isPopupOpen && (
-        <div
-          id="popup"
-          className={combineStyles(
-            styles.popup,
-            mobileStyles.popup,
-            'opacity-100'
-          )}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="popup-title"
-        >
-          <div className={combineStyles(
-            styles.popupContent,
-            mobileStyles.popupContent
-          )}>
-            <button
-              className={combineStyles(
-                styles.close,
-                mobileStyles.close
-              )}
-              onClick={() => setIsPopupOpen(false)}
-              aria-label="Close dialog"
-            >
-              ×
-            </button>
-            <h2 id="popup-title" className="sr-only">Ask Dr. Tess Form</h2>
-            <iframe
-              title="Ask Dr. Tess Form"
-              src="https://forms.office.com/r/R5vkttmxpe"
-              className={combineStyles(
-                styles.iframe,
-                mobileStyles.iframe
-              )}
-            />
-          </div>
-        </div>
-      )}
-      
-      {/* Copyright section */}
-      <footer className={combineStyles(
-        styles.copyright,
-        mobileStyles.copyright
-      )}>
-        <p>&copy; {new Date().getFullYear()} Garcia Family Medicine. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
