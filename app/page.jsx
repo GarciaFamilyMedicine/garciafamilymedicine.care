@@ -327,7 +327,7 @@ export default function LandingPage() {
             Ready to explore our full range of services?
           </h3>
           <Link
-            href="/home"
+            href="/services"
             className={combineStyles(
               styles.callButton,
               mobileStyles.callButton,
