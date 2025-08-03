@@ -164,7 +164,7 @@ export default function CashPayPage() {
           <div className={styles.membershipPlans}>
             <div className={styles.planCard}>
               <h3>Individual Plan</h3>
-              <div className={styles.planPrice}>$89<span>/month</span></div>
+              <div className={styles.planPrice}>Contact Us<span> for pricing</span></div>
               <ul className={styles.planFeatures}>
                 <li><FaCheckCircle /> Unlimited office visits</li>
                 <li><FaCheckCircle /> Same/next-day appointments</li>
@@ -178,7 +178,7 @@ export default function CashPayPage() {
             <div className={styles.planCard + ' ' + styles.featured}>
               <div className={styles.planBadge}>Most Popular</div>
               <h3>Family Plan</h3>
-              <div className={styles.planPrice}>$199<span>/month</span></div>
+              <div className={styles.planPrice}>Contact Us<span> for pricing</span></div>
               <ul className={styles.planFeatures}>
                 <li><FaCheckCircle /> Coverage for 2 adults + children</li>
                 <li><FaCheckCircle /> All individual plan benefits</li>
@@ -191,7 +191,7 @@ export default function CashPayPage() {
             
             <div className={styles.planCard}>
               <h3>Senior Plan</h3>
-              <div className={styles.planPrice}>$69<span>/month</span></div>
+              <div className={styles.planPrice}>Contact Us<span> for pricing</span></div>
               <ul className={styles.planFeatures}>
                 <li><FaCheckCircle /> Medicare coordination</li>
                 <li><FaCheckCircle /> Chronic care management</li>

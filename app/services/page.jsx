@@ -1,159 +1,356 @@
 'use client';
 
-import styles from '../learn/service.module.css';
+import styles from './services.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
 import Link from 'next/link';
-import { FaHeart, FaUserMd, FaShieldAlt, FaStethoscope, FaCalendarCheck, FaHandsHelping } from 'react-icons/fa';
+import Image from 'next/image';
+import { 
+  FaHeart, 
+  FaUserMd, 
+  FaShieldAlt, 
+  FaStethoscope, 
+  FaCalendarCheck, 
+  FaHandsHelping,
+  FaClock,
+  FaPhone,
+  FaArrowRight,
+  FaStar,
+  FaCheckCircle,
+  FaClinicMedical
+} from 'react-icons/fa';
+
+const services = {
+  premium: [
+    {
+      icon: FaHeart,
+      title: "Faith & Family Medicine™",
+      description: "Whole-person care honoring body, soul, and spirit",
+      link: "/services/faith-family-medicine",
+      color: "#e11d48",
+      features: ["Spiritual integration", "Family-centered care", "Holistic approach"]
+    },
+    {
+      icon: FaStethoscope,
+      title: "CoreLift™ Program",
+      description: "Revolutionary pelvic floor strengthening",
+      link: "/services/corelift",
+      color: "#8b5cf6",
+      features: ["Non-invasive treatment", "FDA-cleared technology", "Long-lasting results"]
+    },
+    {
+      icon: FaHandsHelping,
+      title: "Nourish & Thrive™ Journey",
+      description: "12-month wellness transformation",
+      link: "/services/nourish-thrive-journey",
+      color: "#10b981",
+      features: ["Personalized nutrition", "Lifestyle coaching", "Sustainable results"]
+    },
+    {
+      icon: FaShieldAlt,
+      title: "TrueRelief™ Therapy",
+      description: "Non-opioid pain management",
+      link: "/services/truerelief-therapy",
+      color: "#f59e0b",
+      features: ["Drug-free relief", "Advanced technology", "Proven effectiveness"]
+    },
+    {
+      icon: FaHeart,
+      title: "PeaceWithin™ Life Coaching",
+      description: "Trauma-informed healing",
+      link: "/services/peacewithin-life-coaching",
+      color: "#3b82f6",
+      features: ["Emotional healing", "Personal growth", "Faith-based support"]
+    }
+  ],
+  professional: [
+    {
+      icon: FaUserMd,
+      title: "ClearRoad™ DOT Exams",
+      description: "Commercial driver physicals",
+      link: "/services/clearroad-dot-exams",
+      color: "#059669",
+      features: ["Same-day service", "FMCSA certified", "Fast results"]
+    },
+    {
+      icon: FaStethoscope,
+      title: "ValorView™ IME",
+      description: "Independent medical exams",
+      link: "/services/valorview-ime",
+      color: "#7c3aed",
+      features: ["Comprehensive exams", "Detailed reports", "Expert assessment"]
+    },
+    {
+      icon: FaShieldAlt,
+      title: "ValorLink™ Letters",
+      description: "Veteran disability support",
+      link: "/services/valorlink-letter",
+      color: "#dc2626",
+      features: ["VA nexus letters", "DBQ assistance", "Veteran advocacy"]
+    },
+    {
+      icon: FaCalendarCheck,
+      title: "MyClinic365™",
+      description: "Workplace healthcare",
+      link: "/services/myclinic365",
+      color: "#2563eb",
+      features: ["On-site care", "Employee wellness", "Cost savings"]
+    },
+    {
+      icon: FaHandsHelping,
+      title: "CareBridge™",
+      description: "24/7 healthcare platform",
+      link: "/services/carebridge",
+      color: "#ec4899",
+      features: ["Always available", "Virtual visits", "Comprehensive care"]
+    }
+  ]
+};
 
 export default function ServicesMainPage() {
   return (
     <>
       <Header />
-      <div className={styles.servicePage}>
-        <div className={styles.hero}>
-          <div className={styles.heroOverlay}></div>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Our Medical Services</h1>
-            <p className={styles.heroSubtitle}>Comprehensive Healthcare Services Tailored to Your Needs</p>
+      <main className={styles.servicesMain}>
+        {/* Hero Section */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.heroPattern}></div>
+            <div className={styles.heroGradient}></div>
           </div>
-        </div>
+          <div className={styles.heroContent}>
+            <div className={styles.heroText}>
+              <h1 className={styles.heroTitle}>
+                <span className={styles.titleAccent}>Transformative</span>
+                <br />Healthcare Services
+              </h1>
+              <p className={styles.heroSubtitle}>
+                Experience healthcare that goes beyond treating symptoms. 
+                Our innovative services address your complete wellness journey.
+              </p>
+              <div className={styles.heroActions}>
+                <Link href="/contact" className={styles.primaryButton}>
+                  <FaPhone /> Schedule Consultation
+                </Link>
+                <Link href="#services" className={styles.secondaryButton}>
+                  Explore Services <FaArrowRight />
+                </Link>
+              </div>
+            </div>
+            <div className={styles.heroImage}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src="/images/services/hero-doctor.jpg"
+                  alt="Dr. Garcia providing compassionate care"
+                  width={600}
+                  height={400}
+                  className={styles.heroImg}
+                  unoptimized
+                />
+                <div className={styles.imageAccent}></div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div className={styles.mainContent}>
-          <section className={styles.introSection}>
-            <div className={styles.container}>
-              <p className={styles.leadText}>
-                At Garcia Family Medicine, we provide comprehensive medical services with a focus on personalized, compassionate care. From routine preventive care to specialized treatments, we're here to support your health journey.
+        {/* Stats Section */}
+        <section className={styles.statsSection}>
+          <div className={styles.container}>
+            <div className={styles.statsGrid}>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}><FaStar /></div>
+                <div className={styles.statNumber}>15+</div>
+                <div className={styles.statLabel}>Years of Excellence</div>
+              </div>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}><FaHeart /></div>
+                <div className={styles.statNumber}>10,000+</div>
+                <div className={styles.statLabel}>Lives Transformed</div>
+              </div>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}><FaCheckCircle /></div>
+                <div className={styles.statNumber}>98%</div>
+                <div className={styles.statLabel}>Patient Satisfaction</div>
+              </div>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}><FaClinicMedical /></div>
+                <div className={styles.statNumber}>20+</div>
+                <div className={styles.statLabel}>Specialized Services</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Premium Services Section */}
+        <section id="services" className={styles.servicesSection}>
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Premium Healthcare</span>
+              <h2 className={styles.sectionTitle}>Innovative Wellness Programs</h2>
+              <p className={styles.sectionDescription}>
+                Our signature programs combine cutting-edge technology with 
+                compassionate care to deliver transformative health outcomes.
               </p>
             </div>
-          </section>
 
-          <section className={styles.servicesSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>Premium Healthcare Services</h2>
-              <p className={styles.sectionSubtitle}>Medical services we provide</p>
-              <div className={styles.servicesGrid}>
-                <div className={styles.serviceCard}>
-                  <FaHeart className={styles.serviceIcon} />
-                  <h3><Link href="/services/faith-family-medicine">Faith & Family Medicine™</Link></h3>
-                  <p>Whole-person care honoring body, soul, and spirit</p>
+            <div className={styles.servicesGrid}>
+              {services.premium.map((service, index) => (
+                <Link href={service.link} key={index} className={styles.serviceCard}>
+                  <div className={styles.cardHeader}>
+                    <div 
+                      className={styles.iconWrapper} 
+                      style={{ backgroundColor: `${service.color}20` }}
+                    >
+                      <service.icon 
+                        className={styles.serviceIcon} 
+                        style={{ color: service.color }}
+                      />
+                    </div>
+                    <h3 className={styles.serviceTitle}>{service.title}</h3>
+                  </div>
+                  <p className={styles.serviceDescription}>{service.description}</p>
+                  <ul className={styles.featureList}>
+                    {service.features.map((feature, idx) => (
+                      <li key={idx}>
+                        <FaCheckCircle className={styles.featureIcon} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={styles.cardFooter}>
+                    <span className={styles.learnMore}>
+                      Learn More <FaArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Services Section */}
+        <section className={`${styles.servicesSection} ${styles.altBackground}`}>
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Professional Services</span>
+              <h2 className={styles.sectionTitle}>Specialized Medical Care</h2>
+              <p className={styles.sectionDescription}>
+                From workplace wellness to veteran support, our professional 
+                services meet diverse healthcare needs with expertise and compassion.
+              </p>
+            </div>
+
+            <div className={styles.servicesGrid}>
+              {services.professional.map((service, index) => (
+                <Link href={service.link} key={index} className={styles.serviceCard}>
+                  <div className={styles.cardHeader}>
+                    <div 
+                      className={styles.iconWrapper} 
+                      style={{ backgroundColor: `${service.color}20` }}
+                    >
+                      <service.icon 
+                        className={styles.serviceIcon} 
+                        style={{ color: service.color }}
+                      />
+                    </div>
+                    <h3 className={styles.serviceTitle}>{service.title}</h3>
+                  </div>
+                  <p className={styles.serviceDescription}>{service.description}</p>
+                  <ul className={styles.featureList}>
+                    {service.features.map((feature, idx) => (
+                      <li key={idx}>
+                        <FaCheckCircle className={styles.featureIcon} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={styles.cardFooter}>
+                    <span className={styles.learnMore}>
+                      Learn More <FaArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us Section */}
+        <section className={styles.whySection}>
+          <div className={styles.container}>
+            <div className={styles.whyContent}>
+              <div className={styles.whyText}>
+                <h2 className={styles.whyTitle}>Why Choose Garcia Family Medicine?</h2>
+                <p className={styles.whyDescription}>
+                  We're not just another medical practice. We're your partners in achieving 
+                  lasting health and wellness through innovative, personalized care.
+                </p>
+                <div className={styles.whyFeatures}>
+                  <div className={styles.whyFeature}>
+                    <FaClock className={styles.whyIcon} />
+                    <div>
+                      <h4>Extended Appointments</h4>
+                      <p>60-minute visits ensure thorough, unhurried care</p>
+                    </div>
+                  </div>
+                  <div className={styles.whyFeature}>
+                    <FaHeart className={styles.whyIcon} />
+                    <div>
+                      <h4>Whole-Person Approach</h4>
+                      <p>Addressing physical, mental, and spiritual health</p>
+                    </div>
+                  </div>
+                  <div className={styles.whyFeature}>
+                    <FaShieldAlt className={styles.whyIcon} />
+                    <div>
+                      <h4>Advanced Technology</h4>
+                      <p>State-of-the-art treatments for optimal results</p>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.serviceCard}>
-                  <FaStethoscope className={styles.serviceIcon} />
-                  <h3><Link href="/services/corelift">CoreLift™ Program</Link></h3>
-                  <p>Revolutionary pelvic floor strengthening</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaHandsHelping className={styles.serviceIcon} />
-                  <h3><Link href="/services/nourish-thrive-journey">Nourish & Thrive™ Journey</Link></h3>
-                  <p>12-month wellness transformation</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaShieldAlt className={styles.serviceIcon} />
-                  <h3><Link href="/services/truerelief-therapy">TrueRelief™ Therapy</Link></h3>
-                  <p>Non-opioid pain management</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaHeart className={styles.serviceIcon} />
-                  <h3><Link href="/services/peacewithin-life-coaching">PeaceWithin™ Life Coaching</Link></h3>
-                  <p>Trauma-informed healing</p>
-                </div>
+                <Link href="/meetthedoctor" className={styles.meetDoctorButton}>
+                  Meet Dr. Garcia <FaArrowRight />
+                </Link>
+              </div>
+              <div className={styles.whyImage}>
+                <Image
+                  src="/images/doctor-consultation.jpg"
+                  alt="Dr. Garcia in consultation"
+                  width={500}
+                  height={600}
+                  className={styles.whyImg}
+                  unoptimized
+                />
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className={styles.servicesSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>Professional Medical Services</h2>
-              <p className={styles.sectionSubtitle}>Specialized care we offer</p>
-              <div className={styles.servicesGrid}>
-                <div className={styles.serviceCard}>
-                  <FaUserMd className={styles.serviceIcon} />
-                  <h3><Link href="/services/clearroad-dot-exams">ClearRoad™ DOT Exams</Link></h3>
-                  <p>Commercial driver physicals</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaStethoscope className={styles.serviceIcon} />
-                  <h3><Link href="/services/valorview-ime">ValorView™ IME</Link></h3>
-                  <p>Independent medical exams</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaShieldAlt className={styles.serviceIcon} />
-                  <h3><Link href="/services/valorlink-letter">ValorLink™ Letters</Link></h3>
-                  <p>Veteran disability support</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaCalendarCheck className={styles.serviceIcon} />
-                  <h3><Link href="/services/myclinic365">MyClinic365™</Link></h3>
-                  <p>Workplace healthcare</p>
-                </div>
-                <div className={styles.serviceCard}>
-                  <FaHandsHelping className={styles.serviceIcon} />
-                  <h3><Link href="/services/carebridge">CareBridge™</Link></h3>
-                  <p>24/7 healthcare platform</p>
-                </div>
+        {/* CTA Section */}
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaBackground}>
+            <div className={styles.ctaPattern}></div>
+          </div>
+          <div className={styles.container}>
+            <div className={styles.ctaContent}>
+              <h2 className={styles.ctaTitle}>Ready to Transform Your Health?</h2>
+              <p className={styles.ctaDescription}>
+                Take the first step toward a healthier, happier you. 
+                Schedule your consultation today and discover the difference 
+                personalized care can make.
+              </p>
+              <div className={styles.ctaActions}>
+                <a href="tel:816-427-5320" className={styles.ctaPrimary}>
+                  <FaPhone /> Call (816) 427-5320
+                </a>
+                <Link href="/contact" className={styles.ctaSecondary}>
+                  Schedule Online <FaArrowRight />
+                </Link>
               </div>
             </div>
-          </section>
-
-          <section className={styles.approachSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>Our Approach to Care</h2>
-              <div className={styles.benefitsGrid}>
-                <div className={styles.benefitCard}>
-                  <h3>Personalized Medicine</h3>
-                  <p>Every treatment plan is tailored to your unique health needs, lifestyle, and personal preferences for optimal outcomes.</p>
-                </div>
-                <div className={styles.benefitCard}>
-                  <h3>Comprehensive Care</h3>
-                  <p>We address not just symptoms but the whole person, considering physical, mental, and spiritual aspects of health.</p>
-                </div>
-                <div className={styles.benefitCard}>
-                  <h3>Evidence-Based Treatment</h3>
-                  <p>Our medical services are grounded in the latest research and best practices in healthcare and medicine.</p>
-                </div>
-                <div className={styles.benefitCard}>
-                  <h3>Patient Partnership</h3>
-                  <p>We believe in working together with you to achieve your health goals through shared decision-making and open communication.</p>
-                </div>
-                <div className={styles.benefitCard}>
-                  <h3>Accessible Healthcare</h3>
-                  <p>We offer flexible scheduling, telehealth options, and various payment methods to make healthcare accessible to all.</p>
-                </div>
-                <div className={styles.benefitCard}>
-                  <h3>Continuous Support</h3>
-                  <p>Our care extends beyond appointments with ongoing support, follow-up care, and resources for your health journey.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className={styles.faqSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>Getting Started</h2>
-              <div className={styles.faqGrid}>
-                <div className={styles.faqItem}>
-                  <h3>How do I schedule an appointment?</h3>
-                  <p>Call us at 816-427-5320 to schedule your appointment. We offer flexible scheduling to accommodate your needs.</p>
-                </div>
-                <div className={styles.faqItem}>
-                  <h3>Do you accept insurance?</h3>
-                  <p>We work with most major insurance plans. Please call our office to verify your specific coverage and benefits.</p>
-                </div>
-                <div className={styles.faqItem}>
-                  <h3>What should I bring to my first visit?</h3>
-                  <p>Bring your insurance card, ID, current medications list, and any relevant medical records from previous providers.</p>
-                </div>
-                <div className={styles.faqItem}>
-                  <h3>Do you offer same-day appointments?</h3>
-                  <p>We strive to accommodate urgent care needs and may have same-day availability. Call our office to check current availability.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-
+          </div>
+        </section>
+      </main>
       <Footer />
     </>
   );
