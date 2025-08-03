@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.0] - 2025-01-25
+### Added
+- TODO.md file for tracking development tasks and priorities
+- Comprehensive project status section in README.md
+- Project structure documentation in README
+- Updated tech stack details with specific libraries
+
+### Changed
+- Services page completely redesigned with modern layout:
+  - Hero section with gradient background
+  - Statistics section showcasing key metrics
+  - Color-coded service cards with hover effects
+  - "Why Choose Us" section with feature highlights
+  - Strong CTA section at bottom
+- Telehealth page simplified by removing tab navigation
+- Cash pay page updated to remove specific pricing (now shows "Contact Us for pricing")
+- Image organization completed:
+  - All homepage carousel images now present (9 total)
+  - Payment images moved to `/images/services/payment/`
+  - Service support images properly organized in respective folders
+- Updated all image path references to match new folder structure
+- IMAGES_NEEDED.md updated to reflect current state (7-10 images still needed)
+- README.md enhanced with current project status and better documentation links
+
+### Fixed
+- Payment image references updated to new location `/images/services/payment/`
+- All service pages now reference correct image paths
+
 ## [3.2.3] - 2025-01-24
 ### Added
 - Telehealth Services and Cash Pay Options to main services navigation dropdown
