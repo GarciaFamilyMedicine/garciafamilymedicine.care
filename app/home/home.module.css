@@ -4,8 +4,8 @@
 
 .carouselSection {
   width: 100%;
-  min-height: calc(100vh - 85px);
-  margin-top: 85px; /* Space for fixed header */
+  min-height: 100vh;
+  padding-top: 85px; /* Space for fixed header */
   background: 
     linear-gradient(135deg, #4a90e2 0%, #5e8fbc 25%, #7bb3db 50%, #a1c4e4 75%, #c3d9eb 100%),
     radial-gradient(ellipse at top right, rgba(74, 144, 226, 0.4) 0%, transparent 50%),
@@ -143,7 +143,7 @@
 /* Main carousel container */
 .carouselContainer {
   width: 100%;
-  height: calc(100vh - 85px);
+  min-height: calc(100vh - 85px);
   position: relative;
   display: flex;
   align-items: center;
@@ -200,23 +200,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
   opacity: 0;
-  z-index: 0;
-  transition: 
-    opacity 0.4s ease-out,
-    z-index 0.4s step-end;
+  transform: translateX(100%); /* Start from right */
+  transition: transform 0.8s ease-out, 
+              opacity 0.4s ease-out,
+              visibility 0s linear 0.8s;
 }
 
-/* Only the active slide is visible */
+/* Current slide - centered and visible */
 .carouselSlide.active {
+  visibility: visible;
   opacity: 1;
-  z-index: 1;
+  transform: translateX(0);
+  z-index: 10;
+  transition: transform 0.8s ease-out, 
+              opacity 0.4s ease-out,
+              visibility 0s linear;
 }
 
-/* Previous slide (used for fade transition) */
+/* Previous slide - already slid out left (hidden) */
 .carouselSlide.prev {
+  visibility: hidden;
   opacity: 0;
-  z-index: 0;
+  transform: translateX(-100%);
+  z-index: 1;
 }
 
 /* Control opacity during transitions */
@@ -246,9 +254,8 @@
   transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  pointer-events: none;
-  opacity: 0.6;
+  background: 
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
   filter: blur(60px);
   z-index: -1;
   transition: all 0.3s ease;
@@ -257,18 +264,26 @@
 .carouselImageWrapper picture {
   display: block;
   position: relative;
-  border-radius: 0;
+  border-radius: 16px;
   overflow: hidden;
-  border: none;
-  box-shadow: none;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
-  background: transparent;
-  transform: none;
+  background: white;
+  transform: translateY(-10px);
 }
 
 .carouselSlide.active .carouselImageWrapper:hover picture {
-  transform: scale(1.02);
-  box-shadow: none;
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.6),
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Mobile overrides picture element */
@@ -278,31 +293,27 @@
   }
 }
 
-/* Override global img styles - show full image - desktop only */
-@media (min-width: 769px) {
-  .carouselImage {
-    display: block;
-    max-width: calc(100vw - 80px) !important; /* Add margins */
-    max-height: calc(100vh - 165px) !important; /* Header + padding */
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-    border-radius: 0;
-  }
+/* Override global img styles - show full image */
+.carouselImage {
+  display: block;
+  max-width: calc(100vw - 80px) !important; /* Add margins */
+  max-height: calc(100vh - 165px) !important; /* Header + padding */
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 12px;
 }
 
-/* Ensure picture element doesn't constrain - desktop only */
-@media (min-width: 769px) {
-  .carouselImageWrapper img {
-    max-width: calc(100vw - 80px) !important;
-    max-height: calc(100vh - 165px) !important;
-  }
+/* Ensure picture element doesn't constrain */
+.carouselImageWrapper img {
+  max-width: calc(100vw - 80px) !important;
+  max-height: calc(100vh - 165px) !important;
 }
 
 /* Dots at bottom of carousel */
 .carouselDots {
   position: absolute;
-  bottom: 30px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
