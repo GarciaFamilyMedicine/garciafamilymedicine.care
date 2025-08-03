@@ -12,7 +12,13 @@
       "Bash(taskkill:*)",
       "Bash(cmd /c:*)",
       "WebFetch(domain:www.carecredit.com)",
-      "WebFetch(domain:www.withcherry.com)"
+      "WebFetch(domain:www.withcherry.com)",
+      "Bash(powershell:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run lint)",
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

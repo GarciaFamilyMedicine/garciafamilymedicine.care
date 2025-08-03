@@ -64,15 +64,15 @@
 /* MOBILE GRID MENU - UNIFORM DESIGN -------------------- */
 .mobileGridMenu {
   position: fixed;
-  top: 0;
+  top: 85px; /* Below header */
   left: 0;
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, #1d539f 0%, #275cab 50%, #5e8fbc 100%);
-  z-index: 2000;
+  z-index: 999; /* Below header elements */
   display: none;
   flex-direction: column;
-  padding: 100px 20px 40px;
+  padding: 20px 20px 40px;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;

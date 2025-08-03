@@ -102,7 +102,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setPreviousIndex(currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
-    }, isMobile ? 3000 : 15000); // 3 seconds on mobile for marquee effect
+    }, isMobile ? 8000 : 15000); // 8 seconds on mobile for slower marquee effect
     
     return () => clearInterval(interval);
   }, [isPaused, slides.length, currentIndex, isMobile]);

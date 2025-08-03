@@ -387,6 +387,10 @@
 
 /* Mobile Carousel Styles - Marquee Effect */
 @media (max-width: 768px) {
+  /* Force full viewport height */
+  body {
+    overflow-x: hidden;
+  }
   .mobileCarousel {
     overflow: hidden;
   }
@@ -396,7 +400,7 @@
   }
   
   .mobileSlide.active {
-    animation: slideMarquee 3s ease-in-out;
+    animation: slideMarquee 8s ease-in-out;
   }
   
   .mobileDots {
@@ -443,20 +447,57 @@
     display: none;
   }
   
-  /* Optimize image display on mobile */
+  /* Full viewport height on mobile - accounting for browser chrome */
+  .carouselSection {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height */
+    min-height: -webkit-fill-available;
+    padding-top: 0;
+    position: relative;
+  }
+  
+  .carouselContainer {
+    height: 100vh;
+    height: 100dvh;
+    min-height: -webkit-fill-available;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .carouselSlide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
   .carouselImageWrapper {
-    height: 60vh;
-    min-height: 400px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   
   .carouselImage {
-    object-fit: contain;
+    object-fit: cover;
     animation: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   
-  /* Mobile slide transitions */
+  /* Mobile slide transitions - slower for better effect */
   .carouselSlide {
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1), opacity 2s ease;
   }
   
   .carouselSlide.active {
@@ -469,5 +510,19 @@
   
   .carouselSlide:not(.active):not(.prev) {
     transform: translateX(100%);
+  }
+  
+  /* Ensure dots are visible at bottom */
+  .carouselDots {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+  }
+  
+  /* Hide navigation controls on mobile */
+  .carouselNavButton {
+    display: none !important;
   }
 }
