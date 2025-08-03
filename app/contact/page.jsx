@@ -10,6 +10,7 @@ export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isOfficeOpen, setIsOfficeOpen] = useState(false);
+  const [activeMethod, setActiveMethod] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -59,14 +60,14 @@ export default function Contact() {
                     {isOfficeOpen ? 'Office Open' : 'Office Closed'}
                   </span>
                 </div>
-                <h1 className={`${styles.heroTitle} hero-title`}>Get in Touch</h1>
+                <h1 className={`${styles.heroTitle} hero-title`}>We're Here to Help</h1>
                 <p className={`${styles.heroSubtitle} hero-subtitle`}>
-                  Your health is our priority. Reach out through your preferred method of communication.
+                  Connect with our caring team for appointments, questions, or urgent health concerns
                 </p>
                 
                 {/* Quick Contact Cards */}
                 <div className={styles.quickContactGrid}>
-                  <a href="tel:+18164275320" className={styles.quickContactCard}>
+                  <a href="tel:+18164275320" className={`${styles.quickContactCard} ${styles.phoneCard}`}>
                     <div className={styles.cardIcon}>
                       <FaPhone />
                     </div>
@@ -76,7 +77,7 @@ export default function Contact() {
                     </div>
                   </a>
                   
-                  <a href="sms:+18167082719" className={styles.quickContactCard}>
+                  <a href="sms:+18167082719" className={`${styles.quickContactCard} ${styles.textCard}`}>
                     <div className={styles.cardIcon}>
                       <FaSms />
                     </div>
@@ -86,7 +87,7 @@ export default function Contact() {
                     </div>
                   </a>
                   
-                  <a href="mailto:admin@garciafamilymedicine.care" className={styles.quickContactCard}>
+                  <a href="mailto:admin@garciafamilymedicine.care" className={`${styles.quickContactCard} ${styles.emailCard}`}>
                     <div className={styles.cardIcon}>
                       <FaEnvelope />
                     </div>
@@ -111,9 +112,31 @@ export default function Contact() {
               </div>
             </div>
             
+            {/* Featured Message */}
+            <div className={styles.featuredMessage}>
+              <div className={styles.messageContent}>
+                <h2>Compassionate Care, Just a Call Away</h2>
+                <p>Whether you're a new patient or returning for care, we're committed to providing personalized attention and comprehensive healthcare solutions tailored to your needs.</p>
+              </div>
+              <div className={styles.messageStats}>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>15+</span>
+                  <span className={styles.statLabel}>Years of Service</span>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>5,000+</span>
+                  <span className={styles.statLabel}>Happy Patients</span>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>24hr</span>
+                  <span className={styles.statLabel}>Response Time</span>
+                </div>
+              </div>
+            </div>
+            
             {/* Main Contact Grid */}
             <div className={styles.premiumGrid}>
-              <ContactDetails isOfficeOpen={isOfficeOpen} />
+              <ContactDetails isOfficeOpen={isOfficeOpen} activeMethod={activeMethod} setActiveMethod={setActiveMethod} />
               <OfficeHours currentTime={currentTime} isOfficeOpen={isOfficeOpen} />
             </div>
             
@@ -169,7 +192,7 @@ export default function Contact() {
   );
 }
 
-const ContactDetails = ({ isOfficeOpen }) => (
+const ContactDetails = ({ isOfficeOpen, activeMethod, setActiveMethod }) => (
   <div className={styles.contactDetailsCard}>
     <div className={styles.cardHeader}>
       <h2>Contact Methods</h2>
@@ -179,7 +202,10 @@ const ContactDetails = ({ isOfficeOpen }) => (
     </div>
     
     <div className={styles.contactMethods}>
-      <div className={styles.contactMethod}>
+      <div 
+        className={`${styles.contactMethod} ${activeMethod === 'phone' ? styles.activeMethod : ''}`}
+        onMouseEnter={() => setActiveMethod('phone')}
+        onMouseLeave={() => setActiveMethod(null)}>
         <div className={styles.methodIcon}>
           <FaPhone />
         </div>
@@ -192,7 +218,10 @@ const ContactDetails = ({ isOfficeOpen }) => (
         </div>
       </div>
       
-      <div className={styles.contactMethod}>
+      <div 
+        className={`${styles.contactMethod} ${activeMethod === 'text' ? styles.activeMethod : ''}`}
+        onMouseEnter={() => setActiveMethod('text')}
+        onMouseLeave={() => setActiveMethod(null)}>
         <div className={styles.methodIcon}>
           <FaSms />
         </div>
@@ -205,7 +234,10 @@ const ContactDetails = ({ isOfficeOpen }) => (
         </div>
       </div>
       
-      <div className={styles.contactMethod}>
+      <div 
+        className={`${styles.contactMethod} ${activeMethod === 'email' ? styles.activeMethod : ''}`}
+        onMouseEnter={() => setActiveMethod('email')}
+        onMouseLeave={() => setActiveMethod(null)}>
         <div className={styles.methodIcon}>
           <FaEnvelope />
         </div>
@@ -218,7 +250,10 @@ const ContactDetails = ({ isOfficeOpen }) => (
         </div>
       </div>
       
-      <div className={styles.contactMethod}>
+      <div 
+        className={`${styles.contactMethod} ${activeMethod === 'fax' ? styles.activeMethod : ''}`}
+        onMouseEnter={() => setActiveMethod('fax')}
+        onMouseLeave={() => setActiveMethod(null)}>
         <div className={styles.methodIcon}>
           <FaFax />
         </div>
@@ -286,7 +321,7 @@ const LocationSection = () => (
     <div className={styles.locationGrid}>
       <div className={styles.mapContainer}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3090.7851234567!2d-94.2812345!3d39.0523456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e4d8b1234567%3A0x1234567890abcdef!2s801%20NW%20St%20Mary%20Dr%20Suite%20209%2C%20Blue%20Springs%2C%20MO%2064014!5e0!3m2!1sen!2sus!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3095.094238649899!2d-94.26487602347815!3d39.12746523673208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0e0d9abcdef01%3A0x3456789012345678!2s801%20NW%20St%20Mary%20Dr%20Suite%20209%2C%20Blue%20Springs%2C%20MO%2064014!5e0!3m2!1sen!2sus!4v1701234567890!5m2!1sen!2sus"
           width="100%"
           height="100%"
           style={{ border: 0 }}
