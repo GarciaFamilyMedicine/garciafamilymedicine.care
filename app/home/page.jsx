@@ -72,6 +72,9 @@ export default function Home() {
   const [isPaused, setIsPaused] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedImages, setLoadedImages] = useState(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   // Handle image loading
   const handleImageLoad = useCallback((index) => {
@@ -82,17 +85,27 @@ export default function Home() {
     });
   }, []);
 
-  // Auto-rotation with pause control
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Auto-rotation with pause control (faster on mobile for marquee effect)
   useEffect(() => {
     if (isPaused) return;
     
     const interval = setInterval(() => {
       setPreviousIndex(currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
-    }, 15000); // 15 seconds to match the pan animation duration
+    }, isMobile ? 3000 : 15000); // 3 seconds on mobile for marquee effect
     
     return () => clearInterval(interval);
-  }, [isPaused, slides.length, currentIndex]);
+  }, [isPaused, slides.length, currentIndex, isMobile]);
 
   // Check if first image is loaded
   useEffect(() => {
@@ -123,6 +136,30 @@ export default function Home() {
     setPreviousIndex(currentIndex);
     setCurrentIndex(prev => (prev - 1 + slides.length) % slides.length);
   }, [currentIndex]);
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -225,11 +262,15 @@ export default function Home() {
           </div>
         )}
 
-        <div className={homeStyles.carouselContainer}>
+        <div 
+          className={`${homeStyles.carouselContainer} ${isMobile ? homeStyles.mobileCarousel : ''}`}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}>
           {slides.map((slide, index) => (
             <div
               key={`slide-${index}`}
-              className={`${homeStyles.carouselSlide} ${
+              className={`${homeStyles.carouselSlide} ${isMobile ? homeStyles.mobileSlide : ''} ${
                 index === currentIndex ? homeStyles.active : ''
               } ${
                 index === previousIndex ? homeStyles.prev : ''
@@ -277,7 +318,8 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - hide on mobile for cleaner marquee look */}
+        {!isMobile && (
         <button 
           className={`${homeStyles.carouselNavButton} ${homeStyles.carouselPrevButton}`}
           onClick={prevSlide}
@@ -288,7 +330,9 @@ export default function Home() {
             <path d="M15 18l-6-6 6-6"/>
           </svg>
         </button>
+        )}
         
+        {!isMobile && (
         <button 
           className={`${homeStyles.carouselNavButton} ${homeStyles.carouselNextButton}`}
           onClick={nextSlide}
@@ -299,9 +343,10 @@ export default function Home() {
             <path d="M9 18l6-6-6-6"/>
           </svg>
         </button>
+        )}
 
-        {/* Dots Navigation at Top */}
-        <div className={homeStyles.carouselDots}>
+        {/* Dots Navigation at Top - smaller on mobile */}
+        <div className={`${homeStyles.carouselDots} ${isMobile ? homeStyles.mobileDots : ''}`}>
           {slides.map((_, index) => (
             <button
               key={`dot-${index}`}

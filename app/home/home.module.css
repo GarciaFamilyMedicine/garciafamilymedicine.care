@@ -384,3 +384,90 @@
 .mainContent {
   display: contents;
 }
+
+/* Mobile Carousel Styles - Marquee Effect */
+@media (max-width: 768px) {
+  .mobileCarousel {
+    overflow: hidden;
+  }
+  
+  .mobileSlide {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mobileSlide.active {
+    animation: slideMarquee 3s ease-in-out;
+  }
+  
+  .mobileDots {
+    bottom: 20px !important;
+    top: auto !important;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobileDots .carouselDot {
+    width: 6px;
+    height: 6px;
+    margin: 0 3px;
+  }
+  
+  /* Smooth marquee animation */
+  @keyframes slideMarquee {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+  
+  /* Reduce background animations on mobile for performance */
+  .carouselSection::before,
+  .carouselSection::after {
+    animation-duration: 90s;
+  }
+  
+  .carouselContainer::before,
+  .carouselContainer::after {
+    display: none;
+  }
+  
+  /* Optimize image display on mobile */
+  .carouselImageWrapper {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .carouselImage {
+    object-fit: contain;
+    animation: none;
+  }
+  
+  /* Mobile slide transitions */
+  .carouselSlide {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+  }
+  
+  .carouselSlide.active {
+    transform: translateX(0);
+  }
+  
+  .carouselSlide.prev {
+    transform: translateX(-100%);
+  }
+  
+  .carouselSlide:not(.active):not(.prev) {
+    transform: translateX(100%);
+  }
+}
