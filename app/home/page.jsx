@@ -287,27 +287,14 @@ export default function Home() {
               >
                 <div className={homeStyles.carouselImageWrapper}>
                   <picture>
-                    <source
-                      media="(max-width: 768px)"
-                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.webp`}
-                      type="image/webp"
-                    />
-                    <source
-                      media="(max-width: 768px)"
-                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-mobile.jpg`}
-                      type="image/jpeg"
-                    />
-                    <source
-                      srcSet={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.webp`}
-                      type="image/webp"
-                    />
                     <img
-                      src={`/images/homepage/optimized/${slide.src.replace('/images/homepage/', '').replace('.png', '')}-desktop.jpg`}
+                      src={slide.src}
                       alt={slide.alt}
                       className={homeStyles.carouselImage}
                       loading={index === 0 ? 'eager' : 'lazy'}
                       onLoad={() => handleImageLoad(index)}
-                      onError={() => {
+                      onError={(e) => {
+                        console.error('Image failed to load:', slide.src);
                         handleImageLoad(index);
                       }}
                     />

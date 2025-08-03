@@ -465,30 +465,57 @@
   
   .carouselSlide {
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  
-  .carouselImageWrapper {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  
-  .carouselImage {
-    object-fit: cover;
-    animation: none;
-    height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carouselSlide a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carouselImageWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+  }
+  
+  .carouselImageWrapper::after {
+    display: none;
+  }
+  
+  .carouselImageWrapper picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .carouselImage {
+    object-fit: contain !important;
+    animation: none;
+    height: auto !important;
+    width: 100% !important;
+    max-height: 100vh !important;
+    max-width: 100vw !important;
+    display: block;
+    position: relative;
+    border-radius: 0;
   }
   
   /* Mobile slide transitions - slower for better effect */
