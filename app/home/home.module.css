@@ -387,10 +387,6 @@
 
 /* Mobile Carousel Styles - Marquee Effect */
 @media (max-width: 768px) {
-  /* Force full viewport height */
-  body {
-    overflow-x: hidden;
-  }
   .mobileCarousel {
     overflow: hidden;
   }
