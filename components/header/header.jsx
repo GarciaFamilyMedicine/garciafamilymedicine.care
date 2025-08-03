@@ -130,7 +130,7 @@ export default function Header() {
             const recentNews = getRecentPosts(3);
             const newsItems = recentNews.map((post) => ({
               label: post.title,
-              href: `/news/${post.slug}`,
+              href: `/news?post=${post.id}`,
               isNews: true,
               date: post.publishedDate,
               category: post.category

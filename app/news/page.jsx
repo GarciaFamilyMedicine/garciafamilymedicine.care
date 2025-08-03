@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import styles from './page.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
@@ -20,6 +21,9 @@ import {
 } from 'react-icons/md';
 
 export default function NewsPage() {
+  const searchParams = useSearchParams();
+  const postIdFromUrl = searchParams.get('post');
+  
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const [upcomingEventIndex, setUpcomingEventIndex] = useState(0);
@@ -35,6 +39,20 @@ export default function NewsPage() {
   const sortedPosts = [...filteredPosts].sort((a, b) => 
     new Date(b.publishedDate) - new Date(a.publishedDate)
   );
+
+  // Set initial post based on URL parameter
+  useEffect(() => {
+    if (postIdFromUrl) {
+      const postId = parseInt(postIdFromUrl);
+      const postIndex = sortedPosts.findIndex(post => post.id === postId);
+      if (postIndex !== -1) {
+        setCurrentPostIndex(postIndex);
+        // Also update the recent posts index to show the page containing this post
+        const pageIndex = Math.floor(postIndex / 5) * 5;
+        setRecentPostsIndex(pageIndex);
+      }
+    }
+  }, [postIdFromUrl, sortedPosts]);
 
   // Get the current post
   const currentPost = sortedPosts[currentPostIndex];
@@ -143,7 +161,7 @@ export default function NewsPage() {
                       <FaChevronLeft />
                     </button>
                     <span className={styles.recentPostsCounter}>
-                      {recentPostsIndex + 1}-{Math.min(recentPostsIndex + 5, sortedPosts.length)} of {sortedPosts.length}
+                      Page {Math.floor(recentPostsIndex / 5) + 1} of {Math.ceil(sortedPosts.length / 5)}
                     </span>
                     <button 
                       onClick={() => setRecentPostsIndex(Math.min(sortedPosts.length - 5, recentPostsIndex + 5))}

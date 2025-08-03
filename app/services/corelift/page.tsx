@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function CoreLift() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -62,7 +64,9 @@ export default function CoreLift() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-fuchsia-50 to-purple-100 relative overflow-hidden">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-fuchsia-50 to-purple-100 relative overflow-hidden pt-20">
       {/* 3D Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-fuchsia-300 to-pink-300 rounded-full blur-3xl animate-pulse"></div>
@@ -486,121 +490,18 @@ export default function CoreLift() {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3 className="text-xl font-bold text-center mb-4 text-gray-700">Or fill out the form below for more information:</h3>
                 </div>
-                <form className="space-y-6 mt-8">
-                  <input type="hidden" name="service" value="corelift" />
-                  <input type="hidden" name="source" value="service-page" />
-                  
-                  <div>
-                    <label htmlFor="fullName" className="block text-sm font-semibold mb-2">Full Name *</label>
-                    <input 
-                      type="text" 
-                      id="fullName" 
-                      name="fullName" 
-                      required 
-                      placeholder="Enter your full name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold mb-2">Email Address *</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      name="email" 
-                      required 
-                      placeholder="Enter your email address"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold mb-2">Phone Number *</label>
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      name="phone" 
-                      required 
-                      placeholder="(555) 123-4567"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="age" className="block text-sm font-semibold mb-2">Age Range</label>
-                    <select 
-                      id="age" 
-                      name="age"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    >
-                      <option value="">Select age range</option>
-                      <option value="18-29">18-29</option>
-                      <option value="30-39">30-39</option>
-                      <option value="40-49">40-49</option>
-                      <option value="50-59">50-59</option>
-                      <option value="60+">60+</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="primaryConcern" className="block text-sm font-semibold mb-2">Primary Concern</label>
-                    <select 
-                      id="primaryConcern" 
-                      name="primaryConcern"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    >
-                      <option value="">Select your main concern</option>
-                      <option value="urinary-incontinence">Urinary Incontinence</option>
-                      <option value="erectile-dysfunction">Erectile Dysfunction</option>
-                      <option value="pelvic-organ-prolapse">Pelvic Organ Prolapse</option>
-                      <option value="postpartum-recovery">Postpartum Recovery</option>
-                      <option value="core-weakness">Core Weakness</option>
-                      <option value="pelvic-pain">Pelvic Pain</option>
-                      <option value="general-strengthening">General Strengthening</option>
-                      <option value="other">Other/Prefer to discuss</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="timeframe" className="block text-sm font-semibold mb-2">Preferred Consultation Time</label>
-                    <select 
-                      id="timeframe" 
-                      name="timeframe"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    >
-                      <option value="">Select preferred time</option>
-                      <option value="morning">Morning (8am-12pm)</option>
-                      <option value="afternoon">Afternoon (12pm-5pm)</option>
-                      <option value="evening">Evening (5pm-7pm)</option>
-                      <option value="flexible">Flexible</option>
-                    </select>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <input 
-                      type="checkbox" 
-                      name="consent" 
-                      required 
-                      className="mt-1 mr-3 h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
-                    />
-                    <label className="text-sm text-gray-600">
-                      I consent to receive communications about CoreLift™ services via email and phone. 
-                      Message and data rates may apply.
-                    </label>
-                  </div>
-                  
-                  <button 
-                    type="submit" 
-                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+                <div className="mt-6">
+                  <iframe 
+                    src="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
+                    width="100%"
+                    height="800"
+                    frameBorder="0"
+                    style={{ border: 'none', borderRadius: '8px' }}
+                    title="Brunch & Bubbly CoreLift Experience RSVP Form"
                   >
-                    <img src="/images/rsvp-booking.png" alt="RSVP" className="w-6 h-6 opacity-80" />
-                    <span>🥂 RESERVE MY LUXURY EXPERIENCE</span>
-                  </button>
-                  
-                  <p className="text-center text-sm text-gray-500">
-                    HIPAA-compliant. Your information is secure and confidential.
-                  </p>
-                </form>
+                    Loading…
+                  </iframe>
+                </div>
               </div>
             </div>
           </div>
@@ -736,5 +637,7 @@ export default function CoreLift() {
         </section>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }

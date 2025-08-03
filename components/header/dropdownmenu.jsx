@@ -342,7 +342,7 @@ export default function DropdownMenu({
                           {displayedNews.map((post, index) => (
                             <li key={post.id || index} className={styles.compactNewsItem}>
                               <Link
-                                href={`/news/${post.slug}`}
+                                href={`/news?post=${post.id}`}
                                 className={`${styles.dropdownlink} ${styles.compactNewsLink}`}
                                 onClick={handleLinkClick}
                               >
