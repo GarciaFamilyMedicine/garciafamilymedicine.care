@@ -12,7 +12,8 @@ import {
   FaCalendarAlt, FaNewspaper, FaTags, FaChevronRight,
   FaClock, FaMapMarkerAlt, FaUsers, FaFolder,
   FaStethoscope, FaHeartbeat, FaBrain, FaBullhorn,
-  FaChartBar, FaChevronLeft, FaUser, FaCalendarDay, FaHistory
+  FaChartBar, FaChevronLeft, FaUser, FaCalendarDay, FaHistory,
+  FaChevronUp, FaChevronDown
 } from 'react-icons/fa';
 import { 
   MdHealthAndSafety, MdMedicalServices
@@ -21,6 +22,10 @@ import {
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
+  const [upcomingEventIndex, setUpcomingEventIndex] = useState(0);
+  const [pastEventIndex, setPastEventIndex] = useState(0);
+  const [recentPostsIndex, setRecentPostsIndex] = useState(0);
+  const [eventsCollapsed, setEventsCollapsed] = useState(false);
   const categories = ['All', ...getAllCategories()];
   
   const filteredPosts = selectedCategory === 'All' 
@@ -77,13 +82,20 @@ export default function NewsPage() {
     
     const past = allEvents
       .filter(event => event.date < today)
-      .sort((a, b) => b.date - a.date)
-      .slice(0, 3); // Show last 3 past events
+      .sort((a, b) => b.date - a.date);
+
+    // Combine all events with a separator
+    const allEventsWithType = [
+      ...upcoming.map(e => ({ ...e, type: 'upcoming' })),
+      ...past.map(e => ({ ...e, type: 'past' }))
+    ];
 
     return {
-      upcoming: upcoming.slice(0, 5), // Show next 5 upcoming events
+      all: allEventsWithType,
+      upcoming: upcoming,
       past: past,
-      hasEvents: upcoming.length > 0 || past.length > 0
+      hasEvents: allEventsWithType.length > 0,
+      totalCount: allEventsWithType.length
     };
   }, []);
 
@@ -122,17 +134,36 @@ export default function NewsPage() {
                   Recent Posts
                 </div>
                 <div className={styles.boxContent}>
+                  <div className={styles.recentPostsInnerNav}>
+                    <button 
+                      onClick={() => setRecentPostsIndex(Math.max(0, recentPostsIndex - 5))}
+                      disabled={recentPostsIndex === 0}
+                      className={styles.recentInnerNavBtn}
+                    >
+                      <FaChevronLeft />
+                    </button>
+                    <span className={styles.recentPostsCounter}>
+                      {recentPostsIndex + 1}-{Math.min(recentPostsIndex + 5, sortedPosts.length)} of {sortedPosts.length}
+                    </span>
+                    <button 
+                      onClick={() => setRecentPostsIndex(Math.min(sortedPosts.length - 5, recentPostsIndex + 5))}
+                      disabled={recentPostsIndex + 5 >= sortedPosts.length}
+                      className={styles.recentInnerNavBtn}
+                    >
+                      <FaChevronRight />
+                    </button>
+                  </div>
                   <div className={styles.recentPostsList}>
-                    {sortedPosts.slice(0, 5).map((post, index) => (
+                    {sortedPosts.slice(recentPostsIndex, recentPostsIndex + 5).map((post, index) => (
                       <div key={post.id} className={styles.recentPostItem}>
                         <Link 
                           href="#"
                           onClick={(e) => {
                             e.preventDefault();
-                            setCurrentPostIndex(index);
+                            setCurrentPostIndex(recentPostsIndex + index);
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
-                          className={`${styles.recentPostTitle} ${index === currentPostIndex ? styles.currentPost : ''}`}
+                          className={`${styles.recentPostTitle} ${(recentPostsIndex + index) === currentPostIndex ? styles.currentPost : ''}`}
                         >
                           {post.title}
                         </Link>
@@ -178,75 +209,137 @@ export default function NewsPage() {
 
             {/* Center Column - Main Blog Post */}
             <div className={styles.centerColumn}>
-              {/* Events Box - Upcoming & Past */}
-              <div className={styles.portalBox}>
+              {/* Events Box - Two Columns with Independent Navigation */}
+              <div className={`${styles.portalBox} ${eventsCollapsed ? styles.collapsedBox : ''}`}>
                 <div className={styles.boxHeader}>
                   <FaCalendarAlt className={styles.headerIcon} />
                   Events
+                  <button 
+                    onClick={() => setEventsCollapsed(!eventsCollapsed)}
+                    className={styles.collapseBtn}
+                  >
+                    {eventsCollapsed ? <FaChevronDown /> : <FaChevronUp />}
+                  </button>
                 </div>
+                {!eventsCollapsed && (
                 <div className={styles.boxContent}>
-                  {/* Upcoming Events Section */}
-                  {eventsData.upcoming.length > 0 && (
-                    <div className={styles.eventsSection}>
-                      <h4 className={styles.eventsSectionTitle}>
-                        <FaCalendarDay /> Upcoming Events
-                      </h4>
-                      <div className={styles.upcomingEventsGrid}>
-                        {eventsData.upcoming.map((event, index) => (
-                          <div key={index} className={styles.upcomingEventCard}>
-                            <div className={styles.eventDateBadge}>
-                              <div className={styles.eventMonth}>
-                                {event.date.toLocaleDateString('en-US', { month: 'short' })}
-                              </div>
-                              <div className={styles.eventDay}>
-                                {event.date.getDate()}
-                              </div>
-                            </div>
-                            <div className={styles.eventInfo}>
-                              {event.href ? (
-                                <Link href={event.href} className={styles.eventTitle}>
-                                  {event.name}
-                                </Link>
-                              ) : (
-                                <span className={styles.eventTitle}>{event.name}</span>
-                              )}
-                              <div className={styles.eventTime}>
-                                <FaClock /> {event.date.toLocaleDateString('en-US', { weekday: 'long' })}
-                              </div>
-                            </div>
+                  {eventsData.hasEvents ? (
+                    <div className={styles.eventsTwoColumns}>
+                      {/* Upcoming Events Column */}
+                      <div className={styles.eventColumn}>
+                        <div className={styles.eventColumnHeader}>
+                          <h4 className={styles.eventColumnTitle}>
+                            <FaCalendarDay /> Upcoming
+                          </h4>
+                          <div className={styles.eventColumnNav}>
+                            <button 
+                              onClick={() => setUpcomingEventIndex(Math.max(0, upcomingEventIndex - 2))}
+                              disabled={upcomingEventIndex === 0}
+                              className={styles.eventNavBtn}
+                            >
+                              <FaChevronLeft />
+                            </button>
+                            <button 
+                              onClick={() => setUpcomingEventIndex(Math.min(eventsData.upcoming.length - 2, upcomingEventIndex + 2))}
+                              disabled={upcomingEventIndex + 2 >= eventsData.upcoming.length}
+                              className={styles.eventNavBtn}
+                            >
+                              <FaChevronRight />
+                            </button>
                           </div>
-                        ))}
+                        </div>
+                        <div className={styles.eventColumnContent}>
+                          {eventsData.upcoming.length > 0 ? (
+                            eventsData.upcoming.slice(upcomingEventIndex, upcomingEventIndex + 2).map((event, index) => (
+                              <div key={index} className={styles.eventItem}>
+                                <div className={styles.eventItemDate}>
+                                  <div className={styles.eventItemMonth}>
+                                    {event.date.toLocaleDateString('en-US', { month: 'short' })}
+                                  </div>
+                                  <div className={styles.eventItemDay}>
+                                    {event.date.getDate()}
+                                  </div>
+                                </div>
+                                <div className={styles.eventItemInfo}>
+                                  {event.href ? (
+                                    <Link href={event.href} className={styles.eventItemTitle}>
+                                      {event.name}
+                                    </Link>
+                                  ) : (
+                                    <span className={styles.eventItemTitle}>{event.name}</span>
+                                  )}
+                                  <div className={styles.eventItemMeta}>
+                                    <FaClock /> {event.date.toLocaleDateString('en-US', { weekday: 'short' })}
+                                  </div>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <p className={styles.noColumnEvents}>No upcoming events</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Past Events Column */}
+                      <div className={styles.eventColumn}>
+                        <div className={styles.eventColumnHeader}>
+                          <h4 className={styles.eventColumnTitle}>
+                            <FaHistory /> Past Highlights
+                          </h4>
+                          <div className={styles.eventColumnNav}>
+                            <button 
+                              onClick={() => setPastEventIndex(Math.max(0, pastEventIndex - 2))}
+                              disabled={pastEventIndex === 0}
+                              className={styles.eventNavBtn}
+                            >
+                              <FaChevronLeft />
+                            </button>
+                            <button 
+                              onClick={() => setPastEventIndex(Math.min(eventsData.past.length - 2, pastEventIndex + 2))}
+                              disabled={pastEventIndex + 2 >= eventsData.past.length}
+                              className={styles.eventNavBtn}
+                            >
+                              <FaChevronRight />
+                            </button>
+                          </div>
+                        </div>
+                        <div className={styles.eventColumnContent}>
+                          {eventsData.past.length > 0 ? (
+                            eventsData.past.slice(pastEventIndex, pastEventIndex + 2).map((event, index) => (
+                              <div key={index} className={`${styles.eventItem} ${styles.pastEventItem}`}>
+                                <div className={styles.eventItemDate}>
+                                  <div className={styles.eventItemMonth}>
+                                    {event.date.toLocaleDateString('en-US', { month: 'short' })}
+                                  </div>
+                                  <div className={styles.eventItemDay}>
+                                    {event.date.getDate()}
+                                  </div>
+                                </div>
+                                <div className={styles.eventItemInfo}>
+                                  {event.href ? (
+                                    <Link href={event.href} className={styles.eventItemTitle}>
+                                      {event.name}
+                                    </Link>
+                                  ) : (
+                                    <span className={styles.eventItemTitle}>{event.name}</span>
+                                  )}
+                                  <div className={styles.eventItemMeta}>
+                                    {event.formattedDate}
+                                  </div>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <p className={styles.noColumnEvents}>No past events</p>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  )}
-                  
-                  {/* Past Events Section */}
-                  {eventsData.past.length > 0 && (
-                    <div className={styles.eventsSection}>
-                      <h4 className={styles.eventsSectionTitle}>
-                        <FaHistory /> Recent Past Events
-                      </h4>
-                      <div className={styles.pastEventsList}>
-                        {eventsData.past.map((event, index) => (
-                          <div key={index} className={styles.pastEventItem}>
-                            {event.href ? (
-                              <Link href={event.href} className={styles.pastEventTitle}>
-                                {event.name}
-                              </Link>
-                            ) : (
-                              <span className={styles.pastEventTitle}>{event.name}</span>
-                            )}
-                            <span className={styles.pastEventDate}>{event.formattedDate}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {!eventsData.hasEvents && (
+                  ) : (
                     <p className={styles.noEvents}>No events to display at this time.</p>
                   )}
                 </div>
+                )}
               </div>
 
               {/* Main Blog Post */}
@@ -268,6 +361,14 @@ export default function NewsPage() {
                         </span>
                       </div>
                     </header>
+
+                    {/* Featured Image Placeholder */}
+                    <div 
+                      className={styles.featuredImagePlaceholder}
+                      data-image="News & Events Portal Launch Announcement"
+                    >
+                      <span>Featured Image: {currentPost.title}</span>
+                    </div>
 
                     {/* Post Content */}
                     <div className={styles.postBody}>

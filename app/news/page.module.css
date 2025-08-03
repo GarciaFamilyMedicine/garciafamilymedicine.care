@@ -31,10 +31,13 @@
 /* Portal Header - Compact & Elegant */
 .portalHeader {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
-  padding: 20px 30px;
-  margin-bottom: 25px;
+  padding: 8px 20px;
+  margin: 15px 20px 20px;
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .portalHeader::before {
@@ -55,54 +58,25 @@
 
 .portalHeader h1 {
   margin: 0;
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: #ffffff;
   font-family: 'Sumana', serif;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.5px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
 }
 
 .portalHeader h1::after {
   content: '📰';
-  font-size: 20px;
+  font-size: 14px;
   opacity: 0.8;
 }
 
 .portalNav {
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 15px;
-}
-
-.portalNav a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.portalNav a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-.portalNav a svg {
-  font-size: 12px;
+  display: none; /* Remove navigation buttons */
 }
 
 /* Portal Layout */
@@ -117,7 +91,7 @@
 .portalBox {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
-  margin-bottom: 25px;
+  margin-bottom: 18px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -132,23 +106,69 @@
   background: linear-gradient(135deg, #275cab 0%, #1d539f 100%);
   color: #ffffff;
   font-weight: 600;
-  font-size: 15px;
-  padding: 16px 20px;
+  font-size: 12px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  gap: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .headerIcon {
-  font-size: 18px;
+  font-size: 12px;
   opacity: 0.9;
 }
 
 .boxContent {
-  padding: 20px;
+  padding: 16px;
   background: #ffffff;
   color: #333333;
+}
+
+/* Recent Posts Inner Navigation */
+.recentPostsInnerNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.recentInnerNavBtn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recentInnerNavBtn:hover:not(:disabled) {
+  background: #275cab;
+  color: #ffffff;
+  border-color: #275cab;
+}
+
+.recentInnerNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.recentInnerNavBtn svg {
+  font-size: 10px;
+}
+
+.recentPostsCounter {
+  font-size: 11px;
+  color: #6c757d;
+  font-weight: 500;
 }
 
 /* Category List - Improved */
@@ -159,21 +179,21 @@
 }
 
 .categoryList li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .categoryList button {
   background: #f8f9fa;
-  border: 2px solid #e9ecef;
+  border: 1px solid #e9ecef;
   color: #495057;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
-  padding: 12px 16px;
+  padding: 8px 12px;
   text-align: left;
   width: 100%;
   transition: all 0.2s;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,9 +222,9 @@
 
 .categoryCount {
   background: rgba(0, 0, 0, 0.08);
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
   font-weight: 600;
   color: #6c757d;
 }
@@ -218,55 +238,103 @@
 .statsList {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 }
 
 .statItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 18px;
+  padding: 8px 12px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #e9ecef;
   transition: all 0.2s;
+  text-decoration: none;
+  color: #495057;
 }
 
 .statItem:hover {
   background: #ffffff;
-  border-color: #dee2e6;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-color: #275cab;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateX(2px);
 }
 
 .statLabel {
-  font-size: 14px;
-  color: #6c757d;
+  font-size: 12px;
+  color: inherit;
   font-weight: 500;
 }
 
 .statValue {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: #275cab;
+  background: rgba(39, 92, 171, 0.08);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Collapse Button */
+.collapseBtn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: auto;
+}
+
+.collapseBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.collapseBtn svg {
+  font-size: 10px;
+}
+
+.collapsedBox {
+  margin-bottom: 12px;
+}
+
+.collapsedBox .boxHeader {
+  border-bottom: none;
+  border-radius: 12px;
 }
 
 /* Main Blog Post Display */
 .blogPostMain {
   padding: 30px;
+  background: linear-gradient(to bottom, #ffffff, #fafafa);
 }
 
 /* Post Header */
 .postHeader {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, rgba(39, 92, 171, 0.2), rgba(39, 92, 171, 0.8), rgba(39, 92, 171, 0.2)) 1;
+  position: relative;
 }
 
 .postTitle {
   margin: 0 0 20px 0;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   font-family: 'Sumana', serif;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #275cab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
   color: #1a1a1a;
 }
@@ -275,20 +343,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  font-size: 14px;
+  font-size: 13px;
   color: #6c757d;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
+  background: rgba(39, 92, 171, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(39, 92, 171, 0.1);
+  transition: all 0.2s;
   gap: 6px;
   font-weight: 500;
 }
 
+.metaItem:hover {
+  background: rgba(39, 92, 171, 0.1);
+  border-color: rgba(39, 92, 171, 0.2);
+}
+
 .metaItem svg {
-  font-size: 16px;
-  opacity: 0.7;
+  font-size: 13px;
+  opacity: 0.8;
+  color: #275cab;
 }
 
 /* Post Body */
@@ -298,8 +379,40 @@
 
 .postContentFull {
   font-size: 17px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #2c3e50;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* IMAGE NEEDED: Featured image for each blog post */
+.featuredImagePlaceholder {
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #6c757d;
+  font-weight: 600;
+  border: 2px dashed #dee2e6;
+  position: relative;
+  overflow: hidden;
+}
+
+.featuredImagePlaceholder::after {
+  content: 'IMAGE NEEDED: ' attr(data-image);
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .postContentFull p {
@@ -324,6 +437,32 @@
 
 .postContentFull h4 {
   font-size: 18px;
+}
+
+/* Premium Hyperlinks */
+.postContentFull a {
+  color: #275cab;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.postContentFull a:hover {
+  color: #1d539f;
+  border-bottom-color: #275cab;
+}
+
+.postContentFull a::after {
+  content: ' →';
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.postContentFull a:hover::after {
+  opacity: 1;
 }
 
 .postContentFull ul,
@@ -418,19 +557,333 @@
   border-radius: 4px;
 }
 
-/* Upcoming Events Grid */
+/* Events Two Column Layout */
+.eventsTwoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.eventColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eventColumnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.eventColumnTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.eventColumnTitle svg {
+  font-size: 11px;
+  color: #275cab;
+}
+
+.eventColumnNav {
+  display: flex;
+  gap: 4px;
+}
+
+.eventNavBtn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eventNavBtn:hover:not(:disabled) {
+  background: #275cab;
+  color: #ffffff;
+  border-color: #275cab;
+}
+
+.eventNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.eventNavBtn svg {
+  font-size: 9px;
+}
+
+.eventColumnContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eventItem {
+  display: flex;
+  gap: 8px;
+  padding: 6px 8px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.eventItem:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.pastEventItem {
+  opacity: 0.85;
+}
+
+.eventItemDate {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 6px;
+  text-align: center;
+  min-width: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pastEventItem .eventItemDate {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.eventItemMonth {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+
+.eventItemDay {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.eventItemInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eventItemTitle {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 2px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eventItemTitle:hover {
+  color: #275cab;
+}
+
+.eventItemMeta {
+  font-size: 10px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1;
+}
+
+.eventItemMeta svg {
+  font-size: 9px;
+}
+
+.noColumnEvents {
+  font-size: 11px;
+  color: #6c757d;
+  text-align: center;
+  padding: 15px 0;
+  margin: 0;
+}
+
+/* Compact Events Box */
+.portalBox:has(.eventsTwoColumns) .boxContent {
+  padding: 15px;
+}
+
+/* Old Event Navigation in Header - Remove */
+.eventNavigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  font-size: 13px;
+}
+
+.eventNavButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eventNavButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.eventNavButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.eventNavButton svg {
+  font-size: 12px;
+}
+
+.eventCounter {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Compact Events Grid - True 2x2 */
+.compactEventsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.compactEventCard {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.compactEventCard:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.compactEventCard.pastEvent {
+  opacity: 0.85;
+  background: #f0f0f0;
+}
+
+.compactEventDate {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: white;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  min-width: 50px;
+  height: fit-content;
+}
+
+.pastEvent .compactEventDate {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.compactEventMonth {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.compactEventDay {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.compactEventInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.compactEventTitle {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compactEventTitle:hover {
+  color: #275cab;
+}
+
+.compactEventType {
+  font-size: 11px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.compactEventType svg {
+  font-size: 10px;
+}
+
+/* Upcoming Events Grid - Old style (remove) */
 .upcomingEventsGrid {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .upcomingEventCard {
   display: flex;
-  gap: 16px;
-  padding: 18px;
+  gap: 12px;
+  padding: 12px;
   background: #f8f9fa;
   border: 1px solid #e9ecef;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: all 0.2s;
 }
 
@@ -444,11 +897,11 @@
 .eventDateBadge {
   background: linear-gradient(135deg, #10b981 0%, #047857 100%);
   color: white;
-  border-radius: 10px;
-  padding: 14px;
+  border-radius: 8px;
+  padding: 10px;
   text-align: center;
-  min-width: 70px;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  min-width: 60px;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
 }
 
 .eventMonth {
@@ -460,10 +913,10 @@
 }
 
 .eventDay {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 .eventInfo {
@@ -474,10 +927,11 @@
   color: #212529;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   transition: color 0.2s;
+  line-height: 1.3;
 }
 
 .eventTitle:hover {
@@ -485,11 +939,11 @@
 }
 
 .eventTime {
-  font-size: 14px;
+  font-size: 13px;
   color: #6c757d;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .eventTime svg {
@@ -570,7 +1024,7 @@
 
 /* Events Sections */
 .eventsSection {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .eventsSection:last-child {
@@ -578,14 +1032,14 @@
 }
 
 .eventsSectionTitle {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #212529;
-  margin: 0 0 15px 0;
+  margin: 0 0 12px 0;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   border-bottom: 2px solid #e9ecef;
 }
 
@@ -598,14 +1052,14 @@
 .pastEventsList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .pastEventItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
+  padding: 8px 10px;
   background: #f8f9fa;
   border-radius: 6px;
   border: 1px solid #e9ecef;
@@ -622,7 +1076,7 @@
   color: #495057;
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   flex: 1;
   margin-right: 10px;
 }
@@ -644,6 +1098,34 @@
   padding: 20px;
 }
 
+/* View All Link */
+.viewAllLink {
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.viewAllLink a {
+  color: #275cab;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.viewAllLink a:hover {
+  color: #1d539f;
+  transform: translateX(3px);
+}
+
+.viewAllLink svg {
+  font-size: 12px;
+}
+
 /* Recent Posts List */
 .recentPostsList {
   display: flex;
@@ -652,7 +1134,7 @@
 }
 
 .recentPostItem {
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid #e9ecef;
 }
 
@@ -665,7 +1147,7 @@
   color: #212529;
   text-decoration: none;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
   margin-bottom: 6px;
   transition: color 0.2s;
@@ -677,7 +1159,7 @@
 }
 
 .recentPostDate {
-  font-size: 12px;
+  font-size: 11px;
   color: #6c757d;
 }
 
@@ -813,27 +1295,16 @@
 
 @media (max-width: 768px) {
   .portalHeader {
-    padding: 15px 20px;
+    padding: 12px 15px;
+    margin: 0 15px 20px;
   }
   
   .portalHeader h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .portalHeader h1::after {
     display: none;
-  }
-  
-  .portalNav {
-    position: static;
-    transform: none;
-    margin-top: 10px;
-    justify-content: center;
-  }
-  
-  .portalNav a {
-    font-size: 12px;
-    padding: 5px 10px;
   }
   
   .portalLayout {
@@ -843,6 +1314,23 @@
   .leftColumn,
   .rightColumn {
     grid-template-columns: 1fr;
+  }
+  
+  .eventsTwoColumns {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .eventColumnHeader {
+    font-size: 13px;
+  }
+  
+  .eventItemTitle {
+    font-size: 11px;
+  }
+  
+  .eventItemMeta {
+    font-size: 10px;
   }
   
   .portalBox {

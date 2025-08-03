@@ -21,6 +21,7 @@ export default function DropdownMenu({
 }) {
   const router = useRouter();
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [newsStartIndex, setNewsStartIndex] = useState(0);
   const dropdownRef = useRef(null);
   const [dropdownStyle, setDropdownStyle] = useState({});
 
@@ -56,8 +57,8 @@ export default function DropdownMenu({
 
   // Add click handler for calendar month title
   const handleCalendarClick = () => {
-    // Navigate to events page using Next.js router
-    router.push('/events/current');
+    // Navigate to news portal page using Next.js router
+    router.push('/news');
     handleLinkClick(); // Close dropdown
   };
 
@@ -333,21 +334,60 @@ export default function DropdownMenu({
                 <ul>
                   {(() => {
                     try {
-                      const recentNews = getRecentPosts(3);
-                      return recentNews.map((post, index) => (
-                        <li key={post.id || index}>
-                          <Link
-                            href={`/news/${post.slug}`}
-                            className={styles.dropdownlink}
-                            onClick={handleLinkClick}
-                          >
-                            <div className={styles.newsItem}>
-                              <div className={styles.newsTitle}>{post.title}</div>
-                              <div className={styles.newsDate}>{formatDate(post.publishedDate)}</div>
-                            </div>
-                          </Link>
-                        </li>
-                      ));
+                      const allNews = getRecentPosts(20); // Get more posts for navigation
+                      const displayedNews = allNews.slice(newsStartIndex, newsStartIndex + 5);
+                      
+                      return (
+                        <>
+                          {displayedNews.map((post, index) => (
+                            <li key={post.id || index} className={styles.compactNewsItem}>
+                              <Link
+                                href={`/news/${post.slug}`}
+                                className={`${styles.dropdownlink} ${styles.compactNewsLink}`}
+                                onClick={handleLinkClick}
+                              >
+                                <div className={styles.newsItem}>
+                                  <div className={styles.newsTitle}>{post.title}</div>
+                                  <div className={styles.newsDate}>{formatDate(post.publishedDate)}</div>
+                                </div>
+                              </Link>
+                            </li>
+                          ))}
+                          
+                          {/* Navigation arrows for news */}
+                          {allNews.length > 5 && (
+                            <li className={styles.newsNavigation}>
+                              <button
+                                className={styles.navArrow}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setNewsStartIndex(Math.max(0, newsStartIndex - 5));
+                                }}
+                                disabled={newsStartIndex === 0}
+                                aria-label="Previous news"
+                              >
+                                ←
+                              </button>
+                              <span className={styles.navText}>
+                                Page {Math.floor(newsStartIndex / 5) + 1} of {Math.ceil(allNews.length / 5)}
+                              </span>
+                              <button
+                                className={styles.navArrow}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setNewsStartIndex(Math.min(allNews.length - 5, newsStartIndex + 5));
+                                }}
+                                disabled={newsStartIndex + 5 >= allNews.length}
+                                aria-label="Next news"
+                              >
+                                →
+                              </button>
+                            </li>
+                          )}
+                        </>
+                      );
                     } catch (error) {
                       console.warn('Error loading recent news:', error);
                       return (
@@ -428,7 +468,7 @@ export default function DropdownMenu({
               <>
                 <h3 className={styles.dropdownsectiontitle}>
                   <Link 
-                    href="/events/current" 
+                    href="/news" 
                     className={styles.sectionTitleLink}
                     onClick={handleLinkClick}
                   >
@@ -462,7 +502,7 @@ export default function DropdownMenu({
                       {processedEventsData.upcomingEvents.length > 3 && (
                         <li>
                           <Link
-                            href="/events/current"
+                            href="/news"
                             className={styles.dropdownlink}
                             onClick={handleLinkClick}
                           >
@@ -481,7 +521,7 @@ export default function DropdownMenu({
                 {/* Always show View All Events link at bottom of column */}
                 <div className={styles.columnFooterLinks}>
                   <Link
-                    href="/events/current"
+                    href="/news"
                     onClick={handleLinkClick}
                     className={styles.columnFooterLink}
                   >
