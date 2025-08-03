@@ -1,728 +1,803 @@
-/* phpBB2 Portal Style - Classic Forum Look */
-
-.main {
+/* News & Events Portal - Comprehensive Style */
+.portalMain {
   min-height: 100vh;
-  background: #e5e5e5;
-  font-family: Verdana, Arial, sans-serif;
-  padding-top: 85px; /* Account for fixed header */
+  background: linear-gradient(135deg, #2a5298 0%, #1d3f72 100%);
+  padding-top: 85px;
+  font-family: 'Argentum Sans', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  position: relative;
+}
+
+.portalMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/images/pattern.png') repeat;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.portalContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Portal Header */
 .portalHeader {
-  background: linear-gradient(to bottom, #f5f5f5 0%, #e3e3e3 100%);
-  border-bottom: 2px solid #5c7099;
-  padding: 20px 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
 }
 
-.portalContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.portalLogo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.logoIcon {
-  font-size: 48px;
-  color: #5c7099;
-}
-
-.portalTitle {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+.portalHeader h1 {
   margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Sumana', serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.5px;
 }
 
-.portalTagline {
-  font-size: 13px;
-  color: #666;
+.portalNav {
+  font-size: 15px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Portal Layout */
+.portalLayout {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  gap: 25px;
+  padding: 0 20px 40px;
+}
+
+/* Portal Boxes - Clean Design */
+.portalBox {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portalBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.boxHeader {
+  background: linear-gradient(135deg, #275cab 0%, #1d539f 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerIcon {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.boxContent {
+  padding: 20px;
+  background: #ffffff;
+  color: #333333;
+}
+
+/* Category List - Improved */
+.categoryList {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
 
-/* Quick Links Bar */
-.quickLinks {
-  display: flex;
-  gap: 2px;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
+.categoryList li {
+  margin-bottom: 10px;
 }
 
-.quickLink {
-  padding: 8px 15px;
-  background: #e9e9e9;
-  border: none;
-  border-right: 1px solid #ccc;
-  color: #5c7099;
+.categoryList button {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  color: #495057;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.2s;
+  font-size: 14px;
   cursor: pointer;
+  padding: 12px 16px;
+  text-align: left;
+  width: 100%;
+  transition: all 0.2s;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
 }
 
-.quickLink:last-child {
-  border-right: none;
+.categoryList button:hover {
+  background: #fff;
+  border-color: #275cab;
+  color: #275cab;
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(39, 92, 171, 0.1);
 }
 
-.quickLink:hover {
-  background: #5c7099;
-  color: white;
+.categoryList button.activeCategory {
+  background: #275cab;
+  border-color: #275cab;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(39, 92, 171, 0.2);
 }
 
-/* Stats Bar */
-.statsBar {
-  background: #f9f9f9;
-  border-bottom: 1px solid #ddd;
-  padding: 15px 0;
+.categoryName {
+  font-weight: inherit;
 }
 
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+.categoryCount {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6c757d;
+}
+
+.categoryList button.activeCategory .categoryCount {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Stats List - Enhanced */
+.statsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .statItem {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  padding: 16px 18px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
 }
 
-.statIcon {
-  font-size: 24px;
-  color: #5c7099;
-}
-
-.statItem > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.statNumber {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
+.statItem:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .statLabel {
-  font-size: 11px;
-  color: #666;
-  text-transform: uppercase;
-}
-
-/* Announcements */
-.announcementsSection {
-  background: white;
-  padding: 20px 0;
-  border-bottom: 2px solid #5c7099;
-}
-
-.announcementBox {
-  background: #f5f9fd;
-  border: 1px solid #d1dbe5;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.announcementHeader {
-  background: linear-gradient(to bottom, #6b85bb 0%, #5c7099 100%);
-  color: white;
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.announcementHeader h2 {
   font-size: 14px;
-  font-weight: bold;
-  margin: 0;
+  color: #6c757d;
+  font-weight: 500;
 }
 
-.announcementIcon {
+.statValue {
   font-size: 20px;
+  font-weight: 700;
+  color: #275cab;
 }
 
-.announcementContent {
-  padding: 15px;
-  font-size: 13px;
-  line-height: 1.6;
+/* Main Blog Post Display */
+.blogPostMain {
+  padding: 30px;
 }
 
-.announcementContent a {
-  color: #5c7099;
-  font-weight: bold;
+/* Post Header */
+.postHeader {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
 }
 
-/* Main Content Area */
-.mainContent {
-  padding: 20px 0;
+.postTitle {
+  margin: 0 0 20px 0;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Sumana', serif;
+  line-height: 1.2;
+  color: #1a1a1a;
 }
 
-.contentGrid {
-  display: grid;
-  grid-template-columns: 200px 1fr 250px;
-  gap: 15px;
+.postMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  color: #6c757d;
 }
 
-/* Sidebar Boxes */
-.sidebarBox {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-
-.boxHeader {
-  background: linear-gradient(to bottom, #6b85bb 0%, #5c7099 100%);
-  color: white;
-  padding: 8px 12px;
+.metaItem {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  font-weight: 500;
 }
 
-.boxHeader h3 {
-  font-size: 13px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.boxIcon {
+.metaItem svg {
   font-size: 16px;
+  opacity: 0.7;
 }
 
-.boxContent {
-  padding: 12px;
+/* Post Body */
+.postBody {
+  margin-bottom: 30px;
 }
 
-/* Category Buttons */
-.categoryButton {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 8px 10px;
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  font-size: 12px;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s;
+.postContentFull {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #2c3e50;
 }
 
-.categoryButton:hover {
-  background: #e8e8e8;
-  transform: translateX(2px);
+.postContentFull p {
+  margin: 0 0 24px 0;
 }
 
-.categoryButton.active {
-  background: #5c7099;
-  color: white;
-  border-color: #4a5a85;
+.postContentFull h2,
+.postContentFull h3,
+.postContentFull h4 {
+  color: #1a1a1a;
+  margin: 32px 0 16px 0;
+  font-weight: 600;
 }
 
-.categoryButton.active svg {
-  color: white;
+.postContentFull h2 {
+  font-size: 28px;
 }
 
-.categoryCount {
-  margin-left: auto;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 2px 6px;
-  border-radius: 10px;
-  font-size: 11px;
+.postContentFull h3 {
+  font-size: 22px;
 }
 
-/* Mini Stats */
-.miniStats {
-  font-size: 12px;
+.postContentFull h4 {
+  font-size: 18px;
 }
 
-.miniStat {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px dotted #ddd;
+.postContentFull ul,
+.postContentFull ol {
+  margin: 0 0 24px 0;
+  padding-left: 30px;
 }
 
-.miniStat:last-child {
-  border-bottom: none;
-}
-
-.miniStat span {
-  color: #666;
-}
-
-.miniStat strong {
-  color: #333;
-}
-
-/* Forum Section */
-.forumSection {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.forumHeader {
-  background: linear-gradient(to bottom, #6b85bb 0%, #5c7099 100%);
-  color: white;
-  padding: 12px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.forumTitle {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.forumTitle h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.forumIcon {
-  font-size: 20px;
-}
-
-.forumActions {
-  display: flex;
-  gap: 8px;
-}
-
-.rssButton,
-.subscribeButton {
-  padding: 5px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  font-size: 12px;
-  border-radius: 3px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.2s;
-}
-
-.rssButton:hover,
-.subscribeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Forum Table */
-.forumTable {
-  width: 100%;
-}
-
-.tableHeader {
-  display: grid;
-  grid-template-columns: 1fr 120px 60px 60px 140px;
-  background: #f0f0f0;
-  border-bottom: 2px solid #5c7099;
-  font-size: 11px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.tableHeader > div {
-  padding: 10px;
-  color: #333;
-}
-
-.thTopic {
-  padding-left: 50px !important;
-}
-
-.thAuthor,
-.thStats,
-.thLastPost {
-  text-align: center;
-}
-
-/* Forum Rows */
-.forumRow {
-  display: grid;
-  grid-template-columns: 1fr 120px 60px 60px 140px;
-  border-bottom: 1px solid #e5e5e5;
-  transition: background 0.2s;
-}
-
-.forumRow:hover {
-  background: #f5f5f5;
-}
-
-.topicCell {
-  display: flex;
-  gap: 10px;
-  padding: 12px 10px;
-  align-items: flex-start;
-}
-
-.topicIcon {
-  font-size: 20px;
-  color: #5c7099;
-  margin-top: 2px;
-}
-
-.topicContent {
-  flex: 1;
-}
-
-.topicTitle {
-  font-size: 13px;
-  font-weight: bold;
-  color: #115098;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.topicTitle:hover {
-  color: #d31141;
-  text-decoration: underline;
-}
-
-.stickyLabel {
-  color: #d31141;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.topicMeta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  color: #666;
-}
-
-.categoryTag {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: #f0f0f0;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-.categoryTag svg {
-  font-size: 12px;
-}
-
-.excerpt {
-  flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.authorCell,
-.statsCell,
-.lastPostCell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 10px;
-  font-size: 12px;
-}
-
-.authorCell {
-  gap: 5px;
-  color: #666;
-}
-
-.statsCell {
-  font-weight: bold;
-  color: #333;
-}
-
-.lastPostInfo {
-  text-align: center;
-  font-size: 11px;
-}
-
-.lastPostDate {
-  display: block;
-  color: #333;
-  font-weight: bold;
-}
-
-.lastPostBy {
-  display: block;
-  color: #666;
-  margin-top: 2px;
-}
-
-/* Forum Footer */
-.forumFooter {
-  background: #f0f0f0;
-  padding: 12px 15px;
-  border-top: 1px solid #ddd;
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.pageButton {
-  padding: 5px 12px;
-  background: white;
-  border: 1px solid #ccc;
-  color: #5c7099;
-  font-size: 12px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.pageButton:hover {
-  background: #5c7099;
-  color: white;
-  border-color: #4a5a85;
-}
-
-.pageNumbers {
-  display: flex;
-  gap: 5px;
-}
-
-.pageNumber {
-  width: 30px;
-  height: 30px;
-  background: white;
-  border: 1px solid #ccc;
-  color: #5c7099;
-  font-size: 12px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.pageNumber:hover {
-  background: #5c7099;
-  color: white;
-  border-color: #4a5a85;
-}
-
-.pageNumber.active {
-  background: #5c7099;
-  color: white;
-  border-color: #4a5a85;
-}
-
-/* Right Sidebar */
-.eventsList {
-  font-size: 12px;
-}
-
-.eventItem {
-  padding: 8px 0;
-  border-bottom: 1px dotted #ddd;
-}
-
-.eventItem:last-child {
-  border-bottom: none;
-}
-
-.eventDate {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #666;
-  font-size: 11px;
-  margin-bottom: 2px;
-}
-
-.eventDate svg {
-  font-size: 12px;
-  color: #5c7099;
-}
-
-.eventName {
-  color: #115098;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-}
-
-.eventName:hover {
-  color: #d31141;
-  text-decoration: underline;
-}
-
-.viewAllLink {
-  display: block;
-  text-align: center;
-  padding: 8px;
-  background: #f0f0f0;
-  color: #5c7099;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 3px;
-  margin-top: 10px;
-}
-
-.viewAllLink:hover {
-  background: #5c7099;
-  color: white;
-}
-
-/* Who's Online */
-.onlineUsers {
-  font-size: 12px;
-}
-
-.onlineCount {
-  text-align: center;
+.postContentFull li {
   margin-bottom: 10px;
-  color: #333;
+  line-height: 1.8;
 }
 
-.userTypes {
+.postContentFull strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.postContentFull a {
+  color: #275cab;
+  text-decoration: underline;
+}
+
+.postContentFull a:hover {
+  color: #1d539f;
+}
+
+.postContentFull blockquote {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-left: 4px solid #275cab;
+  font-style: italic;
+}
+
+/* Post Navigation */
+.postNavigation {
   display: flex;
-  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 2px solid #e9ecef;
+  margin-top: 40px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #275cab;
+  color: #ffffff;
+  border-color: #275cab;
+  transform: translateY(-2px);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.navButton:disabled:hover {
+  background: #f8f9fa;
+  color: #495057;
+  transform: none;
+}
+
+.postCounter {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+/* Current Post Highlight in Recent Posts */
+.currentPost {
+  color: #275cab !important;
+  font-weight: 700 !important;
+  background: rgba(39, 92, 171, 0.1);
+  padding: 2px 8px;
+  margin-left: -8px;
+  border-radius: 4px;
+}
+
+/* Upcoming Events Grid */
+.upcomingEventsGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.upcomingEventCard {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.upcomingEventCard:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  transform: translateX(3px);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.eventDateBadge {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: white;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  min-width: 70px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.eventMonth {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+}
+
+.eventDay {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.eventInfo {
+  flex: 1;
+}
+
+.eventTitle {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+
+.eventTitle:hover {
+  color: #275cab;
+}
+
+.eventTime {
+  font-size: 14px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eventTime svg {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Articles List - Clean Design */
+.articlesList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.articleItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.articleItem:hover {
+  background: #ffffff;
+  transform: translateX(3px);
+  border-color: #dee2e6;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.articleIcon {
+  font-size: 22px;
+  color: #275cab;
+  opacity: 0.7;
+  width: 36px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.userType {
+.articleContent {
+  flex: 1;
+}
+
+.articleTitle {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+
+.articleTitle:hover {
+  color: #275cab;
+}
+
+.articleMeta {
+  font-size: 13px;
+  color: #6c757d;
   display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: #666;
+  gap: 12px;
 }
 
-.adminDot,
-.memberDot,
-.guestDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.articleCategory {
+  color: #275cab;
+  font-weight: 600;
 }
 
-.adminDot {
-  background: #d31141;
+.articleArrow {
+  font-size: 16px;
+  color: #dee2e6;
 }
 
-.memberDot {
-  background: #5c7099;
-}
-
-.guestDot {
-  background: #999;
-}
-
-/* Forum Legend */
-.forumLegend {
-  background: #f0f0f0;
-  border-top: 2px solid #5c7099;
-  padding: 15px 0;
-  margin-top: 20px;
-}
-
-.legendContent {
+/* Recent Posts List */
+.recentPostsList {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 0;
+}
+
+.recentPostItem {
+  padding: 14px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.recentPostItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.recentPostTitle {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+  line-height: 1.5;
+}
+
+.recentPostTitle:hover {
+  color: #275cab;
+}
+
+.recentPostDate {
   font-size: 12px;
+  color: #6c757d;
 }
 
-.legendContent h4 {
-  margin: 0;
-  font-size: 12px;
-  color: #333;
+/* Calendar Container - Clean & Visible */
+.calendarContainer {
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
 }
 
-.legendItems {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+/* Force calendar visibility */
+.calendarContainer * {
+  color: #212529 !important;
 }
 
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #666;
+/* Calendar header */
+.calendarContainer div[class*="calendarHeader"] {
+  color: #212529 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
 }
 
-.legendItem svg {
-  color: #5c7099;
+/* Navigation buttons */
+.calendarContainer button[class*="navButton"] {
+  color: #275cab !important;
+  background: none !important;
+  border: none !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  padding: 4px 8px !important;
+  transition: opacity 0.2s !important;
 }
 
-/* Mobile Responsive */
+.calendarContainer button[class*="navButton"]:hover:not(:disabled) {
+  color: #1d539f !important;
+}
+
+.calendarContainer button[class*="navButton"]:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+
+/* Calendar grid */
+.calendarContainer div[class*="calendarGrid"] {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+
+/* Weekday labels */
+.calendarContainer div[class*="weekday"] {
+  color: #6c757d !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  padding: 6px 2px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* All calendar days */
+.calendarContainer div[class*="calendarDay"] {
+  background: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  color: #212529 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  min-height: 34px !important;
+  line-height: 34px !important;
+  text-align: center !important;
+  border-radius: 6px !important;
+  transition: all 0.2s !important;
+  cursor: pointer !important;
+}
+
+.calendarContainer div[class*="calendarDay"]:hover {
+  background: #f8f9fa !important;
+  border-color: #275cab !important;
+  color: #275cab !important;
+}
+
+/* Event days */
+.calendarContainer div[class*="eventDay"] {
+  background: #e7f5ff !important;
+  color: #275cab !important;
+  font-weight: 600 !important;
+  border-color: #a5d8ff !important;
+}
+
+.calendarContainer div[class*="eventDay"]:hover {
+  background: #d0ebff !important;
+  border-color: #74c0fc !important;
+}
+
+/* Today's date */
+.calendarContainer div[class*="today"] {
+  background: #fff5f5 !important;
+  border: 2px solid #ff6b6b !important;
+  font-weight: 700 !important;
+  color: #c92a2a !important;
+}
+
+/* Links within calendar */
+.calendarContainer a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .portalLayout {
+    grid-template-columns: 200px 1fr 280px;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 1024px) {
-  .contentGrid {
+  .portalLayout {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   
-  .leftSidebar,
-  .rightSidebar {
-    display: none;
-  }
-  
-  .tableHeader,
-  .forumRow {
-    grid-template-columns: 1fr;
-  }
-  
-  .tableHeader > div:not(.thTopic),
-  .forumRow > div:not(.topicCell) {
-    display: none;
-  }
-  
-  .topicMeta {
-    flex-wrap: wrap;
+  .leftColumn,
+  .rightColumn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .portalLogo {
-    flex-direction: column;
-    text-align: center;
+  .portalHeader h1 {
+    font-size: 20px;
   }
   
-  .quickLinks {
-    flex-wrap: wrap;
+  .portalLayout {
+    padding: 0 15px 30px;
   }
   
-  .statsGrid {
-    grid-template-columns: 1fr 1fr;
+  .leftColumn,
+  .rightColumn {
+    grid-template-columns: 1fr;
   }
   
-  .forumTitle h2 {
-    font-size: 14px;
+  .portalBox {
+    margin-bottom: 20px;
   }
   
-  .forumActions {
-    display: none;
+  .latestTitle {
+    font-size: 22px;
   }
+  
+  .eventDateBadge {
+    min-width: 60px;
+    padding: 12px;
+  }
+  
+  .eventDay {
+    font-size: 22px;
+  }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .portalMain {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+[data-theme="dark"] .portalBox {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .boxContent {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .categoryList button,
+[data-theme="dark"] .statItem,
+[data-theme="dark"] .articleItem,
+[data-theme="dark"] .upcomingEventCard,
+[data-theme="dark"] .calendarContainer {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .categoryList button:hover,
+[data-theme="dark"] .statItem:hover,
+[data-theme="dark"] .articleItem:hover,
+[data-theme="dark"] .upcomingEventCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .latestTitle a,
+[data-theme="dark"] .articleTitle,
+[data-theme="dark"] .eventTitle,
+[data-theme="dark"] .recentPostTitle {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .latestTitle a:hover,
+[data-theme="dark"] .articleTitle:hover,
+[data-theme="dark"] .eventTitle:hover,
+[data-theme="dark"] .recentPostTitle:hover {
+  color: #4a9eff;
+}
+
+[data-theme="dark"] .postInfo,
+[data-theme="dark"] .articleMeta,
+[data-theme="dark"] .eventTime,
+[data-theme="dark"] .recentPostDate,
+[data-theme="dark"] .statLabel {
+  color: #999999;
+}
+
+[data-theme="dark"] .categoryTag,
+[data-theme="dark"] .articleCategory,
+[data-theme="dark"] .statValue {
+  color: #4a9eff;
+}
+
+[data-theme="dark"] .postContent {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .calendarContainer {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .calendarContainer * {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .calendarContainer div[class*="calendarDay"] {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .calendarContainer div[class*="calendarDay"]:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #4a9eff !important;
+  color: #4a9eff !important;
 }
