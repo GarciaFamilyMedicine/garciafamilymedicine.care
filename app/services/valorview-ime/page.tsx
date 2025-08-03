@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer/footer';
 
 export default function ValorViewIME() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -62,7 +64,9 @@ export default function ValorViewIME() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Header />
+      <div className="min-h-screen bg-white pt-20">
       {/* Page Header */}
       <div className="bg-blue-50 py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
@@ -688,5 +692,7 @@ export default function ValorViewIME() {
         </section>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
