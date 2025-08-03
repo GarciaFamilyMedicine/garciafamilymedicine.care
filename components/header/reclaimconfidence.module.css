@@ -3,16 +3,16 @@
 ------------------------------------------------- */
 .flyoutPanel {
   position: fixed;
-  top: 0;
+  top: 85px; /* Below header */
   right: 0;
   width: 380px;
   max-width: 95vw;
-  height: 100vh;
+  height: calc(100vh - 85px); /* Account for header */
   background: #fff;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 0 12px;
   box-shadow: 0 6px 32px rgba(29,83,159,0.08), 0 1.5px 16px rgba(0,0,0,0.08);
   padding: 28px 28px 32px 28px;
-  z-index: 10000 !important;
+  z-index: 999 !important; /* Below header z-index */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -23,10 +23,13 @@
 /* Overlay for Flyout */
 .overlayBackdrop {
   position: fixed;
-  inset: 0;
+  top: 85px; /* Below header */
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0,0,0,0.45);
   backdrop-filter: blur(2px);
-  z-index: 9999 !important;
+  z-index: 998 !important; /* Below flyout panel */
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -388,10 +391,11 @@
     max-width: 100vw;
     left: 0;
     right: 0;
-    top: 0;
+    top: 85px; /* Below header on mobile too */
     border-radius: 0;
-    padding: 80px 24px 32px 24px;
-    min-height: 100vh;
+    padding: 24px 24px 32px 24px;
+    height: calc(100vh - 85px);
+    min-height: calc(100vh - 85px);
     justify-content: flex-start;
   }
 

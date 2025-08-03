@@ -387,8 +387,17 @@
 
 /* Mobile Carousel Styles - Marquee Effect */
 @media (max-width: 768px) {
+  /* Override desktop styles completely */
+  .carouselSection {
+    width: 100%;
+    height: 100vh;
+    padding-top: 0;
+    background: #000; /* Black background for letterboxing */
+  }
+  
   .mobileCarousel {
     overflow: hidden;
+    height: 100vh;
   }
   
   .mobileSlide {
@@ -443,55 +452,44 @@
     display: none;
   }
   
-  /* Full viewport height on mobile - accounting for browser chrome */
-  .carouselSection {
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height */
-    min-height: -webkit-fill-available;
-    padding-top: 0;
-    position: relative;
-  }
-  
+  /* Remove all the complex positioning */
   .carouselContainer {
     height: 100vh;
-    height: 100dvh;
-    min-height: -webkit-fill-available;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .carouselSlide {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
   .carouselSlide a {
-    height: 100%;
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
   
   .carouselImageWrapper {
-    height: 100%;
     width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    position: relative;
+    background: #000;
   }
   
   .carouselImageWrapper::after {
@@ -501,20 +499,22 @@
   .carouselImageWrapper picture {
     width: 100%;
     height: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     box-shadow: none;
+    background: transparent;
   }
   
   .carouselImage {
-    object-fit: contain !important;
-    animation: none;
+    width: auto !important;
     height: auto !important;
-    width: 100% !important;
+    max-width: 100% !important;
     max-height: 100vh !important;
-    max-width: 100vw !important;
+    object-fit: contain !important;
     display: block;
-    position: relative;
+    animation: none;
     border-radius: 0;
   }
   
