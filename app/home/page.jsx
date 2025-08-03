@@ -102,7 +102,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setPreviousIndex(currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
-    }, isMobile ? 8000 : 15000); // 8 seconds on mobile for slower marquee effect
+    }, isMobile ? 8000 : 15000); // 8 seconds on mobile to match marquee animation
     
     return () => clearInterval(interval);
   }, [isPaused, slides.length, currentIndex, isMobile]);
@@ -262,47 +262,97 @@ export default function Home() {
           </div>
         )}
 
-        <div 
-          className={`${homeStyles.carouselContainer} ${isMobile ? homeStyles.mobileCarousel : ''}`}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}>
-          {slides.map((slide, index) => (
-            <div
-              key={`slide-${index}`}
-              className={`${homeStyles.carouselSlide} ${isMobile ? homeStyles.mobileSlide : ''} ${
-                index === currentIndex ? homeStyles.active : ''
-              } ${
-                index === previousIndex ? homeStyles.prev : ''
-              } ${
-                index === (currentIndex + 1) % slides.length ? homeStyles.next : ''
-              }`}
-              aria-hidden={index !== currentIndex}
-            >
-              <a
-                href={slide.href}
-                target={slide.target}
-                rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
-                aria-label={slide.alt}
-              >
-                <div className={homeStyles.carouselImageWrapper}>
-                  <picture>
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      className={homeStyles.carouselImage}
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      onLoad={() => handleImageLoad(index)}
-                      onError={(e) => {
-                        console.error('Image failed to load:', slide.src);
-                        handleImageLoad(index);
-                      }}
-                    />
-                  </picture>
+        <div className={homeStyles.carouselContainer}>
+          {isMobile ? (
+            /* Mobile: continuous marquee with duplicated slides */
+            <div className={homeStyles.carouselTrack}>
+              {/* First set of slides */}
+              {slides.map((slide, index) => (
+                <div
+                  key={`slide-${index}`}
+                  className={homeStyles.carouselSlide}
+                >
+                  <a
+                    href={slide.href}
+                    target={slide.target}
+                    rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
+                    aria-label={slide.alt}
+                  >
+                    <div className={homeStyles.carouselImageWrapper}>
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className={homeStyles.carouselImage}
+                        loading="lazy"
+                        onLoad={() => handleImageLoad(index)}
+                      />
+                    </div>
+                  </a>
                 </div>
-              </a>
+              ))}
+              {/* Duplicate slides for seamless loop */}
+              {slides.map((slide, index) => (
+                <div
+                  key={`slide-dup-${index}`}
+                  className={homeStyles.carouselSlide}
+                >
+                  <a
+                    href={slide.href}
+                    target={slide.target}
+                    rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
+                    aria-label={slide.alt}
+                  >
+                    <div className={homeStyles.carouselImageWrapper}>
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className={homeStyles.carouselImage}
+                        loading="lazy"
+                      />
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            /* Desktop: single slide at a time */
+            slides.map((slide, index) => (
+              <div
+                key={`slide-${index}`}
+                className={`${homeStyles.carouselSlide} ${
+                  index === currentIndex ? homeStyles.active : ''
+                } ${
+                  index === previousIndex ? homeStyles.prev : ''
+                } ${
+                  index === (currentIndex + 1) % slides.length ? homeStyles.next : ''
+                }`}
+                aria-hidden={index !== currentIndex}
+              >
+                <a
+                  href={slide.href}
+                  target={slide.target}
+                  rel={slide.target === '_blank' ? 'noopener noreferrer' : undefined}
+                  aria-label={slide.alt}
+                >
+                  <div className={homeStyles.carouselImageWrapper}>
+                    <picture>
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className={homeStyles.carouselImage}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        onLoad={() => handleImageLoad(index)}
+                        onError={(e) => {
+                          console.error('Image failed to load:', slide.src);
+                          handleImageLoad(index);
+                        }}
+                      />
+                    </picture>
+                  </div>
+                </a>
+              </div>
+            ))
+          )}
         </div>
 
         {/* Navigation Arrows - hide on mobile for cleaner marquee look */}
