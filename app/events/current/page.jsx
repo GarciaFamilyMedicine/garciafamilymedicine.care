@@ -137,7 +137,7 @@ export default function CurrentEventsPage() {
                     <Link href="/contact" className={styles.quickLink}>
                       <FaUsers /> Get Event Updates
                     </Link>
-                    <Link href="/news" className={styles.quickLink}>
+                    <Link href="/events/past" className={styles.quickLink}>
                       <FaCalendarDay /> Past Highlights
                     </Link>
                   </div>
@@ -155,7 +155,7 @@ export default function CurrentEventsPage() {
                     <p>We're planning new health events and workshops. Check back soon or contact us to stay updated.</p>
                     <div className={styles.noEventsActions}>
                       <Link href="/news" className={styles.primaryButton}>
-                        View News & Past Events
+                        View News Portal
                       </Link>
                       <Link href="/contact" className={styles.secondaryButton}>
                         Get Notified

@@ -549,7 +549,7 @@ export default function DropdownMenu({
                 </div>
                 <div className={styles.calendarLinks}>
                   <Link
-                    href="/news"
+                    href="/events/past"
                     onClick={handleLinkClick}
                     className={styles.pasthighlightslink}
                   >
