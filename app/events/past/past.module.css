@@ -1,345 +1,616 @@
-/* ================ BASE LAYOUT ================ */
-.pageContainer {
-  @apply pt-[78px] min-h-screen;
-  font-family: var(--font-argentum);
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: #1f2937;
-  line-height: 1.6;
+/* Past Events Portal - Matching News Portal Style */
+.portalMain {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2a5298 0%, #1d3f72 100%);
+  padding-top: 85px;
+  font-family: 'Argentum Sans', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  position: relative;
 }
 
-.mainContent {
-  @apply max-w-[1200px] mx-auto py-8 px-6;
+.portalMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/images/pattern.png') repeat;
+  opacity: 0.03;
+  pointer-events: none;
 }
 
-/* ================ PAGE HEADER ================ */
-.pageHeader {
-  @apply text-center mb-12 pb-6;
-  border-bottom: 3px solid var(--primary-blue);
+.portalContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.pageHeader h1 {
-  font-family: var(--font-sumana);
-  @apply text-[2.5rem] font-bold mb-2;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Portal Header */
+.portalHeader {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
 }
 
-.subtitle {
-  @apply text-[1.25rem] max-w-[700px] mx-auto;
-  color: #64748b;
+.portalHeader h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Sumana', serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+}
+
+.portalNav {
+  font-size: 15px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Portal Layout */
+.portalLayout {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  gap: 25px;
+  padding: 0 20px 40px;
+}
+
+/* Portal Boxes */
+.portalBox {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portalBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.boxHeader {
+  background: linear-gradient(135deg, #275cab 0%, #1d539f 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.eventCount {
-  @apply px-3 py-1 rounded-full text-sm font-semibold;
-  background: var(--primary-blue);
-  color: white;
+.headerIcon {
+  font-size: 18px;
+  opacity: 0.9;
 }
 
-/* ================ NO EVENTS STATE ================ */
-.noEventsSection {
-  @apply py-16;
+.boxContent {
+  padding: 20px;
+  background: #ffffff;
+  color: #333333;
 }
 
-.noEventsContent {
-  @apply text-center max-w-[600px] mx-auto;
-}
-
-.noEventsIcon {
-  @apply text-[4rem] mb-6;
-  opacity: 0.6;
-}
-
-.noEventsContent h2 {
-  font-family: var(--font-sumana);
-  @apply text-[2rem] font-bold mb-4;
-  color: var(--primary-blue);
-}
-
-.noEventsContent p {
-  @apply text-[1.1rem] mb-8;
-  color: #64748b;
-}
-
-.noEventsActions {
-  @apply flex justify-center gap-4 flex-wrap;
-}
-
-/* ================ INTRO SECTION ================ */
-.introSection {
-  @apply mb-12 p-8 rounded-xl;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.introContent {
-  @apply text-center max-w-[800px] mx-auto;
-}
-
-.introContent h2 {
-  font-family: var(--font-sumana);
-  @apply text-[1.8rem] font-bold mb-4;
-  color: var(--primary-blue);
-}
-
-.introText {
-  @apply text-[1.1rem];
-  color: #475569;
-}
-
-/* ================ YEAR SECTIONS ================ */
-.yearSection {
-  @apply mb-16;
-}
-
-.yearHeader {
-  @apply flex items-center justify-between mb-8 pb-4 border-b-2 border-gray-200;
-}
-
-.yearTitle {
-  font-family: var(--font-sumana);
-  @apply text-[2rem] font-bold;
-  color: var(--primary-blue);
-}
-
-.yearStats {
-  @apply px-4 py-2 rounded-full text-sm font-semibold;
-  background: var(--primary-blue);
-  color: white;
-}
-
-/* ================ EVENTS GRID ================ */
-.eventsGrid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-}
-
-.eventCard {
-  @apply p-6 rounded-xl transition-all duration-300;
-  background: white;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+/* Stats List */
+.statsList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-.eventCard:hover {
-  @apply -translate-y-1;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-blue);
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
 }
 
-/* ================ EVENT BADGE ================ */
-.eventBadge {
-  @apply px-3 py-2 rounded-lg border flex items-center gap-2;
-  font-size: 0.75rem;
-  font-weight: 600;
+.statItem:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.badgeIcon {
-  font-size: 1rem;
+.statLabel {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 500;
 }
 
-.badgeText {
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex: 1;
+.statValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #275cab;
 }
 
-/* ================ EVENT CONTENT ================ */
-.eventContent {
-  @apply flex-1;
+/* Quick Links */
+.quickLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.eventDate {
-  @apply mb-4;
-}
-
-.dateMain {
-  @apply text-lg font-bold;
-  color: var(--primary-blue);
-}
-
-.dateFull {
-  @apply text-sm;
-  color: #64748b;
-}
-
-.eventInfo {
-  @apply space-y-2;
-}
-
-.eventTitle {
-  @apply text-lg font-bold leading-tight;
-  color: #1e293b;
-}
-
-.eventLink {
-  @apply text-inherit hover:text-blue-600 transition-colors duration-200;
+.quickLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  color: #495057;
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
-.eventLink:hover {
-  text-decoration: underline;
+.quickLink:hover {
+  background: #275cab;
+  color: #ffffff;
+  border-color: #275cab;
+  transform: translateX(3px);
 }
 
-.featuredBadge {
-  @apply inline-block px-2 py-1 rounded text-xs font-semibold;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: white;
+.quickLink svg {
+  font-size: 16px;
 }
 
-/* ================ EVENT ACTIONS ================ */
-.eventActions {
-  @apply flex gap-3 pt-4 border-t border-gray-100;
-}
-
-.viewButton {
-  @apply px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200;
-  background: var(--primary-blue);
-  color: white;
-  text-decoration: none;
-  flex: 1;
+/* Introduction Section */
+.introSection {
+  padding: 30px;
   text-align: center;
 }
 
-.viewButton:hover {
-  background: var(--hover-blue);
-  @apply -translate-y-0.5;
+.introSection h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #212529;
+  font-family: 'Sumana', serif;
+  margin-bottom: 15px;
 }
 
-.shareButton {
-  @apply px-4 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 cursor-pointer;
-  background: transparent;
-  color: var(--primary-blue);
-  border-color: var(--primary-blue);
+.introSection p {
+  font-size: 16px;
+  color: #6c757d;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.shareButton:hover {
-  background: var(--primary-blue);
-  color: white;
-  @apply -translate-y-0.5;
+/* View Toggle */
+.viewToggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
-.noLinkText {
-  @apply text-sm italic text-center;
-  color: #94a3b8;
+.viewToggle button {
+  padding: 10px 20px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  color: #495057;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.viewToggle button:hover {
+  background: #ffffff;
+  border-color: #275cab;
+}
+
+.viewToggle button.active {
+  background: #275cab;
+  color: #ffffff;
+  border-color: #275cab;
+}
+
+/* Year Sections */
+.yearSection {
+  margin-bottom: 40px;
+}
+
+.yearHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.yearHeader h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Sumana', serif;
+  margin: 0;
+}
+
+.eventCount {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+/* Events Grid */
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Event Card */
+.eventCard {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.eventCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme Badge */
+.themeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+/* Event Content */
+.eventContent {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* ================ CALL TO ACTION ================ */
-.ctaSection {
-  @apply p-12 text-center rounded-xl mt-16;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--hover-blue) 100%);
-  color: white;
+.eventTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Sumana', serif;
 }
 
-.ctaContent {
-  @apply max-w-[700px] mx-auto;
+.eventTitle a {
+  color: #212529;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.ctaContent h2 {
-  @apply text-[2rem] mb-4;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.eventTitle a:hover {
+  color: #275cab;
 }
 
-.ctaContent p {
-  @apply text-[1.1rem] mb-8 opacity-90;
+.eventMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+  color: #6c757d;
 }
 
-.ctaButtons {
-  @apply flex justify-center gap-4 flex-wrap;
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaItem svg {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.featuredBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fbbf24;
+  color: #78350f;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.viewDetails {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #275cab;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: auto;
+  transition: all 0.2s;
+}
+
+.viewDetails:hover {
+  color: #1d539f;
+  transform: translateX(3px);
+}
+
+.viewDetails svg {
+  font-size: 12px;
+}
+
+/* No Events State */
+.noEvents {
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.noEventsIcon {
+  font-size: 72px;
+  margin-bottom: 20px;
+}
+
+.noEvents h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 15px;
+  font-family: 'Sumana', serif;
+}
+
+.noEvents p {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.noEventsActions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Buttons */
+.primaryButton,
+.secondaryButton {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
 }
 
 .primaryButton {
-  @apply px-8 py-3 text-base font-semibold cursor-pointer transition-all duration-300 rounded-lg;
-  background: white;
-  color: var(--primary-blue);
-  text-decoration: none;
-  display: inline-block;
+  background: #275cab;
+  color: #ffffff;
+  border: 2px solid #275cab;
 }
 
 .primaryButton:hover {
-  background: #f8fafc;
-  @apply -translate-y-0.5;
-  box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+  background: #1d539f;
+  border-color: #1d539f;
+  transform: translateY(-2px);
 }
 
 .secondaryButton {
-  @apply px-8 py-3 text-base font-semibold cursor-pointer transition-all duration-300 border-2 rounded-lg;
   background: transparent;
-  color: white;
-  border-color: white;
-  text-decoration: none;
-  display: inline-block;
+  color: #275cab;
+  border: 2px solid #275cab;
 }
 
 .secondaryButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  @apply -translate-y-0.5;
+  background: #275cab;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
-/* ================ RESPONSIVE DESIGN ================ */
-@media (max-width: 992px) {
-  .eventsGrid {
-    @apply grid-cols-1 md:grid-cols-2;
+/* Event Highlights */
+.highlightsList {
+  text-align: center;
+}
+
+.highlightText {
+  font-size: 15px;
+  color: #495057;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.highlightStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.highlightItem {
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.highlightNumber {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #275cab;
+  margin-bottom: 5px;
+}
+
+.highlightLabel {
+  font-size: 13px;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Connect Buttons */
+.connectText {
+  font-size: 15px;
+  color: #495057;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.connectButton,
+.connectButtonSecondary {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-bottom: 10px;
+}
+
+.connectButton {
+  background: #275cab;
+  color: #ffffff;
+}
+
+.connectButton:hover {
+  background: #1d539f;
+  transform: translateY(-2px);
+}
+
+.connectButtonSecondary {
+  background: transparent;
+  color: #275cab;
+  border: 2px solid #275cab;
+}
+
+.connectButtonSecondary:hover {
+  background: #275cab;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .portalLayout {
+    grid-template-columns: 200px 1fr 280px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .portalLayout {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   
-  .yearHeader {
-    @apply flex-col items-start gap-2;
+  .leftColumn,
+  .rightColumn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .eventsGrid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .pageHeader h1 {
-    @apply text-[2rem];
+  .portalHeader h1 {
+    font-size: 20px;
   }
   
-  .subtitle {
-    @apply text-[1.1rem] flex-col gap-2;
+  .portalLayout {
+    padding: 0 15px 30px;
   }
   
-  .eventsGrid {
-    @apply grid-cols-1;
+  .leftColumn,
+  .rightColumn {
+    grid-template-columns: 1fr;
   }
   
-  .ctaButtons,
-  .noEventsActions {
-    @apply flex-col items-center;
-  }
-  
-  .eventActions {
-    @apply flex-col;
-  }
-}
-
-@media (max-width: 480px) {
-  .mainContent {
-    @apply py-6 px-4;
-  }
-  
-  .introSection, 
-  .ctaSection {
-    @apply p-8;
-  }
-  
-  .pageHeader h1 {
-    @apply text-[1.8rem];
+  .yearHeader h2 {
+    font-size: 18px;
   }
   
   .eventCard {
-    @apply p-4;
+    padding: 15px;
   }
   
-  .yearTitle {
-    @apply text-[1.5rem];
+  .highlightStats {
+    grid-template-columns: 1fr;
   }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .portalMain {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+[data-theme="dark"] .portalBox {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .boxContent {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .statItem,
+[data-theme="dark"] .quickLink,
+[data-theme="dark"] .eventCard,
+[data-theme="dark"] .viewToggle button,
+[data-theme="dark"] .highlightItem {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .eventTitle a,
+[data-theme="dark"] .yearHeader h2 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .eventMeta,
+[data-theme="dark"] .statLabel,
+[data-theme="dark"] .highlightText,
+[data-theme="dark"] .connectText {
+  color: #999999;
+}
+
+[data-theme="dark"] .viewDetails,
+[data-theme="dark"] .statValue,
+[data-theme="dark"] .highlightNumber {
+  color: #4a9eff;
 }

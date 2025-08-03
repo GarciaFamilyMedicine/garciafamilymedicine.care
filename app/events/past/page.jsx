@@ -1,233 +1,295 @@
 'use client';
 
-import { useMemo } from 'react';
-import Link from 'next/link';
+import { useState, useMemo } from 'react';
 import styles from './past.module.css';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
 import { rawEvents } from '../../../components/calendar/calendar-events';
 import { getMonthTheme } from '../../../components/calendar/monthly-themes';
+import Link from 'next/link';
+import { 
+  FaCalendarAlt, FaChevronRight, FaClock, 
+  FaHistory, FaChartBar, FaAward,
+  FaBullhorn, FaNewspaper, FaCalendarCheck
+} from 'react-icons/fa';
 
-export default function Page() {
-  // Process past events dynamically
-  const pastEventsData = useMemo(() => {
+export default function PastEventsPage() {
+  const [viewMode, setViewMode] = useState('grid'); // grid or list view
+  
+  // Process past events
+  const eventsData = useMemo(() => {
     const now = new Date();
-    const currentMonth = now.getMonth();
-    const currentYear = now.getFullYear();
-    const currentDay = now.getDate();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    // Filter for past events
-    const pastEvents = rawEvents.filter(([month, day, year]) => {
-      const eventDate = new Date(year, month - 1, day);
-      const today = new Date(currentYear, currentMonth, currentDay);
-      return eventDate < today;
-    });
-
-    // Sort past events in reverse chronological order (most recent first)
-    const sortedPastEvents = pastEvents.sort((a, b) => {
-      const dateA = new Date(a[2], a[0] - 1, a[1]);
-      const dateB = new Date(b[2], b[0] - 1, b[1]);
-      return dateB - dateA; // Reverse order
-    });
-
-    // Group events by year
-    const eventsByYear = {};
-    sortedPastEvents.forEach(([month, day, year, name, href, isUpcoming, isFeatured]) => {
-      if (!eventsByYear[year]) {
-        eventsByYear[year] = [];
-      }
-      
+    const allEvents = rawEvents.map(([month, day, year, name, href, isUpcoming, isFeatured]) => {
       const eventDate = new Date(year, month - 1, day);
       const monthTheme = getMonthTheme(month - 1);
       
-      eventsByYear[year].push({
+      return {
         name,
-        href,
+        href: href || null,
         date: eventDate,
-        month: month - 1,
-        day,
-        year,
-        isFeatured,
+        isFeatured: isFeatured || false,
         monthTheme,
         formattedDate: eventDate.toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        }),
-        shortDate: eventDate.toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'
-        })
-      });
+        }),
+        dayOfWeek: eventDate.toLocaleDateString('en-US', { weekday: 'long' }),
+        year: year
+      };
     });
 
+    const pastEvents = allEvents
+      .filter(event => event.date < today)
+      .sort((a, b) => b.date - a.date); // Most recent first
+
+    // Group events by year
+    const eventsByYear = pastEvents.reduce((acc, event) => {
+      if (!acc[event.year]) {
+        acc[event.year] = [];
+      }
+      acc[event.year].push(event);
+      return acc;
+    }, {});
+
+    // Calculate stats
+    const totalYears = Object.keys(eventsByYear).length;
+    const featuredCount = pastEvents.filter(e => e.isFeatured).length;
+
     return {
-      pastEvents: sortedPastEvents,
-      eventsByYear,
-      totalPastEvents: pastEvents.length
+      past: pastEvents,
+      byYear: eventsByYear,
+      total: pastEvents.length,
+      featured: featuredCount,
+      years: totalYears
     };
   }, []);
-
-  const { eventsByYear, totalPastEvents } = pastEventsData;
-  const yearKeys = Object.keys(eventsByYear).sort((a, b) => b - a); // Most recent year first
 
   return (
     <>
       <Header />
-      
-      <div className={styles.pageContainer}>
-        <main className={styles.mainContent}>
-          {/* ===== PAGE HEADER ===== */}
-          <div className={styles.pageHeader}>
+      <main className={styles.portalMain}>
+        <div className={styles.portalContainer}>
+          {/* Portal Header */}
+          <div className={styles.portalHeader}>
             <h1>Past Event Highlights</h1>
-            <p className={styles.subtitle}>
-              Celebrating Our Community Health Journey
-              {totalPastEvents > 0 && (
-                <span className={styles.eventCount}> • {totalPastEvents} Events</span>
-              )}
-            </p>
+            <div className={styles.portalNav}>
+              <span>Celebrating our community health journey and milestones</span>
+            </div>
           </div>
-          
-          {/* ===== MAIN CONTENT AREA ===== */}
-          <div className={styles.contentArea}>
-            {totalPastEvents === 0 ? (
-              /* ===== NO PAST EVENTS STATE ===== */
-              <section className={styles.noEventsSection}>
-                <div className={styles.noEventsContent}>
-                  <div className={styles.noEventsIcon}>📅</div>
-                  <h2>No Past Events Yet</h2>
-                  <p>
-                    We're just getting started! Check back here after our upcoming events 
-                    to see highlights and memories from our community health initiatives.
-                  </p>
-                  <div className={styles.noEventsActions}>
-                    <Link href="/events" className={styles.primaryButton}>
-                      View Upcoming Events
+
+          {/* Portal Layout */}
+          <div className={styles.portalLayout}>
+            {/* Left Column - Event Stats */}
+            <div className={styles.leftColumn}>
+              {/* Event Statistics */}
+              <div className={styles.portalBox}>
+                <div className={styles.boxHeader}>
+                  <FaChartBar className={styles.headerIcon} />
+                  Event History
+                </div>
+                <div className={styles.boxContent}>
+                  <div className={styles.statsList}>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Total Events</span>
+                      <span className={styles.statValue}>{eventsData.total}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Years Active</span>
+                      <span className={styles.statValue}>{eventsData.years}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Featured</span>
+                      <span className={styles.statValue}>{eventsData.featured}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div className={styles.portalBox}>
+                <div className={styles.boxHeader}>
+                  <FaBullhorn className={styles.headerIcon} />
+                  Quick Actions
+                </div>
+                <div className={styles.boxContent}>
+                  <div className={styles.quickLinks}>
+                    <Link href="/news" className={styles.quickLink}>
+                      <FaNewspaper /> View News Portal
                     </Link>
-                    <Link href="/" className={styles.secondaryButton}>
-                      Back to Home
+                    <Link href="/events/current" className={styles.quickLink}>
+                      <FaCalendarCheck /> Upcoming Events
+                    </Link>
+                    <Link href="/contact" className={styles.quickLink}>
+                      <FaHistory /> Share Memories
                     </Link>
                   </div>
                 </div>
-              </section>
-            ) : (
-              /* ===== PAST EVENTS BY YEAR ===== */
-              <>
-                {/* Introduction */}
-                <section className={styles.introSection}>
-                  <div className={styles.introContent}>
-                    <h2>Our Health Community Milestones</h2>
-                    <p className={styles.introText}>
-                      Take a look back at the meaningful health events, workshops, and celebrations 
-                      that have brought our community together. Each event represents our commitment 
-                      to wellness, education, and compassionate care.
-                    </p>
-                  </div>
-                </section>
+              </div>
+            </div>
 
-                {/* Events Timeline by Year */}
-                {yearKeys.map(year => (
-                  <section key={year} className={styles.yearSection}>
-                    <div className={styles.yearHeader}>
-                      <h2 className={styles.yearTitle}>{year}</h2>
-                      <div className={styles.yearStats}>
-                        {eventsByYear[year].length} event{eventsByYear[year].length !== 1 ? 's' : ''}
-                      </div>
+            {/* Center Column - Events List */}
+            <div className={styles.centerColumn}>
+              {eventsData.total === 0 ? (
+                <div className={styles.portalBox}>
+                  <div className={styles.noEvents}>
+                    <div className={styles.noEventsIcon}>📅</div>
+                    <h2>No Past Events Yet</h2>
+                    <p>We're just getting started! Check back here after our upcoming events to see highlights and memories.</p>
+                    <div className={styles.noEventsActions}>
+                      <Link href="/events/current" className={styles.primaryButton}>
+                        View Upcoming Events
+                      </Link>
+                      <Link href="/news" className={styles.secondaryButton}>
+                        Visit News Portal
+                      </Link>
                     </div>
-                    
-                    <div className={styles.eventsGrid}>
-                      {eventsByYear[year].map((event, index) => (
-                        <div key={`${event.year}-${event.month}-${event.day}-${index}`} className={styles.eventCard}>
-                          {/* Event Theme Badge */}
-                          <div 
-                            className={styles.eventBadge}
-                            style={{ 
-                              backgroundColor: `${event.monthTheme.color}15`,
-                              borderColor: event.monthTheme.color 
-                            }}
-                          >
-                            <span className={styles.badgeIcon}>{event.monthTheme.icon}</span>
-                            <span 
-                              className={styles.badgeText}
-                              style={{ color: event.monthTheme.color }}
-                            >
-                              {event.monthTheme.theme}
-                            </span>
-                          </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {/* Introduction */}
+                  <div className={styles.portalBox}>
+                    <div className={styles.introSection}>
+                      <h2>Our Health Community Milestones</h2>
+                      <p>Take a look back at the meaningful health events, workshops, and celebrations that have brought our community together.</p>
+                    </div>
+                  </div>
 
-                          {/* Event Content */}
-                          <div className={styles.eventContent}>
-                            <div className={styles.eventDate}>
-                              <div className={styles.dateMain}>{event.shortDate}</div>
-                              <div className={styles.dateFull}>{event.formattedDate}</div>
+                  {/* View Toggle */}
+                  <div className={styles.viewToggle}>
+                    <button 
+                      className={viewMode === 'grid' ? styles.active : ''}
+                      onClick={() => setViewMode('grid')}
+                    >
+                      Grid View
+                    </button>
+                    <button 
+                      className={viewMode === 'list' ? styles.active : ''}
+                      onClick={() => setViewMode('list')}
+                    >
+                      List View
+                    </button>
+                  </div>
+
+                  {/* Events by Year */}
+                  {Object.entries(eventsData.byYear)
+                    .sort(([a], [b]) => b - a) // Sort years descending
+                    .map(([year, events]) => (
+                    <div key={year} className={styles.yearSection}>
+                      <div className={styles.yearHeader}>
+                        <h2>{year}</h2>
+                        <span className={styles.eventCount}>{events.length} event{events.length !== 1 ? 's' : ''}</span>
+                      </div>
+                      
+                      <div className={viewMode === 'grid' ? styles.eventsGrid : styles.eventsList}>
+                        {events.map((event, index) => (
+                          <div key={index} className={styles.eventCard}>
+                            {/* Theme Badge */}
+                            <div 
+                              className={styles.themeBadge}
+                              style={{ 
+                                backgroundColor: `${event.monthTheme.color}20`,
+                                borderColor: event.monthTheme.color 
+                              }}
+                            >
+                              <span style={{ color: event.monthTheme.color }}>
+                                {event.monthTheme.icon}
+                              </span>
+                              <span style={{ color: event.monthTheme.color }}>
+                                {event.monthTheme.theme}
+                              </span>
                             </div>
                             
-                            <div className={styles.eventInfo}>
+                            <div className={styles.eventContent}>
                               <h3 className={styles.eventTitle}>
                                 {event.href ? (
-                                  <Link href={event.href} className={styles.eventLink}>
-                                    {event.name}
-                                  </Link>
+                                  <Link href={event.href}>{event.name}</Link>
                                 ) : (
                                   event.name
                                 )}
                               </h3>
                               
-                              {event.isFeatured && (
-                                <div className={styles.featuredBadge}>⭐ Featured Event</div>
+                              <div className={styles.eventMeta}>
+                                <span className={styles.metaItem}>
+                                  <FaCalendarAlt /> {event.formattedDate}
+                                </span>
+                                <span className={styles.metaItem}>
+                                  <FaClock /> {event.dayOfWeek}
+                                </span>
+                                {event.isFeatured && (
+                                  <span className={styles.featuredBadge}>
+                                    <FaAward /> Featured
+                                  </span>
+                                )}
+                              </div>
+                              
+                              {event.href && (
+                                <Link href={event.href} className={styles.viewDetails}>
+                                  View Details <FaChevronRight />
+                                </Link>
                               )}
                             </div>
                           </div>
-
-                          {/* Action Buttons */}
-                          <div className={styles.eventActions}>
-                            {event.href ? (
-                              <>
-                                <Link href={event.href} className={styles.viewButton}>
-                                  View Details
-                                </Link>
-                                <button className={styles.shareButton}>
-                                  Share
-                                </button>
-                              </>
-                            ) : (
-                              <div className={styles.noLinkText}>
-                                Event details coming soon
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </section>
-                ))}
+                  ))}
+                </>
+              )}
+            </div>
 
-                {/* Call to Action */}
-                <section className={styles.ctaSection}>
-                  <div className={styles.ctaContent}>
-                    <h2>Join Our Next Event</h2>
-                    <p>
-                      Don't miss out on upcoming health workshops, celebrations, and community gatherings. 
-                      Stay connected with Garcia Family Medicine for the latest events and health initiatives.
+            {/* Right Column - Highlights */}
+            <div className={styles.rightColumn}>
+              {/* Event Highlights */}
+              <div className={styles.portalBox}>
+                <div className={styles.boxHeader}>
+                  <FaAward className={styles.headerIcon} />
+                  Event Highlights
+                </div>
+                <div className={styles.boxContent}>
+                  <div className={styles.highlightsList}>
+                    <p className={styles.highlightText}>
+                      Our past events showcase our commitment to community health education and wellness.
                     </p>
-                    <div className={styles.ctaButtons}>
-                      <Link href="/events" className={styles.primaryButton}>
-                        View Upcoming Events
-                      </Link>
-                      <Link href="/contact" className={styles.secondaryButton}>
-                        Get Event Updates
-                      </Link>
+                    <div className={styles.highlightStats}>
+                      <div className={styles.highlightItem}>
+                        <span className={styles.highlightNumber}>{eventsData.total}</span>
+                        <span className={styles.highlightLabel}>Total Events</span>
+                      </div>
+                      <div className={styles.highlightItem}>
+                        <span className={styles.highlightNumber}>{eventsData.featured}</span>
+                        <span className={styles.highlightLabel}>Featured Events</span>
+                      </div>
                     </div>
                   </div>
-                </section>
-              </>
-            )}
+                </div>
+              </div>
+
+              {/* Join Future Events */}
+              <div className={styles.portalBox}>
+                <div className={styles.boxHeader}>
+                  <FaCalendarCheck className={styles.headerIcon} />
+                  Join Us Next Time
+                </div>
+                <div className={styles.boxContent}>
+                  <p className={styles.connectText}>
+                    Don't miss our upcoming health events! Get notified about future workshops and community gatherings.
+                  </p>
+                  <Link href="/events/current" className={styles.connectButton}>
+                    View Upcoming Events
+                  </Link>
+                  <Link href="/contact" className={styles.connectButtonSecondary}>
+                    Get Event Updates
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
-        </main>
-      </div>
-      
+        </div>
+      </main>
       <Footer />
     </>
   );
