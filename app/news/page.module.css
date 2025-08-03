@@ -568,6 +568,82 @@
   color: #dee2e6;
 }
 
+/* Events Sections */
+.eventsSection {
+  margin-bottom: 25px;
+}
+
+.eventsSection:last-child {
+  margin-bottom: 0;
+}
+
+.eventsSectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.eventsSectionTitle svg {
+  font-size: 14px;
+  color: #275cab;
+}
+
+/* Past Events List */
+.pastEventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pastEventItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
+}
+
+.pastEventItem:hover {
+  background: #ffffff;
+  border-color: #dee2e6;
+  transform: translateX(2px);
+}
+
+.pastEventTitle {
+  color: #495057;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.pastEventTitle:hover {
+  color: #275cab;
+}
+
+.pastEventDate {
+  font-size: 12px;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+.noEvents {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+  padding: 20px;
+}
+
 /* Recent Posts List */
 .recentPostsList {
   display: flex;
