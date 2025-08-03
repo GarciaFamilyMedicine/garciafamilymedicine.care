@@ -12,7 +12,7 @@ import {
   FaCalendarAlt, FaNewspaper, FaTags, FaChevronRight,
   FaClock, FaMapMarkerAlt, FaUsers, FaFolder,
   FaStethoscope, FaHeartbeat, FaBrain, FaBullhorn,
-  FaChartBar, FaChevronLeft, FaUser, FaCalendarDay
+  FaChartBar, FaChevronLeft, FaUser, FaCalendarDay, FaHistory
 } from 'react-icons/fa';
 import { 
   MdHealthAndSafety, MdMedicalServices
@@ -100,7 +100,12 @@ export default function NewsPage() {
           <div className={styles.portalHeader}>
             <h1>News & Events Portal</h1>
             <div className={styles.portalNav}>
-              <span>Stay informed with the latest updates from Garcia Family Medicine</span>
+              <Link href="/events/current">
+                <FaCalendarAlt /> Upcoming
+              </Link>
+              <Link href="/events/past">
+                <FaHistory /> Past Events
+              </Link>
             </div>
           </div>
 

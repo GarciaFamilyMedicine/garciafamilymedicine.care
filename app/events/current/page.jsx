@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { 
   FaCalendarAlt, FaChevronRight, FaClock, 
   FaMapMarkerAlt, FaUsers, FaChartBar,
-  FaBullhorn, FaNewspaper, FaCalendarDay
+  FaBullhorn, FaNewspaper, FaCalendarDay, FaHistory
 } from 'react-icons/fa';
 
 export default function CurrentEventsPage() {
@@ -86,7 +86,12 @@ export default function CurrentEventsPage() {
           <div className={styles.portalHeader}>
             <h1>Upcoming Events</h1>
             <div className={styles.portalNav}>
-              <span>Join us for health education events and community wellness activities</span>
+              <Link href="/news">
+                <FaNewspaper /> News Portal
+              </Link>
+              <Link href="/events/past">
+                <FaHistory /> Past Events
+              </Link>
             </div>
           </div>
 

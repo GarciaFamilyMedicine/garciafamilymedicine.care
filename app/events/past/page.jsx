@@ -76,7 +76,12 @@ export default function PastEventsPage() {
           <div className={styles.portalHeader}>
             <h1>Past Event Highlights</h1>
             <div className={styles.portalNav}>
-              <span>Celebrating our community health journey and milestones</span>
+              <Link href="/news">
+                <FaNewspaper /> News Portal
+              </Link>
+              <Link href="/events/current">
+                <FaCalendarAlt /> Upcoming
+              </Link>
             </div>
           </div>
 

@@ -28,31 +28,81 @@
   z-index: 1;
 }
 
-/* Portal Header */
+/* Portal Header - Compact & Elegant */
 .portalHeader {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  text-align: center;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+  padding: 20px 30px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portalHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
 }
 
 .portalHeader h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: #ffffff;
   font-family: 'Sumana', serif;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portalHeader h1::after {
+  content: '📰';
+  font-size: 20px;
+  opacity: 0.8;
 }
 
 .portalNav {
-  font-size: 15px;
-  margin-top: 10px;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.portalNav a {
   color: rgba(255, 255, 255, 0.8);
-  font-weight: 400;
-  letter-spacing: 0.3px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.portalNav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.portalNav a svg {
+  font-size: 12px;
 }
 
 /* Portal Layout */
@@ -686,8 +736,28 @@
 }
 
 @media (max-width: 768px) {
+  .portalHeader {
+    padding: 15px 20px;
+  }
+  
   .portalHeader h1 {
     font-size: 20px;
+  }
+  
+  .portalHeader h1::after {
+    display: none;
+  }
+  
+  .portalNav {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  
+  .portalNav a {
+    font-size: 12px;
+    padding: 5px 10px;
   }
   
   .portalLayout {
