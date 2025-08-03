@@ -242,13 +242,17 @@ export default function Header() {
   const onDropEnter = (label) => {
     if (!isMobile) {
       clearTimeout(timerRef.current);
-      setActiveDrop(label);
+      // Add delay before showing dropdown to prevent accidental triggers
+      timerRef.current = setTimeout(() => {
+        setActiveDrop(label);
+      }, 200); // 200ms delay before showing
     }
   };
   
   const onDropLeave = () => {
     if (!isMobile) {
-      timerRef.current = setTimeout(() => setActiveDrop(null), 300);
+      clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setActiveDrop(null), 100); // Faster hide
     }
   };
 

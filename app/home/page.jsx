@@ -11,12 +11,6 @@ const DEFAULT_URL = 'https://garciafamilymedicine.care/contact';
 
 const slides = [
   {
-    src: '/images/homepage/homepage-banner-01.png',
-    alt: 'CoreLift Pelvic Health Recovery - 11,000 Kegels in 28 Minutes',
-    href: 'tel:816-427-5320',
-    target: '_self'
-  },
-  {
     src: '/images/homepage/homepage-banner-02.png',
     alt: 'Mental Health Support - Compassionate Counseling',
     href: DEFAULT_URL,

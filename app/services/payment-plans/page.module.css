@@ -1,0 +1,341 @@
+.container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding-top: 85px; /* Account for fixed header */
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1d539f 0%, #2563eb 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Payment Options Section */
+.optionsSection {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.optionCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid transparent;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.optionCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--brand-color, #1d539f);
+}
+
+.optionCard.active {
+  border-color: var(--brand-color, #1d539f);
+}
+
+.cardHeader {
+  padding: 40px 30px 30px;
+  text-align: center;
+  background: linear-gradient(to bottom, #f8f9fa, white);
+}
+
+.logoWrapper {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.logoText {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--brand-color, #1d539f);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.logoText::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--brand-color, #1d539f);
+  border-radius: 2px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 500;
+}
+
+.cardBody {
+  padding: 0 30px 40px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.benefits {
+  margin-bottom: 30px;
+}
+
+.benefitsTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.checkIcon {
+  color: var(--brand-color, #10b981);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exploreButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: var(--brand-color, #1d539f);
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.optionCard:hover .exploreButton {
+  background: var(--brand-color, #1d539f);
+  filter: brightness(110%);
+  transform: translateY(-2px);
+}
+
+/* Why Choose Section */
+.whySection {
+  background: white;
+  padding: 80px 20px;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 50px;
+}
+
+.reasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reasonCard {
+  text-align: center;
+  padding: 30px;
+}
+
+.reasonIcon {
+  font-size: 3rem;
+  color: #1d539f;
+  margin-bottom: 20px;
+}
+
+.reasonCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.reasonCard p {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.ctaSection {
+  background: linear-gradient(135deg, #1d539f 0%, #2563eb 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.ctaSection h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.ctaSection p {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaButton,
+.ctaButtonOutline {
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.ctaButton {
+  background: white;
+  color: #1d539f;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+.ctaButtonOutline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.ctaButtonOutline:hover {
+  background: white;
+  color: #1d539f;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .optionsGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .reasonsGrid {
+    gap: 30px;
+  }
+  
+  .ctaSection h2 {
+    font-size: 2rem;
+  }
+  
+  .ctaSection p {
+    font-size: 1.1rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaButton,
+  .ctaButtonOutline {
+    width: 100%;
+    max-width: 300px;
+  }
+}

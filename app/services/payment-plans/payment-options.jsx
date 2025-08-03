@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaCheckCircle, FaCreditCard, FaCalculator, FaHandshake, FaPhone } from 'react-icons/fa';
-import styles from './page.module.css';
+import styles from './payment-options.module.css';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
 
@@ -14,7 +15,7 @@ export default function PaymentOptionsPage() {
     {
       id: 'carecredit',
       name: 'CareCredit',
-      logo: '/images/payment/carecredit-logo.svg',
+      logo: '/images/payment/carecredit-logo.png',
       tagline: 'Healthcare Financing Made Easy',
       description: 'CareCredit is a healthcare credit card designed for health and wellness needs.',
       benefits: [
@@ -24,16 +25,15 @@ export default function PaymentOptionsPage() {
         'Accepted at over 260,000 providers',
         'No annual fees'
       ],
-      applyUrl: 'https://www.carecredit.com/go/293VWT/',
-      learnMoreUrl: 'https://www.carecredit.com/go/293VWT/',
-      internalLink: false,
-      phoneNumber: null,
+      applyUrl: 'https://www.carecredit.com',
+      learnMoreUrl: '/services/carecredit',
+      phoneNumber: '1-800-677-0718',
       color: '#00A6FB'
     },
     {
       id: 'cherry',
       name: 'Cherry',
-      logo: '/images/payment/cherry-logo.svg',
+      logo: '/images/payment/cherry-logo.png',
       tagline: 'Patient Financing That Cares',
       description: 'Cherry offers patient-friendly payment plans with competitive rates.',
       benefits: [
@@ -69,9 +69,8 @@ export default function PaymentOptionsPage() {
         <section className={styles.optionsSection}>
           <div className={styles.optionsGrid}>
             {paymentOptions.map((option) => (
-              <Link
+              <div 
                 key={option.id}
-                href={option.applyUrl}
                 className={`${styles.optionCard} ${activeCard === option.id ? styles.active : ''}`}
                 onMouseEnter={() => setActiveCard(option.id)}
                 onMouseLeave={() => setActiveCard(null)}
@@ -80,9 +79,11 @@ export default function PaymentOptionsPage() {
                 <div className={styles.cardHeader}>
                   <div className={styles.logoWrapper}>
                     {option.logo ? (
-                      <img 
+                      <Image 
                         src={option.logo} 
                         alt={`${option.name} logo`}
+                        width={200}
+                        height={80}
                         className={styles.logo}
                       />
                     ) : (
@@ -108,13 +109,38 @@ export default function PaymentOptionsPage() {
                   </div>
                   
                   <div className={styles.cardActions}>
-                    <div className={styles.exploreButton}>
-                      <FaCalculator />
-                      Explore This Option
-                    </div>
+                    {option.internalLink ? (
+                      <Link 
+                        href={option.applyUrl}
+                        className={styles.applyButton}
+                      >
+                        <FaCalculator />
+                        Calculate Your Payment
+                      </Link>
+                    ) : (
+                      <a 
+                        href={option.applyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.applyButton}
+                      >
+                        <FaCreditCard />
+                        Apply Now
+                      </a>
+                    )}
+                    
+                    {option.phoneNumber && (
+                      <a 
+                        href={`tel:${option.phoneNumber.replace(/\D/g, '')}`}
+                        className={styles.phoneButton}
+                      >
+                        <FaPhone />
+                        {option.phoneNumber}
+                      </a>
+                    )}
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -141,6 +167,19 @@ export default function PaymentOptionsPage() {
           </div>
         </section>
 
+        {/* CTA Section */}
+        <section className={styles.ctaSection}>
+          <h2>Ready to Get Started?</h2>
+          <p>Our team is here to help you understand your payment options and find the best solution for your needs.</p>
+          <div className={styles.ctaButtons}>
+            <Link href="/contact" className={styles.ctaButton}>
+              Contact Our Team
+            </Link>
+            <a href="tel:816-427-5320" className={styles.ctaButtonOutline}>
+              Call 816-427-5320
+            </a>
+          </div>
+        </section>
       </div>
       <Footer />
     </>

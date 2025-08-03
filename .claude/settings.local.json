@@ -7,7 +7,12 @@
       "Bash(cp:*)",
       "Bash(node:*)",
       "Bash(npm install:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(git tag:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd /c:*)",
+      "WebFetch(domain:www.carecredit.com)",
+      "WebFetch(domain:www.withcherry.com)"
     ],
     "deny": []
   }
