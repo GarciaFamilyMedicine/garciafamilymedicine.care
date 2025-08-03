@@ -108,6 +108,36 @@ export default function NewsPage() {
           <div className={styles.portalLayout}>
             {/* Left Column */}
             <div className={styles.leftColumn}>
+              {/* Recent Posts Box */}
+              <div className={styles.portalBox}>
+                <div className={styles.boxHeader}>
+                  <FaNewspaper className={styles.headerIcon} />
+                  Recent Posts
+                </div>
+                <div className={styles.boxContent}>
+                  <div className={styles.recentPostsList}>
+                    {sortedPosts.slice(0, 5).map((post, index) => (
+                      <div key={post.id} className={styles.recentPostItem}>
+                        <Link 
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setCurrentPostIndex(index);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className={`${styles.recentPostTitle} ${index === currentPostIndex ? styles.currentPost : ''}`}
+                        >
+                          {post.title}
+                        </Link>
+                        <div className={styles.recentPostDate}>
+                          {formatDate(post.publishedDate)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Categories Box */}
               <div className={styles.portalBox}>
                 <div className={styles.boxHeader}>
@@ -135,30 +165,6 @@ export default function NewsPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-
-              {/* Portal Stats Box */}
-              <div className={styles.portalBox}>
-                <div className={styles.boxHeader}>
-                  <FaChartBar className={styles.headerIcon} />
-                  Portal Statistics
-                </div>
-                <div className={styles.boxContent}>
-                  <div className={styles.statsList}>
-                    <div className={styles.statItem}>
-                      <span className={styles.statLabel}>Total Articles</span>
-                      <span className={styles.statValue}>{blogPosts.length}</span>
-                    </div>
-                    <div className={styles.statItem}>
-                      <span className={styles.statLabel}>Categories</span>
-                      <span className={styles.statValue}>{categories.length - 1}</span>
-                    </div>
-                    <div className={styles.statItem}>
-                      <span className={styles.statLabel}>Upcoming Events</span>
-                      <span className={styles.statValue}>{upcomingEvents.length}</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -275,32 +281,26 @@ export default function NewsPage() {
                 </div>
               </div>
 
-              {/* Recent Posts */}
+              {/* Portal Stats Box */}
               <div className={styles.portalBox}>
                 <div className={styles.boxHeader}>
-                  <FaNewspaper className={styles.headerIcon} />
-                  Recent Posts
+                  <FaChartBar className={styles.headerIcon} />
+                  Portal Statistics
                 </div>
                 <div className={styles.boxContent}>
-                  <div className={styles.recentPostsList}>
-                    {sortedPosts.slice(0, 5).map((post, index) => (
-                      <div key={post.id} className={styles.recentPostItem}>
-                        <Link 
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setCurrentPostIndex(index);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }}
-                          className={`${styles.recentPostTitle} ${index === currentPostIndex ? styles.currentPost : ''}`}
-                        >
-                          {post.title}
-                        </Link>
-                        <div className={styles.recentPostDate}>
-                          {formatDate(post.publishedDate)}
-                        </div>
-                      </div>
-                    ))}
+                  <div className={styles.statsList}>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Total Articles</span>
+                      <span className={styles.statValue}>{blogPosts.length}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Categories</span>
+                      <span className={styles.statValue}>{categories.length - 1}</span>
+                    </div>
+                    <div className={styles.statItem}>
+                      <span className={styles.statLabel}>Upcoming Events</span>
+                      <span className={styles.statValue}>{upcomingEvents.length}</span>
+                    </div>
                   </div>
                 </div>
               </div>
