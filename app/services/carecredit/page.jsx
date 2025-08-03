@@ -88,7 +88,7 @@ export default function CareCreditPage() {
           </div>
           <div className={styles.heroImage}>
             <img 
-              src="/images/payment/carecredit-card.png"
+              src="/images/services/payment/carecredit-card.png"
               alt="CareCredit Healthcare Credit Card"
               className={styles.creditCard}
             />

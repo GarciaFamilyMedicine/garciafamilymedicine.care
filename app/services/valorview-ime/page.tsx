@@ -10,29 +10,29 @@ export default function ValorViewIME() {
   // Array of images for the carousel
   const carouselImages = [
     {
-      src: "/images/valorview-ime/expert-evaluation.jpg",
-      alt: "Expert medical evaluations for veterans at Garcia Family Medicine Blue Springs Missouri",
-      caption: "Expert Medical Evaluations for Veterans"
+      src: "/images/services/valorlink-letter/hero.jpg",
+      alt: "Patriotic eagle with American flag representing veteran medical services at Garcia Family Medicine",
+      caption: "Dedicated to Serving Those Who Served"
     },
     {
-      src: "/images/valorview-ime/thorough-documentation.jpg", 
-      alt: "Thorough documentation and medical records review for VA disability claims",
-      caption: "Thorough Documentation for Your Claim"
+      src: "/images/valorview-ime/thorough-documentation-NEEDED.jpg", 
+      alt: "IMAGE NEEDED - Thorough documentation and medical records review for VA disability claims",
+      caption: "Thorough Documentation for Your Claim - IMAGE NEEDED"
     },
     {
-      src: "/images/valorview-ime/service-connected-care.jpg",
-      alt: "Understanding service-connected health needs for veterans at Garcia Family Medicine",
-      caption: "Understanding Your Service-Connected Health Needs"
+      src: "/images/valorview-ime/service-connected-care-NEEDED.jpg",
+      alt: "IMAGE NEEDED - Understanding service-connected health needs for veterans at Garcia Family Medicine",
+      caption: "Understanding Your Service-Connected Health Needs - IMAGE NEEDED"
     },
     {
-      src: "/images/valorview-ime/advanced-assessment.jpg",
-      alt: "Advanced medical assessments and diagnostic equipment for veteran evaluations",
-      caption: "Advanced Medical Assessments"
+      src: "/images/valorview-ime/advanced-assessment-NEEDED.jpg",
+      alt: "IMAGE NEEDED - Advanced medical assessments and diagnostic equipment for veteran evaluations",
+      caption: "Advanced Medical Assessments - IMAGE NEEDED"
     },
     {
-      src: "/images/valorview-ime/va-benefits-partnership.jpg",
-      alt: "Partnership in securing VA benefits through professional medical evaluation",
-      caption: "Your Partner in Securing VA Benefits"
+      src: "/images/valorview-ime/va-benefits-partnership-NEEDED.jpg",
+      alt: "IMAGE NEEDED - Partnership in securing VA benefits through professional medical evaluation",
+      caption: "Your Partner in Securing VA Benefits - IMAGE NEEDED"
     }
   ];
 

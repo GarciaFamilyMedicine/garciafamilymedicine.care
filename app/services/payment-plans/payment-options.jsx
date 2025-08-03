@@ -15,7 +15,7 @@ export default function PaymentOptionsPage() {
     {
       id: 'carecredit',
       name: 'CareCredit',
-      logo: '/images/payment/carecredit-logo.png',
+      logo: '/images/services/payment/carecredit-logo.png',
       tagline: 'Healthcare Financing Made Easy',
       description: 'CareCredit is a healthcare credit card designed for health and wellness needs.',
       benefits: [
@@ -33,7 +33,7 @@ export default function PaymentOptionsPage() {
     {
       id: 'cherry',
       name: 'Cherry',
-      logo: '/images/payment/cherry-logo.png',
+      logo: '/images/services/payment/cherry-logo.png',
       tagline: 'Patient Financing That Cares',
       description: 'Cherry offers patient-friendly payment plans with competitive rates.',
       benefits: [

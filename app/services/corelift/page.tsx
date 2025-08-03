@@ -487,20 +487,27 @@ export default function CoreLift() {
                     </button>
                   </div>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="bg-gray-50 p-6 rounded-lg mb-6">
                   <h3 className="text-xl font-bold text-center mb-4 text-gray-700">Or fill out the form below for more information:</h3>
                 </div>
-                <div className="mt-6">
+                <div className="relative w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
+                    <p className="text-gray-500">Loading form...</p>
+                  </div>
                   <iframe 
                     src="https://forms.cloud.microsoft/pages/responsepage.aspx?id=c7daG7W_fEWuw5vxuNpYSn9tdxUlDUpPvUhi3Ih1pftUOFVYNE1KQ1BKTVJWMkVYOUVUSkJJTERVOC4u&route=shorturl"
                     width="100%"
-                    height="800"
+                    height="900"
                     frameBorder="0"
-                    style={{ border: 'none', borderRadius: '8px' }}
+                    className="relative z-10"
+                    style={{ 
+                      border: 'none',
+                      minHeight: '900px',
+                      backgroundColor: 'transparent'
+                    }}
                     title="Brunch & Bubbly CoreLift Experience RSVP Form"
-                  >
-                    Loading…
-                  </iframe>
+                    allowFullScreen
+                  />
                 </div>
               </div>
             </div>

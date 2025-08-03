@@ -21,7 +21,7 @@ This is a **Next.js 15.3.3** application using the **App Router** (`/app` direct
 ### Key Technologies
 - **Framework**: Next.js 15.3.3 with App Router
 - **Styling**: Tailwind CSS v3.4.10 + CSS Modules hybrid approach
-- **UI Components**: React 19 with React Icons
+- **UI Components**: React 19 with React Icons and Lucide React
 - **Email Integration**: Power Automate webhooks with SharePoint backend
 - **Deployment**: Azure Static Web Apps with static export
 - **Icons**: Lucide React, React Icons (Font Awesome)
@@ -36,26 +36,17 @@ app/                        # Next.js App Router pages
 │   ├── page.jsx           # Blog listing with category filtering
 │   └── [slug]/            # Dynamic blog post pages
 ├── care/                  # Specialized care service pages
-│   ├── pelvichealth/      # Pelvic health services
-│   ├── medicare/          # Medicare services
-│   ├── mental-health/     # Mental health services
-│   ├── veteran-services/  # Veteran healthcare
-│   ├── weight-management/ # Weight management
-│   ├── telehealth/        # Telehealth services
-│   ├── pain-management/   # Pain management
-│   ├── dot-certifications/# DOT medical exams
-│   └── independent-medical-examinations/ # IME services
 ├── contact/               # Contact page
 ├── events/                # Event pages (current, past, specific events)
 ├── meetthedoctor/         # Doctor biography page
-└── services/              # Service pages
-    └── corelift/          # CoreLift™ program
+└── services/              # Service pages (CoreLift, CareCredit, etc.)
 
 components/                 # Reusable React components
 ├── header/                # Navigation header with dropdowns and mobile menu
 ├── footer/                # Footer with comprehensive CTA and partner logos
 ├── calendar/              # Event calendar system
-└── blog/                  # Blog data management and utilities
+├── blog/                  # Blog data management and utilities
+└── emailsubscription/     # Email subscription component with analytics
 
 public/images/             # Static assets organized by section
 ```
@@ -75,7 +66,7 @@ public/images/             # Static assets organized by section
 
 ### Data Management
 - **Static data**: Navigation links (`components/header/navdata.js`) and calendar events stored in JavaScript modules
-- **No backend**: Static site with no API routes or server-side functionality
+- **No backend**: Static site with no API routes or server-side functionality (API routes exist but are placeholders)
 - **Event system**: Calendar events managed via `components/calendar/calendar-events.js` with recurring event support
 - **Blog system**: Static blog posts managed via `components/blog/blog-data.js` with filtering and navigation
 - **Email collection**: Client-side email signup with Power Automate webhook integration and localStorage fallback
@@ -92,6 +83,7 @@ public/images/             # Static assets organized by section
 - Console logs removed in production builds
 - Font loading optimized with `display: 'swap'`
 - Smooth scrolling utility for hash navigation
+- Image optimization with WebP format and JPEG fallback using Picture component
 
 ### File Naming Conventions
 - **STRICT RULE**: ALL files and directories MUST use lowercase naming only
@@ -102,7 +94,6 @@ public/images/             # Static assets organized by section
 - **Styles**: `componentname.module.css` for CSS Modules, `mobile.module.css` for mobile-specific styles
 - **Utilities**: lowercase with hyphens (e.g., `smooth-scroll.js`)
 - **Documentation**: `readme.md`, `changelog.md`, `claude.md` (lowercase only)
-- **Wiki files**: lowercase with hyphens (e.g., `github-secrets-setup.md`)
 
 ### Content Organization
 - **Healthcare pages**: Organized by service type (`/care`, `/services`)
@@ -125,6 +116,7 @@ Without these, email subscriptions fall back to localStorage only.
 - `.env.local` - Local development configuration
 - All NEXT_PUBLIC_ variables are exposed to the client-side
 - Webhook URL points to Power Automate flow for SharePoint integration
+- Default fallback values configured in `next.config.mjs`
 
 ## Documentation Standards
 
@@ -134,14 +126,12 @@ Without these, email subscriptions fall back to localStorage only.
 - **Structure**: `## [Version] - YYYY-MM-DD` with Added/Fixed/Changed/Removed subsections
 - **Versioning**: Semantic versioning (MAJOR.MINOR.PATCH)
 - **Updates**: MUST be updated before every deployment for significant changes
-- **Automation**: Pre-commit hooks enforce documentation standards
 
 ### Documentation Workflow
 - Always update CHANGELOG.md for feat:, fix:, and breaking changes
 - Use chronological order: newest versions at top
 - Group changes within versions by type (Added/Fixed/Changed/Removed)
-- Run `./scripts/setup-git-hooks.sh` after initial setup
-- Pre-commit hooks will verify documentation compliance
+- Keep changes concise and user-focused
 
 ### Important Instructions
 - NEVER create files unless absolutely necessary for achieving goals
@@ -154,14 +144,22 @@ Without these, email subscriptions fall back to localStorage only.
 ### Working Email Integration
 - **Azure CLI + Power Automate API**: Successfully creates flows programmatically
 - **Webhook Integration**: Website forms submit to Power Automate webhooks
-- **SharePoint Backend**: Email subscriptions saved to SharePoint list
+- **SharePoint Backend**: Email subscriptions saved to SharePoint list with 20+ analytics fields
 - **OAuth Limitation**: SharePoint connections require manual authorization in Power Automate UI
 
-### Key Commands
-```bash
-# Get token and create flow
-TOKEN=$(az account get-access-token --resource "https://service.flow.microsoft.com" --query accessToken -o tsv)
-# Use Power Automate Management API for flow creation
-```
+### Email Subscription Analytics
+The email subscription component collects comprehensive analytics including:
+- Device information (platform, browser, screen resolution)
+- Geographic data (timezone, language)
+- User behavior (referrer, viewport size)
+- Connection details (network type, mobile/tablet detection)
 
 For detailed Power Automate integration steps, see the [GitHub Wiki](https://github.com/GarciaFamilyMedicine/garciafamilymedicine.care/wiki/Power-Automate-SharePoint-Integration).
+
+## Security Best Practices
+
+- Never commit sensitive IDs, webhooks, or credentials
+- Use placeholder values in documentation
+- Store production secrets in GitHub Secrets
+- Sanitize all documentation before commits
+- Use .gitignore patterns for sensitive files

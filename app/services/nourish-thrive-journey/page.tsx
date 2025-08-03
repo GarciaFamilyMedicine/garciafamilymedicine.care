@@ -10,29 +10,29 @@ export default function NourishThrive() {
   // Array of images for the carousel
   const carouselImages = [
     {
-      src: "/images/nourish-thrive-journey/medical-supervision.jpg",
+      src: "/images/services/nourish-thrive-journey/medical-supervision.jpg",
       alt: "Medically supervised weight management consultation at Garcia Family Medicine Blue Springs",
       caption: "Medically Supervised Weight Management"
     },
     {
-      src: "/images/nourish-thrive-journey/healthy-transformation.jpg",
-      alt: "Transform your relationship with food through healthy lifestyle changes",
-      caption: "Transform Your Relationship with Food"
+      src: "/images/services/nourish-thrive-journey/healthy-transformation-NEEDED.jpg",
+      alt: "IMAGE NEEDED - Transform your relationship with food through healthy lifestyle changes",
+      caption: "Transform Your Relationship with Food - IMAGE NEEDED"
     },
     {
-      src: "/images/nourish-thrive-journey/progress-tracking.jpg", 
-      alt: "Track your journey to better health with professional medical support",
-      caption: "Track Your Journey to Better Health"
+      src: "/images/services/nourish-thrive-journey/progress-tracking-NEEDED.jpg", 
+      alt: "IMAGE NEEDED - Track your journey to better health with professional medical support",
+      caption: "Track Your Journey to Better Health - IMAGE NEEDED"
     },
     {
-      src: "/images/nourish-thrive-journey/care-team.jpg",
-      alt: "Complete care team supporting your weight management journey at Garcia Family Medicine",
-      caption: "Your Complete Care Team"
+      src: "/images/services/nourish-thrive-journey/care-team-NEEDED.jpg",
+      alt: "IMAGE NEEDED - Complete care team supporting your weight management journey at Garcia Family Medicine",
+      caption: "Your Complete Care Team - IMAGE NEEDED"
     },
     {
-      src: "/images/nourish-thrive-journey/lifelong-wellness.jpg",
-      alt: "12-month program leading to lifelong wellness and sustainable weight management",
-      caption: "12 Months to Lifelong Wellness"
+      src: "/images/services/nourish-thrive-journey/lifelong-wellness-NEEDED.jpg",
+      alt: "IMAGE NEEDED - 12-month program leading to lifelong wellness and sustainable weight management",
+      caption: "12 Months to Lifelong Wellness - IMAGE NEEDED"
     }
   ];
 
