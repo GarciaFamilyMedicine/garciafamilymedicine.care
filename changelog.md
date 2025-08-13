@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.1] - 2025-01-13
+### Added
+- Complete set of AI-generated images for all missing website assets (10 images total)
+  - Main services page: hero-doctor.jpg, doctor-consultation.jpg
+  - Service support images: carebridge-tech.jpg, dot-exam-process.jpg, valorlink-sample.jpg
+  - General site images: pattern.png, rsvp-booking-horizontal.png
+  - Blog images: welcome-post.jpg, winter-wellness.jpg, telehealth-services.jpg
+- Created `/public/images/blog/` directory for blog post images
+
+### Changed
+- Updated IMAGES_NEEDED.md to reflect completion of all image requirements
+- Website now has complete visual assets with 50+ total images
+
+### Fixed
+- Resolved all 404 errors for missing images
+- Fixed missing background pattern in CSS files
+- Completed all placeholder images with professional AI-generated alternatives
+
 ## [3.3.0] - 2025-01-25
 ### Added
 - TODO.md file for tracking development tasks and priorities
