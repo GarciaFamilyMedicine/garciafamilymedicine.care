@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import Picture from '@/components/picture';
+import Picture from '@/components/ui/picture';
 import Header from '@/components/header';
 import Footer from '@/components/footer/footer';
 import styles from '../page.module.css';
