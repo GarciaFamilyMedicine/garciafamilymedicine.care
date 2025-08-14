@@ -24,7 +24,8 @@
       "Bash(tasklist:*)",
       "Bash(curl:*)",
       "Bash(npm install)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(gh api:*)"
     ],
     "deny": []
   }
