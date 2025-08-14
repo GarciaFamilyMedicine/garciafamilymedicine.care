@@ -25,7 +25,9 @@
       "Bash(curl:*)",
       "Bash(npm install)",
       "Bash(git checkout:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(pkill:*)",
+      "Bash(gh pr create:*)"
     ],
     "deny": []
   }
