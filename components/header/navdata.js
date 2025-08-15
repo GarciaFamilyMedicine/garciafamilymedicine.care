@@ -158,6 +158,7 @@ export const nav_links = [
           items: [
             { label: 'Women\'s Health', href: '/learn/womens-health', description: 'Health topics specific to women' },
             { label: 'Men\'s Health', href: '/learn/mens-health', description: 'Health topics specific to men' },
+            { label: 'LGBTQ+ Healthcare', href: '/learn/lgbtq-health', description: 'Inclusive & affirming medical care' },
             { label: 'Pediatric Care', href: '/learn/pediatric-care', description: 'Children\'s health and development' },
             { label: 'Pelvic Health', href: '/learn/pelvichealth', description: 'Understanding pelvic floor health' },
             { label: 'Veteran Healthcare', href: '/learn/veterans', description: 'Health resources for veterans' },

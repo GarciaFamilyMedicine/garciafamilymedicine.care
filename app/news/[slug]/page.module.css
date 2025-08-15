@@ -107,6 +107,19 @@
   margin-bottom: 0;
 }
 
+/* Featured Image Section */
+.featuredImage {
+  padding: 0;
+  margin-bottom: 3rem;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Article Section */
 .article {
   padding: 4rem 0;

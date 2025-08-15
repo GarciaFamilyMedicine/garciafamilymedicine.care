@@ -89,10 +89,31 @@
 
 .container {
   max-width: 1200px;
-  margin: -40px auto 60px;
-  padding: 0 20px;
-  position: relative;
-  z-index: 10;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Section Styles */
+.section {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  font-size: 32px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  font-family: 'Sumana', serif;
+}
+
+.section > p {
+  font-size: 18px;
+  color: #495057;
+  line-height: 1.7;
+  margin-bottom: 30px;
 }
 
 /* Tab Navigation */

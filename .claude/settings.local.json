@@ -24,7 +24,17 @@
       "Bash(rm:*)",
       "Bash(touch:*)",
       "Bash(find:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(python:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(mkdir:*)",
+      "Bash(pip install:*)",
+      "Bash(copy:*)",
+      "WebSearch",
+      "Bash(cmd.exe /c \"git add -A && git commit -m \"\"feat: comprehensive wiki-style health education pages and site updates\"\" && git push origin main\")",
+      "Bash(chmod:*)",
+      "Bash(export MSYS=winsymlinks:nativestrict)"
     ],
     "deny": []
   }

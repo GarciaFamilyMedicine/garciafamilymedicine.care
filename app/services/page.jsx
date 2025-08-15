@@ -326,30 +326,6 @@ export default function ServicesMainPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className={styles.ctaSection}>
-          <div className={styles.ctaBackground}>
-            <div className={styles.ctaPattern}></div>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.ctaContent}>
-              <h2 className={styles.ctaTitle}>Ready to Transform Your Health?</h2>
-              <p className={styles.ctaDescription}>
-                Take the first step toward a healthier, happier you. 
-                Schedule your consultation today and discover the difference 
-                personalized care can make.
-              </p>
-              <div className={styles.ctaActions}>
-                <a href="tel:816-427-5320" className={styles.ctaPrimary}>
-                  <FaPhone /> Call (816) 427-5320
-                </a>
-                <Link href="/contact" className={styles.ctaSecondary}>
-                  Schedule Online <FaArrowRight />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

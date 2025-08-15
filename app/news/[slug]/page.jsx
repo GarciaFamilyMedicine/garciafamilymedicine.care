@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import styles from './page.module.css';
 import Header from '../../../components/header';
 import Footer from '../../../components/footer/footer';
@@ -44,6 +45,22 @@ export default function BlogPostPage({ params }) {
             </div>
           </div>
         </section>
+
+        {/* Featured Image */}
+        {post.image && (
+          <section className={styles.featuredImage}>
+            <div className={styles.container}>
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={1200}
+                height={600}
+                className={styles.postImage}
+                priority
+              />
+            </div>
+          </section>
+        )}
 
         {/* Article Content */}
         <section className={styles.article}>

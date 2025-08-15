@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import styles from './page.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer/footer';
@@ -380,13 +381,19 @@ function NewsContent() {
                       </div>
                     </header>
 
-                    {/* Featured Image Placeholder */}
-                    <div 
-                      className={styles.featuredImagePlaceholder}
-                      data-image="News & Events Portal Launch Announcement"
-                    >
-                      <span>Featured Image: {currentPost.title}</span>
-                    </div>
+                    {/* Featured Image */}
+                    {currentPost.image && (
+                      <div className={styles.featuredImage}>
+                        <Image
+                          src={currentPost.image}
+                          alt={currentPost.title}
+                          width={1200}
+                          height={600}
+                          className={styles.postImage}
+                          priority
+                        />
+                      </div>
+                    )}
 
                     {/* Post Content */}
                     <div className={styles.postBody}>
