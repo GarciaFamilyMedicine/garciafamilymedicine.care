@@ -85,7 +85,7 @@ export default function PainManagementPage() {
             <h3 className={styles.subsectionTitle}>Classification by Duration</h3>
             <div className={styles.infoGrid}>
               <div className={styles.infoCard}>
-                <h3>Acute Pain (< 3 months)</h3>
+                <h3>Acute Pain (&lt; 3 months)</h3>
                 <ul>
                   <li>Usually has identifiable cause</li>
                   <li>Serves protective function</li>
@@ -96,7 +96,7 @@ export default function PainManagementPage() {
                 </ul>
               </div>
               <div className={styles.infoCard}>
-                <h3>Chronic Pain (> 3 months)</h3>
+                <h3>Chronic Pain (&gt; 3 months)</h3>
                 <ul>
                   <li>Persists beyond normal healing time</li>
                   <li>May lack clear ongoing cause</li>

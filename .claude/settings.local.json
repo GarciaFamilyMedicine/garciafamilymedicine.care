@@ -36,6 +36,7 @@
       "Bash(chmod:*)",
       "Bash(export MSYS=winsymlinks:nativestrict)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "acceptEdits"
   }
 }

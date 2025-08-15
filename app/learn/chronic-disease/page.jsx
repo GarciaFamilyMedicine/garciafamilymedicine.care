@@ -138,8 +138,8 @@ export default function ChronicDiseasePage() {
               <div className={styles.infoCard}>
                 <h3>Goals & Monitoring</h3>
                 <ul>
-                  <li>A1C target generally <7% for most adults</li>
-                  <li>Blood pressure <130/80 mmHg</li>
+                  <li>A1C target generally &lt;7% for most adults</li>
+                  <li>Blood pressure &lt;130/80 mmHg</li>
                   <li>LDL cholesterol targets based on risk</li>
                   <li>Annual eye, foot, kidney screening</li>
                   <li>Continuous glucose monitoring when indicated</li>
@@ -164,9 +164,9 @@ export default function ChronicDiseasePage() {
               <div className={styles.infoCard}>
                 <h3>Blood Pressure Targets</h3>
                 <ul>
-                  <li><strong>General:</strong> <130/80 mmHg</li>
-                  <li><strong>Diabetes:</strong> <130/80 mmHg</li>
-                  <li><strong>CKD:</strong> <120 systolic if tolerated</li>
+                  <li><strong>General:</strong> &lt;130/80 mmHg</li>
+                  <li><strong>Diabetes:</strong> &lt;130/80 mmHg</li>
+                  <li><strong>CKD:</strong> &lt;120 systolic if tolerated</li>
                   <li><strong>Older adults:</strong> Individualized</li>
                   <li>Home monitoring recommended</li>
                   <li>24-hour ambulatory monitoring for diagnosis</li>
@@ -227,7 +227,7 @@ export default function ChronicDiseasePage() {
                   <li>Portion control and calorie awareness</li>
                   <li>Limit processed foods and added sugars</li>
                   <li>Increase fiber and whole grains</li>
-                  <li>Reduce sodium to <2,300mg daily</li>
+                  <li>Reduce sodium to &lt;2,300mg daily</li>
                   <li>Medical nutrition therapy referral</li>
                 </ul>
               </div>
@@ -299,9 +299,9 @@ export default function ChronicDiseasePage() {
               <div className={styles.infoCard}>
                 <h3>When to Contact Provider</h3>
                 <ul>
-                  <li>Blood pressure >180/110 or <90/60</li>
-                  <li>Blood sugar >300 or <70 mg/dL</li>
-                  <li>Weight gain >3 lbs in 2 days</li>
+                  <li>Blood pressure &gt;180/110 or &lt;90/60</li>
+                  <li>Blood sugar &gt;300 or &lt;70 mg/dL</li>
+                  <li>Weight gain &gt;3 lbs in 2 days</li>
                   <li>Worsening shortness of breath</li>
                   <li>Chest pain or pressure</li>
                   <li>Signs of infection or illness</li>
