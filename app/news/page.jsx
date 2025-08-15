@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from './page.module.css';
 import Header from '../../components/header';
@@ -20,7 +20,7 @@ import {
   MdHealthAndSafety, MdMedicalServices
 } from 'react-icons/md';
 
-export default function NewsPage() {
+function NewsContent() {
   const searchParams = useSearchParams();
   const postIdFromUrl = searchParams.get('post');
   
@@ -471,5 +471,13 @@ export default function NewsPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function NewsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NewsContent />
+    </Suspense>
   );
 }
